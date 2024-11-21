@@ -1,0 +1,56 @@
+{
+    "fe_post_updated_from_admin": "0",
+    "formBuilderData": [
+        {
+            "type": "post_title",
+            "required": true,
+            "label": "Post Title",
+            "title_element": "input",
+            "hide_field": false
+        },
+        {
+            "type": "featured_image",
+            "required": true,
+            "label": "Featured Image",
+            "wp_media_uploader": false
+        },
+        {
+            "type": "tax_category",
+            "required": false,
+            "label": "Categories",
+            "order": "asc",
+            "multiple": false,
+            "show_empty": false,
+            "add_new": false,
+            "hierarchically": false
+        },
+        {
+            "type": "tax_post_tag",
+            "required": false,
+            "label": "Tags",
+            "order": "asc",
+            "multiple": false,
+            "show_empty": false,
+            "add_new": false,
+            "hierarchically": false
+        },
+        {
+            "type": "tinymce",
+            "required": true,
+            "label": "Post Content",
+            "name": "tinymce-1699216599445",
+            "save_to": "post_content"
+        }
+    ],
+    "fe_form_settings": {
+        "fe_post_type": "post",
+        "fe_post_status": "publish",
+        "fe_add_new_button": "display",
+        "comment_status": "open",
+        "submit_text": "Submit",
+        "post_added_message": "New post created",
+        "update_message": "Post updated successfully",
+        "post_update_button_text": "Update",
+        "guest_post": "false"
+    }
+}

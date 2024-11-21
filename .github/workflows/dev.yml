@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Dev Deployment
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the staging branch
+  push:
+    branches: [ dev ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: 🚚 Deploy Plugins
+      id: deploy-plugins
+      uses: Pendect/action-rsyncer@v1.1.0
+      env:
+        DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
+      with:
+        flags: '-avzr --delete'
+        options: ''
+        ssh_options: '-p 22'
+        src: '/'
+        dest: 'dev_editor@139.144.176.100:files/wp-content/plugins/front-editor-premium'
+        
+    - name: Display status from deploy
+      run: echo "${{ steps.deploy.outputs.status }}"

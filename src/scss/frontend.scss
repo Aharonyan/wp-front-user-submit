@@ -1,0 +1,41 @@
+/**
+ * #.# Frontend Styles
+ *
+ * CSS for just Front usage 
+ * which makes it higher in priority.
+ */
+
+@import "variables";
+
+@import "mixins/index";
+
+@import "mixins/loader";
+
+@import "partials/widget.scss";
+
+@import "blocks/swal-front.scss";
+
+@import "blocks/editor-block-editor.scss";
+
+@import "partials/form-themes/front-form-default-theme.scss";
+
+@import "partials/form-themes/front-form-minimum-style.scss";
+
+@import "partials/form-themes/simple-design.scss";
+
+@import "partials/body-md.scss";
+
+@import "blocks/media-uploader.scss";
+
+@import "blocks/page-list-block-front.scss";
+
+@import "vendor/bytemd-main.scss";
+
+@import "vendor/github-md.scss";
+
+@import "vendor/slim-select.scss";
+
+@import "vendor/filepond.scss";
+
+@import "partials/front-form-style.scss";
+@import "partials/login-register-form.scss";

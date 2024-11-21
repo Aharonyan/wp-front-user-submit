@@ -1,0 +1,48 @@
+.fe_fs_user_admin_wrap {
+    .fe_fs_header_buttons {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .fe_fs_title {
+        display: flex;
+        justify-content: space-between;
+    }
+    .fe_fs_tabs {
+        list-style: none;
+        margin: 10px 10px 10px 0px;
+        display: flex;
+        li {
+            margin-right: 10px;
+        }
+        .active-tab {
+            button {
+                background: black;
+            }
+        }
+    }
+    .fe_fs_post_list {
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            img {
+                width: 50px;
+            }
+        }
+        .fe_fs_icon_container,
+        .fe_fs_img {
+            width: 50px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    }
+}

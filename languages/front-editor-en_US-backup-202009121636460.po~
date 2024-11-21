@@ -1,0 +1,177 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Best Front End Editor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-02 20:28+0000\n"
+"PO-Revision-Date: 2020-05-02 20:29+0000\n"
+"Last-Translator: \n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.3; wp-5.4.1"
+
+#: inc/Blocks.php:33 inc/Editor.php:42 inc/Editor.php:85
+#: inc/MenuSettings.php:157
+msgid "Publish"
+msgstr ""
+
+#: inc/Blocks.php:34 inc/Editor.php:86
+msgid "Updating"
+msgstr ""
+
+#: inc/Blocks.php:35 inc/Editor.php:73 inc/Editor.php:87
+msgid "Update"
+msgstr ""
+
+#: inc/Blocks.php:37
+msgid "Best Front End Editor Block"
+msgstr ""
+
+#: inc/Editor.php:20
+msgid "Add content"
+msgstr ""
+
+#: inc/Editor.php:52
+msgid "You do not have permission to edit this post"
+msgstr ""
+
+#: inc/Editor.php:56
+msgid "Add new"
+msgstr ""
+
+#: inc/Editor.php:89
+msgid "View Page"
+msgstr ""
+
+#: inc/EditorPro.php:83
+msgid "The featured image is required"
+msgstr ""
+
+#: inc/EditorPro.php:124
+msgid "The category selection is required"
+msgstr ""
+
+#: inc/EditorPro.php:168
+msgid "The post type selection is required"
+msgstr ""
+
+#: inc/EditorWidget.php:35 inc/PostsList.php:59
+msgid "Edit"
+msgstr ""
+
+#: inc/MenuSettings.php:22
+msgid "Buy pro version to use this functionality"
+msgstr ""
+
+#: inc/MenuSettings.php:26
+msgid "Display"
+msgstr ""
+
+#: inc/MenuSettings.php:27
+msgid "Display and require"
+msgstr ""
+
+#: inc/MenuSettings.php:28
+msgid "Disable this field"
+msgstr ""
+
+#: inc/MenuSettings.php:37 inc/MenuSettings.php:38 inc/MenuSettings.php:130
+msgid "Front Editor"
+msgstr ""
+
+#: inc/MenuSettings.php:53
+msgid "Front editor settings"
+msgstr ""
+
+#: inc/MenuSettings.php:62
+msgid "Post status"
+msgstr ""
+
+#: inc/MenuSettings.php:79
+msgid "Post image"
+msgstr ""
+
+#: inc/MenuSettings.php:96
+msgid "Post category"
+msgstr ""
+
+#: inc/MenuSettings.php:113
+msgid "Custom post type"
+msgstr ""
+
+#: inc/MenuSettings.php:158
+msgid "Pending"
+msgstr ""
+
+#: inc/PostsList.php:63
+msgid "Newer"
+msgstr ""
+
+#: inc/PostsList.php:64
+msgid "Previous"
+msgstr ""
+
+#: inc/SavePost.php:48
+msgid "Please add post title"
+msgstr ""
+
+#: inc/SavePost.php:102
+msgid "New post created"
+msgstr ""
+
+#: inc/SavePost.php:102
+msgid "Post updated"
+msgstr ""
+
+#: templates/block-editor.php:9
+msgid "View Post"
+msgstr ""
+
+#: templates/block-editor.php:17
+msgid "Add Title"
+msgstr ""
+
+#: templates/front-editor/category.php:2 templates/front-editor/category.php:4
+msgid "Select category"
+msgstr ""
+
+#: templates/front-editor/post-featured-image.php:12
+msgid "Set featured image"
+msgstr ""
+
+#: templates/front-editor/post-type.php:2
+#: templates/front-editor/post-type.php:12
+msgid "post"
+msgstr ""
+
+#: templates/front-editor/post-type.php:15
+msgid "Select post type"
+msgstr ""
+
+#. Name of the plugin
+msgid "Best Front End Editor"
+msgstr "Best Front End Editor"
+
+#. Description of the plugin
+msgid ""
+"Best Front End Editor is a best front end editor that will allow you to "
+"change and save contents of post and pages"
+msgstr ""
+"Best Front End Editor is a best front end editor that will allow you to "
+"change and save contents of post and pages"
+
+#. URI of the plugin
+msgid "https://github.com/Aharonyan/front-editor"
+msgstr ""
+
+#. Author of the plugin
+msgid "Aleksan Aharonyan"
+msgstr "Aleksan Aharonyan"
+
+#. Author URI of the plugin
+msgid "https://github.com/Aharonyan/"
+msgstr ""

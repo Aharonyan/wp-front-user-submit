@@ -1,0 +1,291 @@
+#fe-fromBuilder {
+    .group {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+
+        .setting {
+            margin: 10px;
+
+            span {
+                display: block;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .field-actions {
+        opacity: 1;
+
+        .btn {
+            opacity: 1;
+        }
+    }
+
+    .settings-header {
+        margin-top: 20px;
+
+        &.primary {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        code {
+            background: white;
+            border-radius: 5px;
+            padding: 5px 10px;
+            display: block;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 2px 0px;
+        }
+
+        #save-form-post {
+            align-self: baseline;
+            white-space: nowrap;
+            background: #007cba;
+            border: 1px solid #007cba;
+            color: #fff;
+            text-decoration: none;
+            text-shadow: none;
+            margin: 0;
+            padding: 4px 12px;
+            font-weight: 400;
+            margin-bottom: 5px;
+            font-family: Arial;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 17px;
+            margin: 20px;
+
+            &:hover {
+                color: #fff;
+                opacity: 0.7;
+            }
+        }
+    }
+
+    .form-wrap.form-builder .frmb .prev-holder {
+        display: none !important;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .form-wrap.form-builder {
+        .frmb-control {
+            display: flex;
+            flex-wrap: wrap;
+            li {
+                margin: 5px 0px;
+                cursor: pointer;
+                box-shadow: none;
+                border-radius: 5px;
+                margin-right: 5px;
+                width: 48%;
+                max-width: 100%;
+            }
+
+            .group-name {
+                font-size: 16px;
+                font-weight: 600;
+                padding-left: 10px;
+                width: 100%;
+            }
+        }
+    }
+
+    #post-form-builder .post_type_selection {
+        display: flex;
+        align-content: center;
+        justify-content: start;
+        align-items: center;
+        margin-right: 15px;
+
+        .group-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #646970;
+            margin-right: 15px;
+        }
+
+        #fe_settings_post_type {
+            border: 1px solid #e1e8ee;
+            border-radius: 5px;
+            color: #3c434a;
+            font-size: 16px;
+        }
+    }
+
+    #fe_title,
+    #form_shortcode {
+        p {
+            font-size: 16px;
+            font-weight: 600;
+            color: #646970;
+        }
+
+        input {
+            border: 1px solid #e1e8ee;
+        }
+    }
+
+    .frmb {
+        background: #fff;
+        padding: 10px;
+        margin-top: 8px;
+        border-radius: 5px;
+
+        li {
+            border-radius: 5px !important;
+            border: 1px solid #e1e8ee !important;
+            padding: 0px;
+            padding-left: 5px;
+        }
+    }
+
+    #fe-form-builder-settings-tabs {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 170px;
+        border-bottom: 0;
+        overflow: hidden;
+
+        .nav-tab {
+            width: calc(100% - -1px);
+            margin-left: 0;
+            margin-bottom: 0.5em;
+            border-right: 1px solid #cccccc;
+            border-bottom: 1px solid #cccccc;
+            font-weight: 400;
+            font-size: 13px;
+
+            &.nav-tab-active {
+                background: white;
+            }
+        }
+    }
+
+    .sub_field_groups_container {
+        margin-left: 170px;
+        border-left: 1px solid #cccccc;
+        padding-left: 20px;
+    }
+
+    fieldset {
+        position: relative;
+    }
+
+    .post_content_editor_js-field {
+        label {
+            white-space: normal !important;
+        }
+    }
+
+    .form-field {
+        &:has(.control-icon) {
+            .field-label {
+                padding-left: 30px;
+            }
+        }
+
+        .field-label::before {
+            margin-right: 10px !important;
+        }
+
+        .control-icon {
+            width: 15px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+
+            svg {
+                width: 15px;
+            }
+        }
+
+        .required-asterisk {
+            position: absolute;
+            top: 0;
+        }
+
+        .tooltip-element {
+            display: none !important;
+
+            &.open-modal {
+                display: inline-block !important;
+                cursor: pointer !important;
+            }
+        }
+
+        &.editing {
+            .control-icon {
+                top: 8px;
+                transform: none;
+            }
+        }
+    }
+
+    .hidden_element {
+        display: none;
+    }
+
+    #show-design-colors {
+        box-shadow: inset 0 0 0 0.1rem #e3e3e3;
+
+        th {
+            padding-left: 15px;
+        }
+    }
+
+    #fe-migrate-settings {
+        width: 100%;
+        height: 250px;
+        margin-bottom: 11px;
+    }
+    .fe-copy-migrate-msg {
+        display: none;
+    }
+    .fe-migration-btns {
+        margin-top: 11px;
+        margin-bottom: 11px;
+    }
+
+    .email_input {
+        min-width: 300px;
+        width: 80%;
+        display: block;
+    }
+
+    .form-elements {
+        .ui-sortable-handle {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            align-items: center;
+            .option-selected {
+                width: auto;
+            }
+            .remove,.btn {
+                top: auto;
+            }
+        }
+    }
+}
+.form-wrap.form-builder .frmb {
+    li.button-field,
+    li.header-field,
+    li.paragraph-field {
+        .field-label {
+            display: block !important;
+        }
+    }
+}

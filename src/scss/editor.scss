@@ -1,0 +1,30 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+ @import "variables";
+
+@import "mixins/index";
+
+@import "partials/widget.scss";
+
+@import "blocks/swal-front.scss";
+
+@import "blocks/editor-block-editor.scss";
+
+@import "partials/form-themes/front-form-default-theme.scss";
+
+@import "blocks/media-uploader.scss";
+
+@import "blocks/page-list-block-front.scss";
+
+@import "admin/post-form-cpt.scss";
+
+@import "vendor/bytemd-main.scss";
+
+@import "vendor/github-md.scss";
+
+@import "vendor/slim-select.scss";

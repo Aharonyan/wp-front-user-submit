@@ -1,0 +1,7 @@
+@mixin border(){
+	border: solid 1px;
+}
+
+@mixin shadow_border(){
+	box-shadow: 0 4px 12px -1px rgba(0,0,0,.13);
+}
