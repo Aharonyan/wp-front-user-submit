@@ -17,7 +17,7 @@ esc_html_e( 'Form Restriction Message', 'front-editor' );
         <td>
             <input type="text" name="settings[login][restricted_message]" value="<?php 
 echo esc_attr( $restricted_message );
-?>" style="width:350px">
+?>" class="big_width_input">
             <p class="description"><?php 
 echo __( 'Will be shown to the user if he is not registered and guest posting is not active', 'front-editor' );
 ?></p>

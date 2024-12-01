@@ -20,6 +20,13 @@ if (isset($field['required'])) {
     }
 }
 
+$show_search = false;
+if (isset($field['show_search'])) {
+    if ($field['show_search']) {
+        $show_search = true;
+    }
+}
+
 $search_placeholder = false;
 if (isset($field['search_placeholder']) && !empty($field['search_placeholder'])) {
     $search_placeholder = $field['search_placeholder'];
@@ -44,6 +51,7 @@ if (isset($field['search_error_text']) && !empty($field['search_error_text'])) {
         <?php
         ($search_placeholder) ? printf('data-search-placeholder="%s"', $search_placeholder) : '';
         ($search_error_text) ? printf('data-search-text="%s"', $search_error_text) : '';
+        ($show_search) ? printf('data-show-search="1"') : '';
         ?>>
 
         <option data-placeholder="true"></option>

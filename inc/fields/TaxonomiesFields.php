@@ -99,6 +99,11 @@ class TaxonomiesFields {
                     'value' => false,
                     'type'  => 'checkbox',
                 ],
+                'show_search'         => [
+                    'label' => __( 'Show Search Input', 'front-editor' ),
+                    'value' => false,
+                    'type'  => 'checkbox',
+                ],
                 'exclude'             => [
                     'label'       => __( 'Terms to excluded', 'front-editor' ),
                     'placeholder' => '556,778,993',

@@ -50,10 +50,10 @@ if (is_array($buttons_design) && !empty($buttons_design)) {
             </button>
         <?php endif; ?>
         <?php
-        $preview_button = $form_settings['preview_button'] ?? false;
+        $preview_button = $form_settings['preview_button'] ?? 'display';
         $preview_button_text = (isset($form_settings['preview_button_text']) && !empty($form_settings['preview_button_text'])) ? $form_settings['preview_button_text'] : __('Preview', 'front-editor');
         ?>
-        <?php if (($post_id !== 'new' && $preview_button !== 'disable')) : ?>
+        <?php if ($preview_button !== 'disable') : ?>
             <button type="button" <?= $inline_style ?> class="editor-button fus-view-page view-page <?php echo $post_id === 'new' ? 'hidden' : ''; ?>">
                 <a target="_blank" class="view-page editor-button" href="<?php the_permalink($post_id) ?? ''; ?>" title="<?= $preview_button_text ?>">
 

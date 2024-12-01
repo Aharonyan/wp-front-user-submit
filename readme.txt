@@ -2,19 +2,21 @@
 Contributors: aharonyan, freemius
 Tags: frontend post,guest post,public post,submit post,user post
 Requires at least: 4.0
-Tested up to: 6.6.2
+Tested up to: 6.7.1
 Requires PHP: 7.0
-Stable tag: 4.7.9
+Stable tag: 4.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin enables users to submit post content from Front End. Use our plugin to implement guest posting
 
 == Description ==
-[Demo](http://demo.wpfronteditor.com/) | [Documentation](https://wpfronteditor.com/docs) | [Community](https://t.me/+loTEjPRS6lw3NTli) | [Upgrade to PRO](https://wpfronteditor.com/)
+[🌐 Demo](http://demo.wpfronteditor.com/) | [📖 Documentation](https://wpfronteditor.com/docs) | [💬 Community](https://t.me/+loTEjPRS6lw3NTli) | [🚀 Upgrade to PRO](https://wpfronteditor.com/)  
 
 WP Front User Submit is a versatile WordPress plugin designed to enable post submissions from the frontend with or without user login. Packed with configurable options, it offers a comprehensive solution for guest posting.
 
+🎉 **Try it out on your free dummy site:**  
+[👉 Click here to test it](https://tastewp.com/plugins/front-editor)  
 
 <strong>✨ Core Features</strong>
 
@@ -191,6 +193,17 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 
 == Changelog ==
 
+= 4.8.0 = 
+* Fixed issue with File field when uploading video
+* Fixed registration notification bug
+* Fixed date field required functionality
+* Added Meta Box to the post create by the plugin form
+* Buttons both on top and bottom
+* Fixed custom css issue
+* Notification admin default email now will be admin email
+* In Taxonomy and Select fields search input deactivate and can be activated in settings
+* TinyMCE added 3 new settings media buttons, making teeny, activating drag and drop functionality
+
 = 4.7.9 = 
 * All fields require field issue fixed
 * In all field now you can modify require issue message
@@ -332,6 +345,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 4.8.0 =
+This update includes several fixes and new features.
 
 = 4.7.9 = 
 * All fields require field issue fixed

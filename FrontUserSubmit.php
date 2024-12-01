@@ -55,6 +55,7 @@ class FrontUserSubmit
     require_once FE_PLUGIN_DIR_PATH . '/inc/Notifications.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/WooIntegration.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/LoginRegisterShortcode.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/FormMetaBox.php';
 
 
     add_action('wp_enqueue_scripts', [__CLASS__, 'add_scripts']);

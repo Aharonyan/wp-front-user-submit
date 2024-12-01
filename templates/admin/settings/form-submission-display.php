@@ -7,7 +7,8 @@
                 <?php
                 $options = [
                     'default' => __('On Top', 'front-editor'),
-                    'bottom' => __('On Bottom', 'front-editor')
+                    'bottom' => __('On Bottom', 'front-editor'),
+                    'both' => __('On Top and Bottom', 'front-editor')
                 ];
 
                 $options_selected = isset($form_settings['control_buttons']) ? $form_settings['control_buttons'] : 'bottom';
@@ -67,7 +68,7 @@
     <tr class="setting">
         <th><?= __('Custom css for form', 'front-editor') ?></th>
         <td>
-            <textarea id="fus_code_editor_page_css" rows="10" name="settings[form_custom_css]" class="widefat textarea"><?php echo wp_unslash($form_settings['form_theme'] ?? ''); ?></textarea>
+            <textarea id="fus_code_editor_page_css" rows="10" name="settings[form_custom_css]" class="widefat textarea"><?php echo wp_unslash($form_settings['form_custom_css'] ?? '.class{color:black;}'); ?></textarea>
         </td>
     </tr>
 

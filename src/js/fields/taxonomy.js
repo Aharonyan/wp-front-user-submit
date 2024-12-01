@@ -11,11 +11,15 @@ export default ($, SlimSelect) => {
         selects.forEach((select) => {
             let placeholder = select.hasAttribute("data-placeholder") ? select.getAttribute("data-placeholder") : '',
                 add_new = select.hasAttribute("data-add-new") ? select.getAttribute("data-placeholder") : false,
+                showSearch = select.hasAttribute("data-show-search") ? true : false,
                 searchPlaceholder = select.hasAttribute("data-search-placeholder") ? select.getAttribute("data-search-placeholder") : 'Search',
                 searchText = select.hasAttribute("data-search-text") ? select.getAttribute("data-search-text") : 'No Results';
 
+                console.log(showSearch)
             var select = new SlimSelect({
                 text: 'text',
+                showSearch: showSearch,
+                focusSearch: false,
                 select: select,
                 placeholder: placeholder,
                 hideSelectedOption: true,

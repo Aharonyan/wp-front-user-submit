@@ -112,7 +112,9 @@ class LoginRegisterShortcodes
                         $creds = [];
                         $creds['user_login'] = sanitize_text_field($_POST['fus_username']);
                         $creds['user_email'] = sanitize_email($_POST['fus_email']);
-                        $creds['user_pass'] = wp_generate_password();
+                        $creds['username'] = $creds['user_login'];
+                        $creds['user_password'] = wp_generate_password();
+                        $creds['user_pass'] = $creds['user_password'];
                         $creds['role'] = get_option('default_role');
                         if (isset($_POST['first_name'])) {
                             $creds['first_name'] = sanitize_text_field($_POST['first_name']);
@@ -133,11 +135,14 @@ class LoginRegisterShortcodes
 
                         self::set_fus_success(__('Registration successful. Your password will be sent via email shortly.', 'front-editor'), $_REQUEST['fus_form']);
                         $settings = get_option('bfe_general_settings_login_register_group_options');
+                        $creds['subject'] = '[blog_name] Registration successful';
+                        $creds['message'] =  sprintf('Hi [username],%sLogin: [user_login]%sPassword: [user_password]', PHP_EOL, PHP_EOL);
                         if(isset($settings['registration_email_content_field']) && !empty($settings['registration_email_content_field'])){
                             $creds['subject'] = $settings['registration_email_content_field']['subject'];
                             $creds['message'] = $settings['registration_email_content_field']['message'];
-                            self::send_email($user,$creds);
                         }
+
+                        self::send_email($user,$creds);
                         
                         
                         $success = true;

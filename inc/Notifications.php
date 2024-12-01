@@ -86,14 +86,15 @@ class Notifications
     public static function send_admin_notification($post_id, $form_id)
     {
         $form_settings = get_post_meta($form_id, 'fe_form_settings', true);
+
+        // if is not enabled notifications
+        if (!isset($form_settings['admin_notifications']) || empty($form_settings['admin_notifications'])) {
+            return;
+        }
+
         $notification_text = $form_settings['send_admin_notification_text'];
         $subject = $form_settings['send_admin_notification_subject'];
         $send_to = $form_settings['send_admin_notification_to'];
-
-        // if is not enabled notifications
-        if (empty($form_settings['admin_notifications'])) {
-            return;
-        }
 
         if (empty($notification_text)) {
             return;

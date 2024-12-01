@@ -67,6 +67,8 @@ class FileField {
             return false;
         }
         require_once ABSPATH . 'wp-admin/includes/image.php';
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/media.php';
         if ( !empty( $file ) ) {
             $cont = file_get_contents( $file['tmp_name'] );
             $new_file_name = $file['name'];
@@ -80,6 +82,7 @@ class FileField {
             'post_status'    => 'inherit',
         );
         $attach_id = wp_insert_attachment( $attachment, $upload['file'] );
+        // Generate and update attachment metadata
         $attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
         wp_update_attachment_metadata( $attach_id, $attach_data );
         return array(

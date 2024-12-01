@@ -72,6 +72,11 @@ class SelectField {
          * Adding attribute settings
          */
         $data['formBuilder_options']['typeUserAttrs'][self::$field_type] = [
+            'show_search'         => [
+                'label' => __( 'Show Search Input', 'front-editor' ),
+                'value' => false,
+                'type'  => 'checkbox',
+            ],
             'required_error_text' => [
                 'label'       => __( 'Required error text', 'front-editor' ),
                 'placeholder' => 'Term selection is required',

@@ -61,7 +61,7 @@ $disabled = !fe_fs()->can_use_premium_code__premium_only() ? ' disabled' : '';
         <th><?= __('Product Added', 'front-editor') ?></th>
         <?php $default_checkout_msg = __('Product added to the cart. Check the cart.', 'front-editor') ?>
         <td>
-            <input style="width:300px" type="text" name="settings[no_direct_checkout_msg]" placeholder="<?= $default_checkout_msg ?>" value="<?php echo esc_attr($form_settings['no_direct_checkout_msg']?? $default_checkout_msg); ?>"<?php esc_attr_e($disabled) ?>>
+            <input class="big_width_input" type="text" name="settings[no_direct_checkout_msg]" placeholder="<?= $default_checkout_msg ?>" value="<?php echo esc_attr($form_settings['no_direct_checkout_msg']?? $default_checkout_msg); ?>"<?php esc_attr_e($disabled) ?>>
             <?php if ($disabled) : ?>
                 <p class="description"><?php  esc_html_e('Available in Pro version','front-editor'); ?></p>
             <?php endif; ?>

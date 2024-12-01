@@ -1,6 +1,6 @@
 <?php
 $admin_notifications = !empty($form_settings['admin_notifications']) ? $form_settings['admin_notifications'] : 'false';
-$send_admin_notification_to = isset($form_settings['send_admin_notification_to']) ? $form_settings['send_admin_notification_to'] : __('your_email@example.com', 'front-editor');
+$send_admin_notification_to = (isset($form_settings['send_admin_notification_to']) && !empty($form_settings['send_admin_notification_to'])) ? $form_settings['send_admin_notification_to'] : get_option( 'admin_email' );
 $send_admin_notification_subject = isset($form_settings['send_admin_notification_subject']) ? $form_settings['send_admin_notification_subject'] : __('New post created - [post_title]', 'front-editor');
 $send_admin_notification_text = isset($form_settings['send_admin_notification_text']) ? $form_settings['send_admin_notification_text'] : 'Hi Admin,' . PHP_EOL . PHP_EOL . 'A new post has been created in your site [sitename] ([siteurl]).' . PHP_EOL . 'Here is the details: ' . PHP_EOL . 'Post Title: [post_title] ' . PHP_EOL . 'Author: [author_name] ' . PHP_EOL . 'Post URL: [post_link] ' . PHP_EOL . 'Edit URL: [post_link] ' . PHP_EOL;
 ?>
@@ -16,7 +16,7 @@ $send_admin_notification_text = isset($form_settings['send_admin_notification_te
     <tr class="send_admin_notification_to">
         <th><?php esc_html_e('To', 'front-editor'); ?></th>
         <td>
-            <input type="text" class="email_content" name="settings[send_admin_notification_to]" value="<?php echo esc_attr($send_admin_notification_to); ?>">
+            <input type="text" class="email_input" name="settings[send_admin_notification_to]" value="<?php echo esc_attr($send_admin_notification_to); ?>">
         </td>
     </tr>
     <tr class="send_admin_notification_subject">

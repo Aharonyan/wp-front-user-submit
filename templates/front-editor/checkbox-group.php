@@ -1,12 +1,12 @@
 <?php
-$checkbox_name = sprintf('checkbox[%s][ids]', $field['name']);
+$checkbox_name = sprintf('checkbox[%s][ids][]', $field['name']);
 
 $placeholder = $field['label'];
 if (isset($field['placeholder'])) {
     $placeholder = $field['placeholder'];
 }
 
-$selected = get_post_meta($post_id, $field['name']);
+$selected = get_post_meta($post_id, $field['name'], true);
 if (empty($selected)) {
     $selected = [];
 }

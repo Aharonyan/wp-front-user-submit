@@ -7,7 +7,7 @@ if (isset($form_settings['notifications'][$prefix])) {
 $enabled = !empty($settings['enabled']) ? $settings['enabled'] : 'false';
 $subject = isset($settings['subject']) ? $settings['subject'] : sprintf('Post %sed- [post_title]', $post_notification_type);
 $from_name = isset($settings['from_name']) ? $settings['from_name'] : __('No Reply', 'front-editor');
-$from_email = isset($settings['from_email']) ? $settings['from_email'] : __('noreply@localhost.com', 'front-editor');
+$from_email = (isset($settings['from_email']) && !empty($settings['from_email'])) ? $settings['from_email'] : get_option( 'admin_email' );
 $message = isset($settings['message']) ? $settings['message'] : 'Hi [author_name],' . PHP_EOL . PHP_EOL . 'Your post has been '.$post_notification_type.'ed [sitename] ([siteurl]).' . PHP_EOL . 'Here is the details: ' . PHP_EOL . 'Post Title: [post_title] ' . PHP_EOL . 'Author: [author_name] ' . PHP_EOL . 'Post URL: [post_link] ' . PHP_EOL . 'Edit URL: [post_link] ' . PHP_EOL;
 ?>
 
@@ -22,7 +22,7 @@ $message = isset($settings['message']) ? $settings['message'] : 'Hi [author_name
     <tr class="send_<?= $prefix ?>_notification_subject">
         <th><?php esc_html_e('Subject', 'front-editor'); ?></th>
         <td>
-            <input type="text" name="settings[notifications][<?= $prefix ?>][subject]" value="<?php echo esc_attr($subject); ?>">
+            <input type="text" class="big_width_input" name="settings[notifications][<?= $prefix ?>][subject]" value="<?php echo esc_attr($subject); ?>">
             <p class="description">Subject line for email alerts. You may include any of the following variables:
                 <code>[sitename]</code>,<code>[siteurl]</code>,<code>[post_title]</code>,<code>[author_name]</code>,<code>[post_link]</code>,<code>[post_admin_link]</code>,<code>[post_content]</code>,<code>[post_status]</code>
             </p>

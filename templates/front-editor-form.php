@@ -25,7 +25,7 @@ echo $form_css;
 } ?>
 
 <form class="fus-form bfe-editor <?= $form_theme ?>" id="fus-form-<?= $form_id ?>" post_id="<?= $post_id ?>">
-    <?php if ($form_control_buttons == 'default') {
+    <?php if ($form_control_buttons == 'default' || $form_control_buttons == 'both') {
         require fe_template_path('front-form-header.php');
     } ?>
     <div class="hidden-fields">
@@ -48,7 +48,7 @@ echo $form_css;
             ?>
         </div>
     </div>
-    <?php if ($form_control_buttons == 'bottom') {
+    <?php if ($form_control_buttons == 'bottom' || $form_control_buttons == 'both') {
         require fe_template_path('front-form-header.php');
     } ?>
 </form>

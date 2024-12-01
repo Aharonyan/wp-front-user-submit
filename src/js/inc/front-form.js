@@ -3,8 +3,8 @@ export default (form, $, SlimSelect, Swal) => {
         post_form_id = post_form.attr('id'),
         fe_data = window.editor_data,
         button_menu = post_form.find('.fus-form-block-header .sub-header.top'),
-        saveButton = post_form.find('.form-submit'),
-        saveDraftButton = post_form.find('.form-save-draft'),
+        saveButton = document.querySelectorAll(`#${post_form_id} .form-submit`),
+        saveDraftButton = document.querySelectorAll(`#${post_form_id} .form-save-draft`),
         fixmeTop = button_menu.offset().top,
         post_link = post_form.find('.view-page'),
         post_id = post_form.find('.fus_post_id');
@@ -30,19 +30,23 @@ export default (form, $, SlimSelect, Swal) => {
     /**
      * On form submit
      */
-    saveButton.on('click', (ev) => {
-        ev.preventDefault()
-        window.fe_hooks.do_action('on_post_form_save')
-        save_data()
+    saveButton.forEach((element) => {
+        element.addEventListener('click', (ev) => {
+            ev.preventDefault()
+            window.fe_hooks.do_action('on_post_form_save')
+            save_data()
+        })
     });
 
     /**
      * On form draft submit
      */
-    saveDraftButton.on('click', (ev) => {
-        ev.preventDefault()
-        window.fe_hooks.do_action('on_post_form_save')
-        save_data(true)
+    saveDraftButton.forEach((element) => {
+        element.addEventListener('click', (ev) => {
+            ev.preventDefault()
+            window.fe_hooks.do_action('on_post_form_save')
+            save_data(true)
+        })
     });
 
 
@@ -55,9 +59,11 @@ export default (form, $, SlimSelect, Swal) => {
             save_button = document.querySelector(`#${post_form_id} .form-submit`),
             draft_button = document.querySelector(`#${post_form_id} .form-save-draft`),
             thumb_exist = document.querySelector(`#${post_form_id} .image_loader`),
-            show_loading = document.querySelector(`#${post_form_id} #fus-loader`);
+            show_loading = document.querySelectorAll(`#${post_form_id} .fus-loader`);
 
-        show_loading.classList.toggle("active");
+        show_loading.forEach((element) => {
+            element.classList.toggle('active');
+        });
         const formData = new FormData(form);
         formData.append('action', 'bfe_update_post')
         formData.append('save_to_draft', save_to_draft)
@@ -133,7 +139,9 @@ export default (form, $, SlimSelect, Swal) => {
 
                     save_button.innerHTML = save_button_messages.update;
                     update_url_param('post_id', data.data.post_id)
-                    show_loading.classList.toggle("active");
+                    show_loading.forEach((element) => {
+                        element.classList.toggle('active');
+                    });
                     currentForm.querySelectorAll(`.field_error`).forEach((elem) => { elem.classList.remove('field_error') });
                 } else {
                     save_button.disabled = false;
@@ -144,7 +152,9 @@ export default (form, $, SlimSelect, Swal) => {
 
                     currentForm.querySelectorAll(`.field_error`).forEach((elem) => { elem.classList.remove('field_error') });
                     show_message('error', data.data.message)
-                    show_loading.classList.toggle("active");
+                    show_loading.forEach((element) => {
+                        element.classList.toggle('active');
+                    });
 
                     if (data.data.field) {
                         const allFields = currentForm.querySelectorAll(`.${data.data.field}`);
@@ -176,7 +186,9 @@ export default (form, $, SlimSelect, Swal) => {
                 }
             }).catch((response) => {
                 show_message('error', response.statusText)
-                show_loading.classList.toggle("active");
+                show_loading.forEach((element) => {
+                    element.classList.toggle('active');
+                });
             })
     }
 

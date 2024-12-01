@@ -14,25 +14,29 @@ $button_background = isset($buttons['background']) ? $buttons['background'] : '#
 $button_color = isset($buttons['color']) ? $buttons['color'] : '#ffffff';
 $button_border = isset($buttons['border']) ? $buttons['border'] : '#6161ff';
 $button_radius = isset($buttons['border-radius']) ? $buttons['border-radius'] : 5;
+
 ?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
+<script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+
 <tbody id="show-design-colors">
     <th><?= __('Color Settings', 'front-editor') ?></th>
     <tr class="setting">
         <th><?= __('Buttons background color', 'front-editor') ?></th>
         <td>
-            <input type="color" name="settings[design][buttons][background]" value="<?= $button_background ?>" />
+            <input  data-coloris type="text" name="settings[design][buttons][background]" value="<?= $button_background ?>" />
         </td>
     </tr>
     <tr class="setting">
         <th><?= __('Buttons text color', 'front-editor') ?></th>
         <td>
-            <input type="color" name="settings[design][buttons][color]" value="<?= $button_color ?>" />
+            <input  data-coloris type="text" name="settings[design][buttons][color]" value="<?= $button_color ?>" />
         </td>
     </tr>
     <tr class="setting">
         <th><?= __('Buttons border color', 'front-editor') ?></th>
         <td>
-            <input type="color" name="settings[design][buttons][border]" value="<?= $button_border ?>" />
+            <input  data-coloris type="text" name="settings[design][buttons][border]" value="<?= $button_border ?>" />
         </td>
     </tr>
     <tr class="setting">

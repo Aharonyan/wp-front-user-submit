@@ -98,7 +98,6 @@ class MdEditor
         if (empty($_POST['md_editor'])) {
             return;
         }
-
         $Parsedown = new \Parsedown();
 
         foreach ($_POST['md_editor'] as $name => $content) {
