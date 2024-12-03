@@ -4,7 +4,7 @@ Tags: frontend post,guest post,public post,submit post,user post
 Requires at least: 4.0
 Tested up to: 6.7.1
 Requires PHP: 7.0
-Stable tag: 4.8.0
+Stable tag: 4.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -193,6 +193,11 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 
 == Changelog ==
 
+= 4.8.3 = 
+* Required logic bug fixed
+* Empty post title and post content issue
+* Added shortcode to show simple field value in post: [fus_display_field name="{field_name}"]
+
 = 4.8.0 = 
 * Fixed issue with File field when uploading video
 * Fixed registration notification bug
@@ -345,6 +350,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 4.8.3 =
+This update includes several hot fixes and new shortcode.
 
 = 4.8.0 =
 This update includes several fixes and new features.

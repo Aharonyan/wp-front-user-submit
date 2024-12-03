@@ -41,11 +41,8 @@ class NumberField {
                     'message' => $message,
                 ] );
             }
-            if ( !empty( $value ) && !is_numeric( $value ) ) {
+            if ( empty( $value ) && $settings['required'] || !is_numeric( $value ) && $settings['required'] ) {
                 $message = __( 'Please add correct number field', 'front-editor' );
-                if ( isset( $settings['not_correct_post_title_text'] ) && !empty( isset( $settings['not_correct_post_title_text'] ) ) ) {
-                    $message = $settings['not_correct_post_title_text'];
-                }
                 wp_send_json_error( [
                     'field'   => $name,
                     'message' => $message,

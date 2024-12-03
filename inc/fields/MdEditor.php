@@ -62,15 +62,6 @@ class MdEditor
                 }
                 wp_send_json_error(['field' => $name, 'message' => $message]);
             }
-
-            $post_title = wp_kses_post($value);
-            if (empty($post_title)) {
-                $message = __('Please add correct editor', 'front-editor');
-                if (isset($settings['not_correct_post_title_text']) && !empty(isset($settings['not_correct_post_title_text']))) {
-                    $message = $settings['not_correct_post_title_text'];
-                }
-                wp_send_json_error(['field' => $name, 'message' => $message]);
-            }
         }
     }
 

@@ -14,8 +14,41 @@ class Shortcodes
         add_shortcode('fe_fs_user_admin', [__CLASS__, 'user_admin']);
 
         add_shortcode('fe_form', [__CLASS__, 'fe_form']);
-    }
 
+        add_shortcode('fus_display_field', [__CLASS__, 'fus_display_field']);
+    }
+    /**
+     * Shortcode to display field value
+     *
+     * @param array $atts Shortcode attributes
+     * @return string
+     */
+    public static function fus_display_field($atts)
+    {
+        $atts = shortcode_atts(
+            array(
+                'name' => '',
+                'post_id' => get_the_ID(),
+            ),
+            $atts,
+            'fus_display_field'
+        );
+
+        if (empty($atts['name'])) {
+            return '';
+        }
+
+        $post_id = intval($atts['post_id']);
+        $field_name = sanitize_text_field($atts['name']);
+
+        $field_value = get_post_meta($post_id, $field_name, true);
+
+        // Apply filters to allow further customization
+        $field_value = apply_filters('fus_display_field_value', $field_value, $field_name, $post_id);
+
+        return esc_html($field_value);
+    }
+    
     /**
      * creating shortcode
      *
@@ -75,7 +108,7 @@ class Shortcodes
     public static function user_admin($atts)
     {
         wp_enqueue_style('bfe-block-style');
-        
+
         return UserAdmin::init($atts);
     }
 }

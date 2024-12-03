@@ -256,6 +256,9 @@ class SavePost {
             }
         }
         $post_data = [];
+        // this fields is required not to be empty
+        $post_data['post_title'] = '-';
+        $post_data['post_content'] = '-';
         $post_data['post_status'] = ( isset( $form_settings['fe_post_status'] ) ? sanitize_text_field( $form_settings['fe_post_status'] ) : 'publish' );
         $post_data['comment_status'] = ( isset( $form_settings['comment_status'] ) ? sanitize_text_field( $form_settings['comment_status'] ) : 'open' );
         // If user clicked on save draft
@@ -351,6 +354,9 @@ class SavePost {
         $post_id = wp_insert_post( $post_data );
         if ( is_wp_error( $post_id ) ) {
             wp_send_json_error( $post_id->get_error_message() );
+        }
+        if ( empty( $post_id ) ) {
+            wp_send_json_error( __( 'No post created.', 'front_editor' ) );
         }
         return $post_id;
     }

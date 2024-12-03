@@ -42,17 +42,6 @@ class GoogleMapField {
                     'message' => $message,
                 ] );
             }
-            $post_title = sanitize_text_field( $value );
-            if ( empty( $post_title ) ) {
-                $message = __( 'Please add google map field', 'front-editor' );
-                if ( isset( $settings['not_correct_post_title_text'] ) && !empty( isset( $settings['not_correct_post_title_text'] ) ) ) {
-                    $message = $settings['not_correct_post_title_text'];
-                }
-                wp_send_json_error( [
-                    'field'   => $name,
-                    'message' => $message,
-                ] );
-            }
         }
     }
 
