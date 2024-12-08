@@ -257,8 +257,6 @@ class SavePost {
         }
         $post_data = [];
         // this fields is required not to be empty
-        $post_data['post_title'] = '-';
-        $post_data['post_content'] = '-';
         $post_data['post_status'] = ( isset( $form_settings['fe_post_status'] ) ? sanitize_text_field( $form_settings['fe_post_status'] ) : 'publish' );
         $post_data['comment_status'] = ( isset( $form_settings['comment_status'] ) ? sanitize_text_field( $form_settings['comment_status'] ) : 'open' );
         // If user clicked on save draft
@@ -278,6 +276,14 @@ class SavePost {
             $all_form_settings
         );
         if ( $is_new_post ) {
+            $post_data['post_title'] = '';
+            if ( isset( $_POST['post_title'] ) && !empty( $_POST['post_title'] ) ) {
+                $post_data['post_title'] = sanitize_text_field( $_POST['post_title'] );
+            }
+            $post_data['post_content'] = '';
+            if ( isset( $_POST['post_content'] ) && !empty( $_POST['post_content'] ) ) {
+                $post_data['post_content'] = wp_kses_post( $_POST['post_content'] );
+            }
             $post_data['post_author'] = $cur_user_id;
             $post_id = self::insert_post( $post_data );
             do_action( 'bfe_ajax_after_front_editor_post_inserted', $post_id, $form_id );

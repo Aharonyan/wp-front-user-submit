@@ -4,7 +4,7 @@ Tags: frontend post,guest post,public post,submit post,user post
 Requires at least: 4.0
 Tested up to: 6.7.1
 Requires PHP: 7.0
-Stable tag: 4.8.3
+Stable tag: 4.8.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,9 +14,6 @@ This plugin enables users to submit post content from Front End. Use our plugin 
 [🌐 Demo](http://demo.wpfronteditor.com/) | [📖 Documentation](https://wpfronteditor.com/docs) | [💬 Community](https://t.me/+loTEjPRS6lw3NTli) | [🚀 Upgrade to PRO](https://wpfronteditor.com/)  
 
 WP Front User Submit is a versatile WordPress plugin designed to enable post submissions from the frontend with or without user login. Packed with configurable options, it offers a comprehensive solution for guest posting.
-
-🎉 **Try it out on your free dummy site:**  
-[👉 Click here to test it](https://tastewp.com/plugins/front-editor)  
 
 <strong>✨ Core Features</strong>
 
@@ -193,6 +190,11 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 
 == Changelog ==
 
+= 4.8.5 = 
+* Fixed bug with replacing content
+* Added Russian translation
+* Fixed bug _load_textdomain_just_in_time was called incorrectly
+
 = 4.8.3 = 
 * Required logic bug fixed
 * Empty post title and post content issue
@@ -350,6 +352,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 4.8.5 =
+This update includes several hot fixes and new translations.
 
 = 4.8.3 =
 This update includes several hot fixes and new shortcode.

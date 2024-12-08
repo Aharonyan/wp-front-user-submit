@@ -21,14 +21,10 @@ class FrontUserSubmit
     define('FE_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
     define('FE_Template_PATH', plugin_dir_path(__FILE__) . 'templates/');
 
-
-    add_action('plugins_loaded', [__CLASS__, 'true_load_plugin_textdomain']);
+    add_action('init', [__CLASS__, 'true_load_plugin_textdomain']);
 
     add_action('plugins_loaded', [__CLASS__, 'add_components']);
 
-    /**
-     * Если нету форм то не добовляет ajax исправить
-     */
     add_filter('post_row_actions', [__CLASS__, 'add_link_to_edit_this_post'], 10, 2);
 
     add_action('BFE_activate', [__CLASS__, 'activate_user_ability_to_upload_files']);

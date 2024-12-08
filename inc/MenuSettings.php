@@ -219,9 +219,9 @@ class MenuSettings
 		}
 
 		$tabs = [
-			'global_settings' => 'Main Settings',
-			'registration_shortcode_settings' => 'Login & Registration Settings',
-			'user_admin_settings' => 'User Admin'
+			'global_settings' => __('Main Settings','front-editor'),
+			'registration_shortcode_settings' => __('Login & Registration Settings','front-editor'),
+			'user_admin_settings' => __('User Admin','front-editor'),
 		];
 
 		$tabs_html = '';
@@ -352,7 +352,7 @@ class MenuSettings
 		add_settings_field($field_name, __('Remove post icon', 'front-editor'), [__CLASS__, 'user_remove_post_icon'], $page, $option_group_user_section, ['field_name' => $field_name, 'name' => $option_name_user, 'option' => $option_value]);
 
 		$field_name = 'pagination';
-		add_settings_field($field_name, __('Pagination', 'front-editor'), [__CLASS__, 'user_post_pagi_field'], $page, $option_group_user_section, ['field_name' => $field_name, 'name' => $option_name_user, 'option' => $option_value]);
+		add_settings_field($field_name, __('Pagination', 'front-editor'), [__CLASS__, 'user_post_page_field'], $page, $option_group_user_section, ['field_name' => $field_name, 'name' => $option_name_user, 'option' => $option_value]);
 
 		// $field_name = 'post_count';
 		// add_settings_field($field_name, __('Post count', 'front-editor'), [__CLASS__, 'user_post_count_field'], $page, $option_group_user_section, ['field_name' => $field_name, 'name' => $option_name_user, 'option' => $option_value]);
@@ -583,7 +583,7 @@ class MenuSettings
 		$field_option = $args['option'][$field_name] ?? [];
 		$subFields = [
 			[
-				'name' => 'Show all users posts',
+				'name' => __('Show all users posts', 'front-editor'),
 				'slug' => 'post_link'
 			]
 		];
@@ -624,7 +624,7 @@ class MenuSettings
 		}
 	}
 
-	public static function user_post_pagi_field($args)
+	public static function user_post_page_field($args)
 	{
 		$field_name = $args['field_name'];
 		$field_option = $args['option'][$field_name] ?? [];

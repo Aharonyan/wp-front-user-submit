@@ -150,6 +150,7 @@ class TaxonomiesFields {
             $data['formBuilder_options']['disable_attr'][] = '.fld-add_new';
             $data['formBuilder_options']['disable_attr'][] = '.fld-hierarchically';
             $data['formBuilder_options']['attr_descriptions']['exclude'] = __( 'You can specify a comma-separated terms IDs that need to be excluded.', 'front-editor' );
+            $data['formBuilder_options']['attr_descriptions']['show_search'] = __( 'Add new functionality will not work without activating this input.', 'front-editor' );
             $tutorial_link = '<a href="https://wpfronteditor.com/docs/tutorials/tutorials/where-to-find-term-id/" target="_blank">link</a>';
             $data['formBuilder_options']['attr_descriptions']['default_terms'] = sprintf( __( 'You can specify a comma-separated term IDs that need to be included. Check the tutorial to find the term ID using this %s', 'front-editor' ), $tutorial_link );
         }
