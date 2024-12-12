@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Best Front End Editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-12 12:25+0000\n"
+"POT-Creation-Date: 2024-12-07 21:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -109,10 +109,6 @@ msgstr ""
 msgid "Add new button text"
 msgstr ""
 
-#: inc/fields/TaxonomiesFields.php:144
-msgid "Add new functionality will not work without activating this input."
-msgstr ""
-
 #: inc/Form.php:519 inc/Form.php:520
 msgid "Add Post Form"
 msgstr ""
@@ -161,7 +157,7 @@ msgstr ""
 msgid "Always display"
 msgstr ""
 
-#: FrontUserSubmit.php:97
+#: FrontUserSubmit.php:101
 msgid "Are you sure you want to delete this post?"
 msgstr ""
 
@@ -309,10 +305,6 @@ msgstr ""
 msgid "Date Field"
 msgstr ""
 
-#: inc/MenuSettings.php:905
-msgid "Default"
-msgstr ""
-
 #: inc/fields/TaxonomiesFields.php:113
 msgid "Default terms"
 msgstr ""
@@ -339,11 +331,11 @@ msgstr ""
 msgid "Disable"
 msgstr ""
 
-#: inc/MenuSettings.php:908
+#: inc/MenuSettings.php:906
 msgid "Disable for all"
 msgstr ""
 
-#: inc/MenuSettings.php:909
+#: inc/MenuSettings.php:907
 msgid "Disable for all but admin"
 msgstr ""
 
@@ -351,7 +343,7 @@ msgstr ""
 msgid "Disable this field"
 msgstr ""
 
-#: inc/MenuSettings.php:26 inc/MenuSettings.php:906
+#: inc/MenuSettings.php:26 inc/MenuSettings.php:905
 #: templates/admin/settings/form-settings-post.php:32
 #: templates/admin/settings/form-settings-post.php:90
 #: templates/admin/settings/form-settings-post.php:118
@@ -360,10 +352,6 @@ msgstr ""
 
 #: inc/MenuSettings.php:27
 msgid "Display and require"
-msgstr ""
-
-#: inc/MenuSettings.php:907
-msgid "Display only for logged in users"
 msgstr ""
 
 #: templates/admin/post-form.php:79
@@ -394,7 +382,7 @@ msgstr ""
 msgid "Duplicate"
 msgstr ""
 
-#: FrontUserSubmit.php:126 inc/PostFormsListTable.php:406
+#: FrontUserSubmit.php:130 inc/PostFormsListTable.php:406
 msgid "Edit"
 msgstr ""
 
@@ -402,7 +390,7 @@ msgstr ""
 msgid "Edit Current Post"
 msgstr ""
 
-#: FrontUserSubmit.php:114 inc/Blocks.php:53 inc/MenuSettings.php:127
+#: FrontUserSubmit.php:118 inc/Blocks.php:53 inc/MenuSettings.php:127
 msgid "Edit in front editor"
 msgstr ""
 
@@ -1246,10 +1234,6 @@ msgstr ""
 msgid "Product added to the cart. Check the cart."
 msgstr ""
 
-#: templates/front-editor-form.php:60
-msgid "Proudly powered by"
-msgstr ""
-
 #: inc/Editor.php:31 templates/user-admin.php:13
 #: templates/admin/settings/form-settings-post.php:13
 msgid "Publish"
@@ -1439,7 +1423,7 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: inc/MenuSettings.php:586 templates/user-admin.php:18
+#: templates/user-admin.php:18
 msgid "Show all users posts"
 msgstr ""
 
@@ -1532,7 +1516,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: inc/fields/TaxonomiesFields.php:193 inc/fields/SelectField.php:47
+#: inc/fields/TaxonomiesFields.php:192 inc/fields/SelectField.php:47
 #, php-format
 msgid "The %s selection is required"
 msgstr ""
@@ -1745,7 +1729,7 @@ msgstr ""
 msgid "You can check %1$s how to get Google Map API Key and how to set it up."
 msgstr ""
 
-#: inc/fields/TaxonomiesFields.php:148
+#: inc/fields/TaxonomiesFields.php:147
 #, php-format
 msgid ""
 "You can specify a comma-separated term IDs that need to be included. Check "

@@ -215,7 +215,7 @@ $error_color: #ff9494;
         margin-top: 20px;
     }
 
-    .fe-header{
+    .fe-header {
         margin-top: 20px;
     }
 
@@ -309,6 +309,16 @@ $error_color: #ff9494;
         margin-bottom: 5px;
         padding: 5px;
         border-radius: 5px !important;
+    }
+    .fus_powered_by {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 14px;
+        column-gap: 5px;
+        margin: 20px 10px;
     }
 }
 

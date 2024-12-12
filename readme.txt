@@ -4,7 +4,7 @@ Tags: frontend post,guest post,public post,submit post,user post
 Requires at least: 4.0
 Tested up to: 6.7.1
 Requires PHP: 7.0
-Stable tag: 4.8.5
+Stable tag: 4.8.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,7 +69,7 @@ Users can upload files, fill out forms, and update their posts directly from the
 
 Enhance post content with block-styled editing capabilities.
 
-<strong>Customizable Post Status and Messages/strong>
+<strong>Customizable Post Status and Messages</strong>
 
 Set default post statuses, customize submission messages, and modify submit button text.
 
@@ -189,6 +189,11 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 17. Form Settings
 
 == Changelog ==
+
+= 4.8.8 = 
+* Fixed issue with admin bar behavior added new option "default"
+* [EditorJS] Fixed ui bug
+* [EditorJS] Updated
 
 = 4.8.5 = 
 * Fixed bug with replacing content
@@ -352,6 +357,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 4.8.8 =
+Fixed EditorJS and navigation bar.
 
 = 4.8.5 =
 This update includes several hot fixes and new translations.

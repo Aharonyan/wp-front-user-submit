@@ -15,7 +15,7 @@
  * Tested up to: 6.7.1
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Version: 4.8.5
+ * Version: 4.8.8
  */
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;

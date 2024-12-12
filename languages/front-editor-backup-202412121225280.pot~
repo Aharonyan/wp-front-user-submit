@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Best Front End Editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-12 12:25+0000\n"
+"POT-Creation-Date: 2024-12-10 08:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -1244,10 +1244,6 @@ msgstr ""
 
 #: templates/admin/settings/form-payment-settings.php:62
 msgid "Product added to the cart. Check the cart."
-msgstr ""
-
-#: templates/front-editor-form.php:60
-msgid "Proudly powered by"
 msgstr ""
 
 #: inc/Editor.php:31 templates/user-admin.php:13

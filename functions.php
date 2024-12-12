@@ -37,23 +37,31 @@ function fe_admin_post_status($status)
  */
 add_filter('show_admin_bar', 'fe_fs_disable_wp_admin_bar');
 
-function fe_fs_disable_wp_admin_bar()
+function fe_fs_disable_wp_admin_bar($show_admin_bar)
 {
-    $options = get_option('bfe_front_editor_wp_admin_menu');
+    $option = get_option('bfe_front_editor_wp_admin_menu');
 
-    if (empty($options)) {
+    if (empty($option)) {
+        return $show_admin_bar;
+    }
+
+    if($option == 'default') {
+        return $show_admin_bar;
+    }
+
+    if(is_user_logged_in() && $option == 'display_logged_in'){
+        return $show_admin_bar;
+    }
+
+    if ($option === 'display') {
         return true;
     }
 
-    if ($options === 'display') {
-        return true;
-    }
-
-    if ($options === 'disable') {
+    if ($option === 'disable') {
         return false;
     }
 
-    if ($options === 'disable_but_admin') {
+    if ($option === 'disable_but_admin') {
         $user = wp_get_current_user();
         if (current_user_can('administrator')) {
             return true;

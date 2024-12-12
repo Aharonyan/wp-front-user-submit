@@ -902,7 +902,9 @@ class MenuSettings
 		echo sprintf('<select name="%s">', $id);
 
 		$options = [
+			'default' => __('Default', 'front-editor'),
 			'display' => __('Display', 'front-editor'),
+			'display_logged_in' => __('Display only for logged in users', 'front-editor'),
 			'disable' => __('Disable for all', 'front-editor'),
 			'disable_but_admin' => __('Disable for all but admin', 'front-editor'),
 		];
