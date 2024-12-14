@@ -4,7 +4,7 @@ Tags: frontend post,guest post,public post,submit post,user post
 Requires at least: 4.0
 Tested up to: 6.7.1
 Requires PHP: 7.0
-Stable tag: 4.8.8
+Stable tag: 4.8.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -190,6 +190,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 
 == Changelog ==
 
+= 4.8.9 = 
+* Bug fixes
+
 = 4.8.8 = 
 * Fixed issue with admin bar behavior added new option "default"
 * [EditorJS] Fixed ui bug
@@ -357,6 +360,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 4.8.9 =
+Bug fixes
 
 = 4.8.8 =
 Fixed EditorJS and navigation bar.
