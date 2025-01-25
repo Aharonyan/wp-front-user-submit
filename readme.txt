@@ -1,5 +1,5 @@
 === Guest posting / Frontend Posting wordpress plugin - WP Front User Submit / Front Editor ===
-Contributors: aharonyan
+Contributors: aharonyan, freemius
 Tags: frontend post,guest post,public post,submit post,user post
 Requires at least: 4.0
 Tested up to: 6.7.1
