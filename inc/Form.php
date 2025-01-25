@@ -40,6 +40,8 @@ class Form
         require_once __DIR__ . '/fields/ParagraphField.php';
         require_once __DIR__ . '/fields/GoogleMapField.php';
         require_once __DIR__ . '/fields/DateField.php';
+        require_once __DIR__ . '/fields/hCaptcha.php';
+        require_once __DIR__ . '/fields/ActionHook.php';
         require_once FE_PLUGIN_DIR_PATH . '/inc/PostFormsListTable.php';
 
         /**

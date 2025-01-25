@@ -71,3 +71,4 @@ cmake-build-debug/
 ## File-based project format:
 *.iws
 
+src/js/.DS_Store

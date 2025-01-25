@@ -52,6 +52,10 @@ class FrontUserSubmit
     require_once FE_PLUGIN_DIR_PATH . '/inc/WooIntegration.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/LoginRegisterShortcode.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/FormMetaBox.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/FormMetaBox.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/shortcodes/FUSGoogleMapsShortcode.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/shortcodes/FUSCustomFieldContent.php';
+    
 
 
     add_action('wp_enqueue_scripts', [__CLASS__, 'add_scripts']);

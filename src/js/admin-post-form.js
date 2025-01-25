@@ -171,7 +171,9 @@ export default ($, Swal) => {
             formData = new FormData();
 
         if (post_type) {
-            Swal.fire('')
+            Swal.fire({
+                position: "bottom-end",
+            })
             Swal.showLoading()
         }
 
@@ -254,7 +256,9 @@ export default ($, Swal) => {
             formArray_data = objectifyForm(formArray),
             formData = new FormData();
 
-        Swal.fire('')
+        Swal.fire({
+            position: "bottom-end",
+        })
         Swal.showLoading()
 
         let formBuilderData = JSON.stringify(formBuilderContainer.actions.getData('js', true));
@@ -294,6 +298,7 @@ export default ($, Swal) => {
                     }
 
                     await Swal.fire({
+                        position: "bottom-end",
                         title: message.title,
                         icon: message.status,
                         text: message.message,
@@ -477,7 +482,9 @@ export default ($, Swal) => {
             formArray_data.migrate_type = migrate_type;
         }
 
-        Swal.fire('')
+        Swal.fire({
+            position: "bottom-end",
+        })
         Swal.showLoading()
 
         for (var key in formArray_data) {
@@ -501,6 +508,7 @@ export default ($, Swal) => {
                     }
 
                     await Swal.fire({
+                        position: "bottom-end",
                         title: message.title,
                         icon: message.status,
                         text: message.message,

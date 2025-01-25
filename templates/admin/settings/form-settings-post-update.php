@@ -14,7 +14,7 @@ $post_update_lock_user_after_text = isset($form_settings['post_update_lock_user_
             <?php
             $id = 'settings[post_edit_page]';
             $options = get_pages();
-            $selected = isset($form_settings['post_edit_page']) ? $form_settings['post_edit_page'] : 'disable';
+            $selected = isset($form_settings['post_edit_page']) ? $form_settings['post_edit_page'] : 'same_page';
             printf('<select name="%s">', $id);
             printf('<optgroup label="%s">', __('Settings', 'front-editor'));
             printf('<option value="%s" %s>%s</option>', 'same_page', esc_attr(selected('same_page', $selected, false)), 'Same Form');

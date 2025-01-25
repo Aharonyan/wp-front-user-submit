@@ -1,10 +1,10 @@
 === Guest posting / Frontend Posting wordpress plugin - WP Front User Submit / Front Editor ===
-Contributors: aharonyan, freemius
+Contributors: aharonyan
 Tags: frontend post,guest post,public post,submit post,user post
 Requires at least: 4.0
 Tested up to: 6.7.1
 Requires PHP: 7.0
-Stable tag: 4.8.9
+Stable tag: 4.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,8 @@ Manage posts with ease, including editing and deleting capabilities, using the [
 * Header field
 * Checkbox Group field
 * Paragraph field
+* Action hook field
+* hCaptcha field
 * WooCommerce integration
 
 *Boost your site value with user-generated content!*
@@ -189,6 +191,13 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 17. Form Settings
 
 == Changelog ==
+
+= 4.9.0 =
+* Bug fixes
+* [new] action hook field
+* [new] hCaptcha field added
+* [new] shortcode added [fus_google_map meta_name="your_meta_field_name"] to show map content
+* [new] shortcode added [fus_custom_field_content meta_name="user_email"]
 
 = 4.8.9 = 
 * Bug fixes
@@ -360,6 +369,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 4.9.0 =
+New fields, shortcodes and bug fixes. Check it out!
 
 = 4.8.9 =
 Bug fixes
