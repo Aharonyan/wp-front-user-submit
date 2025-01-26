@@ -12,10 +12,10 @@
  * Domain Path: /languages
  * PHP requires at least: 7.0
  * WP requires at least: 5.0
- * Tested up to: 6.7.1
+ * Tested up to: 6.7
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Version: 4.9.0
+ * Version: 4.9.1
  * Update URI: https://api.freemius.com
  */
 // Exit if accessed directly

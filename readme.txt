@@ -4,7 +4,7 @@ Tags: frontend post,guest post,public post,submit post,user post
 Requires at least: 4.0
 Tested up to: 6.7.1
 Requires PHP: 7.0
-Stable tag: 4.9.0
+Stable tag: 4.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -192,12 +192,15 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 
 == Changelog ==
 
-= 4.9.0 =
+= 4.9.1 =
 * Bug fixes
 * [new] action hook field
 * [new] hCaptcha field added
 * [new] shortcode added [fus_google_map meta_name="your_meta_field_name"] to show map content
 * [new] shortcode added [fus_custom_field_content meta_name="user_email"]
+
+= 4.9.0 =
+* Bug fixes
 
 = 4.8.9 = 
 * Bug fixes
@@ -370,8 +373,11 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 
 == Upgrade Notice ==
 
+= 4.9.1 =
+New fields, shortcodes and bug fixes. Check it out.
+
 = 4.9.0 =
-New fields, shortcodes and bug fixes. Check it out!
+Bug fixes
 
 = 4.8.9 =
 Bug fixes
