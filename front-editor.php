@@ -15,7 +15,7 @@
  * Tested up to: 6.7
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Version: 4.9.1
+ * Version: 4.9.2
  * Update URI: https://api.freemius.com
  */
 // Exit if accessed directly
