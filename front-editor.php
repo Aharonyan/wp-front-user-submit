@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Front User Submit | Front Editor (Premium)
+ * Plugin Name: Front User Submit | Front Editor
  * Plugin URI: https://wpfronteditor.com/
  * Description: Have you ever seen websites that allow users to submit posts or other type of content? Do you want to have user-submitted content on your site? Front Editor allow users to submit blog posts to your WordPress site with new frontend block editor EditorJs.
  * Author: Aleksan Aharonyan
@@ -15,8 +15,7 @@
  * Tested up to: 6.7
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Version: 4.9.2
- * Update URI: https://api.freemius.com
+ * Version: 4.9.3
  */
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -41,7 +40,7 @@ register_deactivation_hook( __FILE__, function () {
     do_action( 'BFE_deactivate' );
 } );
 if ( function_exists( 'fe_fs' ) ) {
-    fe_fs()->set_basename( true, __FILE__ );
+    fe_fs()->set_basename( false, __FILE__ );
 } else {
     // DO NOT REMOVE THIS IF, IT IS ESSENTIAL FOR THE `function_exists` CALL ABOVE TO PROPERLY WORK.
     if ( !function_exists( 'fe_fs' ) ) {
@@ -56,7 +55,7 @@ if ( function_exists( 'fe_fs' ) ) {
                     'slug'            => 'front-editor',
                     'type'            => 'plugin',
                     'public_key'      => 'pk_721b5ebdb9cda3d26691a9fb5c35c',
-                    'is_premium'      => true,
+                    'is_premium'      => false,
                     'has_addons'      => false,
                     'has_paid_plans'  => true,
                     'trial'           => array(

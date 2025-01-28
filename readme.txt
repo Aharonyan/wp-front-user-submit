@@ -1,10 +1,10 @@
-=== Guest posting / Frontend Posting wordpress plugin - WP Front User Submit / Front Editor ===
+=== Guest posting / Frontend Posting / Front Editor – WP Front User Submit  ===
 Contributors: aharonyan, freemius
-Tags: frontend post,guest post,public post,submit post,user post
+Tags: frontend post,guest post,public post,user post
 Requires at least: 4.0
-Tested up to: 6.7.1
+Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 4.9.2
+Stable tag: 4.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,12 +93,12 @@ Manage posts with ease, including editing and deleting capabilities, using the [
 * Custom field support
 * FilePond integration for file uploads
 * Custom field with various field types
-	 - Textfield
-	 - Textarea
-	 - Number
-	 - Email
-	 - URL
-	 - Tel
+	 – Textfield
+	 – Textarea
+	 – Number
+	 – Email
+	 – URL
+	 – Tel
 * Enhanced EditorJS features (Gallery, Image uploading, Table, Carousel, etc.)
 * Thumbnail using WP Media Uploader
 * Multiple categories selection
@@ -140,18 +140,35 @@ https://wpfronteditor.com/docs/
 For more information please visit [our site](https://wpfronteditor.com/) .
 
 == Installation ==
-Front Editor via Gutenberg block or shortcode that enables your visitors to submit posts and upload images. Just add the following shortcode to any Post, Page, or Widget:	
-* Gutenberg block:`Front editor`
-* Shortcode: `[bfe-front-editor]`
-To add user admin page please add shortcode below:
-* Shortcode: [fe_fs_user_admin]
+Upload the plugin files to the /wp-content/plugins/front-editor directory, or install the plugin through the WordPress plugins screen directly.
+Activate the plugin through the 'Plugins' screen in WordPress.
+
+<strong> Using Gutenberg Block </strong>
+Add the 'Front Editor' block to any page or post
+Search for "Front Editor" in the block inserter
+Configure block settings as needed
+
+<strong> Using Shortcode </strong>
+
+Add [fe_form id=”form_id”] to any post, page, or widget
+For user admin functionality, use [fe_fs_user_admin]
+
+[Main Shortcodes](https://wpfronteditor.com/docs/overview-wp-user-frontend/getting-started/how-to-install/)
+
+<strong> After Installation </strong>
+
+Visit the Front Editor settings page to configure user permissions
+Test the form submission process
+Review moderation settings in the plugin dashboard
+
+For detailed setup instructions, visit: [How to install docs](https://wpfronteditor.com/docs/overview-wp-user-frontend/getting-started/how-to-install/)
 
 That's all there is to it! Your site now can accept user-generated content. Everything is super easy to customize via the Plugin Settings page.
 
 == Translations ==
 
-* English - default, always included
-* Russian - ru_RU
+* English – default, always included
+* Russian – ru_RU
 
 == Frequently Asked Questions ==
 **Can I create new posts from frontend**
@@ -191,6 +208,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 17. Form Settings
 
 == Changelog ==
+
+= 4.9.3 =
+* Bug fixes
 
 = 4.9.2 =
 * Bug fixes
@@ -375,6 +395,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 4.9.3 =
+* Bug fixes
 
 = 4.9.2 =
 * Bug fixes
