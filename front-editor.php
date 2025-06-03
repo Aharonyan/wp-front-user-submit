@@ -12,10 +12,10 @@
  * Domain Path: /languages
  * PHP requires at least: 7.0
  * WP requires at least: 5.0
- * Tested up to: 6.7
+ * Tested up to: 6.8
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Version: 4.9.3
+ * Version: 4.9.4
  */
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;

@@ -7,9 +7,6 @@ class UserAdmin
 
     /**
      * creating shortcode post list
-     *
-     * @param [type] $atts
-     * @return void
      */
     public static function init($atts)
     {
@@ -17,7 +14,7 @@ class UserAdmin
             $option = get_option('bfe_general_user_admin_settings_group_options');
             $without_login = __('This page is restricted. Please Login to view this page.', 'front-editor');
             $without_login = sprintf('<div class="fus-info">%s</div>', $without_login);
-            if(!empty($option['without_login_front_user_admin']['checked'])) {
+            if (!empty($option['without_login_front_user_admin']['checked'])) {
                 $without_login = do_shortcode('[fus_form_login]');
             } elseif (!empty($option['without_login_front_user_admin']['text'])) {
                 $without_login = $option['without_login_front_user_admin']['text'];
@@ -28,17 +25,25 @@ class UserAdmin
 
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         $count = 2;
-        $post_status = $_GET['post_status'] ?? 'publish';
-        $any_user = $_GET['any_user'] ?? false;
+
+        // SECURITY FIX: Validate post_status against allowed values
+        $allowed_post_statuses = ['publish', 'draft', 'pending', 'private', 'trash'];
+        $post_status_input = isset($_GET['post_status']) ? sanitize_text_field($_GET['post_status']) : 'publish';
+        $post_status = in_array($post_status_input, $allowed_post_statuses, true) ? $post_status_input : 'publish';
+
+        // SECURITY FIX: Validate any_user parameter
+        $any_user_input = isset($_GET['any_user']) ? sanitize_text_field($_GET['any_user']) : 'false';
+        $any_user = ($any_user_input === 'true') ? 'true' : 'false';
+
         $user_can = current_user_can('edit_others_posts') ? true : false;
         $current_url = self::get_current_url();
 
         if (!empty($atts)) {
-            $count = ($atts['count']) ? $atts['count'] : 6;
+            $count = ($atts['count']) ? intval($atts['count']) : 6;
         }
 
-        if(empty($atts)){
-            if(!isset($atts['count'])){
+        if (empty($atts)) {
+            if (!isset($atts['count'])) {
                 $count = 6;
             }
         }
@@ -47,7 +52,7 @@ class UserAdmin
             'posts_per_page' => $count,
             'paged' => $paged,
             'post_type' => 'post',
-            'post_status' => $post_status,
+            'post_status' => $post_status, // Now properly validated
             'author' => get_current_user_id()
         ];
 
@@ -57,11 +62,18 @@ class UserAdmin
         }
 
         if (isset($_GET['delete_post'])) {
+            // SECURITY FIX: Properly validate and sanitize delete_post parameter
             $delete_post_id = intval($_GET['delete_post']);
-            if ($delete_post_id) {
-                $deleted = wp_delete_post($delete_post_id);
-                if (!$deleted) {
-                    fe_fs_add_sentry_error(sprintf('Can not delete post with id = %s', $deleted), __FUNCTION__, ['func_args' => func_get_args()]);
+            if ($delete_post_id > 0) {
+                // SECURITY FIX: Verify user can delete this specific post
+                if (current_user_can('delete_post', $delete_post_id)) {
+                    $deleted = wp_delete_post($delete_post_id);
+                    if (!$deleted) {
+                        fe_fs_add_sentry_error(sprintf('Can not delete post with id = %s', $delete_post_id), __FUNCTION__, ['func_args' => func_get_args()]);
+                    }
+                } else {
+                    // Log unauthorized deletion attempt
+                    fe_fs_add_sentry_error(sprintf('Unauthorized deletion attempt for post id = %s by user = %s', $delete_post_id, get_current_user_id()), __FUNCTION__);
                 }
             }
         }
@@ -75,16 +87,16 @@ class UserAdmin
         return ob_get_clean();
     }
 
-    public static function get_current_url() {
+    public static function get_current_url()
+    {
         global $wp;
-        $args = !empty($_GET) ? $_GET : []; 
+        $args = !empty($_GET) ? $_GET : [];
         if (!empty($args)) {
             $args['any_user'] = 'true';
-           $url = home_url(add_query_arg($args, $wp->request));
+            $url = home_url(add_query_arg($args, $wp->request));
         } else {
             $url = home_url($wp->request) . '?any_user=true';
         }
         return $url;
     }
-    
 }

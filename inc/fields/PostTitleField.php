@@ -41,11 +41,11 @@ class PostTitleField {
             5
         );
         // Update title if generate title is exist
-        add_action(
-            'bfe_ajax_after_front_editor_post_update_or_creation',
+        add_filter(
+            'bfe_ajax_before_front_editor_post_update_or_creation',
             [__CLASS__, 'check_if_generate_title'],
             11,
-            3
+            5
         );
     }
 
@@ -145,7 +145,13 @@ class PostTitleField {
      * @param mixed $post_data
      * @return void
      */
-    public static function check_if_generate_title( $post_id, $form_id, $post_data ) {
+    public static function check_if_generate_title(
+        $post_data,
+        $post,
+        $files,
+        $post_id,
+        $form_id
+    ) {
         $settings = Form::get_form_field_settings( self::$field_type, $form_id );
         if ( !isset( $settings['generate_title'] ) ) {
             return;
@@ -184,16 +190,8 @@ class PostTitleField {
                 }
             }
         }
-        $post_id = wp_update_post( [
-            'post_title' => $post_title,
-            'ID'         => $post_id,
-        ] );
-        if ( is_wp_error( $post_id ) ) {
-            wp_send_json_error( [
-                'field'   => self::$field_type,
-                'message' => $post_id->get_error_message(),
-            ] );
-        }
+        $post_data['post_title'] = $post_title;
+        return $post_data;
     }
 
     public static function add_field_settings( $data ) {

@@ -276,7 +276,6 @@ class SavePost {
             $all_form_settings
         );
         if ( $is_new_post ) {
-            $post_data['post_title'] = '';
             if ( isset( $_POST['post_title'] ) && !empty( $_POST['post_title'] ) ) {
                 $post_data['post_title'] = sanitize_text_field( $_POST['post_title'] );
             }

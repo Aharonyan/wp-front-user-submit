@@ -72,3 +72,17 @@ cmake-build-debug/
 *.iws
 
 src/js/.DS_Store
+assets/.DS_Store
+freemius/.DS_Store
+freemius/assets/.DS_Store
+freemius/includes/.DS_Store
+freemius/templates/.DS_Store
+inc/.DS_Store
+src/.DS_Store
+src/js/.DS_Store
+src/scss/.DS_Store
+templates/.DS_Store
+vendor/.DS_Store
+.DS_Store
+assets/.DS_Store
+freemius/.DS_Store
