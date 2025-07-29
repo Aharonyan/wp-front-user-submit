@@ -21,7 +21,9 @@ class FrontUserSubmit
     define('FE_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
     define('FE_Template_PATH', plugin_dir_path(__FILE__) . 'templates/');
 
-    add_action('init', [__CLASS__, 'true_load_plugin_textdomain']);
+    require_once FE_PLUGIN_DIR_PATH . '/vendor/autoload.php';
+
+    add_action('init', [__CLASS__, 'init_plugin']);
 
     add_action('plugins_loaded', [__CLASS__, 'add_components']);
 
@@ -32,19 +34,33 @@ class FrontUserSubmit
     add_action('BFE_deactivate', [__CLASS__, 'disable_user_ability_to_upload_files']);
   }
 
+  /**
+   * Initialize plugin on init hook
+   */
+  public static function init_plugin()
+  {
+    // Load textdomain first
+    self::true_load_plugin_textdomain();
+    
+    // Then load components
+    self::add_components_after_init();
+  }
+
+  public static function add_components()
+  {
+    require_once FE_PLUGIN_DIR_PATH . '/functions.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/Blocks.php';
+  }
 
   /**
    * Add Components
    */
-  public static function add_components()
+  public static function add_components_after_init()
   {
-    require_once FE_PLUGIN_DIR_PATH . '/vendor/autoload.php';
-    require_once FE_PLUGIN_DIR_PATH . '/functions.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/MenuSettings.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Shortcodes.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/UserAdmin.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/SavePost.php';
-    require_once FE_PLUGIN_DIR_PATH . '/inc/Blocks.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Editor.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/EditorWidget.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Form.php';
@@ -56,7 +72,6 @@ class FrontUserSubmit
     require_once FE_PLUGIN_DIR_PATH . '/inc/shortcodes/FUSGoogleMapsShortcode.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/shortcodes/FUSCustomFieldContent.php';
     
-
 
     add_action('wp_enqueue_scripts', [__CLASS__, 'add_scripts']);
     add_action('admin_footer', [__CLASS__, 'add_live_chat_to_admin_pages']);

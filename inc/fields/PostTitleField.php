@@ -154,10 +154,10 @@ class PostTitleField {
     ) {
         $settings = Form::get_form_field_settings( self::$field_type, $form_id );
         if ( !isset( $settings['generate_title'] ) ) {
-            return;
+            return $post_data;
         }
         if ( empty( $settings['generate_title'] ) ) {
-            return;
+            return $post_data;
         }
         $post_title = '';
         $regex = '/\\[%s]/';

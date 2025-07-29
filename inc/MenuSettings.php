@@ -217,7 +217,7 @@ class MenuSettings
 					($active_tab == $slug ? 'nav-tab-active' : ''),
 					$tab['title']
 				), array_keys($tabs), $tabs),
-				['<a data-canny-link href="https://wp-front-editor.canny.io/feature-requests" class="nav-tab" target="_blank">💡 Feedback</a>']
+				['<a data-canny-link href="https://github.com/Aharonyan/wp-front-user-submit/issues" class="nav-tab" target="_blank">💡 Feedback/Issue/Idea</a>']
 			))
 		);
 

@@ -4,7 +4,7 @@ Tags: frontend post,guest post,public post,user post
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 4.9.4
+Stable tag: 4.9.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -209,6 +209,10 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 
 == Changelog ==
 
+= 4.9.5 =
+* Fixed notice function loadtextdomain_just_in_time
+* Fixed bug with post submitting
+
 = 4.9.4 =
 * Fixed issue with bug when post not saving related to title generation
 * Cross Site Scripting (XSS) vulnerability fixed
@@ -399,6 +403,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 4.9.5 =
+Fixed bugs
 
 = 4.9.4 =
 * Fixed issue with bug when post not saving related to title generation
