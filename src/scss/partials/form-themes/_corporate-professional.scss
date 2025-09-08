@@ -1,0 +1,764 @@
+/**
+ * Corporate/Professional Form Theme
+ * Conservative, business-oriented design with high contrast and clear hierarchy
+ * File: src/scss/partials/form-themes/_corporate-professional.scss
+ */
+
+.fus-form.bfe-editor.corporate-professional {
+    // Theme Variables
+    --form-bg: #ffffff;
+    --form-border: #d1d5db;
+    --form-border-focus: #2563eb;
+    --form-text: #1f2937;
+    --form-text-light: #6b7280;
+    --form-text-dark: #111827;
+    --form-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --form-shadow-focus: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    --form-radius: 4px;
+    --form-spacing: 1.5rem;
+    --form-button-bg: #2563eb;
+    --form-button-hover: #1d4ed8;
+    --form-button-text: #ffffff;
+    --section-header-bg: #f9fafb;
+    --section-border: #e5e7eb;
+    --required-color: #dc2626;
+
+    background: var(--form-bg);
+    border: 2px solid var(--form-border);
+    border-radius: var(--form-radius);
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: var(--form-shadow);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    color: var(--form-text);
+    max-width: 100%;
+
+    // Typography
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--form-text-dark);
+        font-weight: 600;
+        margin: 0 0 1rem 0;
+        line-height: 1.25;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    p {
+        margin: 0 0 1rem 0;
+        color: var(--form-text);
+        line-height: 1.6;
+    }
+
+    // Main wrapper
+    .wrapper {
+        max-width: 100%;
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: var(--form-spacing);
+        }
+    }
+
+    // Form sections with clear separators
+    .fe_custom_field,
+    .fus-post-title,
+    .fus-editor-js-field-wrap,
+    .fus-wrap,
+    .select-wrap,
+    .checkbox-wrap,
+    .radio-wrap,
+    .file-field,
+    .textarea-field {
+        margin-bottom: var(--form-spacing);
+        padding-bottom: var(--form-spacing);
+        border-bottom: 1px solid var(--section-border);
+        
+        &:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    // Labels with professional styling
+    label {
+        display: block;
+        font-weight: 600;
+        color: var(--form-text-dark);
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        
+        // Required field indicator
+        &[required]::after,
+        &.required::after {
+            content: " *";
+            color: var(--required-color);
+            font-weight: bold;
+        }
+    }
+
+    // Input fields styling
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    input[type="password"],
+    input[type="google_map"],
+    textarea,
+    .fus-post-title #fus_post_title,
+    select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(--form-border);
+        border-radius: var(--form-radius);
+        font-size: 1rem;
+        color: var(--form-text);
+        background: var(--form-bg);
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        box-sizing: border-box;
+        font-family: inherit;
+
+        &:focus {
+            outline: none;
+            border-color: var(--form-border-focus);
+            box-shadow: var(--form-shadow-focus);
+        }
+
+        &::placeholder {
+            color: var(--form-text-light);
+            font-style: italic;
+        }
+
+        &:disabled {
+            background-color: #f3f4f6;
+            color: var(--form-text-light);
+            cursor: not-allowed;
+            border-color: #d1d5db;
+        }
+
+        &:required {
+            border-left: 3px solid var(--required-color);
+        }
+    }
+
+    // Textarea specific
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+        line-height: 1.5;
+        font-family: inherit;
+    }
+
+    // Post Title Field
+    .fus-post-title {
+        position: relative;
+
+        input[type="fus_post_title"] {
+            font-size: 1.25rem;
+            font-weight: 600;
+            padding: 1rem 0.75rem;
+            border: 1px solid var(--form-border);
+            border-top: none;
+            border-radius: 0 0 var(--form-radius) var(--form-radius);
+            
+            &:focus {
+                border-color: var(--form-border-focus);
+                border-top: 1px solid var(--form-border-focus);
+            }
+        }
+    }
+
+    // Featured Image Upload
+    .fus-editor-js-field-wrap.thumb-img-wrap {
+        .image_loader {
+            border: 2px dashed var(--form-border);
+            border-radius: var(--form-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.15s ease-in-out;
+            background: #fafbfc;
+            position: relative;
+
+            &:hover {
+                border-color: var(--form-border-focus);
+                background: #f0f9ff;
+            }
+
+            .thumbnail {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+                cursor: pointer;
+                color: var(--form-text);
+                margin-top: 1rem;
+
+                .button-icon {
+                    width: 40px;
+                    height: 40px;
+                    opacity: 0.6;
+                }
+            }
+
+            input[type="file"] {
+                display: none;
+            }
+        }
+    }
+
+    // Editor Fields
+    .fus-wrap {
+        position: relative;
+
+        // EditorJS
+        .EditorJS-editor {
+            border: 1px solid var(--form-border);
+            border-radius: 0 0 var(--form-radius) var(--form-radius);
+            min-height: 200px;
+
+            .codex-editor {
+                .codex-editor__redactor {
+                    padding: 1rem;
+                }
+            }
+
+            .ce-toolbar {
+                border-color: var(--form-border);
+                background: var(--section-header-bg);
+            }
+        }
+
+        // TinyMCE
+        .wp-editor-wrap {
+            border: 1px solid var(--form-border);
+            border-top: none;
+            border-radius: 0 0 var(--form-radius) var(--form-radius);
+            overflow: hidden;
+
+            .wp-editor-tools {
+                background: var(--section-header-bg);
+                border-bottom: 1px solid var(--section-border);
+                padding: 0.5rem;
+            }
+
+            .mce-tinymce {
+                border: none !important;
+            }
+        }
+
+        // MD Editor
+        .md-editor {
+            border: 1px solid var(--form-border);
+            border-top: none;
+            border-radius: 0 0 var(--form-radius) var(--form-radius);
+            overflow: hidden;
+
+            .bytemd {
+                border: none;
+
+                .bytemd-toolbar {
+                    background: var(--section-header-bg);
+                    border-bottom: 1px solid var(--section-border);
+                    padding: 0.75rem;
+                }
+            }
+        }
+    }
+
+    // Taxonomy Fields
+    .select-wrap {
+        position: relative;
+
+        &::before {
+            content: attr(data-label);
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--form-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .ss-main {
+            border: 1px solid var(--form-border);
+            border-radius: var(--form-radius);
+            background: var(--form-bg);
+
+            .ss-single-selected {
+                padding: 0.75rem;
+                color: var(--form-text);
+                height: auto;
+                border-radius: var(--form-radius);
+
+                .placeholder {
+                    color: var(--form-text-light);
+                    font-style: italic;
+                }
+            }
+
+            .ss-content {
+                border: 1px solid var(--form-border);
+                border-radius: var(--form-radius);
+                margin-top: 0.25rem;
+                box-shadow: var(--form-shadow);
+                background: var(--form-bg);
+
+                .ss-option {
+                    padding: 0.75rem;
+                    color: var(--form-text);
+                    transition: background-color 0.15s ease-in-out;
+                    border-bottom: 1px solid #f3f4f6;
+
+                    &:hover {
+                        background-color: #f3f4f6;
+                    }
+
+                    &.ss-highlighted {
+                        background-color: var(--form-border-focus);
+                        color: white;
+                    }
+
+                    &.optionChild {
+                        margin-left: 20px;
+                        padding: 0.5rem 0.75rem;
+                        font-size: 0.875rem;
+                        border-left: 2px solid var(--section-border);
+                    }
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+
+    // Text Fields
+    .fe_custom_field {
+        // Header Field
+        &.fe-header {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: var(--form-text-dark);
+                background: var(--section-header-bg);
+                padding: 1rem 0.75rem;
+                border: 1px solid var(--section-border);
+                border-radius: var(--form-radius);
+                margin: 0;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                font-size: 1rem;
+            }
+        }
+
+        // Paragraph Field
+        &.fe-paragraph {
+            p {
+                padding: 1rem 0.75rem;
+                background: #f9fafb;
+                border: 1px solid var(--section-border);
+                border-left: 4px solid var(--form-border-focus);
+                border-radius: var(--form-radius);
+                margin: 0;
+                font-style: italic;
+                color: var(--form-text);
+            }
+        }
+
+        // Button Field
+        button {
+            background: var(--form-button-bg);
+            color: var(--form-button-text);
+            border: 1px solid var(--form-button-bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--form-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+            font-family: inherit;
+
+            &:hover {
+                background: var(--form-button-hover);
+                border-color: var(--form-button-hover);
+                box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: var(--form-shadow-focus);
+            }
+
+            &:active {
+                transform: translateY(1px);
+            }
+        }
+
+        // Google Map Field
+        &.google_map {
+            .autocomplete {
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid var(--form-border);
+                border-radius: var(--form-radius);
+                font-size: 1rem;
+                font-family: inherit;
+
+                &:focus {
+                    border-color: var(--form-border-focus);
+                    box-shadow: var(--form-shadow-focus);
+                }
+            }
+        }
+
+        // Date Field
+        &.date-field {
+            input[type="date"] {
+                position: relative;
+
+                &::-webkit-calendar-picker-indicator {
+                    opacity: 0.6;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    // Checkbox Groups
+    .checkbox-wrap {
+        position: relative;
+
+        .checkbox-item {
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--section-border);
+            border-radius: var(--form-radius);
+            transition: border-color 0.15s ease-in-out;
+
+            &:hover {
+                border-color: var(--form-border-focus);
+            }
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                cursor: pointer;
+                font-weight: 500;
+                margin-bottom: 0;
+                padding: 0.75rem;
+                text-transform: none;
+
+                input[type="checkbox"] {
+                    width: 1rem;
+                    height: 1rem;
+                    border: 1px solid var(--form-border);
+                    border-radius: 2px;
+                    margin: 0;
+                    cursor: pointer;
+                    accent-color: var(--form-border-focus);
+
+                    &:checked {
+                        background-color: var(--form-border-focus);
+                        border-color: var(--form-border-focus);
+                    }
+
+                    &:focus {
+                        box-shadow: var(--form-shadow-focus);
+                    }
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    // Radio Groups
+    .radio-wrap {
+        position: relative;
+
+        .radio-item {
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--section-border);
+            border-radius: var(--form-radius);
+            transition: border-color 0.15s ease-in-out;
+
+            &:hover {
+                border-color: var(--form-border-focus);
+            }
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                cursor: pointer;
+                font-weight: 500;
+                margin-bottom: 0;
+                padding: 0.75rem;
+                text-transform: none;
+
+                input[type="radio"] {
+                    width: 1rem;
+                    height: 1rem;
+                    border: 1px solid var(--form-border);
+                    margin: 0;
+                    cursor: pointer;
+                    accent-color: var(--form-border-focus);
+
+                    &:checked {
+                        background-color: var(--form-border-focus);
+                        border-color: var(--form-border-focus);
+                    }
+
+                    &:focus {
+                        box-shadow: var(--form-shadow-focus);
+                    }
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    // File Upload Field
+    .file-field {
+        .filepond--root {
+            border: 2px dashed var(--form-border);
+            border-radius: var(--form-radius);
+            background: #fafbfc;
+            transition: border-color 0.15s ease-in-out;
+
+            .filepond--drop-label {
+                color: var(--form-text);
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.025em;
+            }
+
+            &:hover {
+                border-color: var(--form-border-focus);
+                background: #f0f9ff;
+            }
+
+            .filepond--item {
+                border-radius: var(--form-radius);
+            }
+        }
+    }
+
+    // Form Control Buttons
+    .fus-form-block-header {
+        display: flex;
+        gap: 1rem;
+        padding: 2rem 0 0 0;
+        border-top: 2px solid var(--section-border);
+        margin-top: 2rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+
+        .sub-header {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            width: 100%;
+
+            button {
+                background: var(--form-button-bg);
+                color: var(--form-button-text);
+                border: 1px solid var(--form-button-bg);
+                padding: 0.875rem 2rem;
+                border-radius: var(--form-radius);
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.15s ease-in-out;
+                font-size: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.025em;
+                font-family: inherit;
+
+                &:hover {
+                    background: var(--form-button-hover);
+                    border-color: var(--form-button-hover);
+                    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+                }
+
+                &.form-save-draft {
+                    background: #6b7280;
+                    border-color: #6b7280;
+
+                    &:hover {
+                        background: #4b5563;
+                        border-color: #4b5563;
+                        box-shadow: 0 2px 4px rgba(107, 114, 128, 0.2);
+                    }
+                }
+
+                &.view-page {
+                    background: transparent;
+                    color: var(--form-border-focus);
+                    border: 1px solid var(--form-border-focus);
+
+                    &:hover {
+                        background: var(--form-border-focus);
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+
+    // Messages
+    #fus-message-wrap {
+        margin: 1.5rem 0;
+
+        .message {
+            padding: 1rem 0.75rem;
+            border-radius: var(--form-radius);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            border: 1px solid;
+            font-family: inherit;
+
+            &.success {
+                background: #f0fdf4;
+                color: #166534;
+                border-color: #bbf7d0;
+            }
+
+            &.error {
+                background: #fef2f2;
+                color: #991b1b;
+                border-color: #fecaca;
+            }
+        }
+    }
+
+    // Loading States
+    .fus-loader {
+        border: 2px solid var(--form-border);
+        border-top: 2px solid var(--form-border-focus);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    // Responsive Design
+    @media (max-width: 768px) {
+        padding: 1.5rem;
+        margin: 1rem 0;
+
+        .wrapper .column {
+            gap: 1.25rem;
+        }
+
+        .fus-form-block-header {
+            margin-left: -1.5rem;
+            margin-right: -1.5rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+
+            &::before {
+                left: 1.5rem;
+            }
+
+            .sub-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+
+                button {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+
+        .select-wrap .ss-content {
+            margin-top: 0.25rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        padding: 1rem;
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        input[type="password"],
+        textarea,
+        select {
+            font-size: 16px; // Prevent zoom on iOS
+        }
+
+        .fus-post-title input {
+            font-size: 1.125rem;
+        }
+
+        .fus-form-block-header {
+            margin-left: -1rem;
+            margin-right: -1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            &::before {
+                left: 1rem;
+            }
+        }
+    }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+    .fus-form.bfe-editor.corporate-professional {
+        --form-border: #000000;
+        --form-border-focus: #0000ff;
+        --form-text: #000000;
+        --form-text-light: #333333;
+    }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+    .fus-form.bfe-editor.corporate-professional {
+        * {
+            transition: none !important;
+            animation: none !important;
+            transform: none !important;
+        }
+    }
+}

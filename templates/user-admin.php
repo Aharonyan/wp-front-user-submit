@@ -18,7 +18,7 @@ $logout = isset($options['logout_btn']['label']) ? $options['logout_btn']['label
 $all_user_post_label = isset($options['show_all_user_post_link']['label']) ? $options['show_all_user_post_link']['label'] : __('Show all users posts', 'front-editor');
 
 ?>
-<div class="fe_fs_user_admin_wrap">
+<div class="fe_fs_user_admin_wrap <?php echo $body_class ?>">
     <div class="fe_fs_header_buttons">
         <ul class="fe_fs_tabs">
             <?php
@@ -48,73 +48,81 @@ $all_user_post_label = isset($options['show_all_user_post_link']['label']) ? $op
                 <a href="<?php echo esc_url($current_url) ?>"><?php esc_html_e($all_user_post_label) ?></a>
             <?php endif; ?>
         </div>
-        <?php
-        if ($post_lists->have_posts()) :
-        ?>
-            <table>
-
+        
+        <?php if ($post_lists->have_posts()) : ?>
+            <div class="fe_fs_posts_container">
                 <?php
                 while ($post_lists->have_posts()) :
                     $post_lists->the_post();
                     $post_url = get_the_permalink();
                     $post_id = get_the_ID();
+                    $edit_link = Editor::get_post_edit_link($post_id);
                 ?>
-
-                    <tr>
-                        <td class="fe_fs_img">
+                    <div class="fe_fs_post_item">
+                        <div class="fe_fs_post_thumbnail">
                             <a href="<?= $post_url ?>">
-                                <div class="img__box"><?= wp_get_attachment_image(get_post_thumbnail_id($post_id), 'medium') ?></div>
+                                <div class="img__box">
+                                    <?= wp_get_attachment_image(get_post_thumbnail_id($post_id), 'medium') ?>
+                                </div>
                             </a>
-                        </td>
-                        <td>
-                            <a href="<?= $post_url ?>">
-                                <?= wp_trim_words(get_the_title(), 6) ?>
-                            </a>
-                        </td>
-                        <?php $edit_link = Editor::get_post_edit_link($post_id); ?>
-                        <?php if ($edit_link): ?>
-                            <td class="fe_fs_icon_container">
-                                <span class="fe_fs_edit__btn">
-                                    <a href="<?= Editor::get_post_edit_link($post_id) ?>">
-                                        <img class="fe_fs_icon" src="<?= FE_PLUGIN_URL . '/assets/img/edit.png' ?>" />
+                        </div>
+                        
+                        <div class="fe_fs_post_content">
+                            <div class="fe_fs_post_title">
+                                <a href="<?= $post_url ?>">
+                                    <?= wp_trim_words(get_the_title(), 6) ?>
+                                </a>
+                            </div>
+                            
+                            <div class="fe_fs_post_meta">
+                                <span class="fe_fs_post_date"><?= get_the_date() ?></span>
+                            </div>
+                        </div>
+                        
+                        <div class="fe_fs_post_actions">
+                            <div class="fe_fs_edit__btn">
+                                <<?= ($edit_link)?'a':'div'; ?> href="<?= $edit_link ?>" class="link-icon <?php if(!$edit_link){echo 'disabled';}?>" title="<?= $edit_link ? __('Edit Post', 'front-editor') : __('Cannot Edit', 'front-editor') ?>">
+                                    <img class="fe_fs_icon" src="<?= FE_PLUGIN_URL . '/assets/img/edit.png' ?>" alt="Edit" />
+                                </<?= ($edit_link)?'a':'div'; ?>>
+                            </div>
+                            
+                            <?php if (!isset($options['remove_post_icon']['checked'])) { ?>
+                                <div class="fe_fs_delete__btn">
+                                    <a class="link-icon" href="<?php printf('?delete_post=%s', $post_id); ?>" title="<?= __('Delete Post', 'front-editor') ?>" onclick="return confirm('<?= __('Are you sure you want to delete this post?', 'front-editor') ?>')">
+                                        <img class="fe_fs_icon" src="<?= FE_PLUGIN_URL . '/assets/img/delete.png' ?>" alt="Delete" />
                                     </a>
-                                </span>
-                            </td>
-                        <?php endif; ?>
-                        <?php if (!isset($options['remove_post_icon']['checked'])) { ?>
-                            <td class="fe_fs_icon_container">
-                                <span class="fe_fs_delete__btn">
-                                    <a href="<?php printf('?delete_post=%s', $post_id); ?>">
-                                        <img class="fe_fs_icon" src="<?= FE_PLUGIN_URL . '/assets/img/delete.png' ?>" />
-                                </span>
-                            </td>
-                        <?php } ?>
-                    </tr>
-
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
                 <?php endwhile; ?>
-            </table>
-            <?php
-            // Pagination
-            if (!isset($options['pagination']['checked'])) {
-                $big = 999999999; // Need an unlikely integer for base
-                echo paginate_links(array(
-                    'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                    'format'    => '?paged=%#%',
-                    'current'   => max(1, get_query_var('paged')),
-                    'total'     => $post_lists->max_num_pages,
-                    'prev_text' => isset($options['pagination']['previous']) ? $options['pagination']['previous'] : __('« Previous', 'front-editor'),
-                    'next_text' => isset($options['pagination']['next']) ? $options['pagination']['next'] : __('Next »', 'front-editor'),
-                ));
-            }
-            wp_reset_postdata();
-
-            ?>
+            </div>
+            
+            <?php if (!isset($options['pagination']['checked'])) : ?>
+                <div class="pagination">
+                    <?php
+                    $big = 999999999;
+                    echo paginate_links(array(
+                        'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                        'format'    => '?paged=%#%',
+                        'current'   => max(1, get_query_var('paged')),
+                        'total'     => $post_lists->max_num_pages,
+                        'prev_text' => isset($options['pagination']['previous']) ? $options['pagination']['previous'] : __('« Previous', 'front-editor'),
+                        'next_text' => isset($options['pagination']['next']) ? $options['pagination']['next'] : __('Next »', 'front-editor'),
+                        'mid_size' => 1
+                    ));
+                    wp_reset_postdata();
+                    ?>
+                </div>
+            <?php endif; ?>
+            
         <?php else : ?>
             <?php $no_post_found = isset($options['no_post_found_text']['no_post_found']) ? $options['no_post_found_text']['no_post_found'] :  __('0 posts found', 'front-editor') ?>
             <?php if ($no_post_found) { ?>
-                <p><?php esc_html_e($no_post_found); ?></p>
+                <div class="fe_fs_no_posts">
+                    <p><?php esc_html_e($no_post_found); ?></p>
+                </div>
             <?php } ?>
         <?php endif; ?>
     </div>
-
 </div>

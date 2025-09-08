@@ -1,0 +1,635 @@
+/**
+ * Modern Minimal Form Theme
+ * Clean, spacious design with subtle styling
+ * File: src/scss/partials/form-themes/_modern-minimal.scss
+ */
+
+.fus-form.bfe-editor.modern-minimal {
+    // Theme Variables
+    --form-bg: #ffffff;
+    --form-border: #e5e7eb;
+    --form-border-focus: #3b82f6;
+    --form-text: #374151;
+    --form-text-light: #6b7280;
+    --form-text-dark: #111827;
+    --form-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    --form-shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    --form-radius: 8px;
+    --form-spacing: 1.5rem;
+    --form-button-bg: #3b82f6;
+    --form-button-hover: #2563eb;
+    --form-button-text: #ffffff;
+
+    background: var(--form-bg);
+    border: 1px solid var(--form-border);
+    border-radius: var(--form-radius);
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: var(--form-shadow);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--form-text);
+
+    // Typography
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--form-text-dark);
+        font-weight: 600;
+        margin: 0 0 1rem 0;
+        line-height: 1.4;
+    }
+
+    p {
+        margin: 0 0 1rem 0;
+        color: var(--form-text);
+    }
+
+    // Main wrapper
+    .wrapper {
+        max-width: 100%;
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: var(--form-spacing);
+        }
+    }
+
+    // Labels
+    label {
+        display: block;
+        font-weight: 500;
+        color: var(--form-text-dark);
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+        letter-spacing: 0.025em;
+    }
+
+    // Input fields styling
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    input[type="password"],
+    input[type="google_map"],
+    textarea,
+    .fus-post-title #fus_post_title,
+    select {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--form-border);
+        border-radius: var(--form-radius);
+        font-size: 1rem;
+        color: var(--form-text);
+        background: var(--form-bg);
+        transition: all 0.2s ease;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+            border-color: var(--form-border-focus);
+            box-shadow: var(--form-shadow-focus);
+        }
+
+        &::placeholder {
+            color: var(--form-text-light);
+        }
+
+        &:disabled {
+            background-color: #f9fafb;
+            color: var(--form-text-light);
+            cursor: not-allowed;
+        }
+    }
+
+    // Textarea specific
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+        line-height: 1.5;
+    }
+
+    // Post Title Field
+    .fus-post-title {
+        margin-bottom: var(--form-spacing);
+
+        input[type="fus_post_title"] {
+            font-size: 1.25rem;
+            font-weight: 500;
+            padding: 1rem;
+            border: 2px solid var(--form-border);
+
+            &:focus {
+                border-color: var(--form-border-focus);
+            }
+        }
+    }
+
+    // Featured Image Upload
+    .fus-editor-js-field-wrap.thumb-img-wrap {
+        margin-bottom: var(--form-spacing);
+
+        .image_loader {
+            border: 2px dashed var(--form-border);
+            border-radius: var(--form-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            background: #fafbfc;
+
+            &:hover {
+                border-color: var(--form-border-focus);
+                background: #f0f9ff;
+            }
+
+            .thumbnail {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+                color: var(--form-text-light);
+
+                .button-icon {
+                    width: 48px;
+                    height: 48px;
+                    opacity: 0.6;
+                }
+            }
+
+            input[type="file"] {
+                display: none;
+            }
+        }
+
+        .thumb-error-message {
+            margin-top: 0.5rem;
+            color: #dc2626;
+            font-size: 0.875rem;
+        }
+    }
+
+    // Editor Fields
+    .fus-wrap {
+        margin-bottom: var(--form-spacing);
+
+        // EditorJS
+        .EditorJS-editor {
+            border: 1px solid var(--form-border);
+            border-radius: var(--form-radius);
+            min-height: 200px;
+
+            .codex-editor {
+                border-radius: var(--form-radius);
+
+                .codex-editor__redactor {
+                    padding: 1rem;
+                }
+            }
+
+            .ce-toolbar {
+                border-color: var(--form-border);
+            }
+        }
+
+        // TinyMCE
+        .wp-editor-wrap {
+            border: 1px solid var(--form-border);
+            border-radius: var(--form-radius);
+            overflow: hidden;
+
+            .wp-editor-tools {
+                background: #f8fafc;
+                border-bottom: 1px solid var(--form-border);
+            }
+
+            .mce-tinymce {
+                border: none !important;
+            }
+        }
+
+        // MD Editor
+        .md-editor {
+            border: 1px solid var(--form-border);
+            border-radius: var(--form-radius);
+            overflow: hidden;
+
+            .bytemd {
+                border: none;
+
+                .bytemd-toolbar {
+                    background: #f8fafc;
+                    border-bottom: 1px solid var(--form-border);
+                    padding: 0.5rem;
+                }
+            }
+        }
+    }
+
+    // Taxonomy Fields
+    .select-wrap {
+        margin-bottom: var(--form-spacing);
+
+        .ss-main {
+            border: 1px solid var(--form-border);
+            border-radius: var(--form-radius);
+            background: var(--form-bg);
+
+            .ss-single-selected {
+                padding: 0.75rem 1rem;
+                color: var(--form-text);
+                height: auto;
+
+                .placeholder {
+                    color: var(--form-text-light);
+                }
+            }
+
+            .ss-content {
+                border: 1px solid var(--form-border);
+                border-radius: var(--form-radius);
+                margin-top: 0.25rem;
+                box-shadow: var(--form-shadow);
+
+                .ss-option {
+                    padding: 0.75rem 1rem;
+                    color: var(--form-text);
+                    transition: background-color 0.15s ease;
+
+                    &:hover {
+                        background-color: #f0f9ff;
+                    }
+
+                    &.ss-highlighted {
+                        background-color: var(--form-border-focus);
+                        color: white;
+                    }
+
+                    &.optionChild{
+                        margin-left: 10px;
+                        padding: 0.40rem 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    // Text Fields
+    .fe_custom_field {
+        margin-bottom: var(--form-spacing);
+
+        &.text-field,
+        &.number-field {
+            input {
+                font-size: 1rem;
+            }
+        }
+
+        // Header Field
+        &.fe-header {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                border-bottom: 2px solid var(--form-border);
+                padding-bottom: 0.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        // Paragraph Field
+        &.fe-paragraph {
+            p {
+                padding: 1rem;
+                background: #f8fafc;
+                border-left: 4px solid var(--form-border-focus);
+                border-radius: 0 var(--form-radius) var(--form-radius) 0;
+                margin: 0;
+            }
+        }
+
+        // Button Field
+        button {
+            background: var(--form-button-bg);
+            color: var(--form-button-text);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--form-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+
+            &:hover {
+                background: var(--form-button-hover);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+
+        // Google Map Field
+        &.google_map {
+            .autocomplete {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                border: 1px solid var(--form-border);
+                border-radius: var(--form-radius);
+                font-size: 1rem;
+
+                &:focus {
+                    border-color: var(--form-border-focus);
+                    box-shadow: var(--form-shadow-focus);
+                }
+            }
+        }
+
+        // Date Field
+        &.date-field {
+            input[type="date"] {
+                position: relative;
+
+                &::-webkit-calendar-picker-indicator {
+                    opacity: 0.6;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    // Checkbox Groups
+    .checkbox-wrap {
+        margin-bottom: var(--form-spacing);
+
+        .checkbox-item {
+            margin-bottom: 0.75rem;
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+                font-weight: 400;
+                margin-bottom: 0;
+
+                input[type="checkbox"] {
+                    width: 1rem;
+                    height: 1rem;
+                    border: 1px solid var(--form-border);
+                    border-radius: 0.25rem;
+                    margin: 0;
+                    cursor: pointer;
+
+                    &:checked {
+                        background-color: var(--form-border-focus);
+                        border-color: var(--form-border-focus);
+                    }
+
+                    &:focus {
+                        box-shadow: var(--form-shadow-focus);
+                    }
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    // Radio Groups
+    .radio-wrap {
+        margin-bottom: var(--form-spacing);
+
+        .radio-item {
+            margin-bottom: 0.75rem;
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+                font-weight: 400;
+                margin-bottom: 0;
+
+                input[type="radio"] {
+                    width: 1rem;
+                    height: 1rem;
+                    border: 1px solid var(--form-border);
+                    margin: 0;
+                    cursor: pointer;
+
+                    &:checked {
+                        background-color: var(--form-border-focus);
+                        border-color: var(--form-border-focus);
+                    }
+
+                    &:focus {
+                        box-shadow: var(--form-shadow-focus);
+                    }
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    // File Upload Field
+    .file-field {
+        margin-bottom: var(--form-spacing);
+
+        .filepond--root {
+            border: 2px dashed var(--form-border);
+            border-radius: var(--form-radius);
+            background: #fafbfc;
+
+            .filepond--drop-label {
+                color: var(--form-text-light);
+                font-weight: 500;
+            }
+
+            &:hover {
+                border-color: var(--form-border-focus);
+                background: #f0f9ff;
+            }
+
+            .filepond--item {
+                border-radius: var(--form-radius);
+            }
+        }
+    }
+
+    // Form Control Buttons
+    .fus-form-block-header {
+        display: flex;
+        gap: 1rem;
+        padding: 1.5rem 0 0 0;
+        border-top: 1px solid var(--form-border);
+        margin-top: 2rem;
+
+        .sub-header {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            width: 100%;
+
+            button {
+                background: var(--form-button-bg);
+                color: var(--form-button-text);
+                border: none;
+                padding: 0.875rem 2rem;
+                border-radius: var(--form-radius);
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                font-size: 1rem;
+
+                &:hover {
+                    background: var(--form-button-hover);
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+                }
+
+                &.form-save-draft {
+                    background: #6b7280;
+
+                    &:hover {
+                        background: #4b5563;
+                    }
+                }
+
+                &.view-page {
+                    background: transparent;
+                    color: var(--form-border-focus);
+                    border: 1px solid var(--form-border-focus);
+
+                    &:hover {
+                        background: var(--form-border-focus);
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+
+    // Messages
+    #fus-message-wrap {
+        margin: 1rem 0;
+
+        .message {
+            padding: 1rem;
+            border-radius: var(--form-radius);
+            margin-bottom: 1rem;
+
+            &.success {
+                background: #d1fae5;
+                color: #065f46;
+                border: 1px solid #a7f3d0;
+            }
+
+            &.error {
+                background: #fee2e2;
+                color: #991b1b;
+                border: 1px solid #fca5a5;
+            }
+        }
+    }
+
+    // Loading States
+    .fus-loader {
+        border: 2px solid var(--form-border);
+        border-top: 2px solid var(--form-border-focus);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    // Responsive Design
+    @media (max-width: 768px) {
+        padding: 1.5rem;
+        margin: 1rem 0;
+
+        .wrapper .column {
+            gap: 1.25rem;
+        }
+
+        .fus-form-block-header .sub-header {
+            flex-direction: column;
+            align-items: stretch;
+
+            button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        // Stack form elements better on mobile
+        .select-wrap .ss-content {
+            margin-top: 0;
+            border-radius: 0 0 var(--form-radius) var(--form-radius);
+        }
+    }
+
+    @media (max-width: 480px) {
+        padding: 1rem;
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        input[type="password"],
+        textarea,
+        select {
+            font-size: 16px; // Prevent zoom on iOS
+        }
+
+        .fus-post-title input {
+            font-size: 1.125rem;
+        }
+    }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+    .fus-form.bfe-editor.modern-minimal {
+        --form-border: #000000;
+        --form-border-focus: #0000ff;
+        --form-text: #000000;
+        --form-text-light: #333333;
+    }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+    .fus-form.bfe-editor.modern-minimal {
+        * {
+            transition: none !important;
+            animation: none !important;
+        }
+    }
+}

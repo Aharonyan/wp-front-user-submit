@@ -1,102 +1,139 @@
 <?php
-$settings = get_option('bfe_general_settings_login_register_group_options');
 
-$name_fields = isset($settings['registration_first_last_name']) ? $settings['registration_first_last_name'] : false;
+use BFE\LoginRegisterShortcodes;
 
-$error = self::get_fus_error($fus_form_count);
+/**
+ * Register Form Template (register-form.php)
+ * Enhanced with AJAX support - for webpack build
+ */
+
+// Variables passed from the shortcode handler:
+// $fus_ajax_enabled - boolean indicating if AJAX is enabled
+// $fus_form_id - unique form ID
+// $fus_redirect - redirect URL after registration
+
+$form_classes = ['fus-form'];
+if (!empty($fus_ajax_enabled)) {
+    $form_classes[] = 'fus-ajax-form';
+}
+
+$options = get_option('bfe_general_settings_login_register_group_options');
+if (isset($options['code_editor_css'])) {
+    echo '<style id="code-editor-css">' . $options['code_editor_css'] . '</style>';
+}
+
+// Get design CSS class
+$design_class = LoginRegisterShortcodes::get_design_css_class($fus_form_design ?? null);
 ?>
-<form action='' method='post' class='fus_form fus_form_register'>
+<div class="<?php echo $design_class; ?>">
+    <div class="fus-register-form-wrap">
+        <!-- Message container for AJAX responses -->
+        <div class="fus-message" style="display: none;"></div>
 
-    <?php if ($error)
-        echo "<p class='error'>{$error}</p>";
-    $success = self::get_fus_success($fus_form_count);
-    if ($success)
-        echo "<p class='success'>{$success}</p>";
-    ?>
-
-
-    <?php
-    if (!empty($name_fields)) :
-        foreach ($name_fields as $name => $field_options) :
-            if (!empty($field_options['checked'])) :
-                $required = isset($field_options['required']) ? 'required' : '';
-    ?>
-                <p class="name_field <?= esc_html($name) ?>">
-                    <label for="<?= esc_html($name) ?>"><?= esc_html($field_options['label']) ?> <span style="color:red;"><?= !empty($required) ? '*' : '' ?></span></label>
-                <div>
-                    <input type="text" id="<?= esc_html($name) ?>" placeholder="<?= esc_html($field_options['placeholder']) ?>" name="<?= esc_html($name) ?>" <?= $required ?> />
-                </div>
-                </p>
-    <?php endif;
-        endforeach;
-    endif;
-    ?>
-
-    <?php
-    $website_field = isset($settings['registration_website_name']) ? $settings['registration_website_name'] : false;
-
-    if (!empty($website_field)) :
-        $name = 'website';
-        if (!empty($website_field['checked'])) :
-            $required = isset($website_field['required']) ? 'required' : '';
-    ?>
-            <p class="name_field <?= esc_html($name) ?>">
-                <label for="<?= esc_html($name) ?>"><?= esc_html($website_field['label']) ?> <span style="color:red;"><?= !empty($required) ? '*' : '' ?></span></label>
-            <div>
-                <input type="url" id="<?= esc_html($name) ?>" placeholder="<?= esc_html($website_field['placeholder']) ?>" name="<?= esc_html($name) ?>" <?= $required ?> />
+        <!-- Display server-side messages (for fallback mode) -->
+        <?php if ($error = LoginRegisterShortcodes::get_fus_error($fus_form_id)): ?>
+            <div class="fus-message error">
+                <p><?php echo $error; ?></p>
             </div>
-            </p>
-    <?php endif;
-    endif;
-    ?>
+        <?php endif; ?>
 
-    <?php
-    $username = isset($settings['registration_username']) ? $settings['registration_username'] : false;
-    $name = 'fus_username';
-    ?>
+        <?php if ($success = LoginRegisterShortcodes::get_fus_success($fus_form_id)): ?>
+            <div class="fus-message success">
+                <p><?php echo $success; ?></p>
+            </div>
+        <?php endif; ?>
 
-    <p class="name_field <?= esc_html($name) ?>">
-        <label for="<?= esc_html($name) ?>">
-            <?= isset($username['label']) ? esc_html($username['label']) : 'Username' ?> <span style="color:red;">*</span>
-        </label>
-    <div>
-        <input type="text" id="<?= esc_html($name) ?>" placeholder="<?= isset($username['placeholder']) ? esc_html($username['placeholder']) : 'Username' ?>" name="<?= esc_html($name) ?>" required />
+        <form class="<?php echo implode(' ', $form_classes); ?>" method="post">
+            <div class="fus-form-row">
+                <div class="fus-form-group fus-half">
+                    <label for="first_name_<?php echo $fus_form_id; ?>">
+                        <?php _e('First Name', 'front-editor'); ?>
+                    </label>
+                    <input
+                        type="text"
+                        name="first_name"
+                        id="first_name_<?php echo $fus_form_id; ?>"
+                        class="fus-form-control"
+                        autocomplete="given-name" />
+                </div>
+
+                <div class="fus-form-group fus-half">
+                    <label for="last_name_<?php echo $fus_form_id; ?>">
+                        <?php _e('Last Name', 'front-editor'); ?>
+                    </label>
+                    <input
+                        type="text"
+                        name="last_name"
+                        id="last_name_<?php echo $fus_form_id; ?>"
+                        class="fus-form-control"
+                        autocomplete="family-name" />
+                </div>
+            </div>
+
+            <div class="fus-form-group">
+                <label for="fus_username_<?php echo $fus_form_id; ?>">
+                    <?php _e('Username', 'front-editor'); ?> <span class="required">*</span>
+                </label>
+                <input
+                    type="text"
+                    name="fus_username"
+                    id="fus_username_<?php echo $fus_form_id; ?>"
+                    class="fus-form-control"
+                    required
+                    autocomplete="username" />
+            </div>
+
+            <div class="fus-form-group">
+                <label for="fus_email_<?php echo $fus_form_id; ?>">
+                    <?php _e('Email Address', 'front-editor'); ?> <span class="required">*</span>
+                </label>
+                <input
+                    type="email"
+                    name="fus_email"
+                    id="fus_email_<?php echo $fus_form_id; ?>"
+                    class="fus-form-control"
+                    required
+                    autocomplete="email" />
+            </div>
+
+            <div class="fus-form-group">
+                <label for="website_<?php echo $fus_form_id; ?>">
+                    <?php _e('Website', 'front-editor'); ?>
+                </label>
+                <input
+                    type="url"
+                    name="website"
+                    id="website_<?php echo $fus_form_id; ?>"
+                    class="fus-form-control"
+                    placeholder="https://"
+                    autocomplete="url" />
+            </div>
+
+            <!-- Hidden fields -->
+            <input type="hidden" name="fus_action" value="register" />
+            <input type="hidden" name="fus_form" value="<?php echo $fus_form_id; ?>" />
+
+            <?php if (!empty($fus_redirect)): ?>
+                <input type="hidden" name="redirect" value="<?php echo esc_url($fus_redirect); ?>" />
+            <?php endif; ?>
+
+            <?php if (empty($fus_ajax_enabled)): ?>
+                <!-- Traditional nonce for fallback -->
+                <?php wp_nonce_field('fus_register_nonce', 'fus_register_nonce'); ?>
+            <?php endif; ?>
+
+            <div class="fus-form-group">
+                <p class="fus-password-note">
+                    <?php _e('A password will be sent to your email address.', 'front-editor'); ?>
+                </p>
+            </div>
+
+            <div class="fus-form-group">
+                <input
+                    type="submit"
+                    class="fus-submit-btn"
+                    value="<?php _e('Register', 'front-editor'); ?>" />
+            </div>
+        </form>
     </div>
-    </p>
-
-    <?php
-    $email = isset($settings['registration_email']) ? $settings['registration_email'] : false;
-    $name = 'fus_email';
-    $label = 'Email';
-    if($email && isset($email['label'])){
-        $label = esc_html($email['label']);
-    }
-    $placeholder = 'Email';
-    if($placeholder && isset($email['placeholder'])){
-        $label = esc_html($email['placeholder']);
-    }
-    ?>
-
-    <p class="name_field <?= esc_html($name) ?>">
-        <label for="<?= esc_html($name) ?>">
-            <?= $label ?> <span style="color:red;">*</span>
-        </label>
-    <div>
-        <input type="email" id="<?= esc_html($name) ?>" placeholder="<?= $placeholder ?>" name="<?= esc_html($name) ?>" required />
-    </div>
-    </p>
-
-    <?php
-    // where to redirect on success
-    $redirect = isset($settings['registration_redirect']) ? $settings['registration_redirect'] : false;
-    if (isset($redirect['link']) && !empty($redirect['link']))
-        printf('<input type="hidden" name="redirect" value="%s">', $redirect['link']);
-    ?>
-
-    <input type="hidden" name="fus_action" value="register">
-    <input type="hidden" name="fus_form" value="<?= $fus_form_count ?>">
-
-    <?php wp_nonce_field('fus_register_nonce', 'fus_register_nonce'); ?>
-
-    <button type='submit'><?= isset($settings['registration_button_name']) ? $settings['registration_button_name'] : __('Register', 'front-editor') ?></button>
-</form>
+</div>

@@ -4,7 +4,7 @@ Tags: frontend post,guest post,public post,user post
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 4.9.5
+Stable tag: 5.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -189,25 +189,33 @@ Works perfectly with or without Gutenberg Block Editor
 Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](https://wpfronteditor.com/how-to-use-shortcode/)
 
 == Screenshots ==
-1. Form Settings
-2. Form Settings
-3. Form Settings
-4. Form Settings
-5. Form Settings
-6. Form Settings
-7. Form Settings
-8. Form Settings
-9. Form Settings
-10. Form Settings
-11. Form Settings
-12. Form Settings
-13. Form Settings
-14. Form Settings
-15. Form Settings
-16. Form Settings
-17. Form Settings
+1. All-in-one forms with clean, modern styling
+2. All-in-one forms with clean, cart/panel styling
+3. All-in-one forms with clean, corporate/professional styling
+4. Form builder fields
+5. Form post payment settings with WooCommerce integration
+6. Form post submit settings
+7. Form post editing settings
+8. Form submit restriction settings
+9. Form display settings
+10. Form post admin notification settings
+11. Form post on publish notification settings
+12. Form post on submit notification settings
+13. Form post on trash notification settings
+14. Form login registration settings
+15. Global main settings
+16. File upload field settings
+17. Login/Registrations shortcode settings
+18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.0.0 =
+* Fixed issue with login and register forms shortcodes
+* Added 8 new designs for login and register forms
+* Added 4 new designs for form
+* Added 5 new designs for user admin
+* Added post type selection settings for user admin posts
 
 = 4.9.5 =
 * Fixed notice function loadtextdomain_just_in_time
@@ -403,6 +411,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.0.0 =
+Added new designs for forms and user admin, and fixed bugs
 
 = 4.9.5 =
 Fixed bugs

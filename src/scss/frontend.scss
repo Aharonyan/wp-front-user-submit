@@ -38,4 +38,21 @@
 @import "vendor/filepond.scss";
 
 @import "partials/front-form-style.scss";
+
 @import "partials/login-register-form.scss";
+
+@import "partials/form-themes/modern-minimal";
+
+@import "partials/form-themes/card-panel";
+
+@import "partials/form-themes/corporate-professional";
+
+@import "partials/form-themes/borderless-flat";
+
+@import "components/user-admin-modern-minimal";
+
+@import "components/user-admin-card-panel";
+
+@import "components/user-admin-corporate-professional";
+
+@import "components/user-admin-borderless-flat";

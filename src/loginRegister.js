@@ -1,0 +1,1 @@
+import './js/inc/login-register-ajax';

@@ -1,60 +1,106 @@
 <?php
-global $wp;
-$redirect = $redirect ?? home_url($wp->request);
 
-$settings = get_option('bfe_general_settings_login_register_group_options');
+use BFE\LoginRegisterShortcodes;
 
-$username_placeholder = !empty($settings['login_username']['placeholder']) ? $settings['login_username']['placeholder'] : __('Username or Email', 'front-editor');
-$username_label = !empty($settings['login_username']['label']) ? $settings['login_username']['label'] : __('Username or Email', 'front-editor');
+/**
+ * Login Form Template (login-form.php)
+ * Enhanced with AJAX support - for webpack build
+ */
 
-$login_pw_placeholder = !empty($settings['login_pw']['placeholder']) ? $settings['login_pw']['placeholder'] : __('Password', 'front-editor');
-$login_pw_label = !empty($settings['login_pw']['label']) ? $settings['login_pw']['label'] : __('Password', 'front-editor');
+// Variables passed from the shortcode handler:
+// $fus_ajax_enabled - boolean indicating if AJAX is enabled
+// $fus_form_id - unique form ID
+// $fus_redirect - redirect URL after login
 
-$login_redirect = !empty($settings['login_redirect']['link']) ? $settings['login_redirect']['link'] : $redirect;
-$login_button_name = !empty($settings['login_button_name']) ? $settings['login_button_name'] : __('Login', 'front-editor');
+$form_classes = ['fus-form'];
+if (!empty($fus_ajax_enabled)) {
+    $form_classes[] = 'fus-ajax-form';
+}
+
+$options = get_option('bfe_general_settings_login_register_group_options');
+if (isset($options['code_editor_css'])) {
+    echo '<style id="code-editor-css">' . $options['code_editor_css'] . '</style>';
+}
+
+// Get design CSS class
+$design_class = LoginRegisterShortcodes::get_design_css_class($fus_form_design ?? null);
 
 ?>
-<form action method="post" class="fus_form fus_form_login">
-    <?php
-    $error = self::get_fus_error($fus_form_count);
-    if ($error)
-        printf('<p class="fus-info error">%s</p>', $error);
 
-    $success = self::get_fus_success($fus_form_count);
-    if ($success)
-        printf('<p class="fus-info success">%s</p>', $success);
-    ?>
-    <p class="fus-input-wrap login-wrap">
-        <label for="fus_username"><?php esc_html_e($username_label) ?></label>
-        <input type="text" id="fus_username" name="fus_username" placeholder="<?php esc_attr_e($username_placeholder) ?>" />
-    </p>
+<div class="<?php echo $design_class; ?>">
+    <div class="fus-login-form-wrap">
+        <!-- Message container for AJAX responses -->
+        <div class="fus-message" style="display: none;"></div>
 
-    <p class="fus-input-wrap password-wrap">
-        <label for="fus_password"><?php esc_html_e($login_pw_label) ?></label>
-        <input type="password" id="fus_password" name="fus_password" placeholder="<?php esc_attr_e($login_pw_placeholder) ?>"/>
-    </p>
-    <input type="hidden" name="redirect" value="<?= $login_redirect ?>">
-    <input type="hidden" name="fus_action" value="login">
-    <input type="hidden" name="fus_form" value="<?= $fus_form_count ?>">
+        <!-- Display server-side messages (for fallback mode) -->
+        <?php if ($error = LoginRegisterShortcodes::get_fus_error($fus_form_id)): ?>
+            <div class="fus-message error">
+                <p><?php echo $error; ?></p>
+            </div>
+        <?php endif; ?>
 
-    <?php
-    $remember_field = isset($settings['login_remember_me']) ? $settings['login_remember_me'] : false;
+        <?php if ($success = LoginRegisterShortcodes::get_fus_success($fus_form_id)): ?>
+            <div class="fus-message success">
+                <p><?php echo $success; ?></p>
+            </div>
+        <?php endif; ?>
 
-    if (!empty($remember_field) && !empty($remember_field['checked'])) :
-        $name = 'Remember Me';
-        $label = 'Remember Me';
-        if(isset($remember_field['label'])){
-            $label = $remember_field['label'];
-        }
-    ?>
-        <p class="forgetmenot">
-            <input name="rememberme" type="checkbox" id="fus-rememberme" value="forever">
-            <label for="fus-rememberme"><?= esc_html($label) ?></label>
-        </p>
-    <?php
-    endif;
-    ?>
+        <form class="<?php echo implode(' ', $form_classes); ?>" method="post">
+            <div class="fus-form-group">
+                <label for="fus_username_<?php echo $fus_form_id; ?>">
+                    <?php _e('Username or Email', 'front-editor'); ?>
+                </label>
+                <input
+                    type="text"
+                    name="fus_username"
+                    id="fus_username_<?php echo $fus_form_id; ?>"
+                    class="fus-form-control"
+                    required
+                    autocomplete="username" />
+            </div>
 
-    <button type="submit"><?php esc_html_e($login_button_name) ?></button>
+            <div class="fus-form-group">
+                <label for="fus_password_<?php echo $fus_form_id; ?>">
+                    <?php _e('Password', 'front-editor'); ?>
+                </label>
+                <input
+                    type="password"
+                    name="fus_password"
+                    id="fus_password_<?php echo $fus_form_id; ?>"
+                    class="fus-form-control"
+                    required
+                    autocomplete="current-password" />
+            </div>
 
-</form>
+            <div class="fus-form-group fus-checkbox-group">
+                <label>
+                    <input
+                        type="checkbox"
+                        name="rememberme"
+                        value="1" />
+                    <?php _e('Remember Me', 'front-editor'); ?>
+                </label>
+            </div>
+
+            <!-- Hidden fields -->
+            <input type="hidden" name="fus_action" value="login" />
+            <input type="hidden" name="fus_form" value="<?php echo $fus_form_id; ?>" />
+
+            <?php if (!empty($fus_redirect)): ?>
+                <input type="hidden" name="redirect" value="<?php echo esc_url($fus_redirect); ?>" />
+            <?php endif; ?>
+
+            <?php if (empty($fus_ajax_enabled)): ?>
+                <!-- Traditional nonce for fallback -->
+                <?php wp_nonce_field('fus_register_nonce', 'fus_register_nonce'); ?>
+            <?php endif; ?>
+
+            <div class="fus-form-group">
+                <input
+                    type="submit"
+                    class="fus-submit-btn"
+                    value="<?php _e('Log In', 'front-editor'); ?>" />
+            </div>
+        </form>
+    </div>
+</div>

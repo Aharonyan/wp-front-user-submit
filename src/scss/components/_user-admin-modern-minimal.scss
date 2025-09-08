@@ -1,0 +1,490 @@
+/**
+ * Modern Minimal Design for User Admin
+ * File: src/scss/components/user-admin-modern-minimal.scss
+ */
+
+.fe-admin-design-modern-minimal {
+    &.fe_fs_user_admin_wrap {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        min-height: 100vh;
+        padding: 2rem;
+
+        // Header with tabs and logout
+        .fe_fs_header_buttons {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .fe_fs_tabs {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                gap: 0.5rem;
+
+                li {
+                    a {
+                        text-decoration: none;
+
+                        button {
+                            background: transparent;
+                            border: none;
+                            padding: 0.75rem 1.5rem;
+                            border-radius: 8px;
+                            color: #718096;
+                            font-weight: 500;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            font-size: 0.95rem;
+
+                            &:hover {
+                                color: #4a5568;
+                                background: rgba(0, 0, 0, 0.05);
+                            }
+                        }
+                    }
+
+                    &.active-tab {
+                        a button {
+                            color: #667eea;
+                            background: rgba(102, 126, 234, 0.1);
+                            font-weight: 600;
+                            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+                        }
+                    }
+                }
+            }
+
+            .fus-logout {
+                a {
+                    text-decoration: none;
+
+                    button {
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        padding: 0.75rem 1.5rem;
+                        font-size: 0.95rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+
+                        &:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Main content area
+        .fe_fs_post_list {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all 0.3s ease;
+
+            &:hover {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+                transform: translateY(-2px);
+            }
+
+            .fe_fs_title {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 2rem;
+                position: relative;
+                overflow: hidden;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+                    opacity: 0.3;
+                }
+
+                strong {
+                    font-size: 1.5rem;
+                    font-weight: 300;
+                    letter-spacing: -0.02em;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                a {
+                    color: rgba(255, 255, 255, 0.9);
+                    text-decoration: none;
+                    font-size: 0.9rem;
+                    margin-left: 1rem;
+                    position: relative;
+                    z-index: 1;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        color: white;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            // Posts container styling
+            .fe_fs_posts_container {
+                .fe_fs_post_item {
+                    display: flex;
+                    align-items: center;
+                    padding: 1.5rem 2rem;
+                    border-bottom: 1px solid #f1f5f9;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        background: rgba(102, 126, 234, 0.05);
+                        transform: translateX(5px);
+                    }
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                    .fe_fs_post_thumbnail {
+                        flex-shrink: 0;
+                        width: 80px;
+                        margin-right: 2rem;
+
+                        a {
+                            display: block;
+
+                            .img__box {
+                                width: 60px;
+                                height: 60px;
+                                background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+                                border-radius: 12px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                transition: all 0.3s ease;
+                                position: relative;
+                                overflow: hidden;
+
+                                &::before {
+                                    content: "🖼️";
+                                    font-size: 1.5rem;
+                                    opacity: 0.5;
+                                }
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    border-radius: 12px;
+                                    position: absolute;
+                                }
+
+                                &:hover {
+                                    transform: scale(1.05);
+                                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                                }
+                            }
+                        }
+                    }
+
+                    .fe_fs_post_content {
+                        flex: 1;
+                        min-width: 0;
+
+                        .fe_fs_post_title {
+                            a {
+                                color: #2d3748;
+                                text-decoration: none;
+                                font-weight: 500;
+                                font-size: 1.1rem;
+                                transition: all 0.3s ease;
+                                display: block;
+                                line-height: 1.4;
+
+                                &:hover {
+                                    color: #667eea;
+                                }
+                            }
+                        }
+
+                        .fe_fs_post_meta {
+                            margin-top: 0.5rem;
+                            display: flex;
+                            gap: 1rem;
+                            font-size: 0.85rem;
+                            color: #718096;
+
+                            .fe_fs_post_date,
+                            .fe_fs_post_status {
+                                background: rgba(102, 126, 234, 0.1);
+                                padding: 0.25rem 0.75rem;
+                                border-radius: 12px;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    .fe_fs_post_actions {
+                        display: flex;
+                        gap: 0.75rem;
+                        margin-left: 1rem;
+
+                        .fe_fs_edit__btn,
+                        .fe_fs_delete__btn {
+                            .link-icon {
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 10px;
+                                transition: all 0.3s ease;
+                                text-decoration: none;
+                                cursor: pointer;
+
+                                .fe_fs_icon {
+                                    width: 20px;
+                                    height: 20px;
+                                    transition: all 0.3s ease;
+                                }
+
+                                &.disabled {
+                                    opacity: 0.6;
+                                    cursor: not-allowed;
+                                    pointer-events: none;
+                                    background: rgba(156, 163, 175, 0.2) !important;
+
+                                    .fe_fs_icon {
+                                        width: 16px !important;
+                                        height: 16px !important;
+                                        opacity: 0.7;
+                                    }
+                                }
+                            }
+                        }
+
+                        .fe_fs_edit__btn .link-icon {
+                            background: rgba(72, 187, 120, 0.1);
+
+                            &:hover:not(.disabled) {
+                                background: rgba(72, 187, 120, 0.2);
+                                transform: translateY(-2px);
+                                box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+                            }
+                        }
+
+                        .fe_fs_delete__btn .link-icon {
+                            background: rgba(245, 101, 101, 0.1);
+
+                            &:hover:not(.disabled) {
+                                background: rgba(245, 101, 101, 0.2);
+                                transform: translateY(-2px);
+                                box-shadow: 0 5px 15px rgba(245, 101, 101, 0.3);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Pagination styling
+            .pagination {
+                display: flex;
+                justify-content: space-around;
+                padding: 1.5rem 2rem;
+
+                .page-numbers {
+                    display: inline-block;
+                    padding: 0.75rem 1rem;
+                    margin: 0 0.25rem;
+                    color: #667eea;
+                    text-decoration: none;
+                    border-radius: 8px;
+                    transition: all 0.3s ease;
+                    font-weight: 500;
+                    background: rgba(102, 126, 234, 0.1);
+
+                    &:hover {
+                        background: rgba(102, 126, 234, 0.2);
+                        transform: translateY(-1px);
+                    }
+
+                    &.current {
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+                    }
+                }
+            }
+
+            // No posts message
+            .fe_fs_no_posts {
+                text-align: center;
+                padding: 3rem 2rem;
+
+                p {
+                    color: #718096;
+                    font-size: 1.1rem;
+                    margin: 0;
+                }
+            }
+        }
+
+        // Responsive Design
+        @media (max-width: 768px) {
+            padding: 1rem;
+
+            .fe_fs_header_buttons {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                border-radius: 12px;
+
+                .fe_fs_tabs {
+                    flex-wrap: wrap;
+                    justify-content: center;
+
+                    li a button {
+                        padding: 0.5rem 1rem;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+
+            .fe_fs_post_list {
+                border-radius: 12px;
+
+                .fe_fs_title {
+                    padding: 1.5rem 1rem;
+                    text-align: center;
+
+                    strong {
+                        display: block;
+                        margin-bottom: 0.5rem;
+                        font-size: 1.25rem;
+                    }
+
+                    a {
+                        margin-left: 0;
+                    }
+                }
+
+                .fe_fs_posts_container {
+                    .fe_fs_post_item {
+                        padding: 1rem;
+                        flex-wrap: wrap;
+                        gap: 1rem;
+
+                        .fe_fs_post_thumbnail {
+                            width: 60px;
+                            margin-right: 0;
+
+                            .img__box {
+                                width: 50px;
+                                height: 50px;
+                            }
+                        }
+
+                        .fe_fs_post_content {
+                            flex: 1;
+                            min-width: 200px;
+
+                            .fe_fs_post_title a {
+                                font-size: 1rem;
+                            }
+
+                            .fe_fs_post_meta {
+                                flex-direction: column;
+                                gap: 0.5rem;
+                            }
+                        }
+
+                        .fe_fs_post_actions {
+                            margin-left: 0;
+
+                            .fe_fs_edit__btn,
+                            .fe_fs_delete__btn {
+                                .link-icon {
+                                    width: 35px;
+                                    height: 35px;
+
+                                    .fe_fs_icon {
+                                        width: 16px;
+                                        height: 16px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .pagination {
+                    padding: 1rem;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    flex-direction: column;
+                    text-align: center;
+                }
+            }
+        }
+
+        @media (max-width: 480px) {
+            padding: 0.5rem;
+
+            .fe_fs_header_buttons {
+                padding: 1rem 0.5rem;
+
+                .fe_fs_tabs {
+                    li a button {
+                        padding: 0.5rem 0.75rem;
+                        font-size: 0.85rem;
+                    }
+                }
+            }
+
+            .fe_fs_post_list {
+                .fe_fs_title {
+                    padding: 1rem 0.5rem;
+                }
+
+                .fe_fs_posts_container {
+                    .fe_fs_post_item {
+                        padding: 0.75rem 0.5rem;
+                        flex-direction: column;
+                        align-items: flex-start;
+
+                        .fe_fs_post_content {
+                            min-width: auto;
+                            width: 100%;
+
+                            .fe_fs_post_title a {
+                                font-size: 0.9rem;
+                            }
+                        }
+
+                        .fe_fs_post_actions {
+                            align-self: flex-end;
+                        }
+                    }
+                }
+
+                .pagination {
+                    padding: 0.75rem 0.5rem;
+                }
+            }
+        }
+    }
+}

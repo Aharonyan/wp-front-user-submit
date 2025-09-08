@@ -1,0 +1,139 @@
+/**
+ * Login/Register Forms - Base Universal Styles Only
+ * These styles apply to ALL design variants
+ */
+
+// Universal Variables (shared across all designs)
+$fus-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif !default;
+$fus-font-size-base: 15px !default;
+$fus-font-weight-normal: 400 !default;
+$fus-font-weight-medium: 500 !default;
+$fus-font-weight-semibold: 600 !default;
+
+// Universal base styles (apply to ALL designs)
+.fus-login-form-wrap,
+.fus-register-form-wrap {
+    font-family: $fus-font-family;
+    box-sizing: border-box;
+    
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+}
+
+// Universal form structure (no visual styling)
+.fus-form-row {
+    display: flex;
+    gap: 16px;
+    
+    @media (max-width: 480px) {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+.fus-form-group {
+    &.fus-half {
+        flex: 1;
+        
+        @media (max-width: 480px) {
+            margin-bottom: 16px;
+        }
+    }
+}
+
+// Universal form control base (no visual styling)
+.fus-form-control {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+}
+
+// Universal submit button base (no visual styling)
+.fus-submit-btn {
+    width: 100%;
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+// Universal message structure (no visual styling)
+.fus-message {
+    p {
+        margin: 0;
+        
+        strong {
+            font-weight: $fus-font-weight-semibold;
+        }
+    }
+    
+    // Universal animations for all designs
+    &.show {
+        animation: fus-fadeIn 0.2s ease-out;
+    }
+}
+
+// Universal field error structure
+.field-error {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 0;
+    line-height: 1.4;
+    font-size: 13px;
+}
+
+// Universal animations (used by all designs)
+@keyframes fus-fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fus-spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+// Universal accessibility improvements
+.fus-form {
+    // High contrast mode support
+    @media (prefers-contrast: high) {
+        .fus-form-control,
+        .fus-message,
+        .fus-submit-btn {
+            border-width: 2px;
+        }
+    }
+    
+    // Reduced motion support
+    @media (prefers-reduced-motion: reduce) {
+        .fus-submit-btn,
+        .fus-form-control,
+        .fus-message {
+            transition: none !important;
+        }
+        
+        .fus-submit-btn:hover {
+            transform: none !important;
+        }
+        
+        &.loading::after,
+        .fus-submit-btn.loading::after {
+            animation: none !important;
+        }
+        
+        .fus-message.show {
+            animation: none !important;
+        }
+    }
+}

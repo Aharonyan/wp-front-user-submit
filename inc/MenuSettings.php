@@ -246,6 +246,19 @@ class MenuSettings
 		// Register settings groups
 		register_setting($option_group_reg, $option_name_reg);
 
+		// Get option values
+		$option_value = get_option($option_name_reg);
+
+		$field_name = 'form_design';
+		add_settings_field(
+			$field_name,
+			__('Form Design', 'front-editor'),
+			[__CLASS__, 'form_design_field'],
+			$page,
+			$option_group_login_section,
+			['field_name' => $field_name, 'name' => $option_name_reg, 'option' => $option_value]
+		);
+
 		// Login fields
 		$option_value = get_option($option_name_reg);
 
@@ -288,6 +301,157 @@ class MenuSettings
 
 		$field_name = 'registration_email_content_field';
 		add_settings_field($field_name, __('User Notification Email', 'front-editor'), [__CLASS__, 'registration_email_content_field'], $page, $option_group_reg_section, ['field_name' => $field_name, 'name' => $option_name_reg, 'option' => $option_value]);
+
+		$field_name = 'code_editor_css';
+		add_settings_field($field_name, __('Custom CSS', 'front-editor'), [__CLASS__, 'code_editor_css'], $page, $option_group_reg_section, ['field_name' => $field_name, 'name' => $option_name_reg, 'option' => $option_value]);
+	}
+
+	/**
+	 * Form Design Selector Field (Updated to use template)
+	 */
+	public static function form_design_field($args)
+	{
+		$field_name = $args['field_name'];
+		$current_design = $args['option'][$field_name] ?? 'modern-minimal';
+
+		// Check if user has pro version
+		$has_pro = function_exists('fe_fs') && fe_fs()->can_use_premium_code__premium_only();
+
+		// Available designs
+		$designs = [
+			'modern-minimal' => [
+				'name' => __('Modern Minimal', 'front-editor'),
+				'pro' => false,
+				'preview' => FE_PLUGIN_URL . '/assets/img/modern-minimal-preview.png'
+			],
+			'card-panel' => [
+				'name' => __('Card/Panel Style', 'front-editor'),
+				'pro' => true,
+				'preview' => FE_PLUGIN_URL . '/assets/img/card-panel-preview.png'
+			],
+			'split-screen' => [
+				'name' => __('Split Screen', 'front-editor'),
+				'pro' => true,
+				'preview' => FE_PLUGIN_URL . '/assets/img/split-screen-preview.png'
+			],
+			'gradient-bg' => [
+				'name' => __('Gradient Background', 'front-editor'),
+				'pro' => true,
+				'preview' => FE_PLUGIN_URL . '/assets/img/gradient-bg-preview.png'
+			],
+			'glassmorphism' => [
+				'name' => __('Glassmorphism', 'front-editor'),
+				'pro' => true,
+				'preview' => FE_PLUGIN_URL . '/assets/img/glassmorphism-preview.png'
+			],
+			'borderless-flat' => [
+				'name' => __('Borderless/Flat', 'front-editor'),
+				'pro' => true,
+				'preview' => FE_PLUGIN_URL . '/assets/img/borderless-flat-preview.png'
+			],
+			'corporate' => [
+				'name' => __('Corporate/Professional', 'front-editor'),
+				'pro' => true,
+				'preview' => FE_PLUGIN_URL . '/assets/img/corporate-preview.png'
+			],
+			'playful-colorful' => [
+				'name' => __('Playful/Colorful', 'front-editor'),
+				'pro' => true,
+				'preview' => FE_PLUGIN_URL . '/assets/img/playful-colorful-preview.png'
+			]
+		];
+
+		// Prepare template variables
+		$template_vars = [
+			'designs' => $designs,
+			'current_design' => $current_design,
+			'has_pro' => $has_pro,
+			'field_name' => $field_name,
+			'field_args' => $args
+		];
+
+		// Load template
+		self::load_admin_template('design-selector', $template_vars);
+	}
+
+	/**
+	 * Form Design Selector Field (Updated to use template)
+	 */
+	public static function user_admin_design_field($args)
+	{
+		$field_name = $args['field_name'];
+		$current_design = $args['option'][$field_name] ?? 'modern-minimal';
+
+		// Check if user has pro version
+		$has_pro = function_exists('fe_fs') && fe_fs()->can_use_premium_code__premium_only();
+
+		// Available designs
+		$designs = [
+			'modern-minimal' => [
+				'name' => __('Modern Minimal', 'front-editor'),
+				'pro' => false,
+				'preview' => FE_PLUGIN_URL . '/assets/img/admin-modern-minimal-preview.png'
+			],
+			'no_style' => [
+				'name' => __('No Style', 'front-editor'),
+				'pro' => false,
+				'preview' => FE_PLUGIN_URL . '/assets/img/admin-no-style-preview.png'
+			],
+			'card-panel' => [
+				'name' => __('Card/Panel Style', 'front-editor'),
+				'pro' => true,
+				'preview' => FE_PLUGIN_URL . '/assets/img/admin-card-panel-preview.png'
+			],
+			'corporate-professional' => [
+				'name' => __('Corporate/Professional', 'front-editor'),
+				'pro' => true,
+				'preview' => FE_PLUGIN_URL . '/assets/img/admin-corporate-preview.png'
+			],
+			'borderless-flat' => [
+				'name' => __('Borderless/Flat', 'front-editor'),
+				'pro' => true,
+				'preview' => FE_PLUGIN_URL . '/assets/img/admin-borderless-flat-preview.png'
+			]
+		];
+
+		// Prepare template variables
+		$template_vars = [
+			'designs' => $designs,
+			'current_design' => $current_design,
+			'has_pro' => $has_pro,
+			'field_name' => $field_name,
+			'field_args' => $args
+		];
+
+		// Load template
+		self::load_admin_template('design-selector', $template_vars);
+	}
+
+	/**
+	 * Helper method to load admin templates
+	 */
+	public static function load_admin_template($template_name, $vars = [])
+	{
+		$template_path = FE_PLUGIN_DIR_PATH . 'templates/admin/' . $template_name . '.php';
+
+		if (file_exists($template_path)) {
+			// Extract variables to template scope
+			extract($vars);
+
+			// Include template
+			include $template_path;
+		} else {
+			echo '<p>' . sprintf(__('Template not found: %s', 'front-editor'), $template_name) . '</p>';
+		}
+	}
+
+	/**
+	 * Get current form design
+	 */
+	public static function get_current_form_design()
+	{
+		$options = get_option('bfe_general_settings_login_register_group_options', []);
+		return $options['form_design'] ?? 'modern-minimal';
 	}
 
 	public static function user_admin_settings()
@@ -305,6 +469,30 @@ class MenuSettings
 
 		// Login fields
 		$option_value = get_option($option_name_user);
+
+		// Get option values
+
+		$field_name = 'fe_admin_design';
+		add_settings_field(
+			$field_name,
+			__('Select Template', 'front-editor'),
+			[__CLASS__, 'user_admin_design_field'],
+			$page,
+			$option_group_user_section,
+			['field_name' => $field_name, 'name' => $option_name_user, 'option' => $option_value]
+		);
+
+		// POST TYPE SELECTOR FIELD
+		$field_name = 'allowed_post_types';
+		add_settings_field(
+			$field_name,
+			__('Allowed Post Types', 'front-editor'),
+			[__CLASS__, 'user_admin_post_types_field'],
+			$page,
+			$option_group_user_section,
+			['field_name' => $field_name, 'name' => $option_name_user, 'option' => $option_value]
+		);
+
 
 		$field_name = 'publish_btn';
 		add_settings_field($field_name, __('Publish button', 'front-editor'), [__CLASS__, 'user_publish_btn_field'], $page, $option_group_user_section, ['field_name' => $field_name, 'name' => $option_name_user, 'option' => $option_value]);
@@ -338,6 +526,64 @@ class MenuSettings
 
 		$field_name = 'code_editor_css';
 		add_settings_field($field_name, __('Custom CSS', 'front-editor'), [__CLASS__, 'code_editor_css'], $page, $option_group_user_section, ['field_name' => $field_name, 'name' => $option_name_user, 'option' => $option_value]);
+	}
+
+	/**
+	 * Render post types multi-select field
+	 *
+	 * @param array $args Field arguments
+	 * @return void
+	 */
+	public static function user_admin_post_types_field($args)
+	{
+		$field_name = $args['field_name'];
+		$option_name = $args['name'];
+		$option_value = $args['option'];
+
+		// Get current selected post types (array)
+		$selected_post_types = isset($option_value[$field_name]) ? (array) $option_value[$field_name] : ['post'];
+
+		// Get all public post types
+		$post_types = get_post_types(['public' => true], 'objects');
+
+		// Remove attachment from the list as it's not typically needed for user admin
+		unset($post_types['attachment']);
+
+		$field_id = $option_name . '[' . $field_name . ']';
+
+		echo '<select name="' . $field_id . '[]" id="' . $field_name . '" multiple="multiple" style="width: 300px; height: 120px;">';
+
+		foreach ($post_types as $post_type_key => $post_type_obj) {
+			$selected = in_array($post_type_key, $selected_post_types) ? 'selected="selected"' : '';
+			echo '<option value="' . esc_attr($post_type_key) . '" ' . $selected . '>';
+			echo esc_html($post_type_obj->labels->name . ' (' . $post_type_key . ')');
+			echo '</option>';
+		}
+
+		echo '</select>';
+
+		echo '<p class="description">';
+		echo __('Hold Ctrl (Cmd on Mac) to select multiple post types. Users will be able to manage these post types in the frontend admin panel.', 'front-editor');
+		echo '</p>';
+	}
+
+	/**
+	 * Helper function to get allowed post types for user admin
+	 * Use this function in your UserAdmin.php to filter post types
+	 *
+	 * @return array Array of allowed post type slugs
+	 */
+	public static function get_allowed_post_types_for_user_admin()
+	{
+		$options = get_option('bfe_general_user_admin_settings_group_options', []);
+		$allowed_post_types = isset($options['allowed_post_types']) ? (array) $options['allowed_post_types'] : ['post'];
+
+		// Ensure at least 'post' is always included as fallback
+		if (empty($allowed_post_types)) {
+			$allowed_post_types = ['post'];
+		}
+
+		return $allowed_post_types;
 	}
 
 	public static function my_sanitize_settings($input = NULL)
@@ -656,9 +902,9 @@ class MenuSettings
 		$field_name = $args['field_name'];
 		$field_option = $args['option'] ?? [];
 
-		printf('<label>%s</label>', __('CSS code to customize the admin page', 'front-editor'));
+		printf('<label>%s</label>', __('CSS code to customize design', 'front-editor'));
 		$first_code_editor_css = isset($field_option['code_editor_css']) ? $field_option['code_editor_css'] : '.class{height:50px;}';
-		printf('<p><textarea style="width: 300px;" id="%s" name="%s[code_editor_css]">%s</textarea></p>', str_replace('_', '-', $field_name), $args['name'], $first_code_editor_css);
+		printf('<p><textarea  class="code-mirror-editor-css" style="width: 300px;" id="%s" name="%s[code_editor_css]">%s</textarea></p>', str_replace('_', '-', $field_name), $args['name'], $first_code_editor_css);
 	}
 
 	public static function registration_first_last_name_field($args)
@@ -960,45 +1206,23 @@ class MenuSettings
 		// Check if we're on the custom options page
 		$screen = get_current_screen();
 		if ($screen->id === 'front-user-submit_page_fe-global-settings') {
-			// Enqueue custom JS file
-			wp_enqueue_script(
-				'codemirror',
-				FUS__PLUGIN_URL . 'assets/vendors/codemirror.min.js',
-				array('jquery'),
-				'1.0.0',
-				true
-			);
+			// Get asset file for admin build
+			$asset_file = FE_PLUGIN_DIR_PATH . 'build/adminStyle.asset.php';
+			$asset = file_exists($asset_file) ? require $asset_file : ['version' => '1.0.0', 'dependencies' => []];
 
-			wp_enqueue_script(
-				'codemirror-css',
-				FUS__PLUGIN_URL . 'assets/vendors/css.min.js',
-				array('jquery'),
-				'1.0.0',
-				true
-			);
-
-			wp_enqueue_script(
-				'codemirror-init',
-				FUS__PLUGIN_URL . 'assets/vendors/codemirror-init.js',
-				array('codemirror-css'),
-				'1.0.0',
-				true
-			);
-
-			// Optionally enqueue custom CSS
+			// Enqueue admin styles (includes design selector styles)
 			wp_enqueue_style(
-				'codemirror',
-				FUS__PLUGIN_URL . 'assets/vendors/codemirror.min.css',
-				array(),
-				'1.0.0'
+				'fe-admin-styles',
+				FE_PLUGIN_URL . '/build/adminStyle.css',
+				[],
+				$asset['version']
 			);
 
-			wp_enqueue_style(
-				'dracula',
-				FUS__PLUGIN_URL . 'assets/vendors/dracula.min.css',
-				array(),
-				'1.0.0'
-			);
+			wp_enqueue_script('codemirror', FUS__PLUGIN_URL . 'assets/vendors/codemirror.min.js', array('jquery'), '1.0.0', true);
+			wp_enqueue_script('codemirror-css', FUS__PLUGIN_URL . 'assets/vendors/css.min.js', array('jquery'), '1.0.0', true);
+			wp_enqueue_script('codemirror-init', FUS__PLUGIN_URL . 'assets/vendors/codemirror-init.js', array('codemirror-css'), '1.0.1', true);
+			wp_enqueue_style('codemirror', FUS__PLUGIN_URL . 'assets/vendors/codemirror.min.css', array(), '1.0.0');
+			wp_enqueue_style('dracula', FUS__PLUGIN_URL . 'assets/vendors/dracula.min.css', array(), '1.0.0');
 		}
 	}
 }

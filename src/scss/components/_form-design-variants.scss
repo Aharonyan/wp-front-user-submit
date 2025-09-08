@@ -1,0 +1,1136 @@
+/**
+ * Login/Register Form Design Variants
+ * All visual designs as equal variants
+ */
+
+// Design Variables (shared across variants)
+$fus-primary-color: #2563eb !default;
+$fus-primary-hover: #1d4ed8 !default;
+$fus-error-color: #dc2626 !default;
+$fus-error-bg: #fef2f2 !default;
+$fus-error-border: #fecaca !default;
+$fus-error-text: #991b1b !default;
+$fus-success-color: #059669 !default;
+$fus-success-bg: #f0fdf4 !default;
+$fus-success-border: #bbf7d0 !default;
+$fus-border-color: #e5e7eb !default;
+$fus-text-primary: #111827 !default;
+$fus-text-secondary: #6b7280 !default;
+$fus-text-muted: #9ca3af !default;
+
+// Design 1: Modern Minimal (FREE)
+.fus-design-modern-minimal {
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 32px 24px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        border: 1px solid #f3f4f6;
+        
+        &.fus-register-form-wrap {
+            max-width: 480px;
+        }
+    }
+    
+    .fus-form-group {
+        margin-bottom: 24px;
+        
+        &.fus-checkbox-group {
+            margin-bottom: 20px;
+            
+            label {
+                font-weight: 400;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                color: $fus-text-secondary;
+                font-size: 14px;
+                
+                input[type="checkbox"] {
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 8px;
+                    margin-bottom: 0;
+                    accent-color: $fus-primary-color;
+                }
+            }
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: $fus-text-primary;
+            font-size: 14px;
+            line-height: 1.4;
+            
+            .required {
+                color: $fus-error-color;
+                margin-left: 2px;
+                font-weight: 400;
+            }
+        }
+    }
+    
+    .fus-form-control {
+        padding: 12px 16px;
+        border: 1px solid $fus-border-color;
+        border-radius: 8px;
+        font-size: 15px;
+        color: $fus-text-primary;
+        background-color: #ffffff;
+        transition: all 0.15s ease;
+        
+        &:focus {
+            outline: none;
+            border-color: $fus-primary-color;
+            box-shadow: 0 0 0 3px rgba($fus-primary-color, 0.1);
+        }
+        
+        &:disabled {
+            background-color: #f9fafb;
+            color: $fus-text-muted;
+        }
+        
+        &.error {
+            border-color: $fus-error-color;
+            &:focus { box-shadow: 0 0 0 3px rgba($fus-error-color, 0.1); }
+        }
+        
+        &.success {
+            border-color: $fus-success-color;
+            &:focus { box-shadow: 0 0 0 3px rgba($fus-success-color, 0.1); }
+        }
+        
+        &::placeholder {
+            color: $fus-text-muted;
+            opacity: 1;
+        }
+        
+        &:hover:not(:focus):not(:disabled) {
+            border-color: darken($fus-border-color, 10%);
+        }
+    }
+    
+    .field-error {
+        color: $fus-error-color;
+        font-weight: 400;
+    }
+    
+    .fus-submit-btn {
+        padding: 14px 20px;
+        background-color: $fus-primary-color;
+        color: white;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        transition: all 0.15s ease;
+        position: relative;
+        overflow: hidden;
+        
+        &:hover:not(:disabled) {
+            background-color: $fus-primary-hover;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba($fus-primary-color, 0.15);
+        }
+        
+        &:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba($fus-primary-color, 0.15);
+        }
+        
+        &:focus {
+            box-shadow: 0 0 0 3px rgba($fus-primary-color, 0.2);
+        }
+        
+        &:disabled {
+            background-color: $fus-text-muted;
+            transform: none;
+            box-shadow: none;
+            
+            &.loading {
+                background-color: $fus-primary-color;
+            }
+        }
+        
+        &.loading {
+            color: transparent;
+            
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 20px;
+                height: 20px;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                border-top: 2px solid white;
+                border-radius: 50%;
+                animation: fus-spin 0.8s linear infinite;
+            }
+        }
+    }
+    
+    .fus-message {
+        margin-bottom: 24px;
+        padding: 14px 16px;
+        border-radius: 8px;
+        border: 1px solid;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: 400;
+        
+        &.error {
+            background-color: $fus-error-bg;
+            color: $fus-error-text;
+            border-color: $fus-error-border;
+        }
+        
+        &.success {
+            background-color: $fus-success-bg;
+            color: $fus-success-color;
+            border-color: $fus-success-border;
+        }
+    }
+    
+    .fus-password-note {
+        font-size: 13px;
+        color: $fus-text-secondary;
+        font-style: normal;
+        margin: 0;
+        text-align: center;
+        padding: 12px 0;
+        line-height: 1.4;
+    }
+    
+    .fus-form.loading {
+        &::before {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            backdrop-filter: blur(2px);
+        }
+        
+        &::after {
+            width: 32px;
+            height: 32px;
+            border: 2px solid $fus-border-color;
+            border-top: 2px solid $fus-primary-color;
+            border-radius: 50%;
+            animation: fus-spin 0.8s linear infinite;
+        }
+    }
+    
+    // Dark mode for modern minimal
+    @media (prefers-color-scheme: dark) {
+        .fus-login-form-wrap,
+        .fus-register-form-wrap {
+            background: #1f2937;
+            border-color: #374151;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        .fus-form-group label {
+            color: #f9fafb;
+        }
+        
+        .fus-form-control {
+            background-color: #374151;
+            border-color: #4b5563;
+            color: #f9fafb;
+            
+            &:focus {
+                border-color: lighten($fus-primary-color, 10%);
+            }
+            
+            &::placeholder {
+                color: #9ca3af;
+            }
+        }
+        
+        .fus-password-note {
+            color: #d1d5db;
+        }
+        
+        .fus-message {
+            &.error {
+                background-color: rgba($fus-error-color, 0.1);
+                color: lighten($fus-error-color, 20%);
+                border-color: rgba($fus-error-border, 0.3);
+            }
+            
+            &.success {
+                background-color: rgba($fus-success-color, 0.1);
+                color: lighten($fus-success-color, 20%);
+                border-color: rgba($fus-success-border, 0.3);
+            }
+        }
+    }
+    
+    // Responsive
+    @media (max-width: 640px) {
+        .fus-login-form-wrap,
+        .fus-register-form-wrap {
+            margin: 16px;
+            padding: 24px 20px;
+        }
+        
+        .fus-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .fus-submit-btn {
+            padding: 16px 20px;
+            font-size: 16px;
+        }
+    }
+}
+
+// Design 2: Card/Panel Style (PRO)
+.fus-design-card-panel {
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 450px;
+        margin: 40px auto;
+        padding: 40px 36px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        position: relative;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px 16px 0 0;
+        }
+    }
+    
+    .fus-form-group {
+        margin-bottom: 28px;
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: $fus-text-primary;
+            font-size: 15px;
+        }
+    }
+    
+    .fus-form-control {
+        padding: 16px 20px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        font-size: 16px;
+        transition: all 0.2s ease;
+        
+        &:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+        }
+    }
+    
+    .fus-submit-btn {
+        padding: 16px 24px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+        
+        &:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+        }
+    }
+    
+    .fus-message {
+        margin-bottom: 28px;
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+}
+
+// Design 3: Split Screen (PRO)
+.fus-design-split-screen {
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 0;
+        display: flex;
+        min-height: 600px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        
+        &::before {
+            content: '';
+            flex: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .fus-form {
+            flex: 1;
+            padding: 60px 48px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            flex-direction: column;
+            
+            &::before {
+                min-height: 200px;
+            }
+            
+            .fus-form {
+                padding: 32px 24px;
+            }
+        }
+    }
+    
+    .fus-form-group {
+        margin-bottom: 24px;
+        
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+    }
+    
+    .fus-form-control {
+        padding: 14px 16px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+    
+    .fus-submit-btn {
+        padding: 16px 24px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 8px;
+        font-weight: 600;
+    }
+}
+
+// Design 4: Gradient Background (PRO)
+.fus-design-gradient-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 420px;
+        margin: 0;
+        padding: 36px 32px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    }
+    
+    .fus-form-group {
+        margin-bottom: 24px;
+        
+        label {
+            font-weight: 600;
+            color: #374151;
+        }
+    }
+    
+    .fus-form-control {
+        padding: 14px 18px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        
+        &:focus {
+            background: white;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+    }
+    
+    .fus-submit-btn {
+        padding: 16px 24px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        font-weight: 600;
+        
+        &:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+        }
+    }
+}
+
+// Design 5: Glassmorphism (PRO)
+.fus-design-glassmorphism {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+    &::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
+        z-index: -1;
+    }
+    
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 400px;
+        margin: 0;
+        padding: 32px 28px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    .fus-form-group {
+        margin-bottom: 24px;
+        
+        label {
+            color: white;
+            font-weight: 500;
+        }
+    }
+    
+    .fus-form-control {
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        color: white;
+        
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        &:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        }
+    }
+    
+    .fus-submit-btn {
+        padding: 16px 24px;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        
+        &:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+    }
+    
+    .fus-password-note {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+// Design 6: Borderless/Flat (PRO)
+.fus-design-borderless-flat {
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 380px;
+        margin: 0 auto;
+        padding: 24px 0;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
+    
+    .fus-form-group {
+        position: relative;
+        margin-bottom: 32px;
+        
+        label {
+            position: absolute;
+            left: 0;
+            top: 16px;
+            color: #9ca3af;
+            font-size: 16px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            background: transparent;
+        }
+        
+        &:focus-within label,
+        &.has-value label {
+            top: -8px;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: 500;
+        }
+    }
+    
+    .fus-form-control {
+        border: none;
+        border-bottom: 2px solid #e5e7eb;
+        border-radius: 0;
+        padding: 16px 0;
+        background: transparent;
+        font-size: 16px;
+        
+        &:focus {
+            border-bottom-color: #2563eb;
+            box-shadow: none;
+        }
+        
+        &.error {
+            border-bottom-color: #dc2626;
+        }
+    }
+    
+    .fus-submit-btn {
+        border: none;
+        border-radius: 0;
+        padding: 18px 0;
+        background: #1f2937;
+        color: white;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        
+        &:hover:not(:disabled) {
+            background: #111827;
+            transform: none;
+            box-shadow: none;
+        }
+    }
+    
+    .fus-message {
+        border: none;
+        border-radius: 0;
+        padding: 16px 0;
+        background: transparent;
+        
+        &.error {
+            color: #dc2626;
+            border-left: 4px solid #dc2626;
+            padding-left: 16px;
+        }
+        
+        &.success {
+            color: #059669;
+            border-left: 4px solid #059669;
+            padding-left: 16px;
+        }
+    }
+}
+
+// Design 7: Corporate/Professional (PRO)
+.fus-design-/**
+ * Login/Register Form Design Variants
+ * Different visual designs for forms
+ */
+
+// Design 2: Card/Panel Style (PRO)
+.fus-design-card-panel {
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 450px;
+        margin: 40px auto;
+        padding: 40px 36px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        position: relative;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .fus-submit-btn {
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+            
+            &:hover:not(:disabled) {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+            }
+        }
+    }
+}
+
+// Design 3: Split Screen (PRO)
+.fus-design-split-screen {
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 0;
+        display: flex;
+        min-height: 600px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        
+        &::before {
+            content: '';
+            flex: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            
+            // Add brand content here with ::after
+        }
+        
+        .fus-form {
+            flex: 1;
+            padding: 60px 48px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            flex-direction: column;
+            
+            &::before {
+                min-height: 200px;
+            }
+        }
+    }
+}
+
+// Design 4: Gradient Background (PRO)
+.fus-design-gradient-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 420px;
+        margin: 0;
+        padding: 36px 32px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        
+        .fus-submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 16px 24px;
+            
+            &:hover:not(:disabled) {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+            }
+        }
+        
+        .fus-form-control {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            
+            &:focus {
+                background: white;
+                border-color: #667eea;
+                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            }
+        }
+    }
+}
+
+// Design 5: Glassmorphism (PRO)
+.fus-design-glassmorphism {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+    &::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
+        z-index: -1;
+    }
+    
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 400px;
+        margin: 0;
+        padding: 32px 28px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        
+        .fus-form-group label {
+            color: white;
+            font-weight: 500;
+        }
+        
+        .fus-form-control {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.7);
+            }
+            
+            &:focus {
+                background: rgba(255, 255, 255, 0.25);
+                border-color: rgba(255, 255, 255, 0.5);
+                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+            }
+        }
+        
+        .fus-submit-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            backdrop-filter: blur(10px);
+            
+            &:hover:not(:disabled) {
+                background: rgba(255, 255, 255, 0.3);
+                transform: translateY(-1px);
+            }
+        }
+        
+        .fus-password-note {
+            color: rgba(255, 255, 255, 0.8);
+        }
+    }
+}
+
+// Design 6: Borderless/Flat (PRO)
+.fus-design-borderless-flat {
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 380px;
+        margin: 0 auto;
+        padding: 24px 0;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        
+        .fus-form-control {
+            border: none;
+            border-bottom: 2px solid #e5e7eb;
+            border-radius: 0;
+            padding: 16px 0;
+            background: transparent;
+            font-size: 16px;
+            
+            &:focus {
+                border-bottom-color: #2563eb;
+                box-shadow: none;
+            }
+            
+            &.error {
+                border-bottom-color: #dc2626;
+            }
+        }
+        
+        .fus-form-group {
+            position: relative;
+            margin-bottom: 32px;
+            
+            label {
+                position: absolute;
+                left: 0;
+                top: 16px;
+                color: #9ca3af;
+                font-size: 16px;
+                font-weight: 400;
+                transition: all 0.2s ease;
+                pointer-events: none;
+                background: transparent;
+            }
+            
+            &:focus-within label,
+            &.has-value label {
+                top: -8px;
+                font-size: 12px;
+                color: #2563eb;
+                font-weight: 500;
+            }
+        }
+        
+        .fus-submit-btn {
+            border: none;
+            border-radius: 0;
+            padding: 18px 0;
+            background: #1f2937;
+            color: white;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            
+            &:hover:not(:disabled) {
+                background: #111827;
+                transform: none;
+                box-shadow: none;
+            }
+        }
+        
+        .fus-message {
+            border: none;
+            border-radius: 0;
+            padding: 16px 0;
+            background: transparent;
+            
+            &.error {
+                color: #dc2626;
+                border-left: 4px solid #dc2626;
+                padding-left: 16px;
+            }
+            
+            &.success {
+                color: #059669;
+                border-left: 4px solid #059669;
+                padding-left: 16px;
+            }
+        }
+    }
+}
+
+// Design 7: Corporate/Professional (PRO)
+.fus-design-corporate {
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 40px 32px;
+        background: #ffffff;
+        border: 2px solid #e5e7eb;
+        border-radius: 4px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        
+        .fus-form-control {
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            padding: 12px 16px;
+            font-size: 14px;
+            
+            &:focus {
+                border-color: #1e40af;
+                box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+            }
+        }
+        
+        .fus-form-group label {
+            color: #374151;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .fus-submit-btn {
+            background: #1e40af;
+            border-radius: 4px;
+            padding: 14px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            
+            &:hover:not(:disabled) {
+                background: #1e3a8a;
+                transform: none;
+                box-shadow: 0 2px 4px rgba(30, 64, 175, 0.2);
+            }
+        }
+        
+        .fus-message {
+            border-radius: 4px;
+            font-size: 13px;
+            
+            &.error {
+                background: #fef2f2;
+                border-color: #fca5a5;
+                color: #991b1b;
+            }
+            
+            &.success {
+                background: #f0fdf4;
+                border-color: #86efac;
+                color: #166534;
+            }
+        }
+    }
+}
+
+// Design 8: Playful/Colorful (PRO)
+.fus-design-playful-colorful {
+    background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+    .fus-login-form-wrap,
+    .fus-register-form-wrap {
+        max-width: 420px;
+        margin: 0;
+        padding: 36px 32px;
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(255, 154, 158, 0.3);
+        position: relative;
+        
+        &::before {
+            content: '🎉';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 40px;
+            z-index: 1;
+        }
+        
+        .fus-form-control {
+            border: 3px solid #fecfef;
+            border-radius: 16px;
+            padding: 16px 20px;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            &:focus {
+                border-color: #f472b6;
+                box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.1);
+                transform: scale(1.02);
+            }
+        }
+        
+        .fus-form-group label {
+            color: #be185d;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        
+        .fus-submit-btn {
+            background: linear-gradient(45deg, #f472b6, #ec4899, #db2777);
+            border-radius: 16px;
+            padding: 18px 24px;
+            font-size: 16px;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(244, 114, 182, 0.4);
+            
+            &:hover:not(:disabled) {
+                transform: translateY(-3px) scale(1.02);
+                box-shadow: 0 12px 32px rgba(244, 114, 182, 0.5);
+            }
+            
+            &:active:not(:disabled) {
+                transform: translateY(-1px) scale(1.01);
+            }
+        }
+        
+        .fus-message {
+            border-radius: 16px;
+            font-weight: 600;
+            
+            &.error {
+                background: linear-gradient(45deg, #fef2f2, #fce7e7);
+                border-color: #fca5a5;
+                color: #be185d;
+            }
+            
+            &.success {
+                background: linear-gradient(45deg, #f0fdf4, #e7fce7);
+                border-color: #86efac;
+                color: #059669;
+            }
+        }
+        
+        .fus-password-note {
+            color: #be185d;
+            font-weight: 500;
+        }
+    }
+}
+
+// Responsive adjustments for all designs
+@media (max-width: 640px) {
+    .fus-design-card-panel,
+    .fus-design-gradient-bg,
+    .fus-design-glassmorphism,
+    .fus-design-corporate,
+    .fus-design-playful-colorful {
+        .fus-login-form-wrap,
+        .fus-register-form-wrap {
+            margin: 16px;
+            padding: 24px 20px;
+        }
+    }
+    
+    .fus-design-split-screen {
+        .fus-login-form-wrap,
+        .fus-register-form-wrap {
+            margin: 16px;
+            
+            .fus-form {
+                padding: 32px 24px;
+            }
+        }
+    }
+}
