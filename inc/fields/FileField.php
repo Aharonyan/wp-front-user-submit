@@ -48,10 +48,15 @@ class FileField {
     }
 
     public static function process_files( \WP_REST_Request $request ) {
+        self::start_session_if_needed();
         $files = $request->get_file_params();
         foreach ( $files as $file ) {
             apply_filters( 'bfe_before_file_filed_process_file', $file );
             $image = self::upload_file( $file );
+            if ( !isset( $_SESSION['bfe_uploaded_files'] ) ) {
+                $_SESSION['bfe_uploaded_files'] = [];
+            }
+            $_SESSION['bfe_uploaded_files'][] = $image['attach_id'];
             return $image['attach_id'];
         }
     }
@@ -93,9 +98,41 @@ class FileField {
     }
 
     public static function revert_file( \WP_REST_Request $request ) {
+        self::start_session_if_needed();
         $attachment_id = intval( $request->get_body() );
-        if ( !empty( $attachment_id ) && $attachment_id ) {
-            $deleted = wp_delete_attachment( $attachment_id, true );
+        if ( empty( $attachment_id ) ) {
+            return new \WP_Error('invalid_id', __( 'Invalid attachment ID.', 'front-editor' ), [
+                'status' => 400,
+            ]);
+        }
+        $authorized = false;
+        $is_guest_upload = false;
+        if ( is_user_logged_in() ) {
+            if ( current_user_can( 'delete_post', $attachment_id ) ) {
+                $authorized = true;
+            }
+        }
+        if ( !$authorized && !empty( $_SESSION['bfe_uploaded_files'] ) && in_array( $attachment_id, $_SESSION['bfe_uploaded_files'] ) ) {
+            $authorized = true;
+            $is_guest_upload = true;
+        }
+        if ( !$authorized ) {
+            return new \WP_Error('rest_forbidden', __( 'Sorry, you are not allowed to delete this attachment.', 'front-editor' ), [
+                'status' => 403,
+            ]);
+        }
+        $deleted = wp_delete_attachment( $attachment_id, true );
+        if ( $deleted && $is_guest_upload ) {
+            $index = array_search( $attachment_id, $_SESSION['bfe_uploaded_files'] );
+            if ( $index !== false ) {
+                unset($_SESSION['bfe_uploaded_files'][$index]);
+            }
+        }
+    }
+
+    private static function start_session_if_needed() {
+        if ( session_status() === PHP_SESSION_NONE ) {
+            session_start();
         }
     }
 
