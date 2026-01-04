@@ -4,7 +4,7 @@ Tags: frontend post,guest post,public post,user post
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 5.0.0
+Stable tag: 5.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -210,6 +210,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 
 == Changelog ==
 
+= 5.0.1 =
+* Security issue fixed
+
 = 5.0.0 =
 * Fixed issue with login and register forms shortcodes
 * Added 8 new designs for login and register forms
@@ -411,6 +414,9 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.0.1 =
+* Security issue fixed
 
 = 5.0.0 =
 Added new designs for forms and user admin, and fixed bugs
