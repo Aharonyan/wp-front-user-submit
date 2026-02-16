@@ -3,7 +3,7 @@
         <?php
             esc_html_e( 'Post Forms', 'front-editor' );
 
-            if ( current_user_can( is_admin() ) ) {
+            if ( current_user_can( fe_admin_role() ) ) {
                 ?>
                 <a href="<?php echo esc_url( $add_new_page_url ); ?>" id="new-fe-post-form" class="page-title-action add-form"><?php esc_html_e( 'Add Form', 'front-editor' ); ?></a>
             <?php

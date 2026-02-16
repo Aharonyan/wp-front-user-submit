@@ -36,6 +36,8 @@ class PostFormsListTable extends WP_List_Table {
      * @return array
      */
     public function get_views() {
+        global $wpdb;
+
         $status_links   = [];
         $base_link      = admin_url( 'admin.php?page=fe-post-forms' );
 
@@ -47,10 +49,16 @@ class PostFormsListTable extends WP_List_Table {
 
         $current_status = isset( $_GET['post_status'] ) ? sanitize_text_field( wp_unslash( $_GET['post_status'] ) ) : 'all';
 
-        $post_counts = (array) wp_count_posts( 'fe_post_form' );
+        $results = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT post_status, COUNT(*) AS count FROM {$wpdb->posts} WHERE post_type = %s AND post_status IN ('publish', 'draft', 'trash', 'pending', 'private') GROUP BY post_status",
+                'fe_post_form'
+            )
+        );
 
-        if ( isset( $post_counts['auto-draft'] ) ) {
-            unset( $post_counts['auto-draft'] );
+        $post_counts = [];
+        foreach ( $results as $row ) {
+            $post_counts[ $row->post_status ] = (int) $row->count;
         }
 
         foreach ( $post_statuses as $status => $status_title ) {
@@ -105,14 +113,14 @@ class PostFormsListTable extends WP_List_Table {
     public function get_bulk_actions() {
         $actions = [];
 
-        // if ( !isset( $_GET['post_status'] ) || 'trash' !== $_GET['post_status'] ) {
-        //     $actions['trash'] = __( 'Move to Trash', 'front-editor');
-        // }
+        if ( !isset( $_GET['post_status'] ) || 'trash' !== $_GET['post_status'] ) {
+            $actions['bulk_trash'] = __( 'Move to Trash', 'front-editor');
+        }
 
-        // if ( isset( $_GET['post_status'] ) && 'trash' === $_GET['post_status'] ) {
-        //     $actions['restore'] = __( 'Restore', 'front-editor');
-        //     $actions['delete']  = __( 'Delete Permanently', 'front-editor');
-        // }
+        if ( isset( $_GET['post_status'] ) && 'trash' === $_GET['post_status'] ) {
+            $actions['bulk_restore'] = __( 'Restore', 'front-editor');
+            $actions['bulk_delete']  = __( 'Delete Permanently', 'front-editor');
+        }
 
         return apply_filters( 'fe_post_forms_list_table_get_bulk_actions', $actions );
     }
@@ -251,8 +259,8 @@ class PostFormsListTable extends WP_List_Table {
     public function item_query( $args ) {
         $defauls = [
             'post_status' => 'any',
-            'orderby'     => 'DESC',
-            'order'       => 'ID',
+            'orderby'     => 'ID',
+            'order'       => 'DESC',
         ];
 
         $args = wp_parse_args( $args, $defauls );
@@ -364,7 +372,7 @@ class PostFormsListTable extends WP_List_Table {
                 return '<code>[fe_form id="' . $item['ID'] . '"]</code>';
 
             default:
-                return apply_filter( 'fe_post_forms_list_table_column_default', $item, $column_name );
+                return apply_filters( 'fe_post_forms_list_table_column_default', $item, $column_name );
         }
     }
 

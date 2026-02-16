@@ -18,7 +18,7 @@ class DemoData
         add_action('init', [__CLASS__, 'json_generate']);
 
         add_action('init', function () {
-            if (isset($_GET['ddd'])) {
+            if (isset($_GET['ddd']) && current_user_can('manage_options')) {
 
                 self::create_demo_page();
             }
@@ -185,6 +185,10 @@ class DemoData
     {
 
         if (!isset($_GET['default_form_data'])) {
+            return;
+        }
+
+        if (!current_user_can('manage_options')) {
             return;
         }
 

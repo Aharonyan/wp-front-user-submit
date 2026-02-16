@@ -23,6 +23,7 @@
     "@editorjs/raw": "2.4.0",
     "@editorjs/table": "2.2.1",
     "@editorjs/warning": "1.3.0",
+    "@playwright/test": "^1.58.2",
     "@rodrigoodhin/editorjs-image-gallery": "0.1.0",
     "@vietlongn/editorjs-carousel": "2.3.6",
     "@wordpress/components": "23.5.0",
@@ -43,6 +44,9 @@
     "lint:js": "wp-scripts lint-js",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "start": "wp-scripts start",
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:report": "npx playwright show-report",
     "test:e2e": "wp-scripts test-e2e",
     "test:unit": "wp-scripts test-unit-js"
   },

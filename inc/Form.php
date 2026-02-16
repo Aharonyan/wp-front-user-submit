@@ -234,8 +234,38 @@ class Form
                 wp_enqueue_style('fe_post_form_CPT');
                 require fe_template_path('admin/post-form.php');
                 break;
+
+            case 'duplicate':
+                if ($post_ID !== 'new' && isset($_GET['_wpnonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'bulk-post-forms')) {
+                    $source_post = get_post($post_ID);
+
+                    if ($source_post && $source_post->post_type === 'fe_post_form') {
+                        $new_post_id = wp_insert_post([
+                            'post_title'  => sprintf(__('%s (Copy)', 'front-editor'), $source_post->post_title),
+                            'post_type'   => 'fe_post_form',
+                            'post_status' => 'publish',
+                        ]);
+
+                        if ($new_post_id && !is_wp_error($new_post_id)) {
+                            $form_builder_data = get_post_meta($post_ID, 'formBuilderData', true);
+                            $form_settings     = get_post_meta($post_ID, 'fe_form_settings', true);
+
+                            if ($form_builder_data) {
+                                update_post_meta($new_post_id, 'formBuilderData', $form_builder_data);
+                            }
+
+                            if ($form_settings) {
+                                update_post_meta($new_post_id, 'fe_form_settings', $form_settings);
+                            }
+                        }
+                    }
+                }
+
+                require_once fe_template_path('admin/post-forms-list-table-view.php');
+                break;
+
             case 'trash':
-                if ($post_ID !== 'new') {
+                if ($post_ID !== 'new' && isset($_GET['_wpnonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'bulk-post-forms')) {
                     wp_trash_post($post_ID);
                 }
 
@@ -243,16 +273,51 @@ class Form
                 break;
 
             case 'delete':
-                if ($post_ID !== 'new') {
+                if ($post_ID !== 'new' && isset($_GET['_wpnonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'bulk-post-forms')) {
                     wp_delete_post($post_ID, true);
                 }
 
                 require_once fe_template_path('admin/post-forms-list-table-view.php');
                 break;
+
             case 'restore':
-                if ($post_ID !== 'new') {
+                if ($post_ID !== 'new' && isset($_GET['_wpnonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'bulk-post-forms')) {
                     wp_untrash_post($post_ID);
                     wp_publish_post($post_ID);
+                }
+
+                require_once fe_template_path('admin/post-forms-list-table-view.php');
+                break;
+
+            case 'bulk_trash':
+                if (isset($_GET['_wpnonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'bulk-post-forms')) {
+                    $post_ids = isset($_GET['post']) ? array_map('intval', $_GET['post']) : [];
+                    foreach ($post_ids as $pid) {
+                        wp_trash_post($pid);
+                    }
+                }
+
+                require_once fe_template_path('admin/post-forms-list-table-view.php');
+                break;
+
+            case 'bulk_restore':
+                if (isset($_GET['_wpnonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'bulk-post-forms')) {
+                    $post_ids = isset($_GET['post']) ? array_map('intval', $_GET['post']) : [];
+                    foreach ($post_ids as $pid) {
+                        wp_untrash_post($pid);
+                        wp_publish_post($pid);
+                    }
+                }
+
+                require_once fe_template_path('admin/post-forms-list-table-view.php');
+                break;
+
+            case 'bulk_delete':
+                if (isset($_GET['_wpnonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'bulk-post-forms')) {
+                    $post_ids = isset($_GET['post']) ? array_map('intval', $_GET['post']) : [];
+                    foreach ($post_ids as $pid) {
+                        wp_delete_post($pid, true);
+                    }
                 }
 
                 require_once fe_template_path('admin/post-forms-list-table-view.php');
@@ -462,9 +527,9 @@ class Form
     {
         // Remove `<script>` and any script content
         $sanitized = preg_replace('/<\s*script[\s\S]*?>[\s\S]*?<\s*\/\s*script\s*>/i', '', $input);
+        $sanitized = sanitize_text_field($sanitized);
         $escapers = ["\\", "/", "\"", "\n", "\r", "\t", "\x08", "\x0c", '"', "\f", "\&gt;", "&gt;", "&lt;"];
         $replacements = ["\\\\", "\/", "\\\"", "\\n", "\\r", "\\t", "\\f", "\\b", '', '\\f', "", "", ""];
-        $sanitized = sanitize_text_field($input);
         $sanitized = str_replace($escapers, $replacements, $sanitized);
 
         return $sanitized;

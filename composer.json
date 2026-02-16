@@ -1,6 +1,7 @@
 {
     "require": {
         "erusev/parsedown": "^1.7",
-        "league/html-to-markdown": "^5.1"
+        "league/html-to-markdown": "^5.1",
+        "freemius/wordpress-sdk": "^2.13"
     }
 }
