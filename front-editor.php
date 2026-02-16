@@ -15,7 +15,7 @@
  * Tested up to: 6.9
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Version: 5.0.1
+ * Version: 5.0.5
  */
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -49,7 +49,7 @@ if ( function_exists( 'fe_fs' ) ) {
             global $fe_fs;
             if ( !isset( $fe_fs ) ) {
                 // Include Freemius SDK.
-                require_once dirname( __FILE__ ) . '/freemius/start.php';
+                require_once dirname( __FILE__ ) . '/vendor/freemius/wordpress-sdk/start.php';
                 $fe_fs = fs_dynamic_init( array(
                     'id'              => '7886',
                     'slug'            => 'front-editor',

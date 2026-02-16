@@ -153,8 +153,12 @@ class Editor
 
 		// when trying to edit already existing post
 		if ('new' !== $post_id) {
-			// if user have rights to edit but post locked for editing
-			if (current_user_can('edit_post', $post_id)) {
+			// Check if the current user is the post author (allows editing own submissions regardless of WP role)
+			$is_post_author = $cur_post && (int) $cur_post->post_author === $cur_user_id;
+
+			// if user have rights to edit or is the post author
+			if (current_user_can('edit_post', $post_id) || $is_post_author) {
+				// Check if post is locked for editing after certain hours
 				if (isset($form_settings['post_update_lock_user_after']) && !empty($form_settings['post_update_lock_user_after'])) {
 					$allow_hours = $form_settings['post_update_lock_user_after'] * 3600;
 					$post_created_time = get_post_time('U', true, $cur_post);
@@ -166,10 +170,8 @@ class Editor
 						return	['status' => false, 'message' => sprintf('<div class="fus-info">%s</div>', $message)];
 					}
 				}
-			}
-
-			// if user not autor and cannot edit other posts
-			if (!current_user_can('edit_post', $post_id)) {
+			} else {
+				// User is not the author and cannot edit other posts
 				return	['status' => false, 'message' => sprintf('<div class="fus-info">%s</div>', __('You are not allowed to edit', 'front-editor'))];
 			}
 		}
