@@ -629,12 +629,12 @@ class MenuSettings
 				The contact information you can find on our website %s',
 				'front-editor'
 			),
-			'<strong><a href="https://wpfronteditor.com" target="_blank">wpfronteditor.com</a></strong>'
+			'<strong><a href="https://wpuserpublish.com/" target="_blank">wpuserpublish.com</a></strong>'
 		);
 		printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $message);
 
 		$github_link = '<a  target="_blank" href="https://t.me/+loTEjPRS6lw3NTli">Community</a>';
-		$site_link = 'https://wpfronteditor.com/';
+		$site_link = 'https://wpuserpublish.com/';
 		printf(
 			'<p>%s</p>',
 			/* translators: You can buy pro version or find additional information. */
@@ -1112,7 +1112,7 @@ class MenuSettings
 			'<p>%s</p>',
 			sprintf(
 				__('You can check %1$s how to get Google Map API Key and how to set it up.', 'front-editor'),
-				'<a target="_blank" href="https://wpfronteditor.com/docs/overview-wp-user-frontend/create-form/google-map/">' . __('here', 'front-editor') . '</a>'
+				'<a target="_blank" href="https://wpuserpublish.com/docs/fields/google-map/">' . __('here', 'front-editor') . '</a>'
 			)
 		);
 	}

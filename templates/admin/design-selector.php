@@ -79,7 +79,7 @@ if (!defined('ABSPATH')) {
         <div class="pro-upgrade-notice">
             <h4><?php _e('🎨 Unlock All Form Designs', 'front-editor'); ?></h4>
             <p><?php _e('Get access to all professional form designs with the Pro version. Perfect for matching your brand and increasing conversions.', 'front-editor'); ?></p>
-            <a href="https://wpfronteditor.com/pricing/" target="_blank" class="button button-primary">
+            <a href="https://wpuserpublish.com/pricing/" target="_blank" class="button button-primary">
                 <?php _e('Upgrade to Pro', 'front-editor'); ?>
             </a>
         </div>

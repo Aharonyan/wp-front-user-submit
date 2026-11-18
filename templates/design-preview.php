@@ -88,7 +88,7 @@ $is_locked = $preview_design['pro'] && !$has_pro;
         <span class="fus-actions">
             <a href="<?php echo esc_url($edit_url); ?>"><?php esc_html_e('Back to form', 'front-editor'); ?></a>
             <?php if ($is_locked) : ?>
-                <a class="fus-primary" href="https://wpfronteditor.com/pricing/" target="_blank"><?php esc_html_e('Upgrade to Pro', 'front-editor'); ?></a>
+                <a class="fus-primary" href="https://wpuserpublish.com/pricing/" target="_blank"><?php esc_html_e('Upgrade to Pro', 'front-editor'); ?></a>
             <?php endif; ?>
         </span>
     </div>

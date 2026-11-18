@@ -4,7 +4,7 @@ Tags: frontend post, guest post, submit post, user submitted posts, ai writing a
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 5.2.1
+Stable tag: 5.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Frontend post submission and guest posting forms: drag-and-drop builder, user po
 
 New in 5.1: a **free ✨ AI writing assistant** right inside your forms. Your users write from a prompt, improve their text, fix grammar, shorten or expand it, using OpenAI, Anthropic Claude, Google Gemini, OpenRouter or a local model with your own API key.
 
-[🌐 Live demo](http://demo.wpfronteditor.com/) · [📖 Documentation](https://wpfronteditor.com/docs) · [💬 Community](https://t.me/+loTEjPRS6lw3NTli) · [🚀 Pro version](https://wpfronteditor.com/)
+[📖 Documentation](https://wpuserpublish.com/docs/) · [💬 Community](https://t.me/+loTEjPRS6lw3NTli) · [🚀 Pro version](https://wpuserpublish.com/pricing/)
 
 = Why site owners choose Front User Submit =
 
@@ -84,19 +84,14 @@ You stay in control of costs: AI is off in every form until you turn it on, you 
 * Header, paragraph, button and action hook fields
 * hCaptcha
 
-[Compare Free and Pro](https://wpfronteditor.com/)
-
-= Try it out =
-
-* [Online demo](http://demo.wpfronteditor.com/wp-login.php) of the Free and Pro version
-* Username: Demo
-* Password: Demo
+[Compare Free and Pro](https://wpuserpublish.com/pricing/)
 
 == Links ==
 
-* [Documentation](https://wpfronteditor.com/docs)
-* [Report a bug or suggest a feature](https://wpfronteditor.com/docs)
-* [Pro version](https://wpfronteditor.com/)
+* [Documentation](https://wpuserpublish.com/docs/)
+* [Report a bug or suggest a feature](https://wp-front-editor.canny.io/feature-requests)
+* [Pro version and pricing](https://wpuserpublish.com/pricing/)
+* [Changelog](https://wpuserpublish.com/changelog/)
 * [Community chat](https://t.me/+loTEjPRS6lw3NTli)
 
 == External services ==
@@ -127,7 +122,7 @@ Configure block settings as needed
 Add [fe_form id=”form_id”] to any post, page, or widget
 For user admin functionality, use [fe_fs_user_admin]
 
-[Main Shortcodes](https://wpfronteditor.com/docs/overview-wp-user-frontend/getting-started/how-to-install/)
+[Main Shortcodes](https://wpuserpublish.com/docs/getting-started/shortcodes/)
 
 <strong> After Installation </strong>
 
@@ -135,7 +130,7 @@ Visit the Front Editor settings page to configure user permissions
 Test the form submission process
 Review moderation settings in the plugin dashboard
 
-For detailed setup instructions, visit: [How to install docs](https://wpfronteditor.com/docs/overview-wp-user-frontend/getting-started/how-to-install/)
+For detailed setup instructions, visit: [How to install docs](https://wpuserpublish.com/docs/getting-started/installation/)
 
 That's all there is to it! Your site now can accept user-generated content. Everything is super easy to customize via the Plugin Settings page.
 
@@ -197,7 +192,7 @@ Yes. Use the Front Editor block or the shortcode, with or without the block edit
 
 = How do I use shortcode settings? =
 
-See [how to use the shortcode](https://wpfronteditor.com/how-to-use-shortcode/).
+See [how to use the shortcode](https://wpuserpublish.com/docs/getting-started/shortcodes/).
 
 = Can I translate the plugin? =
 
@@ -225,6 +220,10 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.2.2 =
+* Links to documentation, pricing and support now point to the new website wpuserpublish.com
+* Removed the link to the old online demo
 
 = 5.2.1 =
 * [fix] Security: a logged-out visitor could edit posts submitted by other guests through a form with guest posting enabled. Guests can now only create new posts

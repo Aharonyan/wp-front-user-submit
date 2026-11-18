@@ -92,7 +92,7 @@ echo FUS__PLUGIN_URL . '/assets/img/logo_24.png';
             <span><?php 
 echo esc_html__( 'Proudly powered by', 'front-editor' );
 ?></span>
-            <a href="https://wpfronteditor.com/" class="powered_by" target="_blank"> WP Front Editor</a>
+            <a href="https://wpuserpublish.com/" class="powered_by" target="_blank"> Front User Submit</a>
         </div>
     <?php 
 ?>

@@ -2,12 +2,12 @@
 
 /**
  * Plugin Name: Front User Submit – Frontend Post Submission, Guest Posting & AI Writing Assistant
- * Plugin URI: https://wpfronteditor.com/
+ * Plugin URI: https://wpuserpublish.com/
  * Description: Let users submit and edit posts from the front end: guest posting, drag-and-drop form builder, EditorJS / Markdown / TinyMCE editors and an AI writing assistant (OpenAI, Claude, Gemini, OpenRouter) with your own API key.
  * Author: Aleksan Aharonyan
  * Author URI: https://github.com/Aharonyan/
  * Developer: Aleksan Aharonyan
- * Developer URI: https://wpfronteditor.com/
+ * Developer URI: https://wpuserpublish.com/
  * Text Domain: front-editor
  * Domain Path: /languages
  * WP requires at least: 5.0
@@ -15,7 +15,7 @@
  * Requires PHP: 7.4
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Version: 5.2.1
+ * Version: 5.2.2
  */
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
