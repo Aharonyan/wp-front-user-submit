@@ -53,13 +53,21 @@ class EditorJsField
             return;
         }
 
-        foreach ($_POST['editor_js'] as $name => $content) {
+        if (!is_array($_POST['editor_js'])) {
+            return;
+        }
 
-            $editor_data      = json_decode(stripslashes($content), true);
+        foreach ($_POST['editor_js'] as $name => $content) {
+            // only EditorJS fields of this form, so a visitor cannot write other post meta
+            $settings = Form::get_submitted_field($form_id, (string) $name, self::$field_type);
+            if (!$settings || !is_scalar($content)) {
+                continue;
+            }
+
+            $editor_data  = self::sanitize_editor_data(json_decode(wp_unslash((string) $content), true));
             $content_html = '';
 
-            $settings = Form::get_form_field_settings_by_name($name, $form_id, $all_settings['form_builder_json']);
-            if (empty($editor_data['blocks']) && $settings['required']) {
+            if (empty($editor_data['blocks']) && !empty($settings['required'])) {
                 $message = __('Please add content to EditorJS', 'front-editor');
                 if (isset($settings['required_error_text']) && !empty(isset($settings['required_error_text']))) {
                     $message = $settings['required_error_text'];
@@ -83,24 +91,143 @@ class EditorJsField
             if (isset($settings['save_to']) && !empty($settings['save_to'])) {
                 if ($settings['save_to'] === 'post_content') {
                     $post_data['post_content'] = $content_html;
-                    wp_update_post($post_data);
+                    wp_update_post(wp_slash($post_data));
                 } elseif ($settings['save_to'] === 'post_excerpt') {
                     $post_data['post_excerpt'] = sanitize_text_field($content_html);
-                    wp_update_post($post_data);
-                } else {
-                    update_post_meta($post_id, $name, $editor_data);
+                    wp_update_post(wp_slash($post_data));
                 }
-            } elseif ($settings['post_content'] === true) {
+            } elseif (!empty($settings['post_content'])) {
                 $post_data['post_content'] = $content_html;
-                wp_update_post($post_data);
+                wp_update_post(wp_slash($post_data));
             }
 
             /**
              * Adding to meta json string.
              */
-            //$editor_data_json_clean = wp_json_encode($editor_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-            update_post_meta($post_id, $name, $editor_data);
+            update_post_meta($post_id, $name, wp_slash($editor_data));
         }
+    }
+
+    /**
+     * Clean EditorJS data: block texts are rendered as HTML by the editor and by data_to_html()
+     *
+     * @param mixed $data decoded EditorJS data (array) or legacy HTML string.
+     * @return mixed
+     */
+    public static function sanitize_editor_data($data)
+    {
+        if (is_string($data)) {
+            return wp_kses_post($data);
+        }
+
+        if (!is_array($data)) {
+            return [];
+        }
+
+        $clean = [];
+        foreach ($data as $key => $value) {
+            if ($key === 'blocks') {
+                $clean['blocks'] = is_array($value) ? array_values(array_filter(array_map([__CLASS__, 'sanitize_block'], $value))) : [];
+                continue;
+            }
+            $clean[$key] = self::kses_deep($value);
+        }
+
+        return $clean;
+    }
+
+    /**
+     * @param mixed $block one EditorJS block.
+     * @return array|null
+     */
+    private static function sanitize_block($block)
+    {
+        if (!is_array($block) || !isset($block['type']) || !is_string($block['type'])) {
+            return null;
+        }
+
+        $block['type'] = preg_replace('/[^A-Za-z0-9_-]/', '', $block['type']);
+        if (isset($block['id'])) {
+            $block['id'] = preg_replace('/[^A-Za-z0-9_-]/', '', (string) $block['id']);
+        }
+
+        // code block keeps its text as typed, it is shown as text (htmlentities) and never as HTML
+        $plain_keys = $block['type'] === 'code' ? ['code'] : [];
+        $block['data'] = self::kses_deep($block['data'] ?? [], $plain_keys);
+
+        if (isset($block['tunes'])) {
+            $block['tunes'] = self::kses_deep($block['tunes']);
+        }
+
+        return $block;
+    }
+
+    /**
+     * @param mixed $value
+     * @param array $plain_keys keys of this level that are kept as typed.
+     * @return mixed
+     */
+    private static function kses_deep($value, array $plain_keys = [])
+    {
+        if (is_array($value)) {
+            foreach ($value as $key => $item) {
+                if (is_string($item) && in_array($key, $plain_keys, true)) {
+                    continue;
+                }
+                // URLs are cleaned as URLs, kses would turn & into &amp;
+                $value[$key] = (is_string($item) && in_array($key, self::URL_KEYS, true)) ? esc_url_raw($item) : self::kses_deep($item);
+            }
+            return $value;
+        }
+
+        return is_string($value) ? wp_kses_post($value) : $value;
+    }
+
+    /**
+     * Block data keys that hold URLs
+     */
+    const URL_KEYS = ['url', 'embed', 'source', 'link', 'href'];
+
+    /**
+     * Hosts the EditorJS Embed block may show (the services of @editorjs/embed)
+     *
+     * @return string[]
+     */
+    public static function get_embed_hosts()
+    {
+        return apply_filters('bfe_editorjs_embed_hosts', [
+            'www.youtube.com', 'youtube.com', 'www.youtube-nocookie.com', 'player.vimeo.com', 'coub.com', 'codepen.io',
+            'www.instagram.com', 'twitframe.com', 'player.twitch.tv', 'miro.com', 'music.yandex.ru', 'imgur.com',
+            'gfycat.com', 'assets.pinterest.com', 'www.facebook.com', 'www.aparat.com', 'vine.co',
+        ]);
+    }
+
+    /**
+     * Is an Embed block address allowed
+     *
+     * @param string $url
+     * @return bool
+     */
+    public static function is_allowed_embed_url($url)
+    {
+        $host = strtolower((string) wp_parse_url((string) $url, PHP_URL_HOST));
+        $scheme = strtolower((string) wp_parse_url((string) $url, PHP_URL_SCHEME));
+
+        return $host !== '' && in_array($scheme, ['http', 'https'], true) && in_array($host, self::get_embed_hosts(), true);
+    }
+
+    /**
+     * Is an Attaches block file address a file of this site's uploads
+     *
+     * @param string $url
+     * @return bool
+     */
+    public static function is_upload_url($url)
+    {
+        $base = (string) wp_upload_dir(null, false)['baseurl'];
+        $url = (string) $url;
+
+        return $base !== '' && strpos(set_url_scheme($url, 'https'), trailingslashit(set_url_scheme($base, 'https'))) === 0 && strpos($url, '..') === false;
     }
 
     /**
@@ -319,7 +446,8 @@ class EditorJsField
                 // Retrieve and handle existing post meta data
                 $editor_js_data = get_post_meta($post_id, $field_name, true);
                 if ($editor_js_data) {
-                    $data['editor_js'][$field_name]['content'] = $editor_js_data;
+                    // stored data reaches the editor as HTML, clean it (also data saved by older versions)
+                    $data['editor_js'][$field_name]['content'] = self::sanitize_editor_data($editor_js_data);
                 }
             }
             // else {
@@ -541,21 +669,19 @@ class EditorJsField
                 if ($tunes) {
                     // has-text-align-center
                     if (isset($tunes['AlignmentTool'])) {
-                        if (isset($tunes['AlignmentTool']['alignment'])) {
-                            $class = sprintf('class="has-text-align-%s"', $tunes['AlignmentTool']['alignment']);
-                        } else {
-                            $class = sprintf('class="has-text-align-%s"', $tunes['AlignmentTool']['prop']['alignment']);
-                        }
+                        $alignment = $tunes['AlignmentTool']['alignment'] ?? ($tunes['AlignmentTool']['prop']['alignment'] ?? '');
+                        $class = sprintf('class="has-text-align-%s"', sanitize_html_class((string) $alignment));
                     }
                 }
                 $guten_type = 'heading';
+                $data['level'] = min(6, max(1, (int) ($data['level'] ?? 2)));
                 $html       = sprintf(
                     '<!-- wp:%s {"level" =>%s} --><h%s %s>%s</h%s><!-- /wp:%s -->',
                     $guten_type,
                     $data['level'],
                     $data['level'],
                     $class,
-                    $data['text'],
+                    $data['text'] ?? '',
                     $data['level'],
                     $guten_type
                 );
@@ -566,11 +692,8 @@ class EditorJsField
                 if ($tunes) {
                     // has-text-align-center
                     if (isset($tunes['AlignmentTool'])) {
-                        if (isset($tunes['AlignmentTool']['alignment'])) {
-                            $class = sprintf('class="has-text-align-%s"', $tunes['AlignmentTool']['alignment']);
-                        } else {
-                            $class = sprintf('class="has-text-align-%s"', $tunes['AlignmentTool']['prop']['alignment']);
-                        }
+                        $alignment = $tunes['AlignmentTool']['alignment'] ?? ($tunes['AlignmentTool']['prop']['alignment'] ?? '');
+                        $class = sprintf('class="has-text-align-%s"', sanitize_html_class((string) $alignment));
                     }
                 }
                 if (empty($data['text'])) {
@@ -581,14 +704,15 @@ class EditorJsField
 
             case 'list';
                 $html = '<!-- wp:list --><ul>';
-                foreach ($data['items'] as $item) {
-                    $html .= sprintf('<li>%s</li>', $item);
+                foreach ((array) ($data['items'] ?? []) as $item) {
+                    // List 2.x stores items as objects with content
+                    $html .= sprintf('<li>%s</li>', is_array($item) ? ($item['content'] ?? '') : $item);
                 }
                 $html .= '</ul><!-- /wp:list -->';
                 break;
 
             case 'code';
-                $editor_data = htmlentities($data['code']);
+                $editor_data = htmlentities((string) ($data['code'] ?? ''));
 
                 $html = sprintf('<!-- wp:code --><pre class="bfe-code wp-block-code"><code>%s</code></pre><!-- /wp:code -->', $editor_data);
                 break;
@@ -599,7 +723,9 @@ class EditorJsField
 
             case 'embed':
                 ob_start();
-                require fe_template_path('editor/embed.php');
+                if (!empty($data['embed']) && self::is_allowed_embed_url($data['embed'])) {
+                    require fe_template_path('editor/embed.php');
+                }
                 $html = trim(ob_get_clean());
 
                 break;
@@ -608,7 +734,7 @@ class EditorJsField
                 ob_start();
                 if (!empty($data['file']['url'])) {
                     $image_url = $data['file']['url'];
-                    $caption = $data['caption'];
+                    $caption = $data['caption'] ?? '';
                     $image_id  = attachment_url_to_postid($image_url);
                     require FE_Template_PATH . 'editor/image.php';
                 }
@@ -627,11 +753,14 @@ class EditorJsField
 
             case 'wpImageGallery':
                 ob_start();
+                // gallery items are attachment ids from the browser: keep only media the visitor may show
+                $data = is_array($data) ? array_values(array_filter($data, [__CLASS__, 'is_usable_gallery_item'])) : [];
                 if (!empty($data) && count($data) > 1) {
                     $image_ids = $data;
                     require fe_template_path('editor/gallery.php');
-                } else {
-                    $image_id  = $data[0];
+                } elseif (!empty($data[0])) {
+                    $image_id  = is_array($data[0]) ? (int) ($data[0]['id'] ?? 0) : (int) $data[0];
+                    $caption   = '';
                     require fe_template_path('editor/image.php');
                 }
 
@@ -645,7 +774,7 @@ class EditorJsField
                 break;
 
             case 'warning':
-                $html = sprintf('<figure class="warning"><figcaption>%s</figcaption><p>%s</p></figure>', $data['title'], $data['message']);
+                $html = sprintf('<figure class="warning"><figcaption>%s</figcaption><p>%s</p></figure>', $data['title'] ?? '', $data['message'] ?? '');
                 break;
 
             case 'table':
@@ -662,7 +791,10 @@ class EditorJsField
 
             case 'attaches':
                 ob_start();
-                require fe_template_path('editor/attaches.php');
+                // only files uploaded to this site
+                if (!empty($data['file']['url']) && self::is_upload_url($data['file']['url'])) {
+                    require fe_template_path('editor/attaches.php');
+                }
                 $html = ob_get_clean();
                 break;
         }
@@ -675,6 +807,27 @@ class EditorJsField
         $html = apply_filters('bfe_editor_data_to_html_filter', self::esc_brackets($html), $type, $data);
 
         return $html;
+    }
+
+    /**
+     * Gallery item the visitor may put in the post: own/editable media or media already attached to this post
+     *
+     * @param mixed $item ['id' => int] or an id.
+     * @return bool
+     */
+    public static function is_usable_gallery_item($item)
+    {
+        $attachment_id = is_array($item) ? (int) ($item['id'] ?? 0) : (int) $item;
+        if (!$attachment_id || get_post_type($attachment_id) !== 'attachment') {
+            return false;
+        }
+
+        $saving_post_id = \BFE\SavePost::$saving_post_id;
+        if ($saving_post_id && (int) get_post_field('post_parent', $attachment_id) === $saving_post_id) {
+            return true;
+        }
+
+        return \BFE\SavePost::can_use_attachment($attachment_id);
     }
 
     /**

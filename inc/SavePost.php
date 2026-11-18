@@ -17,6 +17,18 @@ namespace BFE;
  */
 class SavePost {
     /**
+     * Meta key marking attachments a guest uploaded through a form
+     */
+    const GUEST_UPLOAD_META = '_fus_guest_upload';
+
+    /**
+     * ID of the post saved in the current request, used when attaching media
+     *
+     * @var int
+     */
+    public static $saving_post_id = 0;
+
+    /**
      * Init function
      *
      * @return void
@@ -77,18 +89,97 @@ class SavePost {
         register_rest_route( 'bfe/v1', '/post_thumb_uploading_image', [
             'methods'             => 'POST',
             'callback'            => [__CLASS__, 'post_thumb_uploading_image'],
-            'permission_callback' => [__CLASS__, 'changing_rest_api_permission'],
+            'permission_callback' => [__CLASS__, 'thumb_upload_permission'],
         ] );
         register_rest_route( 'bfe/v1', '/upload_image', [
             'methods'             => 'POST',
             'callback'            => [__CLASS__, 'upload_image_rest_api'],
-            'permission_callback' => '__return_true',
+            'permission_callback' => [__CLASS__, 'image_upload_permission'],
         ] );
         register_rest_route( 'bfe/v1', '/upload_file', [
             'methods'             => 'POST',
             'callback'            => [__CLASS__, 'upload_file'],
-            'permission_callback' => '__return_true',
+            'permission_callback' => [__CLASS__, 'file_upload_permission'],
         ] );
+    }
+
+    /**
+     * Who may upload through a form: the form must exist, the nonce must be valid,
+     * guests only on guest forms, the form must have a field that uploads this way,
+     * and guests are limited per IP and hour.
+     *
+     * @param \WP_REST_Request $request
+     * @param callable         $form_has_field function ($form_id): bool.
+     * @return bool|\WP_Error
+     */
+    public static function check_upload_permission( \WP_REST_Request $request, callable $form_has_field ) {
+        $form_id = (int) $request->get_param( 'form_id' );
+        $all_form_settings = Form::get_form_settings( $form_id );
+        $form_settings = $all_form_settings['form_settings'] ?? [];
+        if ( empty( $form_settings ) || !is_array( $form_settings ) ) {
+            return false;
+        }
+        $nonce = ( $request->get_header( 'X-WP-Nonce' ) ?: (( $request->get_param( 'x-wp-nonce' ) ?: $request->get_param( '_wpnonce' ) )) );
+        if ( !$nonce || !wp_verify_nonce( sanitize_text_field( (string) $nonce ), 'wp_rest' ) ) {
+            return false;
+        }
+        if ( !is_user_logged_in() && !Editor::guest_posting_enabled( $form_settings ) ) {
+            return false;
+        }
+        if ( !$form_has_field( $form_id ) ) {
+            return false;
+        }
+        if ( !is_user_logged_in() && !UploadSecurity::guest_upload_allowed() ) {
+            return new \WP_Error('fus_upload_limit', __( 'Too many uploads, please try again later.', 'front-editor' ), [
+                'status' => 429,
+            ]);
+        }
+        return true;
+    }
+
+    /**
+     * Is an EditorJS option switched on in any EditorJS field of the form
+     *
+     * @param int    $form_id
+     * @param string $option  e.g. editor_carousel_plugin.
+     * @param bool   $default value when the field does not have the option.
+     * @return bool
+     */
+    public static function form_has_editor_js_option( $form_id, $option, $default = false ) {
+        foreach ( Form::get_fields_of_type( $form_id, 'post_content_editor_js' ) as $field ) {
+            $value = ( array_key_exists( $option, $field ) ? $field[$option] : $default );
+            if ( !empty( $value ) && $value !== 'false' ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * EditorJS carousel block uploads
+     */
+    public static function image_upload_permission( \WP_REST_Request $request ) {
+        return self::check_upload_permission( $request, function ( $form_id ) {
+            return self::form_has_editor_js_option( $form_id, 'editor_carousel_plugin' );
+        } );
+    }
+
+    /**
+     * EditorJS attaches block uploads
+     */
+    public static function file_upload_permission( \WP_REST_Request $request ) {
+        return self::check_upload_permission( $request, function ( $form_id ) {
+            return self::form_has_editor_js_option( $form_id, 'editor_attaches_plugin' );
+        } );
+    }
+
+    /**
+     * Featured image and EditorJS image block uploads
+     */
+    public static function thumb_upload_permission( \WP_REST_Request $request ) {
+        return self::check_upload_permission( $request, function ( $form_id ) {
+            return !empty( Form::get_fields_of_type( $form_id, 'featured_image' ) ) || self::form_has_editor_js_option( $form_id, 'editor_image_plugin', true );
+        } );
     }
 
     /**
@@ -100,17 +191,17 @@ class SavePost {
         if ( !isset( $_POST['form_id'] ) ) {
             return false;
         }
-        $form_id = sanitize_text_field( $_POST['form_id'] );
+        $form_id = sanitize_text_field( wp_unslash( $_POST['form_id'] ) );
         $all_form_settings = Form::get_form_settings( $form_id );
-        $form_settings = $all_form_settings['form_settings'];
-        if ( empty( $form_settings ) ) {
+        $form_settings = $all_form_settings['form_settings'] ?? [];
+        if ( empty( $form_settings ) || !is_array( $form_settings ) ) {
             return false;
         }
-        if ( !isset( $_POST['x-wp-nonce'] ) || !wp_verify_nonce( $_POST['x-wp-nonce'], 'wp_rest' ) ) {
+        if ( !isset( $_POST['x-wp-nonce'] ) || !wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['x-wp-nonce'] ) ), 'wp_rest' ) ) {
             return false;
         }
-        $is_user = is_user_logged_in();
-        if ( !is_user_logged_in() && isset( $form_settings['guest_post'] ) && $form_settings['guest_post'] === 'false' ) {
+        // guests only on forms where guest posting is switched on
+        if ( !is_user_logged_in() && !Editor::guest_posting_enabled( $form_settings ) ) {
             return false;
         }
         return true;
@@ -128,6 +219,11 @@ class SavePost {
             wp_send_json_error( 'We can not find image' );
         }
         $upload_info = self::upload_image( $_FILES['image'] );
+        if ( empty( $upload_info['upload']['url'] ) ) {
+            wp_send_json_error( [
+                'message' => __( 'Image type is not supported, please select another image', 'front-editor' ),
+            ] );
+        }
         $string = [
             "success" => 1,
             "file"    => [
@@ -151,9 +247,8 @@ class SavePost {
         require_once ABSPATH . 'wp-admin/includes/file.php';
         $downloaded = '';
         if ( empty( $image ) ) {
-            // download_url() uses wp_safe_remote_get(), no requests to internal hosts
-            $downloaded = download_url( $image_url );
-            if ( is_wp_error( $downloaded ) ) {
+            $downloaded = self::download_image( $image_url );
+            if ( !$downloaded ) {
                 return false;
             }
             $image = [
@@ -187,6 +282,7 @@ class SavePost {
             'post_status'    => 'inherit',
         ];
         $attach_id = wp_insert_attachment( $attachment, $upload['file'], $parent_post_id );
+        self::mark_guest_upload( $attach_id );
         $attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
         wp_update_attachment_metadata( $attach_id, $attach_data );
         return [
@@ -196,33 +292,82 @@ class SavePost {
         ];
     }
 
+    /**
+     * Download an image by URL into a temp file: no internal hosts, limited size
+     *
+     * @param string $image_url
+     * @return string|false temp file path
+     */
+    public static function download_image( $image_url ) {
+        $tmp_file = wp_tempnam( (string) wp_parse_url( $image_url, PHP_URL_PATH ) );
+        if ( !$tmp_file ) {
+            return false;
+        }
+        $max_size = (int) apply_filters( 'bfe_max_image_download_size', min( wp_max_upload_size(), 10 * MB_IN_BYTES ) );
+        $response = wp_safe_remote_get( $image_url, [
+            'timeout'             => 30,
+            'stream'              => true,
+            'filename'            => $tmp_file,
+            'limit_response_size' => $max_size,
+        ] );
+        if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) || !filesize( $tmp_file ) ) {
+            wp_delete_file( $tmp_file );
+            return false;
+        }
+        return $tmp_file;
+    }
+
     public static function upload_file( \WP_REST_Request $request ) {
-        if ( !isset( $_FILES['file'] ) || empty( $_FILES['file'] ) ) {
-            wp_send_json_error( 'We can not find file' );
+        $file = ( isset( $_FILES['file'] ) && is_array( $_FILES['file'] ) ? $_FILES['file'] : [] );
+        if ( empty( $file['tmp_name'] ) || !empty( $file['error'] ) ) {
+            wp_send_json_error( [
+                'message' => __( 'We can not find file', 'front-editor' ),
+            ] );
         }
-        if ( empty( $_FILES['file'] ) ) {
-            wp_send_json_error( 'We can not find file' );
-        }
-        if ( $_FILES['file']['size'] >= 5000000 ) {
-            wp_send_json_error( 'File is too large ' . $_FILES['file']['size'] );
+        if ( (int) $file['size'] >= 5000000 ) {
+            wp_send_json_error( [
+                'message' => __( 'File is too large', 'front-editor' ),
+            ] );
         }
         require_once ABSPATH . 'wp-admin/includes/image.php';
         require_once ABSPATH . 'wp-admin/includes/file.php';
-        require_once ABSPATH . 'wp-admin/includes/media.php';
-        $attach_id = media_handle_upload( 'file', 0 );
-        $attach_info = get_post( $attach_id );
-        $response_arr = [
+        // type from the file content, never from the browser; html/svg/js and other unsafe types are refused
+        $checked = UploadSecurity::validate_file( $file['tmp_name'], (string) $file['name'] );
+        if ( is_wp_error( $checked ) ) {
+            wp_send_json_error( [
+                'message' => $checked->get_error_message(),
+            ] );
+        }
+        $upload = wp_upload_bits( $checked['name'], null, file_get_contents( $file['tmp_name'] ) );
+        if ( !empty( $upload['error'] ) ) {
+            wp_send_json_error( [
+                'message' => $upload['error'],
+            ] );
+        }
+        $title = sanitize_text_field( pathinfo( $checked['name'], PATHINFO_FILENAME ) );
+        $attach_id = wp_insert_attachment( [
+            'post_title'     => $title,
+            'post_mime_type' => $checked['type'],
+            'post_status'    => 'inherit',
+        ], $upload['file'] );
+        if ( is_wp_error( $attach_id ) || !$attach_id ) {
+            wp_send_json_error( [
+                'message' => __( 'Error during upload', 'front-editor' ),
+            ] );
+        }
+        self::mark_guest_upload( $attach_id );
+        wp_update_attachment_metadata( $attach_id, wp_generate_attachment_metadata( $attach_id, $upload['file'] ) );
+        wp_send_json( [
             "success" => 1,
             "file"    => [
-                "url"       => $attach_info->guid,
-                "name"      => $attach_info->post_title,
-                "size"      => $_FILES['file']['size'],
-                "extension" => $_FILES['file']['type'],
-                "title"     => $attach_info->post_title,
+                "url"       => wp_get_attachment_url( $attach_id ),
+                "name"      => $title,
+                "size"      => (int) $file['size'],
+                "extension" => $checked['ext'],
+                "title"     => $title,
                 "attach_id" => $attach_id,
             ],
-        ];
-        wp_send_json( $response_arr );
+        ] );
     }
 
     /**
@@ -235,7 +380,17 @@ class SavePost {
         $form_id = sanitize_text_field( $_POST['form_id'] );
         $all_form_settings = Form::get_form_settings( $form_id );
         $form_settings = $all_form_settings['form_settings'];
-        $page_id = sanitize_text_field( $_POST['page_id'] );
+        $page_id = ( isset( $_POST['page_id'] ) ? intval( $_POST['page_id'] ) : 0 );
+        self::$saving_post_id = 0;
+        // shortcodes from visitors who cannot write posts in wp-admin are shown as text
+        if ( !current_user_can( 'edit_posts' ) ) {
+            add_filter(
+                'wp_insert_post_data',
+                [__CLASS__, 'escape_shortcodes_in_post_data'],
+                10,
+                1
+            );
+        }
         do_action(
             'bfe_ajax_before_post_update_or_creation',
             $post_id,
@@ -260,7 +415,7 @@ class SavePost {
         $post_data['post_status'] = ( isset( $form_settings['fe_post_status'] ) ? sanitize_text_field( $form_settings['fe_post_status'] ) : 'publish' );
         $post_data['comment_status'] = ( isset( $form_settings['comment_status'] ) ? sanitize_text_field( $form_settings['comment_status'] ) : 'open' );
         // If user clicked on save draft
-        if ( $_POST['save_to_draft'] === 'true' ) {
+        if ( isset( $_POST['save_to_draft'] ) && $_POST['save_to_draft'] === 'true' ) {
             $post_data['post_status'] = 'draft';
         }
         /**
@@ -283,8 +438,15 @@ class SavePost {
             if ( isset( $_POST['post_content'] ) && !empty( $_POST['post_content'] ) ) {
                 $post_data['post_content'] = wp_kses_post( $_POST['post_content'] );
             }
+            $can_create = Editor::can_edit_post( $cur_user_id, 'new', $form_id );
+            if ( !$can_create['status'] ) {
+                wp_send_json_error( [
+                    'message' => $can_create['message'],
+                ] );
+            }
             $post_data['post_author'] = $cur_user_id;
             $post_id = self::insert_post( $post_data );
+            self::$saving_post_id = (int) $post_id;
             do_action( 'bfe_ajax_after_front_editor_post_inserted', $post_id, $form_id );
         } else {
             $post_id = intval( $post_id );
@@ -297,7 +459,16 @@ class SavePost {
                     'message' => $can_edit['message'],
                 ] );
             }
+            if ( 'trash' === get_post_status( $post_id ) ) {
+                wp_send_json_error( [
+                    'message' => __( 'This post is in the trash and cannot be edited.', 'front-editor' ),
+                ] );
+            }
             $post_data['ID'] = $post_id;
+            if ( isset( $post_data['post_status'] ) ) {
+                $post_data['post_status'] = self::get_update_status( $post_id, $post_data['post_status'] );
+            }
+            self::$saving_post_id = $post_id;
             self::update_post( $post_id, $post_data );
             do_action( 'bfe_ajax_after_front_editor_post_updated', $post_id, $form_id );
         }
@@ -305,16 +476,19 @@ class SavePost {
          * Adding post thumbnail
          */
         $thumb_img_id = ( isset( $_POST['thumb_img_id'] ) ? intval( sanitize_text_field( $_POST['thumb_img_id'] ) ) : 0 );
-        $thumb_exist = intval( sanitize_text_field( $_POST['thumb_exist'] ) ) ?? 0;
+        $thumb_exist = ( isset( $_POST['thumb_exist'] ) ? intval( sanitize_text_field( $_POST['thumb_exist'] ) ) : 0 );
         if ( !$thumb_img_id ) {
             self::add_post_thumbnail( $post_id, self::fe_sanitize_image() ?? '', $thumb_exist );
-        } else {
+        } elseif ( $thumb_img_id !== (int) get_post_thumbnail_id( $post_id ) && self::can_use_attachment( $thumb_img_id ) && wp_attachment_is_image( $thumb_img_id ) ) {
             set_post_thumbnail( $post_id, $thumb_img_id );
         }
         $update_message = ( isset( $form_settings['update_message'] ) ? $form_settings['update_message'] : __( 'Post updated', 'front-editor' ) );
         $post_added_message = ( isset( $form_settings['post_added_message'] ) ? $form_settings['post_added_message'] : __( 'New post created', 'front-editor' ) );
-        // adding form_id which settings we used to add/edit post
-        update_post_meta( $post_id, 'BFE_the_post_edited_by', $form_id );
+        // form the post was created with: its edit settings (time lock) keep applying, so authors
+        // cannot switch it by editing through another form; editors may move a post to another form
+        if ( $is_new_post || !get_post_meta( $post_id, 'BFE_the_post_edited_by', true ) || current_user_can( 'edit_others_posts' ) ) {
+            update_post_meta( $post_id, 'BFE_the_post_edited_by', (int) $form_id );
+        }
         if ( $page_id ) {
             update_post_meta( $post_id, 'fus_post_created_from_page', $page_id );
         }
@@ -325,6 +499,7 @@ class SavePost {
             $post_data,
             $all_form_settings
         );
+        remove_filter( 'wp_insert_post_data', [__CLASS__, 'escape_shortcodes_in_post_data'], 10 );
         wp_send_json_success( [
             'url'         => get_the_permalink( $post_id ),
             'post_id'     => $post_id,
@@ -469,13 +644,14 @@ class SavePost {
         $attach_id = attachment_url_to_postid( $image_url );
         if ( $attach_id ) {
             $attach = get_post( $attach_id );
-            $medias = get_attached_media( '', $_POST['post_id'] );
+            $medias = get_attached_media( '', (int) $_POST['post_id'] );
             foreach ( $medias as $media ) {
                 if ( $attach_id === $media->ID ) {
                     return false;
                 }
             }
-            if ( $attach->post_author === get_post( $_POST['post_id'] )->post_author ) {
+            $post = get_post( (int) $_POST['post_id'] );
+            if ( $post && (int) $attach->post_author > 0 && (int) $attach->post_author === (int) $post->post_author ) {
                 return false;
             }
             return true;
@@ -515,6 +691,18 @@ class SavePost {
      * @return void
      */
     public static function update_attachment_parent( $media_id, $parent_id ) {
+        if ( is_array( $media_id ) ) {
+            $media_id = $media_id['id'] ?? 0;
+        }
+        $media_id = (int) $media_id;
+        // the post being saved, never the id the browser sent
+        $parent_id = self::$saving_post_id;
+        if ( !$media_id || !$parent_id || !self::can_use_attachment( $media_id ) ) {
+            return;
+        }
+        if ( (int) get_post_field( 'post_parent', $media_id ) === $parent_id ) {
+            return;
+        }
         $media_post = wp_update_post( [
             'ID'          => $media_id,
             'post_parent' => $parent_id,
@@ -525,14 +713,113 @@ class SavePost {
     }
 
     /**
+     * Can the current visitor attach this media to their post or use it as featured image.
+     * Logged in users: own uploads or media they can edit. Guests: only files a guest
+     * uploaded through a form that are not attached to any post yet.
+     *
+     * @param int $attachment_id
+     * @return bool
+     */
+    public static function can_use_attachment( $attachment_id ) {
+        $attachment = get_post( (int) $attachment_id );
+        if ( !$attachment || $attachment->post_type !== 'attachment' ) {
+            return false;
+        }
+        $user_id = get_current_user_id();
+        if ( $user_id > 0 ) {
+            return (int) $attachment->post_author === $user_id || current_user_can( 'edit_post', $attachment->ID );
+        }
+        // unattached files uploaded by this guest browser (marker = hash of its cookie id)
+        $marker = (string) get_post_meta( $attachment->ID, self::GUEST_UPLOAD_META, true );
+        return (int) $attachment->post_author === 0 && (int) $attachment->post_parent === 0 && $marker !== '' && hash_equals( $marker, UploadSecurity::guest_upload_marker() );
+    }
+
+    /**
+     * Mark a file a guest uploaded, so it can be attached to the guest post later
+     *
+     * @param int $attachment_id
+     * @return void
+     */
+    public static function mark_guest_upload( $attachment_id ) {
+        if ( $attachment_id && !is_user_logged_in() ) {
+            update_post_meta( (int) $attachment_id, self::GUEST_UPLOAD_META, UploadSecurity::guest_upload_marker() );
+        }
+    }
+
+    /**
+     * Status of an edited post. Users who cannot publish this post type keep the
+     * current status (pending, private, scheduled) so an edit never undoes moderation;
+     * their own drafts can still be submitted and published posts can go back to draft/pending.
+     *
+     * @param int    $post_id
+     * @param string $status status from the form settings and filters.
+     * @return string
+     */
+    public static function get_update_status( $post_id, $status ) {
+        $post = get_post( $post_id );
+        if ( !$post ) {
+            return $status;
+        }
+        $post_type = get_post_type_object( $post->post_type );
+        if ( $post_type && current_user_can( $post_type->cap->publish_posts ) ) {
+            return $status;
+        }
+        $current = $post->post_status;
+        // held by AI moderation (Pro): only an editor decides, an edit keeps the status
+        $moderation = get_post_meta( $post->ID, '_fus_ai_moderation', true );
+        if ( is_array( $moderation ) && !empty( $moderation['flagged'] ) ) {
+            return $current;
+        }
+        if ( in_array( $current, ['draft', 'auto-draft'], true ) ) {
+            return $status;
+        }
+        if ( $current === 'publish' && in_array( $status, ['draft', 'pending'], true ) ) {
+            return $status;
+        }
+        return $current;
+    }
+
+    /**
+     * Show shortcodes as text: [tag] becomes [[tag]], which WordPress prints as [tag]
+     *
+     * @param array $data slashed post data.
+     * @return array
+     */
+    public static function escape_shortcodes_in_post_data( $data ) {
+        foreach ( ['post_content', 'post_excerpt'] as $key ) {
+            if ( !empty( $data[$key] ) && is_string( $data[$key] ) ) {
+                $data[$key] = self::escape_shortcodes( $data[$key] );
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * @param string $content
+     * @return string
+     */
+    public static function escape_shortcodes( $content ) {
+        if ( strpos( $content, '[' ) === false ) {
+            return $content;
+        }
+        return preg_replace_callback( '/' . get_shortcode_regex() . '/', function ( $match ) {
+            // already escaped [[tag]]
+            if ( $match[1] === '[' && $match[6] === ']' ) {
+                return $match[0];
+            }
+            return '[' . $match[0] . ']';
+        }, $content );
+    }
+
+    /**
      * After post successfully added
      *
      * @return void
      */
     public static function after_post_add_redirect( $post_id, $form_id ) {
-        $form_settings = get_post_meta( $form_id, 'fe_form_settings', true );
-        $insert_post_redirect = $form_settings['post_redirect_to'];
-        $redirect_url = $form_settings['post_redirect_to_link'];
+        $form_settings = (array) get_post_meta( $form_id, 'fe_form_settings', true );
+        $insert_post_redirect = $form_settings['post_redirect_to'] ?? '';
+        $redirect_url = $form_settings['post_redirect_to_link'] ?? '';
         if ( $insert_post_redirect === 'disable' ) {
             return false;
         }
@@ -551,9 +838,9 @@ class SavePost {
      * @return void
      */
     public static function after_post_update_redirect( $post_id, $form_id ) {
-        $form_settings = get_post_meta( $form_id, 'fe_form_settings', true );
-        $insert_post_redirect = $form_settings['post_update_redirect_to'];
-        $redirect_url = $form_settings['post_update_redirect_to_link'];
+        $form_settings = (array) get_post_meta( $form_id, 'fe_form_settings', true );
+        $insert_post_redirect = $form_settings['post_update_redirect_to'] ?? '';
+        $redirect_url = $form_settings['post_update_redirect_to_link'] ?? '';
         if ( $insert_post_redirect === 'disable' ) {
             return false;
         }

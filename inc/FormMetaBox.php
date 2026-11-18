@@ -47,8 +47,8 @@ class FormMetaBox
     {
         if (empty(self::$form_settings)) {
             $all_form_settings = Form::get_form_settings($form_id);
-            $form_settings = $all_form_settings['form_builder_json'] ?? [];
-            self::set_form_settings(json_decode($form_settings, true));
+            $form_settings = json_decode((string) ($all_form_settings['form_builder_json'] ?? ''), true);
+            self::set_form_settings(is_array($form_settings) ? $form_settings : []);
         }
         return self::$form_settings;
     }
@@ -106,8 +106,8 @@ class FormMetaBox
         $style = "border: 2px solid #ffcc00;background:#ffcc000f;border-radius:5px;padding:20px;text-align-center";
         printf(
             __('<div style="%s">We recommend using the front form for post editing. <a href="%s">Edit -></a></div>', 'front-editor'),
-            $style,
-            Editor::get_post_edit_link($post_id)
+            esc_attr($style),
+            esc_url((string) Editor::get_post_edit_link($post_id))
         );
 
         if (!empty($form_fields)) {
@@ -117,7 +117,7 @@ class FormMetaBox
         }
 
         foreach ($post_data as $name => $data) {
-            printf('<p><strong>%s:</strong> %s</p>', $name, $data);
+            printf('<p><strong>%s:</strong> %s</p>', esc_html($name), esc_html($data));
         }
     }
 
@@ -219,25 +219,20 @@ class FormMetaBox
         update_post_meta($post_id, 'fus_user_ip_address', $ip_address);
     }
 
-    static function get_user_ip_address() {
-        // Check for shared internet/proxy user
-        if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
-            // IP from shared internet
-            $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-            // IP passed from proxy
-            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-            // Handle multiple IPs in the forwarded list
-            $ip = explode( ',', $ip )[0];
-        } else {
-            // Remote IP address
-            $ip = $_SERVER['REMOTE_ADDR'];
-        }
-    
-        // Validate IP address format
-        return filter_var( $ip, FILTER_VALIDATE_IP ) ? $ip : '-';
+    /**
+     * IP address of the visitor. Only REMOTE_ADDR: CLIENT_IP / X-Forwarded-For are sent by the
+     * browser and can be anything. Sites behind a proxy can use the bfe_user_ip_address filter.
+     *
+     * @return string
+     */
+    public static function get_user_ip_address()
+    {
+        $ip = isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) : '';
+        $ip = apply_filters('bfe_user_ip_address', $ip);
+
+        return filter_var($ip, FILTER_VALIDATE_IP) ? $ip : '-';
     }
-    
+
 }
 
 FormMetaBox::init();

@@ -26,14 +26,18 @@ class NumberField {
      * @return void
      */
     public static function validate_field_on_front_form_submit( $post_id, $form_id, $all_settings ) {
-        if ( !isset( $_POST['number'] ) ) {
+        if ( !isset( $_POST['number'] ) || !is_array( $_POST['number'] ) ) {
             return;
         }
         foreach ( $_POST['number'] as $name => $value ) {
-            $settings = Form::get_form_field_settings_by_name( $name, $form_id, $all_settings['form_builder_json'] );
-            if ( empty( $value ) && $settings['required'] ) {
+            // only fields of this form are checked (and saved)
+            $settings = Form::get_submitted_field( $form_id, (string) $name, self::$field_type );
+            if ( !$settings ) {
+                continue;
+            }
+            if ( empty( $value ) && !empty( $settings['required'] ) ) {
                 $message = __( 'Please add number field', 'front-editor' );
-                if ( isset( $settings['required_error_text'] ) && !empty( isset( $settings['required_error_text'] ) ) ) {
+                if ( isset( $settings['required_error_text'] ) && !empty( $settings['required_error_text'] ) ) {
                     $message = $settings['required_error_text'];
                 }
                 wp_send_json_error( [
@@ -41,7 +45,7 @@ class NumberField {
                     'message' => $message,
                 ] );
             }
-            if ( empty( $value ) && $settings['required'] || !is_numeric( $value ) && $settings['required'] ) {
+            if ( empty( $value ) && !empty( $settings['required'] ) || !is_numeric( $value ) && !empty( $settings['required'] ) ) {
                 $message = __( 'Please add correct number field', 'front-editor' );
                 wp_send_json_error( [
                     'field'   => $name,
@@ -119,13 +123,24 @@ class NumberField {
      * @param [type] $file
      * @return void
      */
-    public static function save_field_to_front_form( $post_id ) {
+    public static function save_field_to_front_form( $post_id, $form_id = 0 ) {
         if ( !isset( $_POST['number'] ) ) {
             return;
         }
-        foreach ( $_POST['number'] as $name => $value ) {
-            update_post_meta( $post_id, $name, $value );
-        }
+        // only fields of this form, so a visitor cannot write other post meta
+        Form::save_submitted_meta(
+            $post_id,
+            Form::submitted_form_id( $form_id ),
+            $_POST['number'],
+            self::$field_type,
+            function ( $value ) {
+                if ( !is_scalar( $value ) ) {
+                    return null;
+                }
+                $value = trim( (string) $value );
+                return ( $value === '' || is_numeric( $value ) ? $value : null );
+            }
+        );
     }
 
 }

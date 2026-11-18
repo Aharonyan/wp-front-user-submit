@@ -5,7 +5,7 @@ if (isset($field['editor_type'])) {
     $editor_type = $field['editor_type'];
 }
 ?>
-<div class="textarea-field <?= esc_attr($field['name']) ?> <?= $editor_type ?>">
+<div class="textarea-field <?= esc_attr($field['name']) ?> <?= esc_attr($editor_type) ?>">
     <?php
     $placeholder = $field['label'];
     $content = get_post_meta($post_id, $field['name'], true);
@@ -22,7 +22,7 @@ if (isset($field['editor_type'])) {
         $placeholder = $field['placeholder'];
     }
     if (isset($field['maxlength'])) {
-        $max_length = sprintf('maxlength="%s"', $field['maxlength']);
+        $max_length = sprintf('maxlength="%s"', esc_attr($field['maxlength']));
     }
     $required = '';
     if (isset($field['required'])) {
@@ -35,14 +35,14 @@ if (isset($field['editor_type'])) {
     $simple_textarea = sprintf(
         '<textarea id="%s" type="%s" required="%s" rows="%s" name="textarea[%s]" class="%s" placeholder="%s" %s>%s</textarea>',
         esc_attr($field['name']),
-        $field['subtype'] ?? 'textarea',
-        $field['required'],
-        $rows,
+        esc_attr($field['subtype'] ?? 'textarea'),
+        esc_attr($field['required']),
+        esc_attr($rows),
         esc_attr($field['name']),
         esc_attr($field['className']),
         esc_attr($placeholder),
         $max_length,
-        $content
+        esc_textarea((string) $content)
     );
 
     echo $simple_textarea;

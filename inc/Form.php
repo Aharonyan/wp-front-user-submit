@@ -16,6 +16,39 @@ defined('ABSPATH') || exit;
 class Form
 {
     /**
+     * Meta keys a form field may never write to and shortcodes never show:
+     * plugin bookkeeping and WordPress internals
+     */
+    const RESERVED_META_KEYS = [
+        'BFE_the_post_edited_by',
+        'fus_post_created_from_page',
+        'fus_user_ip_address',
+        'fe_post_updated_from_admin',
+        'formBuilderData',
+        'fe_form_settings',
+        'add_to_cart_custom_data',
+        '_fus_ai_moderation',
+        '_fus_seo_description',
+        '_fus_guest_upload',
+        '_thumbnail_id',
+        '_wp_page_template',
+        '_edit_lock',
+        '_edit_last',
+        '_wp_old_slug',
+        '_wp_trash_meta_status',
+        '_wp_trash_meta_time',
+        '_wp_attached_file',
+        '_wp_attachment_metadata',
+    ];
+
+    /**
+     * Decoded formBuilderData per form, for the current request
+     *
+     * @var array
+     */
+    private static $form_fields_cache = [];
+
+    /**
      * Init logic.
      */
     public static function init()
@@ -57,10 +90,7 @@ class Form
         /**
          * Get formBuilder data
          */
-        add_action('wp_ajax_fe_get_formBuilder_data', [__CLASS__, 'fe_get_formBuilder_data']);
-
-        add_action('wp_ajax_save_post_front_settings', [__CLASS__, 'save_post_front_settings']);
-
+        // form builder load/save go through the REST routes below
         add_action('wp_ajax_save_migration_settings', [__CLASS__, 'save_migration_settings']);
 
         add_action('rest_api_init', [__CLASS__, 'new_endpoints']);
@@ -72,18 +102,84 @@ class Form
         register_rest_route('bfe/v1', '/form', [
             'methods' => 'POST',
             'callback' => [__CLASS__, 'fe_get_formBuilder_data'],
-            'permission_callback' => function () {
-                return current_user_can('edit_others_posts');
-            }
+            'permission_callback' => [__CLASS__, 'can_manage_forms']
         ]);
 
         register_rest_route('bfe/v1', '/add-update-form', [
             'methods' => 'POST',
             'callback' => [__CLASS__, 'save_post_front_settings'],
-            'permission_callback' => function () {
-                return current_user_can('edit_others_posts');
-            }
+            'permission_callback' => [__CLASS__, 'can_manage_forms']
         ]);
+    }
+
+    /**
+     * Forms are managed by users with the plugin admin capability (manage_options by default)
+     *
+     * @return bool
+     */
+    public static function can_manage_forms()
+    {
+        return current_user_can(fe_admin_role());
+    }
+
+    /**
+     * Is this post id a form
+     *
+     * @param mixed $post_id
+     * @return bool
+     */
+    public static function is_form($post_id)
+    {
+        return is_numeric($post_id) && (int) $post_id > 0 && get_post_type((int) $post_id) === 'fe_post_form';
+    }
+
+    /**
+     * Clean form builder fields the same way for builder saves and imports
+     *
+     * @param mixed $fields decoded formBuilderData.
+     * @return array
+     */
+    public static function sanitize_form_builder_data($fields)
+    {
+        if (!is_array($fields)) {
+            return [];
+        }
+
+        foreach ($fields as $key => $data_object) {
+            if (!is_array($data_object)) {
+                unset($fields[$key]);
+                continue;
+            }
+            foreach ($data_object as $name => $input) {
+                if (is_string($input)) {
+                    $fields[$key][$name] = self::sanitize_input($input);
+                }
+            }
+        }
+
+        return array_values($fields);
+    }
+
+    /**
+     * Form settings from the builder or an import: an array; users without unfiltered_html
+     * (for example on multisite) cannot store scripts in texts like messages and emails
+     *
+     * @param mixed $settings unslashed settings.
+     * @return array
+     */
+    public static function sanitize_form_settings($settings)
+    {
+        if (!is_array($settings)) {
+            return [];
+        }
+
+        if (current_user_can('unfiltered_html')) {
+            return $settings;
+        }
+
+        return map_deep($settings, function ($value) {
+            return is_string($value) ? wp_kses_post($value) : $value;
+        });
     }
 
     /**
@@ -101,6 +197,9 @@ class Form
             return;
 
         $post_ID = isset($request['post_id']) ? sanitize_text_field($request['post_id']) : false;
+        if ($post_ID && $post_ID !== 'new' && !self::is_form($post_ID)) {
+            $post_ID = false;
+        }
 
         $data = [
             'ajax_url' => admin_url('admin-ajax.php'),
@@ -161,7 +260,7 @@ class Form
         ];
 
 
-        if ($post_ID) {
+        if ($post_ID && $post_ID !== 'new') {
             $data['formBuilderData'] = get_post_meta($post_ID, 'formBuilderData', true);
         }
 
@@ -251,11 +350,11 @@ class Form
                             $form_settings     = get_post_meta($post_ID, 'fe_form_settings', true);
 
                             if ($form_builder_data) {
-                                update_post_meta($new_post_id, 'formBuilderData', $form_builder_data);
+                                update_post_meta($new_post_id, 'formBuilderData', wp_slash($form_builder_data));
                             }
 
                             if ($form_settings) {
-                                update_post_meta($new_post_id, 'fe_form_settings', $form_settings);
+                                update_post_meta($new_post_id, 'fe_form_settings', wp_slash($form_settings));
                             }
                         }
                     }
@@ -344,9 +443,19 @@ class Form
 
         do_action('fe_before_wp_admin_form_create_save', $_POST);
 
-        $title = isset($_POST['fe_title']) ? $_POST['fe_title'] : __('Sample Form', 'front-editor');
+        $title = isset($_POST['fe_title']) ? sanitize_text_field(wp_unslash($_POST['fe_title'])) : __('Sample Form', 'front-editor');
+        $post_ID = 0;
         if (!empty($_POST['post_id']) && $_POST['post_id'] !== 'new') {
             $post_ID = intval(sanitize_text_field($_POST['post_id']));
+            // only forms can be updated here, never other posts
+            if (!self::is_form($post_ID)) {
+                wp_send_json_error([
+                    'message' => [
+                        'title' => __('Form not found', 'front-editor'),
+                        'status' => 'error'
+                    ]
+                ]);
+            }
             wp_update_post([
                 'ID'           => $post_ID,
                 'post_title'   => $title,
@@ -359,8 +468,17 @@ class Form
             ]);
         }
 
-        $form_builder_data = $_POST['formBuilderData'];
-        $form_builder_data_array = json_decode(stripslashes($form_builder_data), true);
+        if (!$post_ID || is_wp_error($post_ID)) {
+            wp_send_json_error([
+                'message' => [
+                    'title' => __('Form not found', 'front-editor'),
+                    'status' => 'error'
+                ]
+            ]);
+        }
+
+        $form_builder_data = $_POST['formBuilderData'] ?? '';
+        $form_builder_data_array = json_decode(stripslashes((string) $form_builder_data), true);
 
         /**
          * Saving data
@@ -376,27 +494,20 @@ class Form
             ]);
         }
 
-        foreach ($form_builder_data_array as $key => $data_object) {
-            if (is_array($data_object) && !empty($data_object)) {
-                foreach ($data_object as $name => $input) {
-                    if (is_string($input)) {
-                        $form_builder_data_array[$key][$name] = self::sanitize_input($input);
-                    }
-                }
-            }
-        }
+        $form_builder_data_array = self::sanitize_form_builder_data($form_builder_data_array);
 
         /**
          * Escaping scripts
          */
         $form_builder_data = json_encode($form_builder_data_array, JSON_UNESCAPED_UNICODE);
-        update_post_meta($post_ID, 'formBuilderData', $form_builder_data);
+        update_post_meta($post_ID, 'formBuilderData', wp_slash($form_builder_data));
+        self::$form_fields_cache = [];
 
         /**
          * Adding all settings to meta fields
          */
         if (!empty($_POST['settings'])) {
-            update_post_meta($post_ID, 'fe_form_settings', $_POST['settings']);
+            update_post_meta($post_ID, 'fe_form_settings', wp_slash(self::sanitize_form_settings(wp_unslash($_POST['settings']))));
         }
 
         wp_send_json_success([
@@ -424,7 +535,18 @@ class Form
 
         check_ajax_referer( 'wp_rest', 'nonce' );
 
-        if (empty($_POST['post_id'])) {
+        if (!self::can_manage_forms()) {
+            wp_send_json_error([
+                'post_id' => '',
+                'message' => [
+                    'title' => __('Sorry, you are not allowed to do that.', 'front-editor'),
+                    'status' => 'error'
+                ],
+                'data' => []
+            ], 403);
+        }
+
+        if (empty($_POST['post_id']) || !self::is_form($_POST['post_id'])) {
             wp_send_json_error([
                 'post_id' => '',
                 'message' => [
@@ -465,19 +587,21 @@ class Form
             }
             $base64_decode = base64_decode($_POST['migrate_value']);
             $migrate_value = json_decode(stripslashes($base64_decode), true);
-            if (!isset($migrate_value['formBuilderData']) || !isset($migrate_value['fe_form_settings'])) {
+            if (!isset($migrate_value['formBuilderData'], $migrate_value['fe_form_settings']) || !is_array($migrate_value['formBuilderData']) || !is_array($migrate_value['fe_form_settings'])) {
                 wp_send_json_error([
                     'post_id' => $post_ID,
                     'message' => [
                         'title' => __('This is not a valid record.', 'front-editor'),
                         'status' => 'error'
                     ],
-                    'data' => $migrate_value
+                    'data' => []
                 ]);
             }
-            $form_builder_data = json_encode($migrate_value['formBuilderData'], JSON_UNESCAPED_UNICODE);
-            update_post_meta($post_ID, 'formBuilderData', $form_builder_data);
-            update_post_meta($post_ID, 'fe_form_settings', $migrate_value['fe_form_settings']);
+            // same cleaning as a save in the form builder
+            $form_builder_data = wp_json_encode(self::sanitize_form_builder_data($migrate_value['formBuilderData']), JSON_UNESCAPED_UNICODE);
+            update_post_meta($post_ID, 'formBuilderData', wp_slash($form_builder_data));
+            update_post_meta($post_ID, 'fe_form_settings', wp_slash(self::sanitize_form_settings($migrate_value['fe_form_settings'])));
+            self::$form_fields_cache = [];
 
             wp_send_json_success([
                 'post_id' => $post_ID,
@@ -496,9 +620,10 @@ class Form
      */
     public static function get_form_settings($form_id = 0)
     {
-        if (!$form_id) {
+        if (!$form_id || !is_numeric($form_id) || get_post_type((int) $form_id) !== 'fe_post_form') {
             return false;
         }
+        $form_id = (int) $form_id;
 
         $form_builder_json = get_post_meta($form_id, 'formBuilderData', true);
         $form_settings = get_post_meta($form_id, 'fe_form_settings', true);
@@ -518,6 +643,158 @@ class Form
     }
 
     /**
+     * @param string $meta_key
+     * @return bool
+     */
+    public static function is_reserved_meta_key($meta_key)
+    {
+        return in_array((string) $meta_key, self::RESERVED_META_KEYS, true);
+    }
+
+    /**
+     * Fields of a form, read from the saved form only (never from the request)
+     *
+     * @param int $form_id
+     * @return array
+     */
+    public static function get_form_fields($form_id)
+    {
+        $form_id = (int) $form_id;
+        if (!$form_id || get_post_type($form_id) !== 'fe_post_form') {
+            return [];
+        }
+
+        if (!isset(self::$form_fields_cache[$form_id])) {
+            $fields = json_decode((string) get_post_meta($form_id, 'formBuilderData', true), true);
+            self::$form_fields_cache[$form_id] = is_array($fields) ? array_values(array_filter($fields, 'is_array')) : [];
+        }
+
+        return self::$form_fields_cache[$form_id];
+    }
+
+    /**
+     * Settings of the form field a submitted value belongs to.
+     * Visitors send values as group[name] => value; only names of fields that the form
+     * really has (with one of the given types) may be saved, so a visitor cannot write
+     * any other post meta.
+     *
+     * @param int          $form_id
+     * @param string       $name  submitted field name (the meta key).
+     * @param string|array $types allowed field types.
+     * @return array|false
+     */
+    public static function get_submitted_field($form_id, $name, $types)
+    {
+        if (!is_string($name) || $name === '' || self::is_reserved_meta_key($name)) {
+            return false;
+        }
+
+        foreach (self::get_form_fields($form_id) as $field) {
+            if (isset($field['name'], $field['type']) && $field['name'] === $name && in_array($field['type'], (array) $types, true)) {
+                return $field;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Save the values a visitor sent for one field group ($_POST['textarea'], $_POST['text_fields'] ...).
+     * Only names of form fields with the given types are saved, each value through $sanitize.
+     *
+     * @param int          $post_id
+     * @param int          $form_id
+     * @param mixed        $values   slashed request values keyed by field name.
+     * @param string|array $types    field types of this group.
+     * @param callable     $sanitize function ($unslashed_value, $field) returning the value to store, or null to skip.
+     * @return void
+     */
+    public static function save_submitted_meta($post_id, $form_id, $values, $types, callable $sanitize)
+    {
+        if (!is_array($values) || !$post_id) {
+            return;
+        }
+
+        foreach ($values as $name => $value) {
+            $field = self::get_submitted_field($form_id, (string) $name, $types);
+            if (!$field) {
+                continue;
+            }
+
+            $clean = $sanitize(wp_unslash($value), $field);
+            if ($clean === null) {
+                continue;
+            }
+
+            update_post_meta($post_id, (string) $name, wp_slash($clean));
+        }
+    }
+
+    /**
+     * Form id of the current submission (checked by the REST permission callback)
+     *
+     * @param int $form_id id passed by the hook, if any.
+     * @return int
+     */
+    public static function submitted_form_id($form_id = 0)
+    {
+        if ($form_id) {
+            return (int) $form_id;
+        }
+
+        return isset($_POST['form_id']) ? (int) $_POST['form_id'] : 0;
+    }
+
+    /**
+     * One-line text value
+     *
+     * @param mixed $value
+     * @return string|null
+     */
+    public static function sanitize_text_value($value)
+    {
+        return is_scalar($value) ? sanitize_text_field((string) $value) : null;
+    }
+
+    /**
+     * Value of a select/checkbox/radio group: ['ids' => string|array, ...]; sends an error when a required one is empty
+     *
+     * @param mixed $value
+     * @param array $field
+     * @return string|array|null
+     */
+    public static function sanitize_choice_value($value, array $field)
+    {
+        $ids = is_array($value) && isset($value['ids']) ? $value['ids'] : null;
+        $is_empty = $ids === null || $ids === '' || $ids === 'null' || $ids === [];
+
+        if ($is_empty && !empty($field['required'])) {
+            /* Translators: field label */
+            wp_send_json_error(['field' => $field['name'], 'message' => sprintf(__('%s is required', 'front-editor'), esc_html($field['label'] ?? $field['name']))]);
+        }
+
+        if (is_array($ids)) {
+            return array_values(array_map('sanitize_text_field', array_filter($ids, 'is_scalar')));
+        }
+
+        return is_scalar($ids) ? sanitize_text_field((string) $ids) : null;
+    }
+
+    /**
+     * Fields of a form with one of the given types
+     *
+     * @param int          $form_id
+     * @param string|array $types
+     * @return array
+     */
+    public static function get_fields_of_type($form_id, $types)
+    {
+        return array_values(array_filter(self::get_form_fields($form_id), function ($field) use ($types) {
+            return isset($field['type']) && in_array($field['type'], (array) $types, true);
+        }));
+    }
+
+    /**
      * sanitizing inputs saving from admin 
      *
      * @param string $input
@@ -525,14 +802,11 @@ class Form
      */
     public static function sanitize_input($input)
     {
-        // Remove `<script>` and any script content
+        // Remove `<script>` and any script content; JSON escaping is done by wp_json_encode()
         $sanitized = preg_replace('/<\s*script[\s\S]*?>[\s\S]*?<\s*\/\s*script\s*>/i', '', $input);
         $sanitized = sanitize_text_field($sanitized);
-        $escapers = ["\\", "/", "\"", "\n", "\r", "\t", "\x08", "\x0c", '"', "\f", "\&gt;", "&gt;", "&lt;"];
-        $replacements = ["\\\\", "\/", "\\\"", "\\n", "\\r", "\\t", "\\f", "\\b", '', '\\f', "", "", ""];
-        $sanitized = str_replace($escapers, $replacements, $sanitized);
 
-        return $sanitized;
+        return str_replace(['&gt;', '&lt;'], '', $sanitized);
     }
 
     /**

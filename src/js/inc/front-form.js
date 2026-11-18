@@ -30,10 +30,16 @@ export default (form, $, SlimSelect, Swal) => {
     /**
      * On form submit
      */
+    /**
+     * EditorJS writes its data into the hidden input asynchronously, wait for it
+     */
+    const save_editors = () => (typeof window.fe_editorjs_save_all === 'function' ? window.fe_editorjs_save_all() : Promise.resolve());
+
     saveButton.forEach((element) => {
-        element.addEventListener('click', (ev) => {
+        element.addEventListener('click', async (ev) => {
             ev.preventDefault()
             window.fe_hooks.do_action('on_post_form_save')
+            await save_editors()
             save_data()
         })
     });
@@ -42,9 +48,10 @@ export default (form, $, SlimSelect, Swal) => {
      * On form draft submit
      */
     saveDraftButton.forEach((element) => {
-        element.addEventListener('click', (ev) => {
+        element.addEventListener('click', async (ev) => {
             ev.preventDefault()
             window.fe_hooks.do_action('on_post_form_save')
+            await save_editors()
             save_data(true)
         })
     });

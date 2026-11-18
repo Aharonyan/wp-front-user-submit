@@ -18,18 +18,27 @@ class GoogleRecaptcha {
         if ( empty( $settings ) ) {
             return;
         }
-        if ( !isset( $_POST['g-recaptcha-response'] ) ) {
-            return;
-        }
-        $captcha = $_POST['g-recaptcha-response'];
-        $private_key = $settings['recaptcha_secret_key'];
-        $response = file_get_contents( "https://www.google.com/recaptcha/api/siteverify?secret={$private_key}&response={$captcha}" );
-        $responseKeys = json_decode( $response, true );
         $error_message = 'Please complete the captcha properly.';
         if ( isset( $settings['recaptcha_error_message'] ) && !empty( $settings['recaptcha_error_message'] ) ) {
             $error_message = $settings['recaptcha_error_message'];
         }
-        if ( intval( $responseKeys["success"] ) !== 1 ) {
+        // the form has a captcha: a request without an answer is refused
+        $captcha = ( isset( $_POST['g-recaptcha-response'] ) && is_string( $_POST['g-recaptcha-response'] ) ? sanitize_text_field( wp_unslash( $_POST['g-recaptcha-response'] ) ) : '' );
+        if ( $captcha === '' ) {
+            wp_send_json_error( [
+                'field'   => self::$field_type,
+                'message' => $error_message,
+            ] );
+        }
+        $response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', [
+            'timeout' => 15,
+            'body'    => [
+                'secret'   => (string) ($settings['recaptcha_secret_key'] ?? ''),
+                'response' => $captcha,
+            ],
+        ] );
+        $responseKeys = ( is_wp_error( $response ) ? [] : json_decode( wp_remote_retrieve_body( $response ), true ) );
+        if ( empty( $responseKeys['success'] ) ) {
             wp_send_json_error( [
                 'field'   => self::$field_type,
                 'message' => $error_message,

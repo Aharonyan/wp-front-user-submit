@@ -1,4 +1,4 @@
-<div class="fe_custom_field <?= $field['name'] ?>">
+<div class="fe_custom_field <?= esc_attr($field['name']) ?>">
     <?php
     
     $custom_keys = get_post_custom_keys($post_id);
@@ -12,7 +12,7 @@
     printf(
         '<input type="hidden" name="hidden_fields[%s]" value="%s">',
         esc_attr($field['name']),
-        $value,
+        esc_attr((string) $value)
     );
     ?>
 </div>

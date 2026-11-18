@@ -26,14 +26,18 @@ class RadioGroupField {
      * @return void
      */
     public static function validate_field_on_front_form_submit( $post_id, $form_id, $all_settings ) {
-        if ( !isset( $_POST['radio'] ) ) {
+        if ( !isset( $_POST['radio'] ) || !is_array( $_POST['radio'] ) ) {
             return;
         }
         foreach ( $_POST['radio'] as $name => $value ) {
-            $settings = Form::get_form_field_settings_by_name( $name, $form_id, $all_settings['form_builder_json'] );
-            if ( (!isset( $value['ids'] ) || empty( $value['ids'] )) && $settings['required'] ) {
+            // only fields of this form are checked (and saved)
+            $settings = Form::get_submitted_field( $form_id, (string) $name, self::$field_type );
+            if ( !$settings ) {
+                continue;
+            }
+            if ( (!isset( $value['ids'] ) || empty( $value['ids'] )) && !empty( $settings['required'] ) ) {
                 $message = __( 'Please add radio field', 'front-editor' );
-                if ( isset( $settings['required_error_text'] ) && !empty( isset( $settings['required_error_text'] ) ) ) {
+                if ( isset( $settings['required_error_text'] ) && !empty( $settings['required_error_text'] ) ) {
                     $message = $settings['required_error_text'];
                 }
                 wp_send_json_error( [
@@ -94,20 +98,18 @@ class RadioGroupField {
      * @param [type] $file
      * @return void
      */
-    public static function save_field_to_front_form( $post_id ) {
+    public static function save_field_to_front_form( $post_id, $form_id = 0 ) {
         if ( !isset( $_POST['radio'] ) ) {
             return;
         }
-        foreach ( $_POST['radio'] as $name => $value ) {
-            if ( $value['required'] === '1' && $value['ids'] === 'null' ) {
-                /* Translators: filed is required */
-                wp_send_json_error( [
-                    'field'   => self::$field_type,
-                    'message' => sprintf( __( '%s is required', 'front-editor' ), $value['label'] ),
-                ] );
-            }
-            update_post_meta( $post_id, $name, $value['ids'] );
-        }
+        // only fields of this form, so a visitor cannot write other post meta
+        Form::save_submitted_meta(
+            $post_id,
+            Form::submitted_form_id( $form_id ),
+            $_POST['radio'],
+            self::$field_type,
+            ['\\BFE\\Form', 'sanitize_choice_value']
+        );
     }
 
 }

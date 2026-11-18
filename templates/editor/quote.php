@@ -1,10 +1,6 @@
 <?php
-    if ($data['alignment'] == 'center') {
-        $centerClass = 'bfe-quote--center';
-    } else {
-        $centerClass = '';
-    }
+    $centerClass = (isset($data['alignment']) && $data['alignment'] === 'center') ? 'bfe-quote--center' : '';
 ?>
 <!-- wp:quote -->
-<blockquote class="wp-block-quote bfe-quote <?= $centerClass ?>"><cite><?= $data['text'] ?></cite><p><?= $data['caption'] ?></p></blockquote>
+<blockquote class="wp-block-quote bfe-quote <?= esc_attr($centerClass) ?>"><cite><?= wp_kses_post($data['text'] ?? '') ?></cite><p><?= wp_kses_post($data['caption'] ?? '') ?></p></blockquote>
 <!-- /wp:quote -->

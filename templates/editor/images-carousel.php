@@ -21,20 +21,20 @@ ob_start();
 <figure class="wp-block-gallery columns-2">
     <ul class="blocks-gallery-grid">
         <?php foreach ($images as $image) :
-            $image_id = attachment_url_to_postid( $image['url'] );
+            $image_id = attachment_url_to_postid( (string) ($image['url'] ?? '') );
             $clean_img_ids[] = $image_id;
             $attachment_url = wp_get_attachment_image_url($image_id, 'large');
 
-            do_action('fe_before_gallery_block_images_html_render', $image_id, $_POST['post_id']);
+            do_action('fe_before_gallery_block_images_html_render', $image_id, \BFE\SavePost::$saving_post_id);
         ?>
             <li class="blocks-gallery-item">
                 <?php
                 printf(
                     '<figure><img src="%s" alt="" class="wp-image-%s" data-id="%s" data-full-url="%s" data-link="http://front-editor.local/?attachment_id=%s"></figure>',
-                    $attachment_url,
+                    esc_url((string) $attachment_url),
                     $image_id,
                     $image_id,
-                    $attachment_url,
+                    esc_url((string) $attachment_url),
                     $image_id
                 );
                 ?>

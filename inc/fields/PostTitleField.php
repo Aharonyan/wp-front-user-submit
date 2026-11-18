@@ -76,11 +76,15 @@ class PostTitleField {
      * @return void
      */
     public static function validate_field_on_front_form_submit( $post_id, $form_id, $all_settings ) {
-        $settings = Form::get_form_field_settings_by_type( self::$field_type, $form_id, $all_settings['form_builder_json'] );
+        $fields = Form::get_fields_of_type( $form_id, self::$field_type );
+        if ( empty( $fields ) ) {
+            return;
+        }
+        $settings = $fields[0];
         if ( !isset( $settings['generate_title'] ) ) {
-            if ( empty( $_POST['post_title'] ) && $settings['required'] ) {
+            if ( empty( $_POST['post_title'] ) && !empty( $settings['required'] ) ) {
                 $message = __( 'Please add post title', 'front-editor' );
-                if ( isset( $settings['required_error_text'] ) && !empty( isset( $settings['required_error_text'] ) ) ) {
+                if ( !empty( $settings['required_error_text'] ) ) {
                     $message = $settings['required_error_text'];
                 }
                 wp_send_json_error( [
@@ -88,10 +92,10 @@ class PostTitleField {
                     'message' => $message,
                 ] );
             }
-            $post_title = sanitize_text_field( $_POST['post_title'] );
+            $post_title = ( isset( $_POST['post_title'] ) && is_scalar( $_POST['post_title'] ) ? sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) : '' );
             if ( empty( $post_title ) ) {
                 $message = __( 'Please add correct post title', 'front-editor' );
-                if ( isset( $settings['not_correct_post_title_text'] ) && !empty( isset( $settings['not_correct_post_title_text'] ) ) ) {
+                if ( !empty( $settings['not_correct_post_title_text'] ) ) {
                     $message = $settings['not_correct_post_title_text'];
                 }
                 wp_send_json_error( [

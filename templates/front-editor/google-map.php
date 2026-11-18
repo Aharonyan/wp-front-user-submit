@@ -1,4 +1,4 @@
-<div class="fe_custom_field <?= $field['name'] ?>">
+<div class="fe_custom_field <?= esc_attr($field['name']) ?>">
     <?php
     $placeholder = __('Write your address');
     if (isset($field['placeholder'])) {
@@ -32,7 +32,7 @@
         '<input class="google-map" type="hidden" required="%s" name="google_map[%s]"  value="%s">',
         $field['required'],
         esc_attr($field['name']),
-        htmlspecialchars($value),
+        esc_attr((string) $value)
     );
 
     printf(
@@ -42,7 +42,7 @@
         esc_attr($field['name']),
         isset($field['className']) ? esc_attr($field['className'] . ' autocomplete') : ' autocomplete',
         esc_attr($placeholder),
-        $country_code,
+        esc_attr($country_code)
     );
 
     if (isset($field['description'])) {

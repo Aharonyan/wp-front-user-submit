@@ -21,7 +21,7 @@ if (isset($field['required'])) {
 <div class="radio-wrap <?= $field['type'] ?> <?= $field['name'] ?>">
     <label for="<?= $field['type'] ?>"><?php echo esc_html($field['label']); ?> <?= $required ?></label>
     <input type="hidden" name="<?= sprintf('radio[%s][required]', $field['name']) ?>" value="<?= $field['required'] ? 1 : 0 ?>">
-    <input type="hidden" name="<?= sprintf('radio[%s][label]', $field['name']) ?>" value="<?= $field['label'] ?>">
+    <input type="hidden" name="<?= sprintf('radio[%s][label]', $field['name']) ?>" value="<?= esc_attr($field['label']) ?>">
 
     <?php
     foreach ($field['values'] as $radio_item) {

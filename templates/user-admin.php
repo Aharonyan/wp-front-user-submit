@@ -88,7 +88,7 @@ $all_user_post_label = isset($options['show_all_user_post_link']['label']) ? $op
                             
                             <?php if (!isset($options['remove_post_icon']['checked'])) { ?>
                                 <div class="fe_fs_delete__btn">
-                                    <a class="link-icon" href="<?php printf('?delete_post=%s', $post_id); ?>" title="<?= __('Delete Post', 'front-editor') ?>" onclick="return confirm('<?= __('Are you sure you want to delete this post?', 'front-editor') ?>')">
+                                    <a class="link-icon" href="<?= esc_url(\BFE\UserAdmin::get_delete_link($post_id)) ?>" title="<?= __('Delete Post', 'front-editor') ?>" onclick="return confirm('<?= __('Are you sure you want to delete this post?', 'front-editor') ?>')">
                                         <img class="fe_fs_icon" src="<?= FE_PLUGIN_URL . '/assets/img/delete.png' ?>" alt="Delete" />
                                     </a>
                                 </div>

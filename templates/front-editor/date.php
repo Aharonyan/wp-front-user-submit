@@ -1,4 +1,4 @@
-<div class="fe_custom_field <?= $field['name'] ?>">
+<div class="fe_custom_field <?= esc_attr($field['name']) ?>">
     <?php
 
     $placeholder = $field['label'];
@@ -41,14 +41,14 @@
     
     printf(
         '<input type="%s" required="%s" name="date[%s]" class="%s" value="%s" min="%s" max="%s" step="%s">',
-        $field['subtype'],
-        $field['required'],
+        esc_attr($field['subtype']),
+        esc_attr($field['required']),
         esc_attr($field['name']),
         esc_attr($field['className']),
-        $value,
-        $min,
-        $max,
-        $step
+        esc_attr((string) $value),
+        esc_attr($min),
+        esc_attr($max),
+        esc_attr($step)
     );
     if (isset($field['description'])) {
         printf('<p class="fus-custom-field-description %s">%s</p>', esc_attr($field['name']), esc_attr($field['description']));

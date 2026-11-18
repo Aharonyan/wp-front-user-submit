@@ -26,17 +26,21 @@ class SelectField {
         $form_id,
         $all_settings
     ) {
-        if ( !isset( $data['select'] ) || empty( $data['select'] ) ) {
+        if ( empty( $data['select'] ) || !is_array( $data['select'] ) ) {
             return $post_data;
         }
         foreach ( $data['select'] as $name => $value ) {
-            $settings = Form::get_form_field_settings_by_name( $name, $form_id, $all_settings['form_builder_json'] );
+            // only fields of this form are checked (and saved)
+            $settings = Form::get_submitted_field( $form_id, (string) $name, self::$field_type );
+            if ( !$settings ) {
+                continue;
+            }
             $is_value_empty = false;
             if ( empty( $value['ids'] ) || $value['ids'] == 'null' ) {
                 $is_value_empty = true;
             }
-            if ( $settings['required'] && $is_value_empty ) {
-                $message = sprintf( __( 'The %s selection is required', 'front-editor' ), $value['label'] );
+            if ( !empty( $settings['required'] ) && $is_value_empty ) {
+                $message = sprintf( __( 'The %s selection is required', 'front-editor' ), $settings['label'] ?? $name );
                 if ( isset( $settings['required_error_text'] ) && !empty( $settings['required_error_text'] ) ) {
                     $message = $settings['required_error_text'];
                 }
@@ -46,7 +50,6 @@ class SelectField {
                     'message' => $message,
                 ] );
             }
-            update_post_meta( $post_id, $name, $value['ids'] );
         }
         return $post_data;
     }
@@ -116,20 +119,18 @@ class SelectField {
      * @param [type] $file
      * @return void
      */
-    public static function save_field_to_front_form( $post_id ) {
+    public static function save_field_to_front_form( $post_id, $form_id = 0 ) {
         if ( !isset( $_POST['select'] ) ) {
             return;
         }
-        foreach ( $_POST['select'] as $name => $value ) {
-            if ( $value['required'] === '1' && $value['ids'] === 'null' ) {
-                /* Translators: filed is required */
-                wp_send_json_error( [
-                    'field'   => self::$field_type,
-                    'message' => sprintf( __( '%s is required', 'front-editor' ), $value['label'] ),
-                ] );
-            }
-            update_post_meta( $post_id, $name, $value['ids'] );
-        }
+        // only fields of this form, so a visitor cannot write other post meta
+        Form::save_submitted_meta(
+            $post_id,
+            Form::submitted_form_id( $form_id ),
+            $_POST['select'],
+            self::$field_type,
+            ['\\BFE\\Form', 'sanitize_choice_value']
+        );
     }
 
 }

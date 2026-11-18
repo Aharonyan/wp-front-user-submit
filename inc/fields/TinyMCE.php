@@ -145,34 +145,55 @@ class TinyMCE {
     public static function save_field_to_front_form(
         $post_id,
         $form_id,
-        $post_data,
-        $settings
+        $post_data = [],
+        $all_settings = []
     ) {
-        if ( empty( $_POST['tinymce'] ) ) {
+        if ( empty( $_POST['tinymce'] ) || !is_array( $_POST['tinymce'] ) ) {
             return;
         }
         foreach ( $_POST['tinymce'] as $name => $content ) {
-            $content = wp_kses_post( $content );
-            $settings = Form::get_form_field_settings_by_name( $name, $form_id, $settings['form_builder_json'] );
-            $post_data = [
-                'ID' => $post_id,
-            ];
-            if ( isset( $settings['save_to'] ) && !empty( $settings['save_to'] ) ) {
-                if ( $settings['save_to'] === 'post_content' ) {
-                    $post_data['post_content'] = $content;
-                    wp_update_post( $post_data );
-                } elseif ( $settings['save_to'] === 'post_excerpt' ) {
-                    $post_data['post_excerpt'] = sanitize_text_field( $content );
-                    wp_update_post( $post_data );
-                } else {
-                    update_post_meta( $post_id, $name, $content );
-                }
-            } elseif ( $settings['post_content'] === true ) {
-                $post_data['post_content'] = $content;
-                wp_update_post( $post_data );
-            } else {
-                update_post_meta( $post_id, $name, $content );
+            // only TinyMCE fields of this form, so a visitor cannot write other post meta
+            $settings = Form::get_submitted_field( $form_id, (string) $name, self::$field_type );
+            if ( !$settings || !is_scalar( $content ) ) {
+                continue;
             }
+            self::save_editor_content(
+                $post_id,
+                $name,
+                wp_kses_post( wp_unslash( (string) $content ) ),
+                $settings
+            );
+        }
+    }
+
+    /**
+     * Save editor HTML to post content, excerpt or meta as the field is set up
+     *
+     * @param int    $post_id
+     * @param string $name     field name (meta key).
+     * @param string $content  clean, unslashed HTML.
+     * @param array  $settings field settings.
+     * @return void
+     */
+    public static function save_editor_content(
+        $post_id,
+        $name,
+        $content,
+        array $settings
+    ) {
+        $save_to = ( !empty( $settings['save_to'] ) ? $settings['save_to'] : (( !empty( $settings['post_content'] ) ? 'post_content' : 'post_meta' )) );
+        if ( $save_to === 'post_content' ) {
+            wp_update_post( wp_slash( [
+                'ID'           => $post_id,
+                'post_content' => $content,
+            ] ) );
+        } elseif ( $save_to === 'post_excerpt' ) {
+            wp_update_post( wp_slash( [
+                'ID'           => $post_id,
+                'post_excerpt' => sanitize_text_field( $content ),
+            ] ) );
+        } else {
+            update_post_meta( $post_id, $name, wp_slash( $content ) );
         }
     }
 
@@ -184,14 +205,18 @@ class TinyMCE {
      * @return void
      */
     public static function validate_field_on_front_form_submit( $post_id, $form_id, $all_settings ) {
-        if ( !isset( $_POST['tinymce'] ) ) {
+        if ( !isset( $_POST['tinymce'] ) || !is_array( $_POST['tinymce'] ) ) {
             return;
         }
         foreach ( $_POST['tinymce'] as $name => $value ) {
-            $settings = Form::get_form_field_settings_by_name( $name, $form_id, $all_settings['form_builder_json'] );
-            if ( empty( $value ) && $settings['required'] ) {
+            // only fields of this form are checked (and saved)
+            $settings = Form::get_submitted_field( $form_id, (string) $name, self::$field_type );
+            if ( !$settings ) {
+                continue;
+            }
+            if ( empty( $value ) && !empty( $settings['required'] ) ) {
                 $message = __( 'Please add editor field', 'front-editor' );
-                if ( isset( $settings['required_error_text'] ) && !empty( isset( $settings['required_error_text'] ) ) ) {
+                if ( isset( $settings['required_error_text'] ) && !empty( $settings['required_error_text'] ) ) {
                     $message = $settings['required_error_text'];
                 }
                 wp_send_json_error( [

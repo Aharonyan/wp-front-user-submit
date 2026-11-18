@@ -65,9 +65,13 @@ class Notifications
 
         $post_array = get_post($post_id, 'ARRAY_A');
 
-        $user_info = get_userdata($post_array['post_author']);
-
         if (empty($post_array)) {
+            return;
+        }
+
+        // guest posts have no author account, so there is nobody to send the author email to
+        $user_info = get_userdata((int) $post_array['post_author']);
+        if (!$user_info || empty($user_info->user_email)) {
             return;
         }
 
@@ -127,28 +131,34 @@ class Notifications
             return;
         }
 
-        $args = [
+        // Values can come from guests: escape them for the HTML message, strip tags for the subject
+        $values = [
             'sitename' => get_bloginfo('name'),
             'siteurl' => home_url(),
             'post_title' => $post_array['post_title'],
             'post_content' => apply_filters('the_content', $post_array['post_content']),
             'post_status' => $post_array['post_status'],
-            'post_admin_link' => get_edit_post_link($post_id),
-            'post_link' => get_permalink($post_id),
-            'author_name' => get_the_author_meta('user_nicename', $post_array['post_author'])
+            'post_admin_link' => (string) get_edit_post_link($post_id, 'raw'),
+            'post_link' => (string) get_permalink($post_id),
+            'author_name' => (string) get_the_author_meta('user_nicename', $post_array['post_author'])
         ];
 
-        $message = $settings['message'];
-        // Replace variables in text
-        foreach ($args as $key => $value) {
-            $message = preg_replace(sprintf('/\[%s]/', $key), $value, $message);
+        $html_values = [];
+        $text_values = [];
+        foreach ($values as $key => $value) {
+            $tag = sprintf('[%s]', $key);
+            if ($key === 'post_content') {
+                $html_values[$tag] = wp_kses_post($value);
+            } elseif (in_array($key, ['siteurl', 'post_admin_link', 'post_link'], true)) {
+                $html_values[$tag] = esc_url($value);
+            } else {
+                $html_values[$tag] = esc_html($value);
+            }
+            $text_values[$tag] = wp_strip_all_tags($value);
         }
 
-        $subject = $settings['subject'];
-        // the same for subject
-        foreach ($args as $key => $value) {
-            $subject = preg_replace(sprintf('/\[%s]/', $key), $value, $subject);
-        }
+        $message = strtr((string) $settings['message'], $html_values);
+        $subject = strtr((string) $settings['subject'], $text_values);
 
         $headers = [
             'Content-Type: text/html; charset=UTF-8',

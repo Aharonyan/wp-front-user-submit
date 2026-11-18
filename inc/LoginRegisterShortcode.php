@@ -156,7 +156,7 @@ class LoginRegisterShortcodes
     public static function ajax_login_handler()
     {
         // Verify nonce
-        if (!wp_verify_nonce($_POST['nonce'], 'fus_ajax_nonce')) {
+        if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'fus_ajax_nonce')) {
             wp_send_json_error([
                 'message' => __('Security error, please refresh page', 'front-editor')
             ]);
@@ -177,7 +177,7 @@ class LoginRegisterShortcodes
     public static function ajax_register_handler()
     {
         // Verify nonce
-        if (!wp_verify_nonce($_POST['nonce'], 'fus_ajax_nonce')) {
+        if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'fus_ajax_nonce')) {
             wp_send_json_error([
                 'message' => __('Security error, please refresh page', 'front-editor')
             ]);
@@ -231,7 +231,7 @@ class LoginRegisterShortcodes
         return [
             'success' => true,
             'message' => __('Login successful', 'front-editor'),
-            'redirect' => !empty($data['redirect']) ? $data['redirect'] : home_url()
+            'redirect' => !empty($data['redirect']) ? wp_validate_redirect(esc_url_raw(wp_unslash($data['redirect'])), home_url()) : home_url()
         ];
     }
 
@@ -278,6 +278,14 @@ class LoginRegisterShortcodes
      */
     private static function process_register($data)
     {
+        // same switch as wp-login.php: Settings -> General -> Anyone can register
+        if (!get_option('users_can_register')) {
+            return [
+                'success' => false,
+                'message' => __('User registration is currently not allowed.', 'front-editor')
+            ];
+        }
+
         if (empty($data['fus_username'])) {
             return [
                 'success' => false,
@@ -322,7 +330,7 @@ class LoginRegisterShortcodes
         return [
             'success' => true,
             'message' => __('Registration successful. Your password will be sent via email shortly.', 'front-editor'),
-            'redirect' => !empty($data['redirect']) ? $data['redirect'] : home_url()
+            'redirect' => !empty($data['redirect']) ? wp_validate_redirect(esc_url_raw(wp_unslash($data['redirect'])), home_url()) : home_url()
         ];
     }
 

@@ -63,7 +63,7 @@ if (isset($field['required'])) {
 ?>
 <div class="select-wrap <?= $field['type'] ?>">
     <input type="hidden" name="<?= sprintf('tax[%s][required]', $tax_name) ?>" value="<?= $field['required'] ? 1 : 0 ?>">
-    <input type="hidden" name="<?= sprintf('tax[%s][default_terms]', $tax_name) ?>" value="<?= !empty($field['default_terms']) ? $field['default_terms'] : '' ?>">
+    <input type="hidden" name="<?= sprintf('tax[%s][default_terms]', $tax_name) ?>" value="<?= !empty($field['default_terms']) ? esc_attr($field['default_terms']) : '' ?>">
     <label for="<?= $field['type'] ?>"><?php echo esc_html($field['label']); ?> <?= $required ?></label>
     <?php
     printf(

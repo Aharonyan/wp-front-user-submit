@@ -41,12 +41,45 @@ class Shortcodes
         $post_id = intval($atts['post_id']);
         $field_name = sanitize_text_field($atts['name']);
 
+        if (!self::can_show_post_meta($post_id, $field_name)) {
+            return '';
+        }
+
         $field_value = get_post_meta($post_id, $field_name, true);
 
         // Apply filters to allow further customization
         $field_value = apply_filters('fus_display_field_value', $field_value, $field_name, $post_id);
 
-        return esc_html($field_value);
+        return is_scalar($field_value) ? esc_html($field_value) : '';
+    }
+
+    /**
+     * Can a meta value of a post be shown by a shortcode to the current visitor.
+     * Shortcodes can be placed in content by authors, so they must not reveal
+     * private data: protected or plugin internal keys, meta of posts the visitor cannot read.
+     *
+     * @param int    $post_id
+     * @param string $meta_key
+     * @return bool
+     */
+    public static function can_show_post_meta($post_id, $meta_key)
+    {
+        $post_id = (int) $post_id;
+        $meta_key = (string) $meta_key;
+
+        if (!$post_id || $meta_key === '' || !get_post($post_id)) {
+            return false;
+        }
+
+        if (is_protected_meta($meta_key, 'post') || Form::is_reserved_meta_key($meta_key)) {
+            return false;
+        }
+
+        if (current_user_can('edit_post', $post_id)) {
+            return true;
+        }
+
+        return is_post_publicly_viewable($post_id) && !post_password_required($post_id);
     }
     
     /**

@@ -30,7 +30,15 @@ export default (
             FilePond.setOptions({
                 server: {
                     url: formData.get_rest_url,
-                    process: '/process',
+                    // the REST routes check the form and the nonce
+                    headers: { 'X-WP-Nonce': formData.nonce },
+                    process: {
+                        url: '/process',
+                        ondata: (data) => {
+                            data.append('form_id', formData.form_id);
+                            return data;
+                        },
+                    },
                     revert: '/revert',
                     restore: '/restore/',
                     load: '/load/',
@@ -40,6 +48,7 @@ export default (
                             const response = fetch(formData.get_rest_url + '/revert', {
                                 method: "DELETE",
                                 body: source,
+                                headers: { 'X-WP-Nonce': formData.nonce },
                             });
                         } catch (error) {
                             error("Error:", error);

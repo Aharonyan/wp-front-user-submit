@@ -101,42 +101,19 @@ function fe_fs_users_own_attachments($wp_query_obj)
 }
 
 /**
- * Store errors to Sentry
+ * Log an internal error. Nothing is sent to third parties: the message goes to the
+ * PHP error log only when WP_DEBUG is on. Kept under its old name for compatibility.
  *
+ * @param string $message
+ * @param string $function_name
+ * @param array  $extra not logged, it can contain submitted data.
  * @return void
  */
 function fe_fs_add_sentry_error($message, $function_name, $extra = [])
 {
-    $timestamp = time();
-    $body = [
-        "culprit" => $function_name,
-        "timestamp" => $timestamp,
-        "message" => $message,
-        "environment" => 'prod',
-        "extra" => [
-            'wp_info' => [
-                'wp_url' => get_bloginfo('url'),
-                'admin_email' => get_bloginfo('admin_email'),
-                'wp_version' => get_bloginfo('version'),
-                'php_version' => phpversion(),
-            ],
-            'args' => $extra,
-        ]
-    ];
-
-    // https://c56819c9e54046148a01ce8b1e5e7267@o1073647.ingest.sentry.io/api/6073383/store/
-    $request = wp_remote_post('https://c56819c9e54046148a01ce8b1e5e7267@o1073647.ingest.sentry.io/api/6073383/store/', [
-        'timeout'     => 45,
-        'redirection' => 10,
-        'headers' => [
-            "Content-type" => "application/json",
-            "X-Sentry-Auth" => "Sentry sentry_version=7,sentry_key=c56819c9e54046148a01ce8b1e5e7267,sentry_timestamp=" . $timestamp,
-        ],
-        'body' => json_encode($body),
-        'sslverify' => false,
-    ]);
-
-    return $request;
+    if (defined('WP_DEBUG') && WP_DEBUG) {
+        error_log(sprintf('[Front User Submit] %s: %s', $function_name, $message));
+    }
 }
 
 /**

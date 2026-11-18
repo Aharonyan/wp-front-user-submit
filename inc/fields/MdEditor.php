@@ -47,15 +47,19 @@ class MdEditor
      */
     public static function validate_field_on_front_form_submit($post_id, $form_id, $all_settings)
     {
-        if (!isset($_POST['md_editor'])) {
+        if (!isset($_POST['md_editor']) || !is_array($_POST['md_editor'])) {
             return;
         }
 
         foreach ($_POST['md_editor'] as $name => $value) {
-            $settings = Form::get_form_field_settings_by_name($name, $form_id, $all_settings['form_builder_json']);
-            if (empty($value) && $settings['required']) {
+            // only fields of this form are checked (and saved)
+            $settings = Form::get_submitted_field($form_id, (string) $name, self::$field_type);
+            if (!$settings) {
+                continue;
+            }
+            if (empty($value) && !empty($settings['required'])) {
                 $message = __('Please add editor field', 'front-editor');
-                if (isset($settings['required_error_text']) && !empty(isset($settings['required_error_text']))) {
+                if (isset($settings['required_error_text']) && !empty($settings['required_error_text'])) {
                     $message = $settings['required_error_text'];
                 }
                 wp_send_json_error(['field' => $name, 'message' => $message]);
@@ -82,38 +86,22 @@ class MdEditor
     /**
      * Add or update editor content
      */
-    public static function add_or_update_editor_content_front($post_id, $form_id,$post_data, $settings)
+    public static function add_or_update_editor_content_front($post_id, $form_id, $post_data = [], $all_settings = [])
     {
-        if (empty($_POST['md_editor'])) {
+        if (empty($_POST['md_editor']) || !is_array($_POST['md_editor'])) {
             return;
         }
         $Parsedown = new \Parsedown();
 
         foreach ($_POST['md_editor'] as $name => $content) {
-            $content = wp_kses_post($Parsedown->text($content));
-
-            $settings = Form::get_form_field_settings_by_name($name, $form_id, $settings['form_builder_json']);
-
-            $post_data = [
-                'ID' => $post_id,
-            ];
-
-            if (isset($settings['save_to']) && !empty($settings['save_to'])) {
-                if ($settings['save_to'] === 'post_content') {
-                    $post_data['post_content'] = $content;
-                    wp_update_post($post_data);
-                } elseif ($settings['save_to'] === 'post_excerpt') {
-                    $post_data['post_excerpt'] = sanitize_text_field($content);
-                    wp_update_post($post_data);
-                } else {
-                    update_post_meta($post_id, $name, $content);
-                }
-            } elseif (isset($settings['post_content']) && $settings['post_content'] === true) {
-                $post_data['post_content'] = $content;
-                wp_update_post($post_data);
-            } else {
-                update_post_meta($post_id, $name, $content);
+            // only Markdown fields of this form, so a visitor cannot write other post meta
+            $settings = Form::get_submitted_field($form_id, (string) $name, self::$field_type);
+            if (!$settings || !is_scalar($content)) {
+                continue;
             }
+
+            $content = wp_kses_post($Parsedown->text(wp_unslash((string) $content)));
+            TinyMCE::save_editor_content($post_id, $name, $content, $settings);
         }
     }
 

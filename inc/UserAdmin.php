@@ -82,7 +82,9 @@ class UserAdmin
         if (isset($_GET['delete_post'])) {
             // SECURITY FIX: Properly validate and sanitize delete_post parameter
             $delete_post_id = intval($_GET['delete_post']);
-            if ($delete_post_id > 0) {
+            $delete_nonce = isset($_GET['_fus_nonce']) ? sanitize_text_field(wp_unslash($_GET['_fus_nonce'])) : '';
+            // links from other sites must not delete posts: the link carries a nonce
+            if ($delete_post_id > 0 && wp_verify_nonce($delete_nonce, self::delete_nonce_action($delete_post_id))) {
                 // SECURITY FIX: Verify user can delete this specific post
                 if (current_user_can('delete_post', $delete_post_id)) {
                     $deleted = wp_delete_post($delete_post_id);
@@ -104,6 +106,26 @@ class UserAdmin
         require FE_Template_PATH . '/user-admin.php';
 
         return ob_get_clean();
+    }
+
+    /**
+     * @param int $post_id
+     * @return string
+     */
+    public static function delete_nonce_action($post_id)
+    {
+        return 'fus_delete_post_' . (int) $post_id;
+    }
+
+    /**
+     * Delete link for the post list
+     *
+     * @param int $post_id
+     * @return string
+     */
+    public static function get_delete_link($post_id)
+    {
+        return wp_nonce_url(add_query_arg('delete_post', (int) $post_id), self::delete_nonce_action($post_id), '_fus_nonce');
     }
 
     /**

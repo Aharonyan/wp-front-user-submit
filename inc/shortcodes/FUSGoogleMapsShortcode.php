@@ -20,31 +20,38 @@ class FUSGoogleMapsShortcode {
 
         $atts = shortcode_atts($defaults, $atts, 'fus_google_map');
         
-        $post_id = empty($atts['post_id']) ? get_the_ID() : $atts['post_id'];
-        $meta_data = get_post_meta($post_id, $atts['meta_name'], true);
-        
-        if (empty($meta_data)) {
+        $post_id = empty($atts['post_id']) ? get_the_ID() : (int) $atts['post_id'];
+        $meta_name = sanitize_text_field($atts['meta_name']);
+
+        if (!\BFE\Shortcodes::can_show_post_meta($post_id, $meta_name)) {
+            return '';
+        }
+
+        $meta_data = get_post_meta($post_id, $meta_name, true);
+
+        if (empty($meta_data) || !is_string($meta_data)) {
             return '<div class="fus-map-error">' . esc_html__('Location data not found', 'front-editor') . '</div>';
         }
 
         $location_data = json_decode($meta_data, true);
-        if (!isset($location_data['geometry']['location'])) {
+        if (!isset($location_data['geometry']['location']['lat'], $location_data['geometry']['location']['lng'])) {
             return '<div class="fus-map-error">' . esc_html__('Invalid location data format', 'front-editor') . '</div>';
         }
 
         wp_enqueue_script('fus-google-maps', 'https://maps.googleapis.com/maps/api/js?key=' . esc_attr(get_option('bfe_front_editor_google_map_api')), array(), '1.0', true);
 
         $map_id = 'fus-map-' . uniqid();
-        $lat = $location_data['geometry']['location']['lat'];
-        $lng = $location_data['geometry']['location']['lng'];
+        $lat = (float) $location_data['geometry']['location']['lat'];
+        $lng = (float) $location_data['geometry']['location']['lng'];
+        $address = isset($location_data['formatted_address']) && is_string($location_data['formatted_address']) ? $location_data['formatted_address'] : '';
         
         $map_data = array(
             'lat' => $lat,
             'lng' => $lng,
             'zoom' => intval($atts['zoom']),
-            'markerTitle' => !empty($atts['marker_title']) ? $atts['marker_title'] : $location_data['formatted_address'],
+            'markerTitle' => !empty($atts['marker_title']) ? $atts['marker_title'] : $address,
             'showInfoWindow' => filter_var($atts['info_window'], FILTER_VALIDATE_BOOLEAN),
-            'address' => $location_data['formatted_address']
+            'address' => $address
         );
 
         $inline_script = self::get_inline_script($map_id, $map_data);
@@ -66,15 +73,15 @@ class FUSGoogleMapsShortcode {
     private static function get_inline_script($map_id, $map_data) {
         return "
             document.addEventListener('DOMContentLoaded', function() {
-                const element = document.getElementById('{$map_id}');
+                const element = document.getElementById(" . wp_json_encode($map_id) . ");
                 if (!element) return;
 
                 const map = new google.maps.Map(element, {
                     center: { 
-                        lat: parseFloat({$map_data['lat']}), 
-                        lng: parseFloat({$map_data['lng']}) 
+                        lat: " . wp_json_encode((float) $map_data['lat']) . ",
+                        lng: " . wp_json_encode((float) $map_data['lng']) . "
                     },
-                    zoom: {$map_data['zoom']},
+                    zoom: " . (int) $map_data['zoom'] . ",
                     mapTypeControl: true,
                     streetViewControl: true,
                     fullscreenControl: true
@@ -82,8 +89,8 @@ class FUSGoogleMapsShortcode {
 
                 const marker = new google.maps.Marker({
                     position: { 
-                        lat: parseFloat({$map_data['lat']}), 
-                        lng: parseFloat({$map_data['lng']}) 
+                        lat: " . wp_json_encode((float) $map_data['lat']) . ",
+                        lng: " . wp_json_encode((float) $map_data['lng']) . "
                     },
                     map: map,
                     title: '" . esc_js($map_data['markerTitle']) . "'
@@ -103,4 +110,5 @@ class FUSGoogleMapsShortcode {
     }
 }
 
-add_action('init', array('FUSGoogleMapsShortcode', 'init'));
+// this file is loaded on init, so the shortcode is registered right away
+FUSGoogleMapsShortcode::init();

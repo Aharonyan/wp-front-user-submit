@@ -123,38 +123,39 @@ class TextareaField
      */
     public static function save_field_to_front_form($post_id, $form_id)
     {
-        if (!isset($_POST['textarea'])) {
+        if (!isset($_POST['textarea']) || !is_array($_POST['textarea'])) {
             return;
         }
 
-        $settings = Form::get_form_field_settings(self::$field_type, $form_id);
         foreach ($_POST['textarea'] as $name => $value) {
-            $value = wp_kses_post($value);
-            if ($settings['post_content']) {
-                $post_data = [
+            // only textarea fields of this form, so a visitor cannot write other post meta
+            $field = Form::get_submitted_field($form_id, (string) $name, self::$field_type);
+            if (!$field || !is_scalar($value)) {
+                continue;
+            }
+
+            $value = wp_kses_post(wp_unslash((string) $value));
+            if (!empty($field['post_content'])) {
+                wp_update_post(wp_slash([
                     'ID' => $post_id,
                     'post_content' => $value
-                ];
-
-                wp_update_post($post_data);
+                ]));
             } else {
-                update_post_meta($post_id, $name, $value);
+                update_post_meta($post_id, $name, wp_slash($value));
             }
         }
     }
 
     public static function validate_front_field($post_id, $form_id){
-        if (!isset($_POST['textarea'])) {
+        if (!isset($_POST['textarea']) || !is_array($_POST['textarea'])) {
             return;
         }
 
-        $settings = Form::get_form_field_settings(self::$field_type, $form_id);
         foreach ($_POST['textarea'] as $name => $value) {
-            if ($settings['required']) {
-                if(empty($value)){
-                    /* Translators: Label is required */
-                    wp_send_json_error(['field'=> self::$field_type,'message' => sprintf(__('%s is required', 'front-editor'),$settings['label'])]);
-                }
+            $settings = Form::get_submitted_field($form_id, (string) $name, self::$field_type);
+            if ($settings && !empty($settings['required']) && empty($value)) {
+                /* Translators: Label is required */
+                wp_send_json_error(['field'=> self::$field_type,'message' => sprintf(__('%s is required', 'front-editor'), esc_html($settings['label'] ?? $name))]);
             }
         }
     }

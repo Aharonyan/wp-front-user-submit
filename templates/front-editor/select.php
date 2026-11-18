@@ -41,7 +41,7 @@ if (isset($field['search_error_text']) && !empty($field['search_error_text'])) {
 <div class="select-wrap <?= $field['type'] ?>">
     <label for="<?= $field['type'] ?>"><?php echo esc_html($field['label']); ?> <?= $required ?></label>
     <input type="hidden" name="<?= sprintf('select[%s][required]', $field['name']) ?>" value="<?= $field['required'] ? 1 : 0 ?>">
-    <input type="hidden" name="<?= sprintf('select[%s][label]', $field['name']) ?>" value="<?= $field['label'] ?>">
+    <input type="hidden" name="<?= sprintf('select[%s][label]', $field['name']) ?>" value="<?= esc_attr($field['label']) ?>">
     <select
         id="<?= $field['type'] ?>"
         class="taxonomy-select <?= $field['name'] ?>" name="<?= $select_name ?>"
@@ -61,7 +61,7 @@ if (isset($field['search_error_text']) && !empty($field['search_error_text'])) {
             echo sprintf(
                 '<option %s value="%s">%s</option>',
                 in_array($term_id, $selected) ? 'selected' : '',
-                $term_id,
+                esc_attr($term_id),
                 esc_attr($term['label'])
             );
         }

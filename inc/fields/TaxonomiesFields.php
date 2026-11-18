@@ -27,7 +27,12 @@ class TaxonomiesFields {
         /**
          * Adding taxonomies
          */
-        add_action( 'bfe_ajax_after_front_editor_post_update_or_creation', [__CLASS__, 'add_tax_after_post_created'], 10 );
+        add_action(
+            'bfe_ajax_after_front_editor_post_update_or_creation',
+            [__CLASS__, 'add_tax_after_post_created'],
+            10,
+            2
+        );
     }
 
     /**
@@ -181,17 +186,22 @@ class TaxonomiesFields {
         $form_id,
         $all_settings
     ) {
-        if ( !isset( $data['tax'] ) || empty( $data['tax'] ) ) {
+        if ( empty( $data['tax'] ) || !is_array( $data['tax'] ) ) {
             return $post_data;
         }
         foreach ( $data['tax'] as $tax_name => $value ) {
-            $settings = Form::get_form_field_settings_by_type( 'tax_' . $tax_name, $form_id, $all_settings['form_builder_json'] );
+            // only taxonomies the form has a field for
+            $fields = Form::get_fields_of_type( $form_id, 'tax_' . $tax_name );
+            if ( empty( $fields ) ) {
+                continue;
+            }
+            $settings = $fields[0];
             $is_value_empty = false;
             if ( empty( $value['ids'] ) || $value['ids'] == 'null' ) {
                 $is_value_empty = true;
             }
-            if ( $settings['required'] && $is_value_empty ) {
-                $message = sprintf( __( 'The %s selection is required', 'front-editor' ), $tax_name );
+            if ( !empty( $settings['required'] ) && $is_value_empty ) {
+                $message = sprintf( __( 'The %s selection is required', 'front-editor' ), esc_html( $tax_name ) );
                 if ( isset( $settings['required_error_text'] ) && !empty( $settings['required_error_text'] ) ) {
                     $message = $settings['required_error_text'];
                 }
@@ -210,41 +220,69 @@ class TaxonomiesFields {
      * @param [type] $post_id
      * @return void
      */
-    public static function add_tax_after_post_created( $post_id ) {
-        if ( empty( $_POST['tax'] ) ) {
-            return;
-        }
-        foreach ( $_POST['tax'] as $tax_name => $settings ) {
-            $terms = explode( ",", $settings['ids'] );
-            $default_terms = explode( ",", $settings['default_terms'] );
-            if ( !empty( $default_terms ) ) {
-                $terms = array_merge( $terms, $default_terms );
+    public static function add_tax_after_post_created( $post_id, $form_id = 0 ) {
+        $form_id = Form::submitted_form_id( $form_id );
+        // only taxonomies the form has a field for
+        foreach ( Form::get_form_fields( $form_id ) as $field ) {
+            if ( !isset( $field['type'] ) || strpos( $field['type'], 'tax_' ) !== 0 ) {
+                continue;
             }
-            if ( !empty( $terms ) ) {
-                $terms_ids = [];
-                foreach ( $terms as $term ) {
-                    if ( empty( $term ) || $term === 'null' ) {
-                        continue;
-                    }
-                    /**
-                     * Checking if term exist if not creating it
-                     */
-                    $term_data = get_term_by( 'id', $term, $tax_name );
-                    if ( !$term_data ) {
-                        $term_data = get_term_by( 'name', $term, $tax_name );
-                    }
-                    if ( !$term_data ) {
-                        $term_data = wp_insert_term( $term, $tax_name );
-                        $term_id = $term_data['term_id'];
-                    } else {
-                        $term_id = $term_data->term_id;
-                    }
-                    $terms_ids[] = (int) $term_id;
+            $tax_name = substr( $field['type'], 4 );
+            if ( !taxonomy_exists( $tax_name ) ) {
+                continue;
+            }
+            $submitted = $_POST['tax'][$tax_name] ?? null;
+            if ( !is_array( $submitted ) || !isset( $submitted['ids'] ) ) {
+                continue;
+            }
+            $terms_ids = self::get_term_ids( $tax_name, ( is_scalar( $submitted['ids'] ) ? wp_unslash( (string) $submitted['ids'] ) : '' ), $field );
+            wp_set_object_terms( $post_id, $terms_ids, $tax_name );
+        }
+    }
+
+    /**
+     * Term ids for a submitted value: existing terms of the taxonomy, new terms only when
+     * the field allows adding new ones, and the default terms from the form settings
+     *
+     * @param string $tax_name
+     * @param string $submitted comma separated term ids (or names of new terms).
+     * @param array  $field     taxonomy field settings.
+     * @return int[]
+     */
+    public static function get_term_ids( $tax_name, $submitted, array $field ) {
+        $can_add_new = !empty( $field['add_new'] ) && $field['add_new'] !== 'false';
+        $excluded = array_map( 'intval', array_filter( explode( ',', (string) ($field['exclude'] ?? '') ) ) );
+        $default_terms = array_map( 'intval', array_filter( explode( ',', (string) ($field['default_terms'] ?? '') ) ) );
+        $terms_ids = [];
+        foreach ( explode( ',', $submitted ) as $term ) {
+            $term = trim( $term );
+            if ( $term === '' || $term === 'null' ) {
+                continue;
+            }
+            $term_data = ( is_numeric( $term ) ? get_term_by( 'id', (int) $term, $tax_name ) : false );
+            if ( !$term_data ) {
+                $term_data = get_term_by( 'name', $term, $tax_name );
+            }
+            if ( $term_data ) {
+                if ( !in_array( (int) $term_data->term_id, $excluded, true ) ) {
+                    $terms_ids[] = (int) $term_data->term_id;
                 }
-                // Attach to post
-                wp_set_object_terms( $post_id, $terms_ids, $tax_name );
+                continue;
+            }
+            if ( !$can_add_new ) {
+                continue;
+            }
+            $inserted = wp_insert_term( sanitize_text_field( $term ), $tax_name );
+            if ( !is_wp_error( $inserted ) ) {
+                $terms_ids[] = (int) $inserted['term_id'];
             }
         }
+        foreach ( $default_terms as $term_id ) {
+            if ( $term_id && get_term_by( 'id', $term_id, $tax_name ) ) {
+                $terms_ids[] = $term_id;
+            }
+        }
+        return array_values( array_unique( $terms_ids ) );
     }
 
 }

@@ -14,11 +14,18 @@ class FUSCustomFieldContent {
 
         $atts = shortcode_atts($defaults, $atts, 'fus_custom_field_content');
         
-        $post_id = empty($atts['post_id']) ? get_the_ID() : $atts['post_id'];
-        $meta_data = get_post_meta($post_id, $atts['meta_name'], true);
-        
-        return esc_html($meta_data);
+        $post_id = empty($atts['post_id']) ? get_the_ID() : (int) $atts['post_id'];
+        $meta_name = sanitize_text_field($atts['meta_name']);
+
+        if (!\BFE\Shortcodes::can_show_post_meta($post_id, $meta_name)) {
+            return '';
+        }
+
+        $meta_data = get_post_meta($post_id, $meta_name, true);
+
+        return is_scalar($meta_data) ? esc_html($meta_data) : '';
     }
 }
 
-add_action('init', array('FUSCustomFieldContent', 'init'));
+// this file is loaded on init, so the shortcode is registered right away
+FUSCustomFieldContent::init();

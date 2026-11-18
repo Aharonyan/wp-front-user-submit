@@ -52,6 +52,8 @@ export default ($) => {
     const editors = {};
     // Shared with other modules (AI assistant)
     window.fe_editorjs_editors = editors;
+    // Write every editor's data into its hidden input, the form waits for it before sending
+    window.fe_editorjs_save_all = () => Promise.all(Object.keys(editors).map((id) => onChangeSaveData(id)));
 
     $(document).ready(function () {
         $('.EditorJS-editor').each((i, val) => {
@@ -83,12 +85,18 @@ export default ($) => {
      * Save on change data
      */
     function onChangeSaveData(container_id) {
-        const $editor_js_object = editors[container_id];
-        if($editor_js_object.save()){
-            $editor_js_object.save().then((data) => {
-                document.getElementById(`${container_id}-textarea`).value = JSON.stringify(data);
-            });
+        const editor = editors[container_id];
+        const input = document.getElementById(`${container_id}-textarea`);
+        if (!editor || !input || typeof editor.save !== 'function') {
+            return Promise.resolve();
         }
+        return editor.save()
+            .then((data) => {
+                input.value = JSON.stringify(data);
+            })
+            .catch((error) => {
+                console.log('EditorJS save error', error);
+            });
     }
 
     /**
@@ -96,7 +104,15 @@ export default ($) => {
      * @returns
      */
     function get_editor_settings(editor_id,container_id) {
-        const editor_js = editors[container_id];
+        // the editor instance exists only after new EditorJS() returned, read it when needed
+        const editor_js = {
+            get notifier() {
+                return editors[container_id] ? editors[container_id].notifier : { show: () => {} };
+            },
+            get blocks() {
+                return editors[container_id].blocks;
+            },
+        };
         const editor_settings = editor_data.editor_js[editor_id].settings
         const currentEditorContent = editor_data.editor_js[editor_id].content
         let active_wp_media_uploader = (editor_data.is_user_logged_in && editor_settings.editor_gallery_plugin) ? true : false;
@@ -295,13 +311,12 @@ export default ($) => {
                 }
             }),
             onReady: () => {
-                console.log(currentEditorContent);
                 // Checking if the post have saved blokes or not
-                if (typeof currentEditorContent === 'object' && 'blocks' in currentEditorContent) {
+                if (!currentEditorContent || (typeof currentEditorContent === 'object' && 'blocks' in currentEditorContent)) {
                     return;
                 }
 
-                if (currentEditorContent.length === 0) {
+                if (typeof currentEditorContent !== 'string' || currentEditorContent.length === 0) {
                     return;
                 }
 
@@ -311,7 +326,7 @@ export default ($) => {
                     });
             },
             onChange: () => {
-                onChangeSaveData()
+                onChangeSaveData(container_id)
             }
         }
 

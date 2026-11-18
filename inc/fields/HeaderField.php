@@ -71,13 +71,18 @@ class HeaderField {
      * @param [type] $file
      * @return void
      */
-    public static function save_field_to_front_form( $post_id ) {
+    public static function save_field_to_front_form( $post_id, $form_id = 0 ) {
         if ( !isset( $_POST['header'] ) ) {
             return;
         }
-        foreach ( $_POST['header'] as $name => $value ) {
-            update_post_meta( $post_id, $name, $value );
-        }
+        // only fields of this form, so a visitor cannot write other post meta
+        Form::save_submitted_meta(
+            $post_id,
+            Form::submitted_form_id( $form_id ),
+            $_POST['header'],
+            self::$field_type,
+            ['\\BFE\\Form', 'sanitize_text_value']
+        );
     }
 
 }

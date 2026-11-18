@@ -26,14 +26,18 @@ class TextField {
      * @return void
      */
     public static function validate_field_on_front_form_submit( $post_id, $form_id, $all_settings ) {
-        if ( !isset( $_POST['text_fields'] ) ) {
+        if ( !isset( $_POST['text_fields'] ) || !is_array( $_POST['text_fields'] ) ) {
             return;
         }
         foreach ( $_POST['text_fields'] as $name => $value ) {
-            $settings = Form::get_form_field_settings_by_name( $name, $form_id, $all_settings['form_builder_json'] );
-            if ( empty( $value ) && $settings['required'] ) {
+            // only fields of this form are checked (and saved)
+            $settings = Form::get_submitted_field( $form_id, (string) $name, self::$field_type );
+            if ( !$settings ) {
+                continue;
+            }
+            if ( empty( $value ) && !empty( $settings['required'] ) ) {
                 $message = __( 'Please add text field', 'front-editor' );
-                if ( isset( $settings['required_error_text'] ) && !empty( isset( $settings['required_error_text'] ) ) ) {
+                if ( isset( $settings['required_error_text'] ) && !empty( $settings['required_error_text'] ) ) {
                     $message = $settings['required_error_text'];
                 }
                 wp_send_json_error( [
@@ -102,13 +106,23 @@ class TextField {
      * @param [type] $file
      * @return void
      */
-    public static function save_field_to_front_form( $post_id ) {
+    public static function save_field_to_front_form( $post_id, $form_id = 0 ) {
         if ( !isset( $_POST['text_fields'] ) ) {
             return;
         }
-        foreach ( $_POST['text_fields'] as $name => $value ) {
-            update_post_meta( $post_id, $name, $value );
-        }
+        // only fields of this form, so a visitor cannot write other post meta
+        Form::save_submitted_meta(
+            $post_id,
+            Form::submitted_form_id( $form_id ),
+            $_POST['text_fields'],
+            self::$field_type,
+            function ( $value, $field ) {
+                if ( !is_scalar( $value ) ) {
+                    return null;
+                }
+                return ( isset( $field['subtype'] ) && $field['subtype'] === 'email' ? sanitize_email( (string) $value ) : sanitize_text_field( (string) $value ) );
+            }
+        );
     }
 
 }

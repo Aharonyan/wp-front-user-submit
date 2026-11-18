@@ -4,7 +4,7 @@ Tags: frontend post, guest post, submit post, user submitted posts, ai writing a
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 5.2.2
+Stable tag: 5.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,17 +35,16 @@ New in 5.1: a **free ✨ AI writing assistant** right inside your forms. Your us
 
 = Core features (free) =
 
-* Frontend post submission form, with or without login (guest posting)
+* Frontend post submission form for logged-in users (guest posting without login is in Pro)
 * Drag-and-drop form builder with live preview
 * Multiple forms, each with its own settings
 * Edit and delete posts from the front end
 * User post dashboard: `[fe_fs_user_admin]`
-* Login, registration and lost-password forms: `[fus_form_login]`, `[fus_form_register]`
+* Login and registration forms: `[fus_form_login]`, `[fus_form_register]`
 * Featured image and file uploads
 * Choose the post status after submission: pending review, draft or published
 * Admin and user email notifications
 * Redirect after submission to any URL or the current page
-* Google reCAPTCHA spam protection
 * Required and optional fields, custom success and error messages
 * Shortcode, Gutenberg block or template tag
 * Show custom field data on single posts
@@ -70,6 +69,8 @@ You stay in control of costs: AI is off in every form until you turn it on, you 
 
 = 🚀 Pro features =
 
+* Guest posting: accept posts from visitors without an account
+* Google reCAPTCHA and hCaptcha spam protection
 * ✨ AI form generator: describe the form in your own words and AI builds the fields
 * ✨ AI moderation: check submitted posts for spam, abuse and your own rules, hold flagged posts for review
 * ✨ AI auto-fill: excerpt, tags and SEO meta description (Yoast SEO, Rank Math, SEOPress or built-in) after submission
@@ -82,7 +83,6 @@ You stay in control of costs: AI is off in every form until you turn it on, you 
 * Enhanced EditorJS blocks: gallery, image upload, table, carousel and more
 * Multiple category selection
 * Header, paragraph, button and action hook fields
-* hCaptcha
 
 [Compare Free and Pro](https://wpuserpublish.com/pricing/)
 
@@ -176,7 +176,7 @@ Yes. Define it in wp-config.php: FUS_OPENAI_API_KEY, FUS_ANTHROPIC_API_KEY, FUS_
 
 = How do I stop spam submissions? =
 
-Enable Google reCAPTCHA (free) or hCaptcha (Pro), require login for the form, or set new posts to "Pending" so nothing is published without your review. Pro can also check posts with AI moderation.
+Require login for the form and set new posts to "Pending" so nothing is published without your review. Pro adds Google reCAPTCHA, hCaptcha and AI moderation of submitted posts.
 
 = Can I charge for post submissions? =
 
@@ -220,6 +220,26 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.2.3 =
+* [fix] Security: values saved with a post are now escaped when the edit form, the "FUS Form Data" box and notification emails show them
+* [fix] Security: guests can only attach their own uploads to a post; image and gallery blocks can no longer change other posts or pages
+* [fix] Security: form export, import and the form builder now need the administrator capability
+* [fix] Security: uploads are accepted only from forms that have an upload field, with a valid security token and an hourly limit for guests; guests can only use files they uploaded themselves
+* [fix] Security: a form saves only the fields it has; other post data can no longer be written through a form
+* [fix] Security: custom field shortcodes no longer show private data: the submitter IP address, data of unpublished posts and protected fields whose name starts with "_"
+* [fix] Security: shortcodes in posts submitted by guests and subscribers are shown as text and not run
+* [fix] Security: editing a post no longer undoes moderation (pending, private, AI-held or trashed posts keep their status, and the edit time limit of the original form keeps applying)
+* [fix] Security: registration follows the WordPress "Anyone can register" setting
+* [fix] Security: guest posting works only when it is switched on in the form
+* [fix] Security: the featured image must be the user's own image
+* [fix] Security: the delete link in the user dashboard is protected against links from other sites
+* [fix] Security: taxonomy fields only set terms of the form's taxonomies; new terms only when "Add New" is on
+* [fix] Security (Pro): file field downloads and uploads check permissions; reCAPTCHA and hCaptcha are always checked
+* [fix] The plugin no longer sends error reports to an external service
+* [fix] [fus_custom_field_content] and [fus_google_map] shortcodes work again
+* [fix] EditorJS content is always saved, also when you submit right after typing; links with "&" and backslashes in text are kept
+* [fix] Form labels with quotes no longer break a form after saving
 
 = 5.2.2 =
 * Links to documentation, pricing and support now point to the new website wpuserpublish.com
@@ -472,6 +492,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.2.3 =
+Security release, please update.
 
 = 5.2.1 =
 Security release: guests can no longer edit posts submitted by other guests. Please update.

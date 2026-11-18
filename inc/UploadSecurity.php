@@ -30,6 +30,87 @@ class UploadSecurity
     const FALLBACK_MIME_TYPE = 'application/octet-stream';
 
     /**
+     * Guest uploads per visitor and hour (filter bfe_guest_upload_limit_per_hour, 0 = no limit)
+     */
+    const GUEST_UPLOADS_PER_HOUR = 50;
+
+    /**
+     * Guest uploads per IP address and hour (filter bfe_guest_upload_limit_per_ip_hour, 0 = no limit).
+     * Higher than the per-visitor limit: behind a proxy many visitors can share one address.
+     */
+    const GUEST_UPLOADS_PER_IP_HOUR = 500;
+
+    /**
+     * Cookie with a random id of a guest browser, ties guest uploads to the guest who made them
+     */
+    const VISITOR_COOKIE = 'fus_visitor';
+
+    /**
+     * Random id of the current guest browser, created (and sent as cookie) when missing
+     *
+     * @return string
+     */
+    public static function visitor_token()
+    {
+        $token = isset($_COOKIE[self::VISITOR_COOKIE]) ? (string) $_COOKIE[self::VISITOR_COOKIE] : '';
+        if (preg_match('/^[a-f0-9]{32}$/', $token)) {
+            return $token;
+        }
+
+        $token = bin2hex(random_bytes(16));
+        $_COOKIE[self::VISITOR_COOKIE] = $token;
+        if (!headers_sent()) {
+            setcookie(self::VISITOR_COOKIE, $token, [
+                'expires'  => time() + DAY_IN_SECONDS,
+                'path'     => COOKIEPATH ?: '/',
+                'domain'   => COOKIE_DOMAIN ?: '',
+                'secure'   => is_ssl(),
+                'httponly' => true,
+                'samesite' => 'Lax',
+            ]);
+        }
+
+        return $token;
+    }
+
+    /**
+     * Value stored with a guest upload: a hash of the guest browser id (the id itself stays secret)
+     *
+     * @return string
+     */
+    public static function guest_upload_marker()
+    {
+        return wp_hash('fus_guest_upload|' . self::visitor_token());
+    }
+
+    /**
+     * Count a guest upload; false when the visitor or their IP reached the hourly limit
+     *
+     * @return bool
+     */
+    public static function guest_upload_allowed()
+    {
+        $limits = [
+            'fus_guest_uploads_v_' . md5(self::visitor_token()) => (int) apply_filters('bfe_guest_upload_limit_per_hour', self::GUEST_UPLOADS_PER_HOUR),
+            'fus_guest_uploads_' . md5(FormMetaBox::get_user_ip_address()) => (int) apply_filters('bfe_guest_upload_limit_per_ip_hour', self::GUEST_UPLOADS_PER_IP_HOUR),
+        ];
+
+        foreach ($limits as $key => $limit) {
+            if ($limit > 0 && (int) get_transient($key) >= $limit) {
+                return false;
+            }
+        }
+
+        foreach ($limits as $key => $limit) {
+            if ($limit > 0) {
+                set_transient($key, (int) get_transient($key) + 1, HOUR_IN_SECONDS);
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Check the real file content, not only the name or the client sent type
      *
      * @param string $tmp_path uploaded file path.

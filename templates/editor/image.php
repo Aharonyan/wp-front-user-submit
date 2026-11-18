@@ -17,12 +17,12 @@ $size_slug = "large";
 
 $innerHTML = sprintf(
     '<figure class="wp-block-image size-large"><img src="%s" alt="" class="wp-image-%s"/><figcaption>%s</figcaption></figure>',
-    wp_get_attachment_image_url($image_id, 'large'),
-    $image_id,
+    esc_url((string) wp_get_attachment_image_url($image_id, 'large')),
+    (int) $image_id,
     $caption
 );
 
-do_action('fe_before_simple_image_block_images_html_render', $image_id, $_POST['post_id']);
+do_action('fe_before_simple_image_block_images_html_render', $image_id, \BFE\SavePost::$saving_post_id);
 
 $block = [
     'blockName' => 'core/image',

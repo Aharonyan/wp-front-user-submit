@@ -60,15 +60,19 @@ class Editor
 			$button_text = $update_button_text;
 		}
 
+		$rest_nonce = wp_create_nonce('wp_rest');
+		// EditorJS carousel/attaches tools post files without our fields: pass the form and nonce in the URL
+		$upload_query = ['form_id' => $attributes['id'], '_wpnonce' => $rest_nonce];
+
 		$data = [
 			'ajax_url'          => admin_url('admin-ajax.php'),
 			'html_post_content' => apply_filters('fe_localize_post_html_content', [], $attributes, $post_id),
 			'is_user_logged_in' => is_user_logged_in(),
 			'rest_url_update_form' 	=> get_rest_url(null, 'bfe/v1/add_or_update_post'),
-			'nonce' => 	wp_create_nonce('wp_rest'),
+			'nonce' => 	$rest_nonce,
 			'form_id' => $attributes['id'],
-			'rest_url_image' 	=> get_rest_url(null, 'bfe/v1/upload_image'),
-			'rest_url_upload_file' 	=> get_rest_url(null, 'bfe/v1/upload_file'),
+			'rest_url_image' 	=> add_query_arg($upload_query, get_rest_url(null, 'bfe/v1/upload_image')),
+			'rest_url_upload_file' 	=> add_query_arg($upload_query, get_rest_url(null, 'bfe/v1/upload_file')),
 			'rest_url_post_thumb_uploading_image' 	=> get_rest_url(null, 'bfe/v1/post_thumb_uploading_image'),
 			'form_settings' => $form_settings,
 			'translations'      => [
@@ -98,7 +102,7 @@ class Editor
 		require fe_template_path('front-editor-form.php');
 
 		// wp localize script is not working on Twenty Twenty-Three this solution helped
-		printf('<script>var editor_data = %s</script>', json_encode($wp_localize_data));
+		printf('<script>var editor_data = %s</script>', wp_json_encode($wp_localize_data, JSON_HEX_TAG | JSON_HEX_AMP));
 
 		return ob_get_clean();
 	}
@@ -159,14 +163,20 @@ class Editor
 
 			// if user have rights to edit or is the post author
 			if (current_user_can('edit_post', $post_id) || $is_post_author) {
-				// Check if post is locked for editing after certain hours
-				if (isset($form_settings['post_update_lock_user_after']) && !empty($form_settings['post_update_lock_user_after'])) {
-					$allow_hours = $form_settings['post_update_lock_user_after'] * 3600;
+				// Edit time lock of the form the post was created with, not of the form used now
+				$lock_settings = $form_settings;
+				$created_with_form = (int) get_post_meta($post_id, 'BFE_the_post_edited_by', true);
+				if ($created_with_form && get_post_type($created_with_form) === 'fe_post_form') {
+					$lock_settings = get_post_meta($created_with_form, 'fe_form_settings', true);
+				}
+
+				if (isset($lock_settings['post_update_lock_user_after']) && !empty($lock_settings['post_update_lock_user_after'])) {
+					$allow_hours = (float) $lock_settings['post_update_lock_user_after'] * 3600;
 					$post_created_time = get_post_time('U', true, $cur_post);
 					if (time() > ($allow_hours + $post_created_time)) {
 						$message =  __('You are not allowed to edit anymore.', 'front-editor');
-						if (isset($form_settings['post_update_lock_user_after_text'])) {
-							$message = $form_settings['post_update_lock_user_after_text'];
+						if (!empty($lock_settings['post_update_lock_user_after_text'])) {
+							$message = $lock_settings['post_update_lock_user_after_text'];
 						}
 						return	['status' => false, 'message' => sprintf('<div class="fus-info">%s</div>', $message)];
 					}
@@ -251,27 +261,6 @@ class Editor
 		}
 
 		return sprintf($link_mockup, get_permalink($edit_page_settings), $post_id);
-	}
-
-	/**
-	 * Find id by shortcode
-	 *
-	 * @param [type] $shortcode
-	 * @return void
-	 */
-	public static function get_page_by_shortcode($shortcode)
-	{
-		global $wpdb;
-		$query = sprintf("SELECT * FROM `%s` WHERE `post_content` LIKE '%s' AND post_status = 'publish'", $wpdb->posts, '%' . $shortcode . '%');
-		$results = $wpdb->get_results($query);
-
-		if (empty($results)) {
-			return false;
-		}
-
-		foreach ($results as $results) {
-			return $results->ID;
-		}
 	}
 
 	/**

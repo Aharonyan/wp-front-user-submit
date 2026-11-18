@@ -18,10 +18,15 @@ class HCaptcha {
         if ( empty( $settings ) ) {
             return;
         }
-        if ( !isset( $_POST['h-captcha-response'] ) ) {
-            return;
+        // the form has a captcha: a request without an answer is refused
+        $captcha = ( isset( $_POST['h-captcha-response'] ) && is_string( $_POST['h-captcha-response'] ) ? sanitize_text_field( wp_unslash( $_POST['h-captcha-response'] ) ) : '' );
+        if ( $captcha === '' ) {
+            $message = ( !empty( $settings['hcaptcha_error_message'] ) ? $settings['hcaptcha_error_message'] : 'Please complete the captcha properly.' );
+            wp_send_json_error( [
+                'field'   => self::$field_type,
+                'message' => $message,
+            ] );
         }
-        $captcha = $_POST['h-captcha-response'];
         $secret_key = $settings['hcaptcha_secret_key'];
         $verify_data = [
             'secret'   => $secret_key,
@@ -29,7 +34,8 @@ class HCaptcha {
         ];
         $verify_url = 'https://hcaptcha.com/siteverify';
         $response = wp_remote_post( $verify_url, [
-            'body' => $verify_data,
+            'timeout' => 15,
+            'body'    => $verify_data,
         ] );
         if ( is_wp_error( $response ) ) {
             wp_send_json_error( [
@@ -43,7 +49,7 @@ class HCaptcha {
         if ( isset( $settings['hcaptcha_error_message'] ) && !empty( $settings['hcaptcha_error_message'] ) ) {
             $error_message = $settings['hcaptcha_error_message'];
         }
-        if ( !$result['success'] ) {
+        if ( empty( $result['success'] ) ) {
             wp_send_json_error( [
                 'field'   => self::$field_type,
                 'message' => $error_message,

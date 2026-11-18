@@ -27,14 +27,18 @@ class GoogleMapField {
      * @return void
      */
     public static function validate_field_on_front_form_submit( $post_id, $form_id, $all_settings ) {
-        if ( !isset( $_POST[self::$field_type] ) ) {
+        if ( !isset( $_POST[self::$field_type] ) || !is_array( $_POST[self::$field_type] ) ) {
             return;
         }
         foreach ( $_POST[self::$field_type] as $name => $value ) {
-            $settings = Form::get_form_field_settings_by_name( $name, $form_id, $all_settings['form_builder_json'] );
-            if ( empty( $value ) && $settings['required'] ) {
+            // only fields of this form are checked (and saved)
+            $settings = Form::get_submitted_field( $form_id, (string) $name, self::$field_type );
+            if ( !$settings ) {
+                continue;
+            }
+            if ( empty( $value ) && !empty( $settings['required'] ) ) {
                 $message = __( 'Please add google map field', 'front-editor' );
-                if ( isset( $settings['required_error_text'] ) && !empty( isset( $settings['required_error_text'] ) ) ) {
+                if ( isset( $settings['required_error_text'] ) && !empty( $settings['required_error_text'] ) ) {
                     $message = $settings['required_error_text'];
                 }
                 wp_send_json_error( [
@@ -126,13 +130,27 @@ class GoogleMapField {
      * @param [type] $file
      * @return void
      */
-    public static function save_field_to_front_form( $post_id ) {
+    public static function save_field_to_front_form( $post_id, $form_id = 0 ) {
         if ( !isset( $_POST['google_map'] ) ) {
             return;
         }
-        foreach ( $_POST['google_map'] as $name => $value ) {
-            update_post_meta( $post_id, $name, $value );
-        }
+        // only fields of this form, so a visitor cannot write other post meta
+        Form::save_submitted_meta(
+            $post_id,
+            Form::submitted_form_id( $form_id ),
+            $_POST['google_map'],
+            self::$field_type,
+            function ( $value ) {
+                $location = ( is_string( $value ) ? json_decode( $value, true ) : null );
+                if ( !is_array( $location ) ) {
+                    return ( is_string( $value ) && trim( $value ) === '' ? '' : null );
+                }
+                $location = map_deep( $location, function ( $item ) {
+                    return ( is_string( $item ) ? sanitize_text_field( $item ) : $item );
+                } );
+                return wp_json_encode( $location );
+            }
+        );
     }
 
     /**

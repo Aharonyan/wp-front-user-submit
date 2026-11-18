@@ -9,6 +9,7 @@ namespace BFE\Field;
 
 use BFE\Form;
 use BFE\UploadSecurity;
+use BFE\SavePost;
 defined( 'ABSPATH' ) || exit;
 class FileField {
     public static $field_label = 'File';
@@ -27,9 +28,7 @@ class FileField {
         register_rest_route( 'bfe/v1', '/process', [
             'methods'             => 'POST',
             'callback'            => [__CLASS__, 'process_files'],
-            'permission_callback' => function () {
-                return true;
-            },
+            'permission_callback' => [__CLASS__, 'upload_permission'],
         ] );
         register_rest_route( 'bfe/v1', '/revert', [
             'methods'             => 'DELETE',
@@ -41,10 +40,46 @@ class FileField {
         register_rest_route( 'bfe/v1', '/load/(?P<id>\\d+)', [
             'methods'             => 'GET',
             'callback'            => [__CLASS__, 'load_file'],
-            'permission_callback' => function () {
-                return true;
+            'permission_callback' => function ( \WP_REST_Request $request ) {
+                return self::can_load_file( (int) $request['id'] );
             },
         ] );
+    }
+
+    /**
+     * File uploads need a form with a file field (same rules as the other upload routes)
+     *
+     * @param \WP_REST_Request $request
+     * @return bool|\WP_Error
+     */
+    public static function upload_permission( \WP_REST_Request $request ) {
+        return SavePost::check_upload_permission( $request, function ( $form_id ) {
+            return !empty( Form::get_fields_of_type( $form_id, self::$field_type ) );
+        } );
+    }
+
+    /**
+     * Can the visitor download this file through /load: own or editable files, files
+     * uploaded in this session, or files attached to a post the visitor can read
+     *
+     * @param int $attachment_id
+     * @return bool
+     */
+    public static function can_load_file( $attachment_id ) {
+        $attachment = get_post( (int) $attachment_id );
+        if ( !$attachment || $attachment->post_type !== 'attachment' ) {
+            return false;
+        }
+        $user_id = get_current_user_id();
+        if ( $user_id > 0 && ((int) $attachment->post_author === $user_id || current_user_can( 'edit_post', $attachment->ID )) ) {
+            return true;
+        }
+        self::start_session_if_needed();
+        if ( !empty( $_SESSION['bfe_uploaded_files'] ) && in_array( $attachment->ID, (array) $_SESSION['bfe_uploaded_files'] ) ) {
+            return true;
+        }
+        $parent_id = (int) $attachment->post_parent;
+        return $parent_id > 0 && is_post_publicly_viewable( $parent_id ) && !post_password_required( $parent_id );
     }
 
     public static function process_files( \WP_REST_Request $request ) {
@@ -112,6 +147,7 @@ class FileField {
             'post_status'    => 'inherit',
         );
         $attach_id = wp_insert_attachment( $attachment, $upload['file'] );
+        SavePost::mark_guest_upload( $attach_id );
         // Generate and update attachment metadata
         $attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
         wp_update_attachment_metadata( $attach_id, $attach_data );
@@ -386,40 +422,41 @@ class FileField {
      * @return void
      */
     public static function save_field_to_front_form( $post_id, $form_id ) {
-        if ( !isset( $_POST['file_field'] ) ) {
+        if ( !isset( $_POST['file_field'] ) || !is_array( $_POST['file_field'] ) ) {
             return;
         }
         foreach ( $_POST['file_field'] as $name => $value ) {
-            $settings = Form::get_form_field_settings_by_name( $name, $form_id );
-            if ( !empty( $value ) ) {
-                $value = str_replace( "\\", "", $value );
-                $value = json_decode( $value );
+            // only file fields of this form, so a visitor cannot write other post meta
+            $settings = Form::get_submitted_field( $form_id, (string) $name, self::$field_type );
+            if ( !$settings || !is_scalar( $value ) ) {
+                continue;
             }
-            if ( isset( $settings['required'] ) ) {
-                if ( $settings['required'] && empty( $value ) ) {
-                    /* Translators: Filed is required */
-                    wp_send_json_error( [
-                        'field'   => sprintf( 'file-%s-wrap', $name ),
-                        'message' => sprintf( __( '%s is required', 'front-editor' ), $settings['label'] ),
-                    ] );
-                }
+            $ids = json_decode( wp_unslash( (string) $value ), true );
+            $ids = ( is_array( $ids ) ? array_map( 'intval', array_filter( $ids, 'is_numeric' ) ) : [] );
+            // files the visitor may use, plus the files the post already had
+            $current = array_map( 'intval', (array) get_post_meta( $post_id, $name, true ) );
+            $ids = array_values( array_unique( array_filter( $ids, function ( $att_id ) use($current) {
+                return in_array( $att_id, $current, true ) || SavePost::can_use_attachment( $att_id );
+            } ) ) );
+            if ( !empty( $settings['required'] ) && empty( $ids ) ) {
+                /* Translators: Filed is required */
+                wp_send_json_error( [
+                    'field'   => sprintf( 'file-%s-wrap', $name ),
+                    'message' => sprintf( __( '%s is required', 'front-editor' ), esc_html( $settings['label'] ?? $name ) ),
+                ] );
             }
-            update_post_meta( $post_id, $name, $value );
+            update_post_meta( $post_id, $name, $ids );
             do_action(
                 'bfe_after_file_field_updated_in_back',
-                $value,
+                $ids,
                 $form_id,
                 $_POST
             );
-            foreach ( $value as $att_id ) {
-                if ( isset( $settings['attach_to_post'] ) ) {
-                    if ( $settings['attach_to_post'] ) {
-                        $media_post = wp_update_post( [
-                            'ID'          => $att_id,
-                            'post_parent' => $post_id,
-                        ], true );
-                    }
-                }
+            if ( empty( $settings['attach_to_post'] ) ) {
+                continue;
+            }
+            foreach ( $ids as $att_id ) {
+                SavePost::update_attachment_parent( $att_id, $post_id );
             }
         }
     }
