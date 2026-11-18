@@ -1,451 +1,136 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/Aharonyan/wp-front-user-submit/"
+"issues\n"
+"POT-Creation-Date: 2026-11-18 01:17+0200\n"
+"PO-Revision-Date: 2024-12-12 12:29+0000\n"
+"Last-Translator: \n"
+"Language-Team: Русский\n"
+"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"Project-Id-Version: \n"
-"Language: ru_RU\n"
 "Plural-Forms: nplurals=3; plural=((n%10==1) && (n%100!=11)) ? 0 : ((n%10>=2 "
 "&& n%10<=4) && ((n%100<12 || n%100>14))) ? 1 : 2;\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-05 22:39+0000\n"
-"PO-Revision-Date: 2024-12-12 12:29+0000\n"
-"Last-Translator: \n"
 "X-Loco-Version: 2.6.14; wp-6.7.1\n"
-"Language-Team: Русский"
 
-#. filed is required
-#. Filed is required
-#. Label is required
-#: inc/fields/CheckboxGroupField.php:124 inc/fields/FileField.php:293
-#: inc/fields/FileField.php:324 inc/fields/RadioGroupField.php:124
-#: inc/fields/SelectField.php:135 inc/fields/TextareaField.php:156
-#, php-format
-msgid "%s is required"
-msgstr "требуется %s"
-
-#: inc/fields/PostThumbField.php:76
-msgid "(PRO) WP Media"
-msgstr "(PRO) WP Media"
-
-#: inc/MenuSettings.php:163
-msgid "- Edit Button Text"
-msgstr "- Текст кнопки редактирования"
-
-#: templates/user-admin.php:113
-msgid "0 posts found"
-msgstr "найдено 0 записей"
-
-#: inc/FormMetaBox.php:108
-#, php-format
-msgid ""
-"<div style=\"%s\">We recommend using the front form for post editing. <a "
-"href=\"%s\">Edit -></a></div>"
-msgstr ""
-"<div style=\"%s\">Мы рекомендуем использовать фронтальную форму для "
-"редактирования постов. <a href=\"%s\">Редактировать -></a></div>"
-
-#: inc/LoginRegisterShortcode.php:110
-msgid "<strong>ERROR</strong>: Empty email"
-msgstr "<strong>ОШИБКА</strong>: Пустое адрес почты"
-
-#: inc/LoginRegisterShortcode.php:89
-msgid "<strong>ERROR</strong>: Empty password"
-msgstr "<strong>ОШИБКА</strong>: Пустой пароль"
-
-#: inc/LoginRegisterShortcode.php:87 inc/LoginRegisterShortcode.php:108
-msgid "<strong>ERROR</strong>: Empty username"
-msgstr "<strong>ERROR</strong>: Пустое имя пользователя"
-
-#: inc/fields/FileField.php:198
-msgid "Accept"
-msgstr "Принять"
-
-#: inc/MenuSettings.php:605
-msgid "Activate Login Form"
-msgstr "Активировать форму входа"
-
-#: templates/admin/settings/form-notification-settings.php:17
-#: templates/admin/settings/form-admin-notification-settings.php:11
-msgid "Activate Notifications"
-msgstr "Активировать уведомления"
-
-#: inc/fields/EditorJsField.php:468
-msgid "Add"
-msgstr "Добавить"
-
-#: inc/fields/EditorJsField.php:497
-msgid "Add a link"
-msgstr "Вставьте ссылку"
-
-#: inc/fields/GoogleMapField.php:123
-msgid "Add API Key"
-msgstr "Добавить ключ API"
-
-#: inc/fields/EditorJsField.php:385
-msgid "Add content"
-msgstr "Добавить содержание"
-
-#: inc/MenuSettings.php:867
-msgid "Add edit button text"
-msgstr "Добавить текст кнопки редактирования"
-
-#: templates/admin/post-forms-list-table-view.php:8
-msgid "Add Form"
-msgstr "Добавить форму"
-
-#: templates/admin/settings/form-settings-post.php:49
-msgid "Add New"
-msgstr "Добавить новый"
-
-#: templates/front-form-header.php:46
-msgid "Add new"
-msgstr "Добавить новый"
-
-#: templates/admin/settings/form-settings-post.php:27
-msgid "Add new button"
-msgstr "Добавить новую кнопку"
-
-#: templates/admin/settings/form-settings-post.php:47
-msgid "Add new button text"
-msgstr "Добавьте новый текст кнопки"
-
-#: inc/fields/TaxonomiesFields.php:144
-msgid "Add new functionality will not work without activating this input."
-msgstr ""
-
-#: inc/Form.php:519 inc/Form.php:520
-msgid "Add Post Form"
-msgstr "Добавить форму записи"
-
-#: inc/Form.php:725 templates/front-editor/post-title.php:3
-msgid "Add Title"
-msgstr "Добавить загаловок"
-
-#: templates/admin/post-form.php:112
-#: templates/admin/settings/form-admin-notification-settings.php:8
-msgid "Admin Notification"
-msgstr "Для админа"
-
-#: templates/admin/settings/form-settings-post-update.php:76
-msgid ""
-"After how many hours user will be locked from editing the submitted post."
-msgstr ""
-"Через сколько часов пользователю будет закрыта возможность редактировать "
-"запись."
-
-#: inc/MenuSettings.php:839
-msgid "After Post Content"
-msgstr "Содержание после публикации"
-
-#: templates/admin/settings/form-settings-post-update.php:49
-#: templates/admin/settings/form-payment-settings.php:93
-#: templates/admin/settings/form-settings-post.php:71
-msgid "After successfully submit, where the page will redirect to"
-msgstr "После успешной отправки записи будете перенаправлены на"
-
-#. Author of the plugin
-msgid "Aleksan Aharonyan"
-msgstr "Aleksan Aharonyan"
-
-#: inc/PostFormsListTable.php:43
-msgid "All"
-msgstr "Все"
-
-#: inc/Form.php:528
-msgid "All forms"
-msgstr "Все формы"
-
-#: inc/fields/TaxonomiesFields.php:98
-msgid "Allow Add New"
-msgstr "Разрешить добавление нового"
-
-#: templates/admin/settings/form-settings-post.php:33
-msgid "Always display"
-msgstr "Всегда показывайте"
-
-#: FrontUserSubmit.php:97
+#: FrontUserSubmit.php:127 templates/user-admin.php:91
 msgid "Are you sure you want to delete this post?"
 msgstr "Вы уверены, что хотите удалить это сообщение?"
 
-#: inc/fields/FileField.php:201
-msgid "Attach to post"
-msgstr "Прикрепить к сообщению"
+#: FrontUserSubmit.php:144 inc/Blocks.php:53 inc/MenuSettings.php:129
+msgid "Edit in front editor"
+msgstr "Редактирование во фронтальном редакторе"
 
-#: inc/Form.php:153 templates/admin/settings/form-submission-restriction.php:18
-#: templates/admin/settings/form-payment-settings.php:17
-#: templates/admin/settings/form-payment-settings.php:38
-#: templates/admin/settings/form-payment-settings.php:52
-#: templates/admin/settings/form-payment-settings.php:66
-#: templates/admin/settings/form-payment-settings.php:91
-#: templates/admin/settings/form-payment-settings.php:102
-msgid "Available in Pro version"
-msgstr "Доступно в версии Pro"
+#: FrontUserSubmit.php:156 inc/PostFormsListTable.php:414
+msgid "Edit"
+msgstr "Редактировать"
 
-#: inc/MenuSettings.php:840
-msgid "Before Post Content"
-msgstr "Перед публикацией содержания"
+#: functions.php:19 inc/PostFormsListTable.php:46
+msgid "Published"
+msgstr "Опубликовано"
 
-#: inc/fields/GoogleMapField.php:119
-#, php-format
-msgid "Before using this field, please add your Google API Key in %s."
-msgstr "Прежде чем использовать это поле, добавьте свой ключ Google API в %s."
+#: functions.php:22 inc/PostFormsListTable.php:437 inc/ai/AiSettings.php:332
+#: templates/user-admin.php:15
+msgid "Draft"
+msgstr "Черновик"
 
-#: inc/fields/EditorJsField.php:485
-msgid "Bold"
-msgstr "Полужирный"
+#: functions.php:25 templates/admin/settings/form-settings-post.php:14
+#: templates/user-admin.php:14
+msgid "Pending"
+msgstr "В ожидании"
 
-#: inc/fields/ButtonField.php:43
-msgid "Button Field"
-msgstr "Кнопка"
+#: functions.php:28
+msgid "Scheduled"
+msgstr "Запланировано"
 
-#: inc/MenuSettings.php:289 inc/MenuSettings.php:314
-msgid "Button Text"
-msgstr "Текст кнопки"
+#: inc/Blocks.php:52
+msgid "Select Post Form"
+msgstr "Выберите форму публикации"
 
-#: templates/admin/settings/form-design-color-settings.php:25
-msgid "Buttons background color"
-msgstr "Цвет фона кнопок"
-
-#: templates/admin/settings/form-design-color-settings.php:37
-msgid "Buttons border color"
-msgstr "Цвет границы кнопок"
-
-#: templates/admin/settings/form-design-color-settings.php:43
-msgid "Buttons border radius"
-msgstr "Радиус границы кнопок"
-
-#: templates/admin/settings/form-design-color-settings.php:31
-msgid "Buttons text color"
-msgstr "Цвет текста кнопок"
-
-#: inc/MenuSettings.php:22
-msgid "Buy pro version to use this functionality"
-msgstr "Купите про-версию, чтобы использовать этот функционал"
-
-#: inc/WooIntegration.php:288
-msgid "cart"
-msgstr ""
-"корзина\n"
-
-#: inc/fields/GoogleRecaptcha.php:113
+#: inc/Blocks.php:54 inc/MenuSettings.php:126
 msgid ""
-"Check the list of languages <a href=\"https://developers.google."
-"com/recaptcha/docs/language\" target=\"_blank\">here</a>"
+"This post created with the Front Editor plugin. Please edit it using Front "
+"Editor to not have issues with the plugin!"
 msgstr ""
-"Посмотрите список языков <a href=\"https://developers.google."
-"com/recaptcha/docs/language\" target=\"_blank\">здесь</a>"
-
-#: templates/admin/settings/form-payment-settings.php:22
-msgid "Check to enable Payments for this form"
-msgstr "Установите флажок, чтобы включить платежи для этой формы"
-
-#: inc/fields/EditorJsField.php:477
-msgid "Checklist"
-msgstr "Чеклист"
+"Это запись создан с помощью плагина Front Editor. Пожалуйста, редактируйте "
+"его с помощью Front Editor, чтобы избежать проблем!"
 
 #: inc/Blocks.php:55 inc/Blocks.php:89
 msgid "Choose form"
 msgstr "Выберите форму"
 
-#: inc/fields/EditorJsField.php:456
-msgid "Click to tune"
-msgstr "Нажмите, чтобы настроить"
-
-#: templates/admin/settings/form-settings-post.php:144
-msgid "Closed"
-msgstr "Закрытый"
-
-#: inc/fields/EditorJsField.php:479
-msgid "Code"
-msgstr "Код"
-
-#: templates/admin/settings/form-design-color-settings.php:23
-msgid "Color Settings"
-msgstr "Настройки цвета"
-
-#: inc/fields/EditorJsField.php:462
-msgid "Convert to"
-msgstr "Конвертировать в"
-
-#: templates/admin/settings/form-settings-migration.php:7
-msgid "Copy"
-msgstr "Копировать"
-
-#: inc/fields/GoogleMapField.php:96
-msgid "Country Code"
-msgstr "Код страны"
-
 #: inc/Blocks.php:56
 msgid "Create new form"
 msgstr "Создайте новую форму"
 
-#: templates/front-editor-form.php:11
-msgid "Create New One"
-msgstr "Создать новый"
+#: inc/DemoData.php:221 inc/DemoData.php:225
+msgid "Front Editor"
+msgstr "Фронтальный редактор"
 
-#: inc/MenuSettings.php:688
-msgid "CSS code to customize the admin page"
-msgstr "Код CSS для настройки страницы администратора"
+#: inc/Editor.php:30 templates/admin/settings/form-settings-post-update.php:3
+msgid "Update"
+msgstr "Обновить"
 
-#: templates/admin/settings/form-settings-post-update.php:39
-#: templates/admin/settings/form-settings-post.php:61
-msgid "Currently Edited Post"
-msgstr "Только что редактированная запись"
+#: inc/Editor.php:31 templates/admin/settings/form-settings-post.php:13
+#: templates/user-admin.php:13
+msgid "Publish"
+msgstr "Опубликовать"
 
-#: inc/MenuSettings.php:367
-msgid "Custom CSS"
-msgstr "Пользовательский CSS"
+#: inc/Editor.php:43 inc/Editor.php:47 inc/SavePost.php:274
+#: inc/SavePost.php:279
+msgid "The post you trying to edit is not exist, please create a new one"
+msgstr ""
+"Запись, которое вы пытаетесь отредактировать, не существует, пожалуйста, "
+"создайте новое"
 
-#: templates/admin/settings/form-submission-display.php:69
-msgid "Custom css for form"
-msgstr "Пользовательский css для формы"
+#: inc/Editor.php:77
+msgid "Updating"
+msgstr "Обновление"
 
-#: inc/Form.php:144
-msgid "Custom Fields"
-msgstr "Пользовательские поля"
+#: inc/Editor.php:80
+msgid "Something goes wrong try later"
+msgstr "Что-то пошло не так, попробуйте позже"
 
-#: templates/admin/settings/form-settings-post-update.php:54
-#: templates/admin/settings/form-payment-settings.php:98
-#: templates/admin/settings/form-settings-post.php:76
-msgid "Custom URL"
-msgstr "Пользовательская ссылка"
+#: inc/Editor.php:141 inc/UserAdmin.php:16
+msgid "This page is restricted. Please Login to view this page."
+msgstr ""
+"Эта страница недоступна. Пожалуйста, войдите для просмотра этой страницы."
 
-#: inc/fields/DateField.php:70
-msgid "Date Field"
-msgstr "Поле даты"
+#: inc/Editor.php:166 templates/admin/settings/form-settings-post-update.php:6
+msgid "You are not allowed to edit anymore."
+msgstr "Вам больше не разрешено редактировать."
 
-#: inc/MenuSettings.php:905
-msgid "Default"
-msgstr "По умолчанию"
+#: inc/Editor.php:175
+msgid "You are not allowed to edit"
+msgstr "Вам не разрешено редактировать"
 
-#: inc/fields/TaxonomiesFields.php:113
-msgid "Default terms"
-msgstr "Термнины по умолчанию"
-
-#: inc/fields/EditorJsField.php:505
-msgid "Delete"
-msgstr "Удалить"
-
-#: inc/PostFormsListTable.php:420
-msgid "Delete Permanently"
-msgstr "Удалить навсегда"
-
-#: inc/fields/EditorJsField.php:480
-msgid "Delimiter"
-msgstr "Разделитель"
-
-#: templates/admin/settings/form-payment-settings.php:47
-msgid "Direct Checkout"
-msgstr "Прямая оформление"
-
-#: templates/admin/settings/form-settings-post.php:34
-#: templates/admin/settings/form-settings-post.php:91
-#: templates/admin/settings/form-settings-post.php:119
-msgid "Disable"
-msgstr "Отключить"
-
-#: inc/MenuSettings.php:908
-msgid "Disable for all"
-msgstr "Отключить для всех"
-
-#: inc/MenuSettings.php:909
-msgid "Disable for all but admin"
-msgstr "Отключить для всех, кроме администратора"
-
-#: inc/MenuSettings.php:28
-msgid "Disable this field"
-msgstr "Отключите это поле"
-
-#: inc/MenuSettings.php:26 inc/MenuSettings.php:906
-#: templates/admin/settings/form-settings-post.php:32
-#: templates/admin/settings/form-settings-post.php:90
-#: templates/admin/settings/form-settings-post.php:118
-msgid "Display"
-msgstr "Показать"
-
-#: inc/MenuSettings.php:27
-msgid "Display and require"
-msgstr "Отображать и требовать"
-
-#: inc/MenuSettings.php:907
-msgid "Display only for logged in users"
-msgstr "Отображение только для вошедших пользователей"
-
-#: templates/admin/post-form.php:79
-msgid "Display Settings"
-msgstr "Дизайна"
-
-#: templates/editor/attaches.php:6
-msgid "Download"
-msgstr "Скачать"
-
-#: inc/PostFormsListTable.php:429 templates/user-admin.php:15
-msgid "Draft"
-msgstr "Черновик"
-
-#: inc/MenuSettings.php:343 templates/admin/settings/form-settings-post.php:85
-msgid "Draft button"
-msgstr "Кнопка Черновик"
-
-#: templates/admin/settings/form-settings-post.php:104
-msgid "Draft button text"
-msgstr "Текст черновой кнопки"
-
-#: inc/fields/TinyMCE.php:67
-msgid "Drag & Drop"
-msgstr "Перетаскивание"
-
-#: inc/PostFormsListTable.php:408
-msgid "Duplicate"
-msgstr "Дубликат"
-
-#: FrontUserSubmit.php:126 inc/PostFormsListTable.php:406
-msgid "Edit"
-msgstr "Редактировать"
-
-#: inc/EditorWidget.php:91 inc/MenuSettings.php:862
+#: inc/EditorWidget.php:91 inc/MenuSettings.php:1091
 msgid "Edit Current Post"
 msgstr "Редактировать текущее сообщение"
 
-#: FrontUserSubmit.php:114 inc/Blocks.php:53 inc/MenuSettings.php:127
-msgid "Edit in front editor"
-msgstr "Редактирование во фронтальном редакторе"
-
-#: inc/MenuSettings.php:146
-msgid "Edit Post button position in post"
-msgstr "Положение кнопки \"Редактировать записи\" в записи"
-
-#: inc/Form.php:521
-msgid "Edit Post Form"
-msgstr "Форма редактирования записи"
-
-#: templates/admin/post-form.php:77
-msgid "Edit Post Settings"
-msgstr "Редактирования записи"
-
-#: inc/Form.php:136
-msgid "Editors"
-msgstr "Редакторы"
-
-#: inc/MenuSettings.php:308
-msgid "Email"
-msgstr "Электронная почта"
-
-#: inc/fields/TinyMCE.php:118
-msgid "Enable Drag & Drop Upload Support"
-msgstr "Включите поддержку загрузки с помощью перетаскивания"
-
-#: templates/admin/settings/form-submission-restriction.php:14
-msgid "Enable Guest Post"
-msgstr "Включить гостевой постинг"
-
-#: templates/admin/settings/form-payment-settings.php:19
-msgid "Enable Payments"
-msgstr "Включить платежи"
+#: inc/Form.php:123
+msgid "This field value will be saved into post meta using this name."
+msgstr "Значение этого поля будет сохранено в post meta под этим именем."
 
 #: inc/Form.php:124
+msgid "Help text will be shown under this field on the front end form."
+msgstr ""
+"Текст описания будет отображаться под этим полем на лицевой стороне формы."
+
+#: inc/Form.php:125
+msgid ""
+"Enable this option to save the field data directly to the post content.. "
+"Important: If multiple editors have this setting enabled, each new editor "
+"will overwrite the previous content in this field."
+msgstr ""
+"Включите эту опцию, чтобы сохранить данные поля непосредственно в содержимом "
+"поста. Важно: Если эта настройка включена у нескольких редакторов, каждый "
+"новый редактор будет перезаписывать предыдущее содержимое этого поля."
+
+#: inc/Form.php:126
 msgid ""
 "Enable this option to save the field data directly to the post content, "
 "excerpt or meta.. Important: If multiple editors have selected post content "
@@ -457,193 +142,446 @@ msgstr ""
 "выбрали содержимое поста или отрывка, каждый новый редактор будет "
 "перезаписывать предыдущее содержимое в этом поле."
 
-#: inc/Form.php:123
-msgid ""
-"Enable this option to save the field data directly to the post content.. "
-"Important: If multiple editors have this setting enabled, each new editor "
-"will overwrite the previous content in this field."
+#: inc/Form.php:134
+msgid "Post Fields"
+msgstr "Поля Записи"
+
+#: inc/Form.php:138
+msgid "Editors"
+msgstr "Редакторы"
+
+#: inc/Form.php:142
+msgid "Taxonomies"
+msgstr "Таксономии"
+
+#: inc/Form.php:146
+msgid "Custom Fields"
+msgstr "Пользовательские поля"
+
+#: inc/Form.php:154
+msgid "You already have this field in the form"
+msgstr "У вас уже есть это поле в форме"
+
+#: inc/Form.php:155 templates/admin/settings/form-payment-settings.php:17
+#: templates/admin/settings/form-payment-settings.php:38
+#: templates/admin/settings/form-payment-settings.php:52
+#: templates/admin/settings/form-payment-settings.php:66
+#: templates/admin/settings/form-payment-settings.php:91
+#: templates/admin/settings/form-payment-settings.php:102
+#: templates/admin/settings/form-submission-restriction.php:18
+msgid "Available in Pro version"
+msgstr "Доступно в версии Pro"
+
+#: inc/Form.php:156
+msgid "Please upgrade to the Pro version to unlock all these awesome features"
 msgstr ""
-"Включите эту опцию, чтобы сохранить данные поля непосредственно в содержимом "
-"поста. Важно: Если эта настройка включена у нескольких редакторов, каждый "
-"новый редактор будет перезаписывать предыдущее содержимое этого поля."
+"Пожалуйста, перейдите на версию Pro, чтобы разблокировать все эти "
+"потрясающие возможности"
 
-#: inc/fields/GoogleRecaptcha.php:101
-msgid "Error Message"
-msgstr "Сообщение об ошибке"
+#: inc/Form.php:158 inc/ai/AiAssistant.php:189 inc/ai/AiSettings.php:314
+#: templates/admin/settings/form-ai-settings.php:83
+msgid "Get the Pro version"
+msgstr "Получите версию Pro"
 
-#: inc/WooIntegration.php:153
-msgid "Failed to add product to cart"
-msgstr "Не удалось добавить товар в корзину"
+#: inc/Form.php:244
+#, php-format
+msgid "%s (Copy)"
+msgstr "%s (копия)"
 
-#: inc/fields/PostThumbField.php:43
-msgid "Featured Image"
-msgstr "Изображение записи"
+#: inc/Form.php:347 templates/admin/post-form.php:49
+msgid "Sample Form"
+msgstr "Новая форма"
 
-#: inc/fields/FileField.php:142
-msgid "File is not exist"
-msgstr "Файл не существует"
+#: inc/Form.php:372 inc/fields/MdEditor.php:134
+#: inc/fields/PostTitleField.php:55
+msgid "Oops"
+msgstr "Упс"
 
-#: inc/Form.php:306
+#: inc/Form.php:373
 msgid "Form builder cannot be empty"
 msgstr "Конструктор форм не может быть пустым"
 
-#: templates/admin/post-form.php:27
-msgid "Form Editor"
-msgstr "Редактор форм"
-
-#: inc/WooIntegration.php:382
-msgid "Form Id"
-msgstr "ID формы"
-
-#: inc/PostFormsListTable.php:310
-msgid "Form Name"
-msgstr "Имя формы"
-
-#: templates/admin/settings/form-admin-login-register.php:11
-msgid "Form Restriction Message"
-msgstr "Сообщение об ограничении формы"
-
-#: inc/Form.php:418
-msgid "Form Settings Migrated"
-msgstr "Перенесены настройки формы"
-
-#: inc/Form.php:339
+#: inc/Form.php:406
 msgid "Form Settings Saved"
 msgstr "Сохранение настроек формы"
 
-#: templates/admin/post-form.php:10
-msgid "Form Title"
-msgstr "Название формы"
+#: inc/Form.php:431
+msgid "post_id is empty."
+msgstr "post_id пуст."
 
-#: templates/admin/settings/form-notification-settings.php:38
-msgid "From Email"
-msgstr "Из электронной почты"
+#: inc/Form.php:450
+msgid "Loading"
+msgstr "Загрузка"
 
-#: templates/admin/settings/form-notification-settings.php:32
-msgid "From Name"
-msgstr "От имени"
+#: inc/Form.php:460 inc/Form.php:472
+msgid "This is not a valid record."
+msgstr "Это не действительная запись."
 
-#: inc/DemoData.php:217 inc/DemoData.php:221
-msgid "Front Editor"
-msgstr "Фронтальный редактор"
+#: inc/Form.php:485
+msgid "Form Settings Migrated"
+msgstr "Перенесены настройки формы"
 
-#: inc/MenuSettings.php:364
-msgid "Front user admin settings without login "
-msgstr "Настройки администратора переднего пользователя без входа в систему"
+#: inc/Form.php:584 inc/Form.php:585
+msgid "Post Form"
+msgstr "Форма Записи"
 
-#: inc/MenuSettings.php:39
-msgid "Front User Submit"
-msgstr "Front Editor"
+#: inc/Form.php:586 inc/Form.php:587
+msgid "Add Post Form"
+msgstr "Добавить форму записи"
 
-#. Name of the plugin
-#: inc/MenuSettings.php:38
-msgid "Front User Submit | Front Editor"
-msgstr "Front User Submit | Front Editor"
+#: inc/Form.php:588
+msgid "Edit Post Form"
+msgstr "Форма редактирования записи"
+
+#: inc/Form.php:589
+msgid "New Post Form"
+msgstr "Форма новой записи"
+
+#: inc/Form.php:590
+msgid "Watch Post Form"
+msgstr "Посмотреть форму"
+
+#: inc/Form.php:591
+msgid "Search Post Form"
+msgstr "Форма поиска записей"
+
+#: inc/Form.php:592
+msgid "Not Found"
+msgstr "Не найдено"
+
+#: inc/Form.php:593
+msgid "Not found in trash"
+msgstr "Не найдено в корзине"
+
+#: inc/Form.php:595
+msgid "All forms"
+msgstr "Все формы"
+
+#: inc/Form.php:791 inc/WooIntegration.php:366 inc/WooIntegration.php:377
+#: inc/fields/PostTitleField.php:192
+msgid "Post Title"
+msgstr "Заголовок записи"
+
+#: inc/Form.php:792 templates/front-editor/post-title.php:3
+msgid "Add Title"
+msgstr "Добавить загаловок"
 
 #: inc/FormMetaBox.php:70
 msgid "FUS Form Data"
 msgstr "Данные формы FUS"
 
-#: inc/fields/PostTitleField.php:258
-msgid "Generate title"
-msgstr "Сгенерировать заголовок"
-
-#: inc/fields/PostTitleField.php:263
+#: inc/FormMetaBox.php:108
+#, php-format
 msgid ""
-"Generate title using params: [{taxonomy_name}] [{field name}] <br> Example: "
-"Post [category] [text-1695547664968] <br> If empty will not work"
+"<div style=\"%s\">We recommend using the front form for post editing. <a "
+"href=\"%s\">Edit -></a></div>"
 msgstr ""
-"Сгенерируйте заголовок, используя параметры: [{taxonomy_name}] [{field name}]"
-" <br> Пример: Пост [категория] [text-1695547664968] <br> Если пусто, то не "
-"будет работать"
+"<div style=\"%s\">Мы рекомендуем использовать фронтальную форму для "
+"редактирования постов. <a href=\"%s\">Редактировать -></a></div>"
 
-#: inc/Form.php:156
-msgid "Get the Pro version"
-msgstr "Получите версию Pro"
+#: inc/FormMetaBox.php:146
+msgid "Untitled Field"
+msgstr "Поле без названия"
 
-#: inc/MenuSettings.php:137
+#: inc/LoginRegisterShortcode.php:68
+msgid "Processing..."
+msgstr "Обработка..."
+
+#: inc/LoginRegisterShortcode.php:69
+msgid "An error occurred. Please try again."
+msgstr "Произошла ошибка. Попробуйте ещё раз."
+
+#: inc/LoginRegisterShortcode.php:70
+msgid "Network error. Please check your connection."
+msgstr "Ошибка сети. Проверьте подключение."
+
+#: inc/LoginRegisterShortcode.php:71
+msgid "Success!"
+msgstr "Готово!"
+
+#: inc/LoginRegisterShortcode.php:150
+msgid "User is logged in."
+msgstr "Пользователь вошел в систему."
+
+#: inc/LoginRegisterShortcode.php:161 inc/LoginRegisterShortcode.php:182
+msgid "Security error, please refresh page"
+msgstr "Ошибка безопасности, обновите страницу"
+
+#: inc/LoginRegisterShortcode.php:203 inc/LoginRegisterShortcode.php:284
+msgid "<strong>ERROR</strong>: Empty username"
+msgstr "<strong>ERROR</strong>: Пустое имя пользователя"
+
+#: inc/LoginRegisterShortcode.php:210
+msgid "<strong>ERROR</strong>: Empty password"
+msgstr "<strong>ОШИБКА</strong>: Пустой пароль"
+
+#: inc/LoginRegisterShortcode.php:233
+msgid "Login successful"
+msgstr "Вход выполнен"
+
+#: inc/LoginRegisterShortcode.php:291
+msgid "<strong>ERROR</strong>: Empty email"
+msgstr "<strong>ОШИБКА</strong>: Пустое адрес почты"
+
+#: inc/LoginRegisterShortcode.php:324
+msgid "Registration successful. Your password will be sent via email shortly."
+msgstr ""
+"Регистрация прошла успешно. Ваш пароль будет отправлен по электронной почте "
+"в ближайшее время."
+
+#: inc/LoginRegisterShortcode.php:333
+msgid "Security error, please update page"
+msgstr "Ошибка безопасности, пожалуйста, обновите страницу"
+
+#: inc/MenuSettings.php:22
+msgid "Buy pro version to use this functionality"
+msgstr "Купите про-версию, чтобы использовать этот функционал"
+
+#: inc/MenuSettings.php:26 inc/MenuSettings.php:1158
+#: templates/admin/settings/form-settings-post.php:32
+#: templates/admin/settings/form-settings-post.php:90
+#: templates/admin/settings/form-settings-post.php:118
+msgid "Display"
+msgstr "Показать"
+
+#: inc/MenuSettings.php:27
+msgid "Display and require"
+msgstr "Отображать и требовать"
+
+#: inc/MenuSettings.php:28
+msgid "Disable this field"
+msgstr "Отключите это поле"
+
+#: inc/MenuSettings.php:38
+msgid "Front User Submit | Front Editor"
+msgstr "Front User Submit | Front Editor"
+
+#: inc/MenuSettings.php:39
+msgid "Front User Submit"
+msgstr "Front Editor"
+
+#: inc/MenuSettings.php:49 inc/MenuSettings.php:50
+#: templates/admin/post-forms-list-table-view.php:4
+msgid "Post Forms"
+msgstr "Формы Записи"
+
+#: inc/MenuSettings.php:59 inc/MenuSettings.php:60
+#: inc/fields/GoogleMapField.php:120 templates/admin/post-form.php:66
+#: templates/admin/settings/form-settings-post-update.php:19
+msgid "Settings"
+msgstr "Настройки"
+
+#: inc/MenuSettings.php:139
 msgid "Global settings"
 msgstr "Глобальные настройки"
 
-#: templates/admin/settings/form-payment-settings.php:54
-msgid "Go direct to checkout"
-msgstr "Перейдите непосредственно к оформлению заказа"
+#: inc/MenuSettings.php:143
+msgid "Edit Post button position in post"
+msgstr "Положение кнопки \"Редактировать записи\" в записи"
 
-#: inc/fields/GoogleMapField.php:76
-msgid "Google Map"
-msgstr "Google Карты"
+#: inc/MenuSettings.php:147
+msgid "- Edit Button Text"
+msgstr "- Текст кнопки редактирования"
 
-#: inc/MenuSettings.php:197
+#: inc/MenuSettings.php:151
+msgid "WordPress admin bar"
+msgstr "Панель администратора WordPress"
+
+#: inc/MenuSettings.php:155
 msgid "Google Map API"
 msgstr "API Google Map"
 
-#: inc/PostFormsListTable.php:313
-#: templates/admin/settings/form-submission-restriction.php:8
-msgid "Guest Post"
-msgstr "Гостевые посты"
+#: inc/MenuSettings.php:188
+msgid "Main Settings"
+msgstr "Основные настройки"
 
-#. Description of the plugin
+#: inc/MenuSettings.php:189
+msgid "Settings Page"
+msgstr "Страница настроек"
+
+#: inc/MenuSettings.php:195
+msgid "Login & Registration Settings"
+msgstr "Настройки входа и регистрации"
+
+#: inc/MenuSettings.php:196
+msgid "Login & Registration Forms Shortcode Settings"
+msgstr "Настройки шорткодов форм входа и регистрации"
+
+#: inc/MenuSettings.php:202
+msgid "User Admin"
+msgstr "Админка пользователя"
+
+#: inc/MenuSettings.php:203
+msgid "User Admin Shortcode Settings"
+msgstr "Настройки шорткода админ панели пользователя"
+
+#: inc/MenuSettings.php:209
+msgid "Suggest Feature"
+msgstr "Предложить идею"
+
+#: inc/MenuSettings.php:210
+msgid "Suggest a Feature Widget"
+msgstr "Виджет «Предложить идею»"
+
+#: inc/MenuSettings.php:255
+msgid "Login Form Settings"
+msgstr "Настройки формы входа в систему"
+
+#: inc/MenuSettings.php:256
+msgid "Registration Form Settings"
+msgstr "Настройки формы регистрации"
+
+#: inc/MenuSettings.php:267
+msgid "Form Design"
+msgstr "Дизайн формы"
+
+#: inc/MenuSettings.php:278 inc/MenuSettings.php:303
+#: templates/register-form.php:75
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: inc/MenuSettings.php:281 templates/login-form.php:64
+msgid "Password"
+msgstr "Пароль"
+
+#: inc/MenuSettings.php:284 inc/MenuSettings.php:309
+msgid "Redirect"
+msgstr "Перенаправление"
+
+#: inc/MenuSettings.php:287 inc/MenuSettings.php:312
+msgid "Button Text"
+msgstr "Текст кнопки"
+
+#: inc/MenuSettings.php:290
+msgid "Remember me"
+msgstr "Помни меня"
+
+#: inc/MenuSettings.php:297
+msgid "Show User Name Inputs"
+msgstr "Показать поле имя пользователя"
+
+#: inc/MenuSettings.php:300
+msgid "WebSite"
+msgstr "Веб-сайт"
+
+#: inc/MenuSettings.php:306
+msgid "Email"
+msgstr "Электронная почта"
+
+#: inc/MenuSettings.php:315
+msgid "User Notification Email"
+msgstr "Уведомление пользователя по электронной почте"
+
+#: inc/MenuSettings.php:318 inc/MenuSettings.php:540
+msgid "Custom CSS"
+msgstr "Пользовательский CSS"
+
+#: inc/MenuSettings.php:335 inc/MenuSettings.php:403
+#: templates/admin/settings/form-submission-display.php:73
+msgid "Modern Minimal"
+msgstr "Современный минимализм"
+
+#: inc/MenuSettings.php:340 inc/MenuSettings.php:413
+#: templates/admin/settings/form-submission-display.php:78
+msgid "Card/Panel Style"
+msgstr "Карточка/панель"
+
+#: inc/MenuSettings.php:345
+msgid "Split Screen"
+msgstr "Разделённый экран"
+
+#: inc/MenuSettings.php:350
+msgid "Gradient Background"
+msgstr "Градиентный фон"
+
+#: inc/MenuSettings.php:355
+msgid "Glassmorphism"
+msgstr "Глассморфизм"
+
+#: inc/MenuSettings.php:360 inc/MenuSettings.php:423
+#: templates/admin/settings/form-submission-display.php:88
+msgid "Borderless/Flat"
+msgstr "Без рамок/плоский"
+
+#: inc/MenuSettings.php:365 inc/MenuSettings.php:418
+#: templates/admin/settings/form-submission-display.php:83
+msgid "Corporate/Professional"
+msgstr "Корпоративный"
+
+#: inc/MenuSettings.php:370
+msgid "Playful/Colorful"
+msgstr "Яркий/игривый"
+
+#: inc/MenuSettings.php:408
+msgid "No Style"
+msgstr "Без стилей"
+
+#: inc/MenuSettings.php:456
+#, php-format
+msgid "Template not found: %s"
+msgstr "Шаблон не найден: %s"
+
+#: inc/MenuSettings.php:477
+msgid "User Admin Settings"
+msgstr "Настройки админ панели пользователя"
+
+#: inc/MenuSettings.php:490
+msgid "Select Template"
+msgstr "Выберите шаблон"
+
+#: inc/MenuSettings.php:501
+msgid "Allowed Post Types"
+msgstr "Разрешённые типы записей"
+
+#: inc/MenuSettings.php:510
+msgid "Publish button"
+msgstr "Кнопка публикации"
+
+#: inc/MenuSettings.php:513
+msgid "Pending button"
+msgstr "Кнопка в ожидании"
+
+#: inc/MenuSettings.php:516 templates/admin/settings/form-settings-post.php:85
+msgid "Draft button"
+msgstr "Кнопка Черновик"
+
+#: inc/MenuSettings.php:519
+msgid "Logout button"
+msgstr "Кнопка выхода из системы"
+
+#: inc/MenuSettings.php:522
+msgid "Show all users posts link"
+msgstr "Показать ссылки на записи всех пользователей"
+
+#: inc/MenuSettings.php:525
+msgid "Remove post icon"
+msgstr "Значок удаления записи"
+
+#: inc/MenuSettings.php:528
+msgid "Pagination"
+msgstr "Пагинация"
+
+#: inc/MenuSettings.php:534
+msgid "No post found text"
+msgstr "Текст записи не найден"
+
+#: inc/MenuSettings.php:537
+msgid "Front user admin settings without login "
+msgstr "Настройки администратора переднего пользователя без входа в систему"
+
+#: inc/MenuSettings.php:578
 msgid ""
-"Have you ever seen websites that allow users to submit posts or other type "
-"of content? Do you want to have user-submitted content on your site? Front "
-"Editor allow users to submit blog posts to your WordPress site with new "
-"frontend block editor EditorJs."
+"Hold Ctrl (Cmd on Mac) to select multiple post types. Users will be able to "
+"manage these post types in the frontend admin panel."
 msgstr ""
-"Вы когда-нибудь видели сайты, которые позволяют пользователям отправлять "
-"сообщения или другой тип контента? Хотите иметь на своем сайте контент, "
-"отправляемый пользователями? Front Editor позволяет пользователям отправлять "
-"записи в блог на вашем сайте WordPress с помощью нового редактора блоков "
-"фронтенда EditorJs."
+"Удерживайте Ctrl (Cmd на Mac), чтобы выбрать несколько типов записей. "
+"Пользователи смогут управлять ими в панели на сайте."
 
-#: inc/fields/HeaderField.php:43
-msgid "Header Field"
-msgstr "Поле заголовка"
+#: inc/MenuSettings.php:622
+msgid "Short information"
+msgstr "Краткая информация"
 
-#: inc/fields/EditorJsField.php:474
-msgid "Heading"
-msgstr "Заголовок"
-
-#: inc/Form.php:122
-msgid "Help text will be shown under this field on the front end form."
-msgstr ""
-"Текст описания будет отображаться под этим полем на лицевой стороне формы."
-
-#: inc/MenuSettings.php:886
-msgid "here"
-msgstr "здесь"
-
-#: inc/fields/HiddenField.php:43
-msgid "Hidden Field"
-msgstr "Скрытое поле"
-
-#: inc/MenuSettings.php:516 inc/MenuSettings.php:535 inc/MenuSettings.php:554
-#: inc/MenuSettings.php:573 inc/MenuSettings.php:592 inc/MenuSettings.php:623
-#: inc/MenuSettings.php:639 inc/MenuSettings.php:845
-msgid "Hide"
-msgstr "Скрыть"
-
-#: inc/fields/PostTitleField.php:257
-msgid "Hide Field"
-msgstr "Скрыть поле"
-
-#: inc/fields/PostTitleField.php:264
-msgid "Hide field so users will not see it"
-msgstr "Скрыть поле, чтобы пользователи его не видели"
-
-#: templates/admin/settings/form-settings-post-update.php:75
-msgid "hours"
-msgstr "час"
-
-#. Author URI of the plugin
-msgid "https://github.com/Aharonyan/"
-msgstr "https://github.com/Aharonyan/"
-
-#. URI of the plugin
-msgid "https://wpfronteditor.com/"
-msgstr "https://wpfronteditor.com/"
-
-#. If you have some ideas or questions please contact me.
-#: inc/MenuSettings.php:398
+#: inc/MenuSettings.php:628
 #, php-format
 msgid ""
 "If you have some ideas or questions please contact us. \n"
@@ -652,22 +590,292 @@ msgstr ""
 "Если у вас есть идеи или вопросы, пожалуйста, свяжитесь с нами.\n"
 "\t\t\t\tКонтактную информацию вы можете найти на нашем сайте %s"
 
-#: inc/fields/EditorJsField.php:489
-msgid "Image"
-msgstr "Изображение"
+#. translators: You can buy pro version or find additional information.
+#: inc/MenuSettings.php:641
+#, php-format
+msgid ""
+"You can buy pro version or find additional information <a href=\"%1$s\" "
+"target=\"_blank\">here</a> or write some ideas or report issues in %2$s"
+msgstr ""
+"Вы можете купить про-версию или найти дополнительную информацию <a "
+"href=\"%1$s\" target=\"_blank\">здесь</a> или написать несколько идей или "
+"сообщить о проблемах в %2$s"
 
-#: inc/fields/EditorJsField.php:488
-msgid "Image & Gallery"
-msgstr "Изображение и галерея"
+#: inc/MenuSettings.php:656 inc/MenuSettings.php:676 inc/MenuSettings.php:944
+#: inc/MenuSettings.php:989 inc/MenuSettings.php:1009 inc/MenuSettings.php:1029
+#: inc/fields/FileField.php:232 inc/fields/PostTitleField.php:243
+msgid "Placeholder"
+msgstr "Placeholder"
 
-#: inc/SavePost.php:174
+#: inc/MenuSettings.php:659 inc/MenuSettings.php:679 inc/MenuSettings.php:727
+#: inc/MenuSettings.php:746 inc/MenuSettings.php:765 inc/MenuSettings.php:784
+#: inc/MenuSettings.php:803 inc/MenuSettings.php:822 inc/MenuSettings.php:947
+#: inc/MenuSettings.php:992 inc/MenuSettings.php:1012 inc/MenuSettings.php:1032
+msgid "Label"
+msgstr "Метка"
+
+#: inc/MenuSettings.php:705 inc/MenuSettings.php:964
+#: inc/fields/EditorJsField.php:483
+msgid "Link"
+msgstr "Ссылка"
+
+#: inc/MenuSettings.php:745 inc/MenuSettings.php:764 inc/MenuSettings.php:783
+#: inc/MenuSettings.php:802 inc/MenuSettings.php:821 inc/MenuSettings.php:852
+#: inc/MenuSettings.php:868 inc/MenuSettings.php:1074
+msgid "Hide"
+msgstr "Скрыть"
+
+#: inc/MenuSettings.php:815 templates/user-admin.php:18
+msgid "Show all users posts"
+msgstr "Показать все записи пользователей"
+
+#: inc/MenuSettings.php:834
+msgid "Activate Login Form"
+msgstr "Активировать форму входа"
+
+#: inc/MenuSettings.php:835
+msgid "User Not Logged In message."
+msgstr "Сообщение \"Пользователь не вошел в систему\"."
+
+#: inc/MenuSettings.php:869
+msgid "Previous text"
+msgstr "Предыдущий текст"
+
+#: inc/MenuSettings.php:870
+msgid "Previous"
+msgstr "Предыдущий"
+
+#: inc/MenuSettings.php:872
+msgid "Next text"
+msgstr "Следующий текст"
+
+#: inc/MenuSettings.php:873
+msgid "Next"
+msgstr "Следующий"
+
+#: inc/MenuSettings.php:889
+msgid "Post count"
+msgstr "Количество записей"
+
+#: inc/MenuSettings.php:906 inc/MenuSettings.php:907
+msgid "No post found"
+msgstr "Не найдено ни одной записи"
+
+#: inc/MenuSettings.php:917
+msgid "CSS code to customize design"
+msgstr "CSS-код для настройки дизайна"
+
+#: inc/MenuSettings.php:1068
+msgid "After Post Content"
+msgstr "Содержание после публикации"
+
+#: inc/MenuSettings.php:1069
+msgid "Before Post Content"
+msgstr "Перед публикацией содержания"
+
+#: inc/MenuSettings.php:1070
+msgid "Left bottom"
+msgstr "Левая нижняя часть"
+
+#: inc/MenuSettings.php:1071
+msgid "Left top"
+msgstr "Левая верхняя часть"
+
+#: inc/MenuSettings.php:1072
+msgid "Right bottom"
+msgstr "Правый низ"
+
+#: inc/MenuSettings.php:1073
+msgid "Right top"
+msgstr "Правая верхняя часть"
+
+#: inc/MenuSettings.php:1081
+msgid "Select Edit Post button position on created post"
+msgstr "Выберите положение кнопки редактирования записи на созданной записи"
+
+#: inc/MenuSettings.php:1096
+msgid "Add edit button text"
+msgstr "Добавить текст кнопки редактирования"
+
+#: inc/MenuSettings.php:1114
+#, php-format
+msgid "You can check %1$s how to get Google Map API Key and how to set it up."
+msgstr ""
+"Вы можете посмотреть %1$s, как получить ключ API Google Map и как его "
+"настроить."
+
+#: inc/MenuSettings.php:1115
+msgid "here"
+msgstr "здесь"
+
+#: inc/MenuSettings.php:1137
+#, php-format
+msgid ""
+"You can find information about getting a Yandex Maps API key %1$s here %2$s"
+msgstr "Как получить API-ключ Яндекс Карт, читайте %1$s здесь %2$s"
+
+#: inc/MenuSettings.php:1157
+msgid "Default"
+msgstr "По умолчанию"
+
+#: inc/MenuSettings.php:1159
+msgid "Display only for logged in users"
+msgstr "Отображение только для вошедших пользователей"
+
+#: inc/MenuSettings.php:1160
+msgid "Disable for all"
+msgstr "Отключить для всех"
+
+#: inc/MenuSettings.php:1161
+msgid "Disable for all but admin"
+msgstr "Отключить для всех, кроме администратора"
+
+#: inc/MenuSettings.php:1224
+msgid "Features.Vote Integration"
+msgstr "Интеграция с Features.Vote"
+
+#: inc/MenuSettings.php:1237
+msgid "Features.Vote Slug"
+msgstr "Slug в Features.Vote"
+
+#: inc/MenuSettings.php:1246
+msgid "Color Mode"
+msgstr "Цветовая тема"
+
+#: inc/MenuSettings.php:1255
+msgid "Pass User Data"
+msgstr "Передавать данные пользователя"
+
+#: inc/MenuSettings.php:1268
+msgid ""
+"Configure the \"Suggest a Feature\" popup widget from Features.Vote. Users "
+"can submit feature requests directly from your site."
+msgstr ""
+"Настройте всплывающий виджет «Предложить идею» от Features.Vote. "
+"Пользователи смогут отправлять пожелания прямо с вашего сайта."
+
+#: inc/MenuSettings.php:1272
+msgid "✨ Open Widget Preview"
+msgstr "✨ Открыть предпросмотр виджета"
+
+#: inc/MenuSettings.php:1273
+msgid "Click to preview the widget with your current settings."
+msgstr "Нажмите, чтобы посмотреть виджет с текущими настройками."
+
+#: inc/MenuSettings.php:1276
+msgid "Enter your Features.Vote slug below to enable the widget preview."
+msgstr "Укажите slug Features.Vote ниже, чтобы включить предпросмотр."
+
+#: inc/MenuSettings.php:1290
+msgid "your-project-slug"
+msgstr "your-project-slug"
+
+#: inc/MenuSettings.php:1292
+msgid ""
+"Your Features.Vote project slug (e.g. \"my-app\"). Find it in your "
+"Features.Vote dashboard."
+msgstr ""
+"Slug вашего проекта в Features.Vote (например, «my-app»). Его можно найти в "
+"панели Features.Vote."
+
+#: inc/MenuSettings.php:1299
+msgid "Light"
+msgstr "Светлая"
+
+#: inc/MenuSettings.php:1299
+msgid "Dark"
+msgstr "Тёмная"
+
+#: inc/MenuSettings.php:1317
+msgid "Pass the logged-in user's name, email, and ID to the widget"
+msgstr "Передавать в виджет имя, email и ID вошедшего пользователя"
+
+#: inc/MenuSettings.php:1319
+msgid ""
+"When enabled, the current user's details are pre-filled in the feature "
+"request form."
+msgstr ""
+"Если включено, данные текущего пользователя будут подставлены в форму "
+"пожелания."
+
+#: inc/PostFormsListTable.php:45
+msgid "All"
+msgstr "Все"
+
+#: inc/PostFormsListTable.php:47 inc/PostFormsListTable.php:415
+msgid "Trash"
+msgstr "Корзина"
+
+#: inc/PostFormsListTable.php:103
+msgid "No form found."
+msgstr "Форма не найдена."
+
+#: inc/PostFormsListTable.php:117
+msgid "Move to Trash"
+msgstr "Удалить в корзину"
+
+#: inc/PostFormsListTable.php:121 inc/PostFormsListTable.php:427
+msgid "Restore"
+msgstr "Восстановить"
+
+#: inc/PostFormsListTable.php:122 inc/PostFormsListTable.php:428
+msgid "Delete Permanently"
+msgstr "Удалить навсегда"
+
+#: inc/PostFormsListTable.php:318
+msgid "Form Name"
+msgstr "Имя формы"
+
+#: inc/PostFormsListTable.php:319
+msgid "Post Type"
+msgstr "Тип Записи"
+
+#: inc/PostFormsListTable.php:320
+#: templates/admin/settings/form-settings-post.php:8
+msgid "Post Status"
+msgstr "Статус Записи"
+
+#: inc/PostFormsListTable.php:321
+#: templates/admin/settings/form-submission-restriction.php:8
+msgid "Guest Post"
+msgstr "Гостевые посты"
+
+#: inc/PostFormsListTable.php:322 templates/admin/post-form.php:52
+msgid "Shortcode"
+msgstr "Шорткод"
+
+#: inc/PostFormsListTable.php:368
+msgid "Yes"
+msgstr "Да"
+
+#: inc/PostFormsListTable.php:369
+msgid "No"
+msgstr "Нет"
+
+#: inc/PostFormsListTable.php:416
+msgid "Duplicate"
+msgstr "Дубликат"
+
+#: inc/SavePost.php:190 inc/SavePost.php:489
 msgid "Image type is not supported, please select another image"
 msgstr ""
 "Тип изображения не поддерживается, пожалуйста, выберите другое изображение"
 
-#: inc/fields/EditorJsField.php:487
-msgid "InlineCode"
-msgstr "Моноширинный"
+#: inc/SavePost.php:350
+msgid "Post updated"
+msgstr "Пост обновлен"
+
+#: inc/SavePost.php:351 templates/admin/settings/form-settings-post.php:4
+msgid "New post created"
+msgstr "Создано новое запись"
+
+#: inc/SavePost.php:400
+msgid "No post created."
+msgstr "Запись не создана."
+
+#: inc/WooIntegration.php:153
+msgid "Failed to add product to cart"
+msgstr "Не удалось добавить товар в корзину"
 
 #: inc/WooIntegration.php:193
 msgid ""
@@ -677,903 +885,837 @@ msgstr ""
 "Похоже, вы пытаетесь оплатить этот пост, но продукт не существует. "
 "Пожалуйста, обратитесь в службу поддержки за помощью."
 
-#: templates/admin/settings/form-settings-post.php:43
-msgid "It will show add new button after post creation or on editing"
-msgstr ""
-"Кнопка добавления новой записи будет показана после создания поста или при "
-"редактировании"
-
-#: inc/fields/EditorJsField.php:486
-msgid "Italic"
-msgstr "Курсив"
-
-#: templates/admin/settings/form-settings-migration.php:5
-msgid "JSON copied!"
-msgstr "JSON скопирован!"
-
-#: inc/MenuSettings.php:430 inc/MenuSettings.php:450 inc/MenuSettings.php:498
-#: inc/MenuSettings.php:517 inc/MenuSettings.php:536 inc/MenuSettings.php:555
-#: inc/MenuSettings.php:574 inc/MenuSettings.php:593 inc/MenuSettings.php:718
-#: inc/MenuSettings.php:763 inc/MenuSettings.php:783 inc/MenuSettings.php:803
-msgid "Label"
-msgstr "Метка"
-
-#: inc/fields/FileField.php:218
-msgid "Label Abort Item Load"
-msgstr "Метка отмены загрузки"
-
-#: inc/fields/FileField.php:220
-msgid "Label Cancel Item Load"
-msgstr "Метка отмены загрузки элемента"
-
-#: inc/fields/FileField.php:225
-msgid "Label Expected Type"
-msgstr "Ожидаемый тип"
-
-#: inc/fields/FileField.php:206
-msgid "Label File Loading"
-msgstr "Текст загрузки файла"
-
-#: inc/fields/FileField.php:208
-msgid "Label File Processing"
-msgstr "Обработка файла"
-
-#: inc/fields/FileField.php:213
-msgid "Label File Remove Error"
-msgstr "Ошибка удаления файла"
-
-#: inc/fields/FileField.php:224
-msgid "Label File Type not Allowed"
-msgstr "Тип файла не разрешен"
-
-#: inc/fields/FileField.php:203
-msgid "Label invalid field"
-msgstr "Некорректное поле"
-
-#: inc/fields/FileField.php:207
-msgid "Label Load Error"
-msgstr "Ошибка загрузки"
-
-#: inc/fields/FileField.php:210
-msgid "Label Processing Aborted"
-msgstr "Обработка прервана"
-
-#: inc/fields/FileField.php:209
-msgid "Label Processing Complete"
-msgstr "Обработка завершена"
-
-#: inc/fields/FileField.php:211
-msgid "Label Processing Error"
-msgstr "Ошибка обработки"
-
-#: inc/fields/FileField.php:212
-msgid "Label Processing Revert Error"
-msgstr "Ошибка отмены обработки"
-
-#: inc/fields/FileField.php:217
-msgid "Label Remove Item"
-msgstr "Удалить элемент"
-
-#: inc/fields/FileField.php:219 inc/fields/FileField.php:222
-msgid "Label Retry Item Load"
-msgstr "Повторная попытка загрузки"
-
-#: inc/fields/FileField.php:229
-msgid "Label size exceeded"
-msgstr "Размер превышен"
-
-#: inc/fields/FileField.php:226
-msgid "Label size must be"
-msgstr "Размер должен быть"
-
-#: inc/fields/FileField.php:205
-msgid "Label Size not available"
-msgstr "Размер недоступен"
-
-#: inc/fields/FileField.php:214
-msgid "Label Tap To Cancel"
-msgstr "Нажмите для отмены"
-
-#: inc/fields/FileField.php:215
-msgid "Label Tap To Retry"
-msgstr "Нажмите чтобы повторить"
-
-#: inc/fields/FileField.php:216
-msgid "Label Tap To Undo"
-msgstr "Нажмите для отмены"
-
-#: inc/fields/FileField.php:221
-msgid "Label Undo Item Load"
-msgstr "Отмена загрузки элемента"
-
-#: inc/fields/FileField.php:223
-msgid "Label Upload Item Load"
-msgstr "Текст загрузка элемента"
-
-#: inc/fields/FileField.php:204
-msgid "Label waiting for size"
-msgstr "Ожидание размера"
-
-#: inc/fields/GoogleRecaptcha.php:98
-msgid "Language"
-msgstr "Язык"
-
-#: inc/MenuSettings.php:841
-msgid "Left bottom"
-msgstr "Левая нижняя часть"
-
-#: inc/MenuSettings.php:842
-msgid "Left top"
-msgstr "Левая верхняя часть"
-
-#: inc/MenuSettings.php:476 inc/MenuSettings.php:735
-#: inc/fields/EditorJsField.php:483
-msgid "Link"
-msgstr "Ссылка"
-
-#: inc/fields/EditorJsField.php:475
-msgid "List"
-msgstr "Список"
-
-#: inc/Form.php:383
-msgid "Loading"
-msgstr "Загрузка"
-
-#: templates/admin/settings/form-settings-post-update.php:73
-msgid "Lock User From Editing After"
-msgstr "Блокировка редактирования пользователем после"
-
-#: inc/LoginRegisterShortcode.php:101
-msgid "Log in successful"
-msgstr "Вход в систему успешный"
-
-#: templates/login-form.php:14
-msgid "Login"
-msgstr "Вход в систему"
-
-#: inc/MenuSettings.php:246
-msgid "Login & Registration Forms Shortcode Settings"
-msgstr "Настройки шорткодов форм входа и регистрации"
-
-#: inc/MenuSettings.php:223
-msgid "Login & Registration Settings"
-msgstr "Настройки входа и регистрации"
-
-#: templates/admin/settings/form-admin-login-register.php:8
-msgid "Login / Register Settings"
-msgstr "Настройки входа / регистрации"
-
-#: inc/MenuSettings.php:270
-msgid "Login Form Settings"
-msgstr "Настройки формы входа в систему"
-
-#: templates/admin/post-form.php:30
-msgid "Login/Register"
-msgstr "Вход/Регистрация"
-
-#: templates/user-admin.php:17
-msgid "Logout"
-msgstr "Выход из системы"
-
-#: inc/MenuSettings.php:346
-msgid "Logout button"
-msgstr "Кнопка выхода из системы"
-
-#: inc/MenuSettings.php:222
-msgid "Main Settings"
-msgstr "Основные настройки"
-
-#: inc/fields/EditorJsField.php:484
-msgid "Marker"
-msgstr "Маркер"
-
-#: inc/fields/DateField.php:107
-msgid "Max"
-msgstr "Макс"
-
-#: inc/fields/FileField.php:246
-msgid "Max count of files user can select"
-msgstr "Максимальное количество файлов, которые может выбрать пользователь"
-
-#: inc/fields/FileField.php:199
-msgid "Max File Size"
-msgstr "Максимальный размер файла"
-
-#: inc/fields/FileField.php:200
-msgid "Max Files"
-msgstr "Максимум Файлов"
-
-#: inc/fields/FileField.php:247
-msgid "Max size in KB"
-msgstr "Максимальный размер в КБ"
-
-#: inc/fields/FileField.php:227
-msgid "Maximum total size exceeded"
-msgstr "Превышен максимальный общий размер"
-
-#: inc/fields/FileField.php:228
-msgid "Maximum total size is"
-msgstr "Максимальный общий размер"
-
-#: inc/fields/TinyMCE.php:57
-msgid "Media Support"
-msgstr "Поддержка Галереи"
-
-#: inc/fields/EditorJsField.php:494
-#: templates/admin/settings/form-notification-settings.php:44
-msgid "Message"
-msgstr "Сообщение"
-
-#: templates/admin/settings/form-settings-migration.php:8
-msgid "Migrate"
-msgstr "Миграция"
-
-#: templates/admin/post-form.php:81
-msgid "Migration Settings"
-msgstr "Миграции"
-
-#: inc/fields/DateField.php:106
-msgid "Min"
-msgstr "Мин"
-
-#: templates/admin/settings/form-submission-display.php:53
-msgid "Minimum Style"
-msgstr "Минимальный стиль"
-
-#: templates/admin/settings/form-submission-display.php:52
-msgid "Modern Design"
-msgstr "Современный дизайн"
-
-#: inc/fields/EditorJsField.php:511
-msgid "Move down"
-msgstr "Переместить вниз"
-
-#: inc/fields/EditorJsField.php:508
-msgid "Move up"
-msgstr "Переместить вверх"
-
-#: inc/fields/TaxonomiesFields.php:88
-msgid "Multiple Selections"
-msgstr "Множественный выбор"
-
-#: inc/SavePost.php:351 templates/admin/settings/form-settings-post.php:4
-msgid "New post created"
-msgstr "Создано новое запись"
-
-#: templates/admin/settings/form-admin-notification-settings.php:4
-msgid "New post created - [post_title]"
-msgstr "Создан новая запись - [post_title]"
-
-#: inc/Form.php:522
-msgid "New Post Form"
-msgstr "Форма новой записи"
-
-#: inc/MenuSettings.php:644
-msgid "Next"
-msgstr "Следующий"
-
-#: inc/MenuSettings.php:643
-msgid "Next text"
-msgstr "Следующий текст"
-
-#: templates/user-admin.php:106
-msgid "Next »"
-msgstr "Далее »"
-
-#: inc/PostFormsListTable.php:361
-msgid "No"
-msgstr "Нет"
-
-#: inc/PostFormsListTable.php:95
-msgid "No form found."
-msgstr "Форма не найдена."
-
-#: inc/MenuSettings.php:677 inc/MenuSettings.php:678
-msgid "No post found"
-msgstr "Не найдено ни одной записи"
-
-#: inc/MenuSettings.php:361
-msgid "No post found text"
-msgstr "Текст записи не найден"
-
-#: templates/admin/settings/form-settings-post-update.php:38
-#: templates/admin/settings/form-payment-settings.php:78
-#: templates/admin/settings/form-settings-post.php:60
-msgid "No Redirect"
-msgstr "Нет перенаправления"
-
-#: templates/admin/settings/form-notification-settings.php:9
-msgid "No Reply"
-msgstr "Нет ответа"
-
-#: inc/fields/TaxonomiesFields.php:116 inc/fields/SelectField.php:98
-msgid "No result text"
-msgstr "Текст без результата"
-
-#: inc/fields/NumberField.php:113 inc/fields/PostTitleField.php:260
-#: inc/fields/TextField.php:88 inc/fields/MdEditor.php:201
-#: inc/fields/TinyMCE.php:72 inc/fields/DateField.php:110
-#: inc/fields/GoogleMapField.php:98
-msgid "Not correct content"
-msgstr "Неправильное содержание"
-
-#: inc/Form.php:525
-msgid "Not Found"
-msgstr "Не найдено"
-
-#: inc/Form.php:526
-msgid "Not found in trash"
-msgstr "Не найдено в корзине"
-
-#: templates/admin/settings/form-settings-migration.php:12
-msgid "Note:"
-msgstr "Примечание:"
-
-#: templates/admin/post-form.php:29
-msgid "Notifications"
-msgstr "Уведомления"
-
-#: inc/fields/NumberField.php:75
-msgid "Number Field"
-msgstr "Числовое поле"
-
-#: templates/admin/settings/form-submission-display.php:10
-msgid "On Bottom"
-msgstr "В низу"
-
-#: templates/admin/settings/form-submission-display.php:31
-msgid "On bottom after form"
-msgstr "Внизу после формы"
-
-#: templates/admin/settings/form-submission-display.php:9
-msgid "On Top"
-msgstr "В верху"
-
-#: templates/admin/settings/form-submission-display.php:11
-msgid "On Top and Bottom"
-msgstr "Сверху и снизу"
-
-#: templates/admin/settings/form-submission-display.php:32
-msgid "On top before form"
-msgstr "На вершине перед формой"
-
-#: inc/Form.php:305 inc/fields/PostTitleField.php:55
-#: inc/fields/MdEditor.php:136
-msgid "Oops"
-msgstr "Упс"
-
-#: templates/admin/settings/form-settings-post.php:143
-msgid "Open"
-msgstr "Открыть"
-
-#: inc/fields/EditorJsField.php:457
-msgid "or drag to move"
-msgstr "или перетащите"
-
-#: inc/fields/TaxonomiesFields.php:80
-msgid "Order"
-msgstr "Заказ"
-
-#: templates/admin/settings/form-settings-post-update.php:22
-msgid "Pages"
-msgstr "Страницы"
-
-#: inc/MenuSettings.php:355
-msgid "Pagination"
-msgstr "Пагинация"
-
-#: inc/fields/ParagraphField.php:43
-msgid "Paragraph Field"
-msgstr "Поле абзаца"
-
-#: inc/MenuSettings.php:283 templates/login-form.php:10
-#: templates/login-form.php:11
-msgid "Password"
-msgstr "Пароль"
-
-#: templates/admin/settings/form-payment-settings.php:12
-msgid "Payment Options"
-msgstr "Варианты оплаты"
-
-#: templates/admin/post-form.php:80
-msgid "Payment Settings"
-msgstr "Оплаты"
-
-#: templates/user-admin.php:14
-#: templates/admin/settings/form-settings-post.php:14
-msgid "Pending"
-msgstr "В ожидании"
-
-#: inc/MenuSettings.php:340
-msgid "Pending button"
-msgstr "Кнопка в ожидании"
-
-#: templates/admin/settings/form-submission-display.php:4
-msgid "Place of control buttons"
-msgstr "Расположение кнопок управления"
-
-#: templates/admin/settings/form-submission-display.php:25
-msgid "Place to show success or error messages"
-msgstr "Место для отображения сообщений об успехах или ошибках"
-
-#: inc/MenuSettings.php:427 inc/MenuSettings.php:447 inc/MenuSettings.php:715
-#: inc/MenuSettings.php:760 inc/MenuSettings.php:780 inc/MenuSettings.php:800
-#: inc/fields/FileField.php:202 inc/fields/PostTitleField.php:248
-msgid "Placeholder"
-msgstr "Placeholder"
-
-#: inc/fields/CheckboxGroupField.php:83
-msgid "Please add checkbox field"
-msgstr "Надо выбрать"
-
-#: inc/fields/EditorJsField.php:63
-msgid "Please add content to EditorJS"
-msgstr "Пожалуйста, добавьте содержимое для EditorJS"
-
-#: inc/fields/NumberField.php:57
-msgid "Please add correct number field"
-msgstr "Пожалуйста, добавьте правильное числовое поле"
-
-#: inc/fields/PostTitleField.php:85
-msgid "Please add correct post title"
-msgstr "Пожалуйста, добавьте правильное название записи"
-
-#: inc/fields/DateField.php:49
-msgid "Please add date field"
-msgstr "Пожалуйста, добавьте поле даты"
-
-#: inc/fields/MdEditor.php:59 inc/fields/TinyMCE.php:196
-msgid "Please add editor field"
-msgstr "Пожалуйста, добавьте поле редактора"
-
-#: inc/fields/GoogleMapField.php:50
-msgid "Please add google map field"
-msgstr "Пожалуйста, выберите локацию"
-
-#: inc/fields/NumberField.php:49
-msgid "Please add number field"
-msgstr "Пожалуйста, выберите число"
-
-#: inc/fields/PostTitleField.php:76
-msgid "Please add post title"
-msgstr "Пожалуйста, добавьте название поста"
-
-#: inc/fields/RadioGroupField.php:49
-msgid "Please add radio field"
-msgstr "Пожалуйста, добавьте радиополе"
-
-#: inc/fields/TextField.php:49
-msgid "Please add text field"
-msgstr "Пожалуйста, добавьте текстовое поле"
-
-#: inc/WooIntegration.php:303
-msgid "Please complete payment to ensure the publication of your post."
-msgstr ""
-"Пожалуйста, завершите оплату, чтобы гарантировать публикацию вашей записи."
-
-#: inc/Form.php:154
-msgid "Please upgrade to the Pro version to unlock all these awesome features"
-msgstr ""
-"Пожалуйста, перейдите на версию Pro, чтобы разблокировать все эти "
-"потрясающие возможности"
-
-#: templates/admin/settings/form-submission-display.php:30
-msgid "Popup on bottom right"
-msgstr "Всплывающее окно в правом нижнем углу"
-
-#: templates/admin/settings/form-settings-post.php:155
-msgid "Post Added Message"
-msgstr "Текст успешного добавления записи"
-
-#: inc/fields/MdEditor.php:137
-msgid "Post Content Field is missing"
-msgstr "Содержание записи отсутствует"
-
-#: inc/MenuSettings.php:660
-msgid "Post count"
-msgstr "Количество записей"
-
-#: inc/Form.php:132
-msgid "Post Fields"
-msgstr "Поля Записи"
-
-#: inc/Form.php:517 inc/Form.php:518
-msgid "Post Form"
-msgstr "Форма Записи"
-
-#: templates/front-editor-form.php:9
-msgid "Post form is not selected please select existing one or"
-msgstr "Форма записи не выбрана, пожалуйста, выберите существующую или"
-
-#: inc/MenuSettings.php:49 inc/MenuSettings.php:50
-#: templates/admin/post-forms-list-table-view.php:4
-msgid "Post Forms"
-msgstr "Формы Записи"
-
-#: inc/WooIntegration.php:378
-msgid "Post Id"
-msgstr "ID Записи"
-
-#: templates/admin/post-form.php:113
-msgid "Post Publish Notification"
-msgstr "Об публикации"
-
-#: inc/PostFormsListTable.php:312
-#: templates/admin/settings/form-settings-post.php:8
-msgid "Post Status"
-msgstr "Статус Записи"
-
-#: templates/admin/post-form.php:114
-msgid "Post Submit Notification"
-msgstr "После отправки"
-
-#: templates/admin/post-form.php:76
-msgid "Post Submit Settings"
-msgstr "Отправки Записи"
-
-#: inc/WooIntegration.php:366 inc/WooIntegration.php:377 inc/Form.php:724
-#: inc/fields/PostTitleField.php:197
-msgid "Post Title"
-msgstr "Заголовок записи"
-
-#: inc/fields/PostTitleField.php:56
-msgid "Post Title Field is missing"
-msgstr "Поле заголовка записи отсутствует"
-
-#: templates/admin/post-form.php:115
-msgid "Post Trash Notification"
-msgstr "Об удалении записи"
-
-#: inc/PostFormsListTable.php:311
-msgid "Post Type"
-msgstr "Тип Записи"
-
-#: templates/admin/settings/form-settings-post-update.php:61
-#: templates/admin/settings/form-admin-notification-settings.php:32
-msgid "Post Update Message"
-msgstr "Сообщение об обновлении"
-
-#: inc/SavePost.php:350
-msgid "Post updated"
-msgstr "Пост обновлен"
-
-#: templates/admin/settings/form-settings-post-update.php:2
-msgid "Post updated successfully"
-msgstr "Сообщение успешно обновлено"
-
-#: inc/Form.php:364
-msgid "post_id is empty."
-msgstr "post_id пуст."
-
-#: templates/front-form-header.php:54
-#: templates/admin/settings/form-settings-post.php:134
-msgid "Preview"
-msgstr "Предпросмотр"
-
-#: templates/admin/settings/form-settings-post.php:113
-msgid "Preview button"
-msgstr "Кнопка предварительного просмотра"
-
-#: templates/admin/settings/form-settings-post.php:132
-msgid "Preview button text"
-msgstr "Текст кнопки предпросмотр"
-
-#: inc/MenuSettings.php:641
-msgid "Previous"
-msgstr "Предыдущий"
-
-#: inc/MenuSettings.php:640
-msgid "Previous text"
-msgstr "Предыдущий текст"
-
-#: templates/admin/settings/form-payment-settings.php:61
-msgid "Product Added"
-msgstr "Товар добавлен"
+#: inc/WooIntegration.php:288
+msgid "cart"
+msgstr "корзина"
 
 #: inc/WooIntegration.php:289
 #, php-format
 msgid "Product added to the cart. Check the %s."
 msgstr "Товар добавлен в корзину. Проверьте %s."
 
-#: templates/admin/settings/form-payment-settings.php:62
-msgid "Product added to the cart. Check the cart."
-msgstr "Товар добавлен в корзину. Проверьте корзину."
-
-#: templates/front-editor-form.php:60
-msgid "Proudly powered by"
-msgstr "Форма создана с помощью плагина WP Front Editor"
-
-#: inc/Editor.php:31 templates/user-admin.php:13
-#: templates/admin/settings/form-settings-post.php:13
-msgid "Publish"
-msgstr "Опубликовать"
-
-#: inc/MenuSettings.php:337
-msgid "Publish button"
-msgstr "Кнопка публикации"
-
-#: inc/PostFormsListTable.php:44
-msgid "Published"
-msgstr "Опубликовано"
-
-#: inc/fields/EditorJsField.php:478
-msgid "Quote"
-msgstr "Цитата"
-
-#: inc/fields/EditorJsField.php:481
-msgid "Raw HTML"
-msgstr "HTML-фрагмент"
-
-#: inc/MenuSettings.php:286 inc/MenuSettings.php:311
-msgid "Redirect"
-msgstr "Перенаправление"
-
-#: templates/admin/settings/form-settings-post-update.php:33
-#: templates/admin/settings/form-payment-settings.php:73
-#: templates/admin/settings/form-settings-post.php:55
-msgid "Redirect To"
-msgstr "Перенаправить на"
-
-#: templates/register-form.php:101
-msgid "Register"
-msgstr "Регистрация"
-
-#: inc/MenuSettings.php:271
-msgid "Registration Form Settings"
-msgstr "Настройки формы регистрации"
-
-#: inc/LoginRegisterShortcode.php:136
-msgid "Registration successful. Your password will be sent via email shortly."
+#: inc/WooIntegration.php:303
+msgid "Please complete payment to ensure the publication of your post."
 msgstr ""
-"Регистрация прошла успешно. Ваш пароль будет отправлен по электронной почте "
-"в ближайшее время."
-
-#: inc/MenuSettings.php:292
-msgid "Remember me"
-msgstr "Помни меня"
-
-#: inc/MenuSettings.php:352
-msgid "Remove post icon"
-msgstr "Значок удаления записи"
-
-#: inc/fields/CheckboxGroupField.php:61 inc/fields/NumberField.php:112
-#: inc/fields/TaxonomiesFields.php:114 inc/fields/PostTitleField.php:259
-#: inc/fields/EditorJsField.php:239 inc/fields/RadioGroupField.php:86
-#: inc/fields/TextField.php:87 inc/fields/MdEditor.php:200
-#: inc/fields/TinyMCE.php:71 inc/fields/DateField.php:109
-#: inc/fields/SelectField.php:96 inc/fields/GoogleMapField.php:97
-msgid "Required error text"
-msgstr "Требуемый текст ошибки"
-
-#: inc/PostFormsListTable.php:419
-msgid "Restore"
-msgstr "Восстановить"
-
-#: templates/admin/settings/form-settings-post-update.php:79
-msgid "Restriction text if the time was passed"
-msgstr "Ограничительный текст, если время истекло"
-
-#: inc/MenuSettings.php:843
-msgid "Right bottom"
-msgstr "Правый низ"
-
-#: inc/MenuSettings.php:844
-msgid "Right top"
-msgstr "Правая верхняя часть"
-
-#: templates/admin/settings/form-payment-settings.php:79
-msgid "Same Post"
-msgstr "Тот же пост"
-
-#: inc/Form.php:280 templates/admin/post-form.php:11
-#: templates/admin/post-form.php:11
-msgid "Sample Form"
-msgstr "Новая форма"
-
-#: templates/admin/post-form.php:22
-msgid "Save"
-msgstr "Сохранить"
-
-#: templates/front-form-header.php:38
-#: templates/admin/settings/form-settings-post.php:106
-msgid "Save Draft"
-msgstr "Сохранить черновик"
-
-#: templates/admin/post-forms-list-table-view.php:23
-msgid "Search Forms"
-msgstr "Формы поиска"
-
-#: inc/fields/TaxonomiesFields.php:115 inc/fields/SelectField.php:97
-msgid "Search placeholder"
-msgstr "Пример текста поиска"
-
-#: inc/Form.php:524
-msgid "Search Post Form"
-msgstr "Форма поиска записей"
-
-#: inc/fields/GoogleRecaptcha.php:100
-msgid "Secret key"
-msgstr "Секретный ключ"
-
-#: inc/LoginRegisterShortcode.php:79
-msgid "Security error, please update page"
-msgstr "Ошибка безопасности, пожалуйста, обновите страницу"
-
-#: inc/fields/TaxonomiesFields.php:54
-msgid "Select"
-msgstr "Выберите"
-
-#: templates/front-editor/category.php:10
-#: templates/front-editor/category.php:11
-msgid "Select category"
-msgstr "Выберите категорию"
-
-#: templates/admin/settings/form-settings-post-update.php:12
-msgid "Select edit page"
-msgstr "Выберите страницу редактирования"
-
-#: inc/MenuSettings.php:852
-msgid "Select Edit Post button position on created post"
-msgstr "Выберите положение кнопки редактирования записи на созданной записи"
-
-#: templates/admin/settings/form-submission-display.php:62
-msgid "Select front form design"
-msgstr "Выберите дизайн"
-
-#: templates/admin/settings/form-settings-post-update.php:27
-msgid "Select page same with other form shortcode"
-msgstr "Выберите страницу, на которой будет происходить редактирование"
-
-#: templates/admin/settings/form-submission-display.php:20
-msgid "Select place where the form control buttons will be placed"
-msgstr "Выберите место, где будут размещены кнопки управления формой"
-
-#: inc/Blocks.php:52
-msgid "Select Post Form"
-msgstr "Выберите форму публикации"
-
-#: templates/admin/post-form.php:38
-msgid "Select post type"
-msgstr "Выберите тип записи"
+"Пожалуйста, завершите оплату, чтобы гарантировать публикацию вашей записи."
 
 #: inc/WooIntegration.php:340
 msgid "Select Product"
 msgstr "Выберите продукт"
 
-#: templates/front-editor/tags.php:2 templates/front-editor/tags.php:3
-msgid "Select tags"
-msgstr "Выберите теги"
+#: inc/WooIntegration.php:378
+msgid "Post Id"
+msgstr "ID Записи"
 
-#: templates/admin/settings/form-payment-settings.php:26
-msgid "Select The Product"
-msgstr "Выберите продукт"
+#: inc/WooIntegration.php:382
+msgid "Form Id"
+msgstr "ID формы"
 
-#: templates/admin/settings/form-payment-settings.php:57
-msgid "Send your user direct to checkout not to the cart"
-msgstr "Отправляйте пользователя прямо к оформлению заказа, а не в корзину"
+#: inc/ai/AiAssistant.php:60
+msgid "Write from prompt"
+msgstr "Написать по запросу"
 
-#: templates/front-editor/post-featured-image.php:26
-msgid "Set featured image"
-msgstr "Установите изображение записи"
+#: inc/ai/AiAssistant.php:65
+msgid "Improve writing"
+msgstr "Улучшить текст"
 
-#: inc/MenuSettings.php:59 inc/MenuSettings.php:60
-#: inc/fields/GoogleMapField.php:120 templates/admin/post-form.php:28
-#: templates/admin/settings/form-settings-post-update.php:19
-msgid "Settings"
-msgstr "Настройки"
+#: inc/ai/AiAssistant.php:69
+msgid "Fix spelling & grammar"
+msgstr "Исправить ошибки"
 
-#: inc/MenuSettings.php:242
-msgid "Settings Page"
-msgstr "Страница настроек"
+#: inc/ai/AiAssistant.php:73
+msgid "Make shorter"
+msgstr "Сократить"
 
-#: inc/MenuSettings.php:393
-msgid "Short information"
-msgstr "Краткая информация"
+#: inc/ai/AiAssistant.php:77
+msgid "Make longer"
+msgstr "Расширить"
 
-#: inc/PostFormsListTable.php:314 templates/admin/post-form.php:14
-msgid "Shortcode"
-msgstr "Шорткод"
+#: inc/ai/AiAssistant.php:84
+msgid "Translate"
+msgstr "Перевести"
 
-#: inc/MenuSettings.php:586 templates/user-admin.php:18
-msgid "Show all users posts"
-msgstr "Показать все записи пользователей"
+#: inc/ai/AiAssistant.php:87
+msgid "Target language, e.g. German"
+msgstr "Язык перевода, например немецкий"
 
-#: inc/MenuSettings.php:349
-msgid "Show all users posts link"
-msgstr "Показать ссылки на записи всех пользователей"
+#: inc/ai/AiAssistant.php:90
+msgid "Change tone"
+msgstr "Изменить тон"
 
-#: templates/admin/settings/form-settings-post.php:128
-msgid "Show button preview after post published."
-msgstr "Показывайте предварительный просмотр кнопок после публикации записи."
+#: inc/ai/AiAssistant.php:93
+msgid "Tone, e.g. friendly, professional, funny"
+msgstr "Тон, например дружелюбный, деловой, с юмором"
 
-#: templates/admin/settings/form-settings-post.php:100
-msgid "Show button save to draft"
-msgstr "Показать кнопку сохранения в черновик"
+#: inc/ai/AiAssistant.php:96
+msgid "Custom instruction"
+msgstr "Своя инструкция"
 
-#: inc/fields/TaxonomiesFields.php:93
-msgid "Show empty"
-msgstr "Показать пустые термы"
+#: inc/ai/AiAssistant.php:125
+msgid "Security check failed, please reload the page"
+msgstr "Проверка безопасности не пройдена, обновите страницу"
 
-#: inc/fields/TaxonomiesFields.php:103
-msgid "Show Hierarchically"
-msgstr "Показать иерархически"
+#: inc/ai/AiAssistant.php:130
+msgid "Form not found"
+msgstr "Форма не найдена"
 
-#: templates/admin/settings/form-admin-login-register.php:18
-msgid "Show login"
-msgstr "Показать вход"
+#: inc/ai/AiAssistant.php:135 inc/ai/AiAssistant.php:139
+msgid "AI assistant is not available"
+msgstr "ИИ-помощник недоступен"
 
-#: templates/admin/settings/form-admin-login-register.php:25
-msgid "Show login instead of restricted message (Pro)"
-msgstr "Показывать логин вместо сообщения о запрете (Pro)"
+#: inc/ai/AiAssistant.php:156
+msgid "Describe what to write…"
+msgstr "Опишите, что нужно написать…"
 
-#: inc/fields/TaxonomiesFields.php:108 inc/fields/SelectField.php:92
-msgid "Show Search Input"
-msgstr "Показать поисковый поле"
+#: inc/ai/AiAssistant.php:159
+msgid "AI"
+msgstr "ИИ"
 
-#: inc/MenuSettings.php:299
-msgid "Show User Name Inputs"
-msgstr "Показать поле имя пользователя"
+#: inc/ai/AiAssistant.php:160
+msgid "AI Assistant"
+msgstr "ИИ-помощник"
 
-#: templates/admin/settings/form-submission-display.php:51
-msgid "Simple Design"
-msgstr "Простой дизайн"
+#: inc/ai/AiAssistant.php:161
+msgid "What to do"
+msgstr "Что сделать"
 
-#: inc/fields/GoogleRecaptcha.php:99
-msgid "Site key"
-msgstr "Ключ к сайту"
+#: inc/ai/AiAssistant.php:162
+msgid "Instructions"
+msgstr "Инструкция"
 
-#: inc/Editor.php:80
-msgid "Something goes wrong try later"
-msgstr "Что-то пошло не так, попробуйте позже"
+#: inc/ai/AiAssistant.php:163 inc/ai/AiFormGenerator__premium_only.php:54
+msgid "Generate"
+msgstr "Сгенерировать"
 
-#: inc/fields/EditorJsField.php:517
-msgid "Start writing or enter Tab to choose a block"
-msgstr "Начните писать или введите Tab, чтобы выбрать блок"
+#: inc/ai/AiAssistant.php:164
+msgid "Try again"
+msgstr "Ещё раз"
+
+#: inc/ai/AiAssistant.php:165
+msgid "Replace"
+msgstr "Заменить"
+
+#: inc/ai/AiAssistant.php:166
+msgid "Insert below"
+msgstr "Вставить ниже"
+
+#: inc/ai/AiAssistant.php:167 inc/ai/AiFormGenerator__premium_only.php:55
+msgid "Cancel"
+msgstr "Отмена"
+
+#: inc/ai/AiAssistant.php:168
+msgid "Result"
+msgstr "Результат"
+
+#: inc/ai/AiAssistant.php:169 inc/ai/AiAssistant.php:222
+msgid "Add some text to the field first"
+msgstr "Сначала добавьте текст в поле"
+
+#: inc/ai/AiAssistant.php:170 inc/ai/AiAssistant.php:219
+msgid "Please add instructions"
+msgstr "Добавьте инструкцию"
+
+#: inc/ai/AiAssistant.php:171 inc/ai/AiAssistant.php:333
+msgid "AI request failed, please try again later"
+msgstr "Не удалось выполнить запрос к ИИ, попробуйте позже"
+
+#: inc/ai/AiAssistant.php:186
+msgid "✨ Generate with AI"
+msgstr "✨ Создать с ИИ"
+
+#: inc/ai/AiAssistant.php:187
+msgid "AI form generation is a Pro feature"
+msgstr "Генерация форм с ИИ доступна в Pro"
+
+#: inc/ai/AiAssistant.php:188
+msgid "Describe the form in your own words and AI will build it for you."
+msgstr "Опишите форму своими словами, и ИИ соберёт её за вас."
+
+#: inc/ai/AiAssistant.php:190
+msgid "Add your AI provider API key in Settings → AI first."
+msgstr "Сначала добавьте API-ключ провайдера в Настройки → ИИ."
+
+#: inc/ai/AiAssistant.php:191 templates/admin/settings/form-ai-settings.php:72
+msgid "Open AI settings"
+msgstr "Открыть настройки ИИ"
+
+#: inc/ai/AiAssistant.php:213
+msgid "Unknown AI action"
+msgstr "Неизвестное действие ИИ"
+
+#: inc/ai/AiAssistant.php:271
+#, php-format
+msgid "Connected to %1$s (%2$s). Do not forget to save the settings."
+msgstr "Подключено к %1$s (%2$s). Не забудьте сохранить настройки."
+
+#: inc/ai/AiClient.php:51
+msgid "OpenRouter / OpenAI compatible URL"
+msgstr "OpenRouter / OpenAI-совместимый URL"
+
+#: inc/ai/AiClient.php:155
+msgid "AI API key is not configured"
+msgstr "API-ключ ИИ не настроен"
+
+#: inc/ai/AiClient.php:185
+#, php-format
+msgid "AI request failed: %s"
+msgstr "Ошибка запроса к ИИ: %s"
+
+#: inc/ai/AiClient.php:192
+#, php-format
+msgid "AI provider error (%1$s): %2$s"
+msgstr "Ошибка провайдера ИИ (%1$s): %2$s"
+
+#: inc/ai/AiClient.php:197
+msgid "AI provider returned an empty response"
+msgstr "Провайдер ИИ вернул пустой ответ"
+
+#: inc/ai/AiClient.php:220
+msgid "AI response is not valid JSON"
+msgstr "Ответ ИИ не является корректным JSON"
+
+#: inc/ai/AiClient.php:253
+msgid "AI endpoint URL is not valid"
+msgstr "Некорректный URL API"
+
+#: inc/ai/AiClient.php:342 inc/ai/AiClient.php:344
+msgid "Unknown error"
+msgstr "Неизвестная ошибка"
+
+#: inc/ai/AiFormGenerator__premium_only.php:50
+msgid "Generate form with AI"
+msgstr "Создать форму с ИИ"
+
+#: inc/ai/AiFormGenerator__premium_only.php:51
+msgid ""
+"E.g. A form to submit a recipe: title, photo, ingredients, cooking time, "
+"difficulty (easy/medium/hard) and step by step instructions."
+msgstr ""
+"Например: форма для рецепта — название, фото, ингредиенты, время "
+"приготовления, сложность (легко/средне/сложно) и пошаговая инструкция."
+
+#: inc/ai/AiFormGenerator__premium_only.php:52
+msgid "Add fields to the current form"
+msgstr "Добавить поля к текущей форме"
+
+#: inc/ai/AiFormGenerator__premium_only.php:53
+msgid "Replace current form fields"
+msgstr "Заменить поля текущей формы"
+
+#: inc/ai/AiFormGenerator__premium_only.php:56
+#: inc/ai/AiFormGenerator__premium_only.php:76
+msgid "Please describe the form"
+msgstr "Опишите форму"
+
+#: inc/ai/AiFormGenerator__premium_only.php:57
+msgid "Form generated. Review the fields and click Save."
+msgstr "Форма создана. Проверьте поля и нажмите «Сохранить»."
+
+#: inc/ai/AiFormGenerator__premium_only.php:58
+msgid "AI request failed"
+msgstr "Ошибка запроса к ИИ"
+
+#: inc/ai/AiFormGenerator__premium_only.php:79
+msgid "No field types available"
+msgstr "Нет доступных типов полей"
+
+#: inc/ai/AiFormGenerator__premium_only.php:89
+msgid ""
+"AI did not return any usable fields, try to describe the form differently"
+msgstr "ИИ не вернул подходящих полей, попробуйте описать форму иначе"
+
+#: inc/ai/AiModeration__premium_only.php:187
+msgid "AI Moderation"
+msgstr "ИИ-модерация"
+
+#: inc/ai/AiModeration__premium_only.php:196
+msgid "Flagged for review"
+msgstr "Требует проверки"
+
+#: inc/ai/AiModeration__premium_only.php:196
+msgid "No problems found"
+msgstr "Нарушений не найдено"
+
+#: inc/ai/AiSettings.php:101 templates/admin/post-form.php:92
+msgid "✨ AI"
+msgstr "✨ ИИ"
+
+#: inc/ai/AiSettings.php:102
+msgid "AI Assistant Settings"
+msgstr "Настройки ИИ-помощника"
+
+#: inc/ai/AiSettings.php:116
+msgid "AI Provider"
+msgstr "Провайдер ИИ"
+
+#: inc/ai/AiSettings.php:117
+msgid "Editor Assistant"
+msgstr "Помощник в редакторе"
+
+#: inc/ai/AiSettings.php:118
+msgid "Pro AI Features"
+msgstr "Pro-функции ИИ"
+
+#: inc/ai/AiSettings.php:180
+msgid ""
+"Choose the AI provider and add your own API key. Requests are sent from your "
+"server, the key is never shown to site visitors."
+msgstr ""
+"Выберите провайдера ИИ и добавьте свой API-ключ. Запросы отправляются с "
+"вашего сервера, посетители сайта ключ не видят."
+
+#: inc/ai/AiSettings.php:184
+msgid "Provider"
+msgstr "Провайдер"
+
+#: inc/ai/AiSettings.php:196
+msgid "Connection"
+msgstr "Подключение"
+
+#: inc/ai/AiSettings.php:197
+msgid "Test connection"
+msgstr "Проверить подключение"
+
+#: inc/ai/AiSettings.php:198
+msgid "Sends a short test request with the values entered above."
+msgstr "Отправляет короткий тестовый запрос с указанными выше значениями."
+
+#: inc/ai/AiSettings.php:209
+#, php-format
+msgid "Ready: %1$s · %2$s"
+msgstr "Готово: %1$s · %2$s"
+
+#: inc/ai/AiSettings.php:213
+msgid "Not configured: add an API key below and save."
+msgstr "Не настроено: добавьте API-ключ ниже и сохраните."
+
+#: inc/ai/AiSettings.php:226
+msgid "API base URL"
+msgstr "Базовый URL API"
+
+#: inc/ai/AiSettings.php:229
+msgid ""
+"Any OpenAI compatible API: OpenRouter, Groq, Together, local Ollama (http://"
+"localhost:11434/v1)…"
+msgstr ""
+"Любой OpenAI-совместимый API: OpenRouter, Groq, Together, локальная Ollama "
+"(http://localhost:11434/v1)…"
+
+#: inc/ai/AiSettings.php:234
+msgid "is defined in wp-config.php and used as the API key."
+msgstr "задан в wp-config.php и используется как API-ключ."
+
+#: inc/ai/AiSettings.php:240
+#, php-format
+msgid "Saved key ••••%s — leave empty to keep"
+msgstr "Сохранённый ключ ••••%s — оставьте пустым, чтобы не менять"
+
+#: inc/ai/AiSettings.php:240
+msgid "Paste your API key"
+msgstr "Вставьте API-ключ"
+
+#: inc/ai/AiSettings.php:243
+msgid "Remove key"
+msgstr "Удалить ключ"
+
+#: inc/ai/AiSettings.php:248
+msgid "Get an API key"
+msgstr "Получить API-ключ"
+
+#: inc/ai/AiSettings.php:249
+msgid "or define it in wp-config.php as"
+msgstr "или задайте его в wp-config.php как"
+
+#: inc/ai/AiSettings.php:254
+msgid "API key"
+msgstr "API-ключ"
+
+#: inc/ai/AiSettings.php:261
+msgid "Model"
+msgstr "Модель"
+
+#: inc/ai/AiSettings.php:266
+#, php-format
+msgid "Leave empty to use %s."
+msgstr "Оставьте пустым, чтобы использовать %s."
+
+#: inc/ai/AiSettings.php:275
+msgid ""
+"Adds an \"✨ AI\" button to the title, textarea and editor fields of your "
+"front-end forms: write from a prompt, improve, fix grammar, shorten or "
+"expand text."
+msgstr ""
+"Добавляет кнопку «✨ ИИ» к заголовку, текстовым полям и редакторам в формах "
+"на сайте: написать по запросу, улучшить, исправить ошибки, сократить или "
+"расширить текст."
+
+#: inc/ai/AiSettings.php:276
+msgid ""
+"AI is off in every form by default. Turn it on per form: Post Forms → edit "
+"form → Settings → ✨ AI."
+msgstr ""
+"По умолчанию ИИ выключен во всех формах. Включите его в нужной форме: Формы "
+"записи → редактировать форму → Настройки → ✨ ИИ."
+
+#: inc/ai/AiSettings.php:281
+msgid "Enable assistant"
+msgstr "Включить помощника"
+
+#: inc/ai/AiSettings.php:284
+msgid "Show the AI button in front-end forms"
+msgstr "Показывать кнопку ИИ в формах на сайте"
+
+#: inc/ai/AiSettings.php:287
+msgid "Who can use it"
+msgstr "Кому доступно"
+
+#: inc/ai/AiSettings.php:288
+msgid "Logged-in users only"
+msgstr "Только авторизованным"
+
+#: inc/ai/AiSettings.php:289
+msgid "Everyone, including guests"
+msgstr "Всем, включая гостей"
+
+#: inc/ai/AiSettings.php:290
+msgid ""
+"Requests are paid from your API key, so guest access is not recommended."
+msgstr ""
+"Запросы оплачиваются с вашего API-ключа, поэтому доступ гостям не "
+"рекомендуется."
+
+#: inc/ai/AiSettings.php:294
+msgid "Daily limit per user"
+msgstr "Дневной лимит на пользователя"
+
+#: inc/ai/AiSettings.php:297
+msgid ""
+"Maximum AI requests per user (or IP for guests) per day. 0 = unlimited. "
+"Administrators and editors are not limited."
+msgstr ""
+"Максимум запросов к ИИ на пользователя (для гостей — на IP) в день. 0 — без "
+"ограничений. На администраторов и редакторов лимит не действует."
+
+#: inc/ai/AiSettings.php:312 templates/admin/settings/form-ai-settings.php:82
+msgid ""
+"AI form generation, translation and tone change in the assistant, post "
+"moderation and automatic excerpt, tags and SEO description are available in "
+"the Pro version."
+msgstr ""
+"Генерация форм, перевод и смена тона в помощнике, модерация записей, "
+"автоматические отрывок, метки и SEO-описание доступны в Pro-версии."
+
+#: inc/ai/AiSettings.php:317
+msgid ""
+"Use the \"✨ Generate with AI\" button in the form builder to create forms "
+"from a description."
+msgstr ""
+"Используйте кнопку «✨ Создать с ИИ» в конструкторе, чтобы создавать формы "
+"по описанию."
+
+#: inc/ai/AiSettings.php:324 templates/admin/settings/form-ai-settings.php:23
+msgid "AI moderation"
+msgstr "ИИ-модерация"
+
+#: inc/ai/AiSettings.php:328
+msgid ""
+"Check submitted posts for spam, abuse and unsafe content before publishing"
+msgstr ""
+"Проверять присланные записи на спам, оскорбления и опасный контент перед "
+"публикацией"
+
+#: inc/ai/AiSettings.php:330
+msgid "Flagged posts are saved as"
+msgstr "Подозрительные записи сохранять как"
+
+#: inc/ai/AiSettings.php:331
+msgid "Pending review"
+msgstr "На утверждении"
+
+#: inc/ai/AiSettings.php:336
+msgid ""
+"Extra rules, e.g. \"No links to other shops. Only posts about gardening.\""
+msgstr ""
+"Дополнительные правила, например: «Без ссылок на другие магазины. Только "
+"записи о садоводстве»."
+
+#: inc/ai/AiSettings.php:339
+msgid ""
+"Administrators and editors are not moderated. If the AI provider is "
+"unavailable, posts are saved as usual."
+msgstr ""
+"Записи администраторов и редакторов не проверяются. Если провайдер ИИ "
+"недоступен, записи сохраняются как обычно."
+
+#: inc/ai/AiSettings.php:343
+msgid "Generate excerpt when it is empty"
+msgstr "Создавать отрывок, если он пустой"
+
+#: inc/ai/AiSettings.php:344
+msgid "Suggest and add tags"
+msgstr "Подбирать и добавлять метки"
+
+#: inc/ai/AiSettings.php:345
+msgid "Generate SEO meta description (Yoast, Rank Math, SEOPress or built-in)"
+msgstr "Создавать SEO-описание (Yoast, Rank Math, SEOPress или встроенное)"
+
+#: inc/ai/AiSettings.php:347 templates/admin/settings/form-ai-settings.php:29
+msgid "Auto-fill after submit"
+msgstr "Автозаполнение после отправки"
+
+#: inc/ai/AiSettings.php:358
+msgid "Runs in the background right after a new post is submitted."
+msgstr "Выполняется в фоне сразу после отправки новой записи."
+
+#: inc/ai/AiSettings.php:374
+msgid "Testing…"
+msgstr "Проверка…"
+
+#: inc/ai/AiSettings.php:375
+msgid "Connection failed"
+msgstr "Не удалось подключиться"
+
+#: inc/ai/AiUsageLimit.php:67
+msgid "You have reached the daily AI limit. Please try again tomorrow."
+msgstr "Дневной лимит запросов к ИИ исчерпан. Попробуйте завтра."
+
+#: inc/fields/ActionHook.php:54
+msgid "Action Hook Name"
+msgstr "Название хука действия"
+
+#: inc/fields/ActionHook.php:55
+msgid "Description"
+msgstr "Описание"
+
+#: inc/fields/ActionHook.php:58
+msgid ""
+"Enter the name of your custom action hook. This will be called when form is "
+"rendered."
+msgstr ""
+"Укажите название своего хука действия. Он будет вызван при выводе формы."
+
+#: inc/fields/ActionHook.php:59
+msgid ""
+"Add a description to help other developers understand the purpose of this "
+"hook."
+msgstr ""
+"Добавьте описание, чтобы другим разработчикам было понятно назначение хука."
+
+#: inc/fields/ButtonField.php:43
+msgid "Button Field"
+msgstr "Кнопка"
+
+#: inc/fields/CheckboxGroupField.php:61 inc/fields/DateField.php:109
+#: inc/fields/EditorJsField.php:239 inc/fields/GoogleMapField.php:97
+#: inc/fields/MdEditor.php:198 inc/fields/NumberField.php:112
+#: inc/fields/PostTitleField.php:254 inc/fields/RadioGroupField.php:86
+#: inc/fields/SelectField.php:96 inc/fields/TaxonomiesFields.php:114
+#: inc/fields/TextField.php:87 inc/fields/TinyMCE.php:71
+msgid "Required error text"
+msgstr "Требуемый текст ошибки"
+
+#: inc/fields/CheckboxGroupField.php:83
+msgid "Please add checkbox field"
+msgstr "Надо выбрать"
+
+#: inc/fields/CheckboxGroupField.php:124 inc/fields/FileField.php:323
+#: inc/fields/FileField.php:354 inc/fields/RadioGroupField.php:124
+#: inc/fields/SelectField.php:135 inc/fields/TextareaField.php:156
+#, php-format
+msgid "%s is required"
+msgstr "требуется %s"
+
+#: inc/fields/DateField.php:49
+msgid "Please add date field"
+msgstr "Пожалуйста, добавьте поле даты"
+
+#: inc/fields/DateField.php:70
+msgid "Date Field"
+msgstr "Поле даты"
+
+#: inc/fields/DateField.php:106
+msgid "Min"
+msgstr "Мин"
+
+#: inc/fields/DateField.php:107
+msgid "Max"
+msgstr "Макс"
 
 #: inc/fields/DateField.php:108
 msgid "Step"
 msgstr "Шаг"
 
-#: templates/admin/settings/form-notification-settings.php:23
-#: templates/admin/settings/form-admin-notification-settings.php:23
-msgid "Subject"
-msgstr "Тема"
+#: inc/fields/DateField.php:110 inc/fields/GoogleMapField.php:98
+#: inc/fields/MdEditor.php:199 inc/fields/NumberField.php:113
+#: inc/fields/PostTitleField.php:255 inc/fields/TextField.php:88
+#: inc/fields/TinyMCE.php:72
+msgid "Not correct content"
+msgstr "Неправильное содержание"
 
-#: templates/admin/post-form.php:78
-msgid "Submission Restriction"
-msgstr "Ограничения"
+#: inc/fields/EditorJsField.php:63
+msgid "Please add content to EditorJS"
+msgstr "Пожалуйста, добавьте содержимое для EditorJS"
 
-#: templates/admin/settings/form-settings-post.php:3
-msgid "Submit"
-msgstr "Отправить"
+#: inc/fields/EditorJsField.php:385
+msgid "Add content"
+msgstr "Добавить содержание"
 
-#: inc/fields/EditorJsField.php:482
-msgid "Table"
-msgstr "Таблица"
+#: inc/fields/EditorJsField.php:456
+msgid "Click to tune"
+msgstr "Нажмите, чтобы настроить"
 
-#: inc/Form.php:140
-msgid "Taxonomies"
-msgstr "Таксономии"
+#: inc/fields/EditorJsField.php:457
+msgid "or drag to move"
+msgstr "или перетащите"
 
-#: inc/fields/TinyMCE.php:62
-msgid "Teeny"
-msgstr "Мин. функций"
+#: inc/fields/EditorJsField.php:462
+msgid "Convert to"
+msgstr "Конвертировать в"
 
-#: inc/fields/TaxonomiesFields.php:112
-msgid "Terms to excluded"
-msgstr "Условия для исключения"
+#: inc/fields/EditorJsField.php:468
+msgid "Add"
+msgstr "Добавить"
 
 #: inc/fields/EditorJsField.php:473
 msgid "Text"
 msgstr "Параграф"
 
-#: inc/fields/TaxonomiesFields.php:193 inc/fields/SelectField.php:47
-#, php-format
-msgid "The %s selection is required"
-msgstr "Необходимо выбрать %s"
+#: inc/fields/EditorJsField.php:474
+msgid "Heading"
+msgstr "Заголовок"
 
-#. The accept attribute takes as its value a comma-separated list of one or more file types.
+#: inc/fields/EditorJsField.php:475
+msgid "List"
+msgstr "Список"
+
+#: inc/fields/EditorJsField.php:476
+msgid "Warning"
+msgstr "Примечание"
+
+#: inc/fields/EditorJsField.php:477
+msgid "Checklist"
+msgstr "Чеклист"
+
+#: inc/fields/EditorJsField.php:478
+msgid "Quote"
+msgstr "Цитата"
+
+#: inc/fields/EditorJsField.php:479
+msgid "Code"
+msgstr "Код"
+
+#: inc/fields/EditorJsField.php:480
+msgid "Delimiter"
+msgstr "Разделитель"
+
+#: inc/fields/EditorJsField.php:481
+msgid "Raw HTML"
+msgstr "HTML-фрагмент"
+
+#: inc/fields/EditorJsField.php:482
+msgid "Table"
+msgstr "Таблица"
+
+#: inc/fields/EditorJsField.php:484
+msgid "Marker"
+msgstr "Маркер"
+
+#: inc/fields/EditorJsField.php:485
+msgid "Bold"
+msgstr "Полужирный"
+
+#: inc/fields/EditorJsField.php:486
+msgid "Italic"
+msgstr "Курсив"
+
+#: inc/fields/EditorJsField.php:487
+msgid "InlineCode"
+msgstr "Моноширинный"
+
+#: inc/fields/EditorJsField.php:488
+msgid "Image & Gallery"
+msgstr "Изображение и галерея"
+
+#: inc/fields/EditorJsField.php:489
+msgid "Image"
+msgstr "Изображение"
+
+#: inc/fields/EditorJsField.php:493
+msgid "Title"
+msgstr "Название"
+
+#: inc/fields/EditorJsField.php:494
+#: templates/admin/settings/form-notification-settings.php:44
+msgid "Message"
+msgstr "Сообщение"
+
+#: inc/fields/EditorJsField.php:497
+msgid "Add a link"
+msgstr "Вставьте ссылку"
+
+#: inc/fields/EditorJsField.php:500
+msgid "The block can not be displayed correctly."
+msgstr "Блок не может быть отображен"
+
+#: inc/fields/EditorJsField.php:505
+msgid "Delete"
+msgstr "Удалить"
+
+#: inc/fields/EditorJsField.php:508
+msgid "Move up"
+msgstr "Переместить вверх"
+
+#: inc/fields/EditorJsField.php:511
+msgid "Move down"
+msgstr "Переместить вниз"
+
+#: inc/fields/EditorJsField.php:517
+msgid "Start writing or enter Tab to choose a block"
+msgstr "Начните писать или введите Tab, чтобы выбрать блок"
+
+#: inc/fields/FileField.php:75 inc/fields/FileField.php:100
+#: inc/fields/FileField.php:200
+msgid "File is not exist"
+msgstr "Файл не существует"
+
+#: inc/fields/FileField.php:104
+msgid "Error during upload"
+msgstr "Ошибка при загрузке"
+
+#: inc/fields/FileField.php:108
+msgid "File is too large"
+msgstr "Файл слишком большой"
+
+#: inc/fields/FileField.php:156
+msgid "Invalid attachment ID."
+msgstr "Неверный ID вложения."
+
+#: inc/fields/FileField.php:174
+msgid "Sorry, you are not allowed to delete this attachment."
+msgstr "У вас нет прав на удаление этого вложения."
+
+#: inc/fields/FileField.php:228
+msgid "Accept"
+msgstr "Принять"
+
+#: inc/fields/FileField.php:229
+msgid "Max File Size"
+msgstr "Максимальный размер файла"
+
+#: inc/fields/FileField.php:230
+msgid "Max Files"
+msgstr "Максимум Файлов"
+
+#: inc/fields/FileField.php:231
+msgid "Attach to post"
+msgstr "Прикрепить к сообщению"
+
+#: inc/fields/FileField.php:233
+msgid "Label invalid field"
+msgstr "Некорректное поле"
+
+#: inc/fields/FileField.php:234
+msgid "Label waiting for size"
+msgstr "Ожидание размера"
+
+#: inc/fields/FileField.php:235
+msgid "Label Size not available"
+msgstr "Размер недоступен"
+
+#: inc/fields/FileField.php:236
+msgid "Label File Loading"
+msgstr "Текст загрузки файла"
+
+#: inc/fields/FileField.php:237
+msgid "Label Load Error"
+msgstr "Ошибка загрузки"
+
+#: inc/fields/FileField.php:238
+msgid "Label File Processing"
+msgstr "Обработка файла"
+
+#: inc/fields/FileField.php:239
+msgid "Label Processing Complete"
+msgstr "Обработка завершена"
+
+#: inc/fields/FileField.php:240
+msgid "Label Processing Aborted"
+msgstr "Обработка прервана"
+
+#: inc/fields/FileField.php:241
+msgid "Label Processing Error"
+msgstr "Ошибка обработки"
+
+#: inc/fields/FileField.php:242
+msgid "Label Processing Revert Error"
+msgstr "Ошибка отмены обработки"
+
+#: inc/fields/FileField.php:243
+msgid "Label File Remove Error"
+msgstr "Ошибка удаления файла"
+
 #: inc/fields/FileField.php:244
+msgid "Label Tap To Cancel"
+msgstr "Нажмите для отмены"
+
+#: inc/fields/FileField.php:245
+msgid "Label Tap To Retry"
+msgstr "Нажмите чтобы повторить"
+
+#: inc/fields/FileField.php:246
+msgid "Label Tap To Undo"
+msgstr "Нажмите для отмены"
+
+#: inc/fields/FileField.php:247
+msgid "Label Remove Item"
+msgstr "Удалить элемент"
+
+#: inc/fields/FileField.php:248
+msgid "Label Abort Item Load"
+msgstr "Метка отмены загрузки"
+
+#: inc/fields/FileField.php:249 inc/fields/FileField.php:252
+msgid "Label Retry Item Load"
+msgstr "Повторная попытка загрузки"
+
+#: inc/fields/FileField.php:250
+msgid "Label Cancel Item Load"
+msgstr "Метка отмены загрузки элемента"
+
+#: inc/fields/FileField.php:251
+msgid "Label Undo Item Load"
+msgstr "Отмена загрузки элемента"
+
+#: inc/fields/FileField.php:253
+msgid "Label Upload Item Load"
+msgstr "Текст загрузка элемента"
+
+#: inc/fields/FileField.php:254
+msgid "Label File Type not Allowed"
+msgstr "Тип файла не разрешен"
+
+#: inc/fields/FileField.php:255
+msgid "Label Expected Type"
+msgstr "Ожидаемый тип"
+
+#: inc/fields/FileField.php:256
+msgid "Label size must be"
+msgstr "Размер должен быть"
+
+#: inc/fields/FileField.php:257
+msgid "Maximum total size exceeded"
+msgstr "Превышен максимальный общий размер"
+
+#: inc/fields/FileField.php:258
+msgid "Maximum total size is"
+msgstr "Максимальный общий размер"
+
+#: inc/fields/FileField.php:259
+msgid "Label size exceeded"
+msgstr "Размер превышен"
+
+#. translators: The accept attribute takes as its value a comma-separated list of one or more file types.
+#: inc/fields/FileField.php:274
 #, php-format
 msgid ""
 "The accept attribute takes as its value a comma-separated list of one or "
@@ -1585,221 +1727,199 @@ msgstr ""
 "уникальные спецификаторы типов файлов</a>, описывающие, какие типы файлов "
 "разрешить."
 
-#: inc/fields/EditorJsField.php:500
-msgid "The block can not be displayed correctly."
-msgstr "Блок не может быть отображен"
+#: inc/fields/FileField.php:276
+msgid "Max count of files user can select"
+msgstr "Максимальное количество файлов, которые может выбрать пользователь"
+
+#: inc/fields/FileField.php:277
+msgid "Max size in KB"
+msgstr "Максимальный размер в КБ"
+
+#: inc/fields/GoogleMapField.php:50
+msgid "Please add google map field"
+msgstr "Пожалуйста, выберите локацию"
+
+#: inc/fields/GoogleMapField.php:76
+msgid "Google Map"
+msgstr "Google Карты"
+
+#: inc/fields/GoogleMapField.php:96
+msgid "Country Code"
+msgstr "Код страны"
+
+#: inc/fields/GoogleMapField.php:119
+#, php-format
+msgid "Before using this field, please add your Google API Key in %s."
+msgstr "Прежде чем использовать это поле, добавьте свой ключ Google API в %s."
+
+#: inc/fields/GoogleMapField.php:123
+msgid "Add API Key"
+msgstr "Добавить ключ API"
+
+#: inc/fields/GoogleRecaptcha.php:96 inc/fields/hCaptcha.php:117
+msgid "Language"
+msgstr "Язык"
+
+#: inc/fields/GoogleRecaptcha.php:97
+msgid "Site key"
+msgstr "Ключ к сайту"
+
+#: inc/fields/GoogleRecaptcha.php:98
+msgid "Secret key"
+msgstr "Секретный ключ"
+
+#: inc/fields/GoogleRecaptcha.php:99 inc/fields/hCaptcha.php:100
+msgid "Error Message"
+msgstr "Сообщение об ошибке"
+
+#: inc/fields/GoogleRecaptcha.php:111
+msgid ""
+"Check the list of languages <a href=\"https://developers.google.com/"
+"recaptcha/docs/language\" target=\"_blank\">here</a>"
+msgstr ""
+"Посмотрите список языков <a href=\"https://developers.google.com/recaptcha/"
+"docs/language\" target=\"_blank\">здесь</a>"
+
+#: inc/fields/HeaderField.php:43
+msgid "Header Field"
+msgstr "Поле заголовка"
+
+#: inc/fields/HiddenField.php:43
+msgid "Hidden Field"
+msgstr "Скрытое поле"
+
+#: inc/fields/MdEditor.php:57 inc/fields/TinyMCE.php:196
+msgid "Please add editor field"
+msgstr "Пожалуйста, добавьте поле редактора"
+
+#: inc/fields/MdEditor.php:135
+msgid "Post Content Field is missing"
+msgstr "Содержание записи отсутствует"
+
+#: inc/fields/NumberField.php:49
+msgid "Please add number field"
+msgstr "Пожалуйста, выберите число"
+
+#: inc/fields/NumberField.php:57
+msgid "Please add correct number field"
+msgstr "Пожалуйста, добавьте правильное числовое поле"
+
+#: inc/fields/NumberField.php:75
+msgid "Number Field"
+msgstr "Числовое поле"
+
+#: inc/fields/ParagraphField.php:43
+msgid "Paragraph Field"
+msgstr "Поле абзаца"
+
+#: inc/fields/PostThumbField.php:43
+msgid "Featured Image"
+msgstr "Изображение записи"
+
+#: inc/fields/PostThumbField.php:76
+msgid "(PRO) WP Media"
+msgstr "(PRO) WP Media"
 
 #: inc/fields/PostThumbField.php:146
 msgid "The featured image is required"
 msgstr "Обязательно наличие изображения записи"
 
-#: templates/admin/settings/form-submission-display.php:41
-msgid "The place where will be displayed error and success messages"
-msgstr "Место, где будут отображаться сообщения об ошибках и успехах"
+#: inc/fields/PostTitleField.php:56
+msgid "Post Title Field is missing"
+msgstr "Поле заголовка записи отсутствует"
 
-#: inc/SavePost.php:273 inc/SavePost.php:278 inc/Editor.php:43
-#: inc/Editor.php:47
-msgid "The post you trying to edit is not exist, please create a new one"
-msgstr ""
-"Запись, которое вы пытаетесь отредактировать, не существует, пожалуйста, "
-"создайте новое"
+#: inc/fields/PostTitleField.php:76
+msgid "Please add post title"
+msgstr "Пожалуйста, добавьте название поста"
 
-#: templates/admin/settings/form-payment-settings.php:43
-msgid "The user will be redirect to this product when submit the form"
-msgstr "При отправке формы пользователь будет перенаправлен на этот продукт"
+#: inc/fields/PostTitleField.php:85
+msgid "Please add correct post title"
+msgstr "Пожалуйста, добавьте правильное название записи"
 
-#: templates/admin/settings/form-submission-display.php:46
-msgid "Theme Designs"
-msgstr "Тематические дизайны"
+#: inc/fields/PostTitleField.php:252
+msgid "Hide Field"
+msgstr "Скрыть поле"
 
-#: templates/admin/settings/form-payment-settings.php:10
+#: inc/fields/PostTitleField.php:253
+msgid "Generate title"
+msgstr "Сгенерировать заголовок"
+
+#: inc/fields/PostTitleField.php:258
 msgid ""
-"These settings are applicable only when the WooCommerce plugin is installed."
-msgstr "Эти настройки применимы только при установленном плагине WooCommerce."
-
-#: inc/Form.php:121
-msgid "This field value will be saved into post meta using this name."
-msgstr "Значение этого поля будет сохранено в post meta под этим именем."
-
-#: inc/Form.php:393 inc/Form.php:405
-msgid "This is not a valid record."
-msgstr "Это не действительная запись."
-
-#: templates/admin/settings/form-payment-settings.php:68
-msgid "This message user will see when product will be added to the cart."
+"Generate title using params: [{taxonomy_name}] [{field name}] <br> Example: "
+"Post [category] [text-1695547664968] <br> If empty will not work"
 msgstr ""
-"Это сообщение пользователь увидит, когда товар будет добавлен в корзину."
+"Сгенерируйте заголовок, используя параметры: [{taxonomy_name}] [{field "
+"name}] <br> Пример: Пост [категория] [text-1695547664968] <br> Если пусто, "
+"то не будет работать"
 
-#: inc/UserAdmin.php:18 inc/Editor.php:141
-msgid "This page is restricted. Please Login to view this page."
-msgstr ""
-"Эта страница недоступна. Пожалуйста, войдите для просмотра этой страницы."
+#: inc/fields/PostTitleField.php:259
+msgid "Hide field so users will not see it"
+msgstr "Скрыть поле, чтобы пользователи его не видели"
 
-#: inc/Blocks.php:54 inc/MenuSettings.php:124
-msgid ""
-"This post created with the Front Editor plugin. Please edit it using Front "
-"Editor to not have issues with the plugin!"
-msgstr ""
-"Это запись создан с помощью плагина Front Editor. Пожалуйста, редактируйте "
-"его с помощью Front Editor, чтобы избежать проблем!"
+#: inc/fields/RadioGroupField.php:49
+msgid "Please add radio field"
+msgstr "Пожалуйста, добавьте радиополе"
 
-#: inc/fields/EditorJsField.php:493
-msgid "Title"
-msgstr "Название"
-
-#: templates/admin/settings/form-admin-notification-settings.php:17
-msgid "To"
-msgstr "На"
-
-#: templates/admin/settings/form-settings-post-update.php:40
-#: templates/admin/settings/form-settings-post.php:62
-msgid "To a custom URL"
-msgstr "На пользовательскую ссылку"
-
-#: templates/admin/settings/form-settings-migration.php:13
-msgid ""
-"To transfer the form settings, simply copy the text from this textarea, "
-"paste it into the textarea of the other form, and click the \"Migrate\" "
-"button."
-msgstr ""
-"Чтобы перенести настройки формы, просто скопируйте текст из этой текстовой "
-"области, вставьте его в текстовую область другой формы и нажмите кнопку "
-"\"Миграция\"."
-
-#: inc/PostFormsListTable.php:45 inc/PostFormsListTable.php:407
-msgid "Trash"
-msgstr "Корзина"
-
-#: inc/fields/TextField.php:76
-msgid "Type"
-msgstr "Тип"
-
-#: templates/admin/settings/form-submission-restriction.php:21
-msgid "Unregistered users will be able to submit posts"
-msgstr "Незарегистрированные пользователи смогут добовлять записи"
-
-#: inc/FormMetaBox.php:146
-msgid "Untitled Field"
-msgstr "Поле без названия"
-
-#: inc/Editor.php:30 templates/admin/settings/form-settings-post-update.php:3
-msgid "Update"
-msgstr "Обновить"
-
-#: templates/admin/settings/form-settings-post-update.php:67
-msgid "Update Post Button text"
-msgstr "Текста кнопки обновить"
-
-#: inc/Editor.php:77
-msgid "Updating"
-msgstr "Обновление"
-
-#: inc/MenuSettings.php:224
-msgid "User Admin"
-msgstr "Админка пользователя"
-
-#: inc/MenuSettings.php:328
-msgid "User Admin Settings"
-msgstr "Настройки админ панели пользователя"
-
-#: inc/MenuSettings.php:251
-msgid "User Admin Shortcode Settings"
-msgstr "Настройки шорткода админ панели пользователя"
-
-#: inc/LoginRegisterShortcode.php:73
-msgid "User is logged in."
-msgstr "Пользователь вошел в систему."
-
-#: inc/MenuSettings.php:606
-msgid "User Not Logged In message."
-msgstr "Сообщение \"Пользователь не вошел в систему\"."
-
-#: inc/MenuSettings.php:317
-msgid "User Notification Email"
-msgstr "Уведомление пользователя по электронной почте"
-
-#: inc/MenuSettings.php:280 inc/MenuSettings.php:305
-msgid "Username"
-msgstr "Имя пользователя"
-
-#: templates/login-form.php:7 templates/login-form.php:8
-msgid "Username or Email"
-msgstr "Имя пользователя или электронная почта"
-
-#: inc/fields/EditorJsField.php:476
-msgid "Warning"
-msgstr "Примечание"
-
-#: inc/Form.php:523
-msgid "Watch Post Form"
-msgstr "Посмотреть форму"
-
-#: inc/MenuSettings.php:302
-msgid "WebSite"
-msgstr "Веб-сайт"
-
-#: inc/fields/TinyMCE.php:116
-msgid "Whether to display media insert/upload buttons"
-msgstr "Отображать ли кнопки вставки/загрузки медиафайлов"
-
-#: inc/fields/TinyMCE.php:117
-msgid "Whether to output the minimal editor configuration"
-msgstr "Выводить ли минимальную конфигурацию редактора"
-
-#: templates/admin/settings/form-admin-login-register.php:14
-msgid ""
-"Will be shown to the user if he is not registered and guest posting is not "
-"active"
-msgstr ""
-"Будет показан пользователю, если он не зарегистрирован и гостевая публикация "
-"не активна"
-
-#: templates/admin/settings/form-payment-settings.php:41
-msgid "WooCommerce is not activated. Please install and activate WooCommerce."
-msgstr ""
-"WooCommerce не активирован. Пожалуйста, установите и активируйте WooCommerce."
-
-#: templates/admin/settings/form-payment-settings.php:80
-msgid "WooCommerce user admin"
-msgstr "Страница пользователя WooCommerce"
-
-#: inc/MenuSettings.php:180
-msgid "WordPress admin bar"
-msgstr "Панель администратора WordPress"
-
-#: inc/PostFormsListTable.php:360
-msgid "Yes"
-msgstr "Да"
-
-#: inc/Form.php:152
-msgid "You already have this field in the form"
-msgstr "У вас уже есть это поле в форме"
-
-#: inc/Editor.php:173
-msgid "You are not allowed to edit"
-msgstr "Вам не разрешено редактировать"
-
-#: inc/Editor.php:162 templates/admin/settings/form-settings-post-update.php:6
-msgid "You are not allowed to edit anymore."
-msgstr "Вам больше не разрешено редактировать."
-
-#. You can buy pro version or find additional information.
-#: inc/MenuSettings.php:412
+#: inc/fields/SelectField.php:47 inc/fields/TaxonomiesFields.php:193
 #, php-format
-msgid ""
-"You can buy pro version or find additional information <a href=\"%1$s\" "
-"target=\"_blank\">here</a> or write some ideas or report issues in %2$s"
-msgstr ""
-"Вы можете купить про-версию или найти дополнительную информацию <a "
-"href=\"%1$s\" target=\"_blank\">здесь</a> или написать несколько идей или "
-"сообщить о проблемах в %2$s"
+msgid "The %s selection is required"
+msgstr "Необходимо выбрать %s"
 
-#: inc/MenuSettings.php:885
-#, php-format
-msgid "You can check %1$s how to get Google Map API Key and how to set it up."
+#: inc/fields/SelectField.php:92 inc/fields/TaxonomiesFields.php:108
+msgid "Show Search Input"
+msgstr "Показать поисковый поле"
+
+#: inc/fields/SelectField.php:97 inc/fields/TaxonomiesFields.php:115
+msgid "Search placeholder"
+msgstr "Пример текста поиска"
+
+#: inc/fields/SelectField.php:98 inc/fields/TaxonomiesFields.php:116
+msgid "No result text"
+msgstr "Текст без результата"
+
+#: inc/fields/TaxonomiesFields.php:54
+msgid "Select"
+msgstr "Выберите"
+
+#: inc/fields/TaxonomiesFields.php:80
+msgid "Order"
+msgstr "Заказ"
+
+#: inc/fields/TaxonomiesFields.php:88
+msgid "Multiple Selections"
+msgstr "Множественный выбор"
+
+#: inc/fields/TaxonomiesFields.php:93
+msgid "Show empty"
+msgstr "Показать пустые термы"
+
+#: inc/fields/TaxonomiesFields.php:98
+msgid "Allow Add New"
+msgstr "Разрешить добавление нового"
+
+#: inc/fields/TaxonomiesFields.php:103
+msgid "Show Hierarchically"
+msgstr "Показать иерархически"
+
+#: inc/fields/TaxonomiesFields.php:112
+msgid "Terms to excluded"
+msgstr "Условия для исключения"
+
+#: inc/fields/TaxonomiesFields.php:113
+msgid "Default terms"
+msgstr "Термнины по умолчанию"
+
+#: inc/fields/TaxonomiesFields.php:143
+msgid "You can specify a comma-separated terms IDs that need to be excluded."
 msgstr ""
-"Вы можете посмотреть %1$s, как получить ключ API Google Map и как его "
-"настроить."
+"Вы можете указать идентификаторы терминов, которые необходимо исключить, "
+"разделив их запятыми."
+
+#: inc/fields/TaxonomiesFields.php:144
+msgid "Add new functionality will not work without activating this input."
+msgstr ""
+"Добавление новых элементов не будет работать, пока эта опция не включена."
 
 #: inc/fields/TaxonomiesFields.php:148
 #, php-format
@@ -1811,12 +1931,735 @@ msgstr ""
 "должны быть включены. Посмотрите учебник, чтобы найти идентификатор термина "
 "с помощью этого %s"
 
-#: inc/fields/TaxonomiesFields.php:143
-msgid "You can specify a comma-separated terms IDs that need to be excluded."
-msgstr ""
-"Вы можете указать идентификаторы терминов, которые необходимо исключить, "
-"разделив их запятыми."
+#: inc/fields/TextField.php:49
+msgid "Please add text field"
+msgstr "Пожалуйста, добавьте текстовое поле"
 
-#: templates/user-admin.php:105
+#: inc/fields/TextField.php:76
+msgid "Type"
+msgstr "Тип"
+
+#: inc/fields/TinyMCE.php:57
+msgid "Media Support"
+msgstr "Поддержка Галереи"
+
+#: inc/fields/TinyMCE.php:62
+msgid "Teeny"
+msgstr "Мин. функций"
+
+#: inc/fields/TinyMCE.php:67
+msgid "Drag & Drop"
+msgstr "Перетаскивание"
+
+#: inc/fields/TinyMCE.php:116
+msgid "Whether to display media insert/upload buttons"
+msgstr "Отображать ли кнопки вставки/загрузки медиафайлов"
+
+#: inc/fields/TinyMCE.php:117
+msgid "Whether to output the minimal editor configuration"
+msgstr "Выводить ли минимальную конфигурацию редактора"
+
+#: inc/fields/TinyMCE.php:118
+msgid "Enable Drag & Drop Upload Support"
+msgstr "Включите поддержку загрузки с помощью перетаскивания"
+
+#: inc/fields/hCaptcha.php:98
+msgid "Site Key"
+msgstr "Ключ сайта"
+
+#: inc/fields/hCaptcha.php:99
+msgid "Secret Key"
+msgstr "Секретный ключ"
+
+#: inc/fields/hCaptcha.php:123
+msgid ""
+"Check the list of languages <a href=\"https://docs.hcaptcha.com/languages\" "
+"target=\"_blank\">here</a>"
+msgstr ""
+"Список языков смотрите <a href=\"https://docs.hcaptcha.com/languages\" "
+"target=\"_blank\">здесь</a>"
+
+#: inc/shortcodes/FUSGoogleMapsShortcode.php:27
+msgid "Location data not found"
+msgstr "Данные о местоположении не найдены"
+
+#: inc/shortcodes/FUSGoogleMapsShortcode.php:32
+msgid "Invalid location data format"
+msgstr "Неверный формат данных о местоположении"
+
+#: templates/admin/design-selector.php:61
+msgid "Available in Pro Version"
+msgstr "Доступно в Pro-версии"
+
+#: templates/admin/design-selector.php:72
+msgid "🎨 Unlock All Form Designs"
+msgstr "🎨 Откройте все дизайны форм"
+
+#: templates/admin/design-selector.php:73
+msgid ""
+"Get access to 7 additional professional form designs with the Pro version. "
+"Perfect for matching your brand and increasing conversions."
+msgstr ""
+"Получите 7 дополнительных профессиональных дизайнов форм в Pro-версии — под "
+"ваш бренд и для роста конверсии."
+
+#: templates/admin/design-selector.php:75
+msgid "Upgrade to Pro"
+msgstr "Перейти на Pro"
+
+#: templates/admin/post-form.php:48
+msgid "Form Title"
+msgstr "Название формы"
+
+#: templates/admin/post-form.php:60
+msgid "Save"
+msgstr "Сохранить"
+
+#: templates/admin/post-form.php:65
+msgid "Form Editor"
+msgstr "Редактор форм"
+
+#: templates/admin/post-form.php:67
+msgid "Notifications"
+msgstr "Уведомления"
+
+#: templates/admin/post-form.php:68
+msgid "Login/Register"
+msgstr "Вход/Регистрация"
+
+#: templates/admin/post-form.php:76
+msgid "Select post type"
+msgstr "Выберите тип записи"
+
+#: templates/admin/post-form.php:87
+msgid "Post Submit Settings"
+msgstr "Отправки Записи"
+
+#: templates/admin/post-form.php:88
+msgid "Edit Post Settings"
+msgstr "Редактирования записи"
+
+#: templates/admin/post-form.php:89
+msgid "Submission Restriction"
+msgstr "Ограничения"
+
+#: templates/admin/post-form.php:90
+msgid "Display Settings"
+msgstr "Дизайна"
+
+#: templates/admin/post-form.php:91
+msgid "Payment Settings"
+msgstr "Оплаты"
+
+#: templates/admin/post-form.php:93
+msgid "Migration Settings"
+msgstr "Миграции"
+
+#: templates/admin/post-form.php:127
+#: templates/admin/settings/form-admin-notification-settings.php:8
+msgid "Admin Notification"
+msgstr "Для админа"
+
+#: templates/admin/post-form.php:128
+msgid "Post Publish Notification"
+msgstr "Об публикации"
+
+#: templates/admin/post-form.php:129
+msgid "Post Submit Notification"
+msgstr "После отправки"
+
+#: templates/admin/post-form.php:130
+msgid "Post Trash Notification"
+msgstr "Об удалении записи"
+
+#: templates/admin/post-forms-list-table-view.php:8
+msgid "Add Form"
+msgstr "Добавить форму"
+
+#: templates/admin/post-forms-list-table-view.php:23
+msgid "Search Forms"
+msgstr "Формы поиска"
+
+#: templates/admin/settings/form-admin-login-register.php:8
+msgid "Login / Register Settings"
+msgstr "Настройки входа / регистрации"
+
+#: templates/admin/settings/form-admin-login-register.php:11
+msgid "Form Restriction Message"
+msgstr "Сообщение об ограничении формы"
+
+#: templates/admin/settings/form-admin-login-register.php:14
+msgid ""
+"Will be shown to the user if he is not registered and guest posting is not "
+"active"
+msgstr ""
+"Будет показан пользователю, если он не зарегистрирован и гостевая публикация "
+"не активна"
+
+#: templates/admin/settings/form-admin-login-register.php:18
+msgid "Show login"
+msgstr "Показать вход"
+
+#: templates/admin/settings/form-admin-login-register.php:25
+msgid "Show login instead of restricted message (Pro)"
+msgstr "Показывать логин вместо сообщения о запрете (Pro)"
+
+#: templates/admin/settings/form-admin-notification-settings.php:4
+msgid "New post created - [post_title]"
+msgstr "Создан новая запись - [post_title]"
+
+#: templates/admin/settings/form-admin-notification-settings.php:11
+#: templates/admin/settings/form-notification-settings.php:17
+msgid "Activate Notifications"
+msgstr "Активировать уведомления"
+
+#: templates/admin/settings/form-admin-notification-settings.php:17
+msgid "To"
+msgstr "На"
+
+#: templates/admin/settings/form-admin-notification-settings.php:23
+#: templates/admin/settings/form-notification-settings.php:23
+msgid "Subject"
+msgstr "Тема"
+
+#: templates/admin/settings/form-admin-notification-settings.php:32
+#: templates/admin/settings/form-settings-post-update.php:61
+msgid "Post Update Message"
+msgstr "Сообщение об обновлении"
+
+#: templates/admin/settings/form-ai-settings.php:11
+msgid "Enabled"
+msgstr "Включено"
+
+#: templates/admin/settings/form-ai-settings.php:12
+msgid "Disabled"
+msgstr "Выключено"
+
+#: templates/admin/settings/form-ai-settings.php:17
+msgid "AI assistant"
+msgstr "ИИ-помощник"
+
+#: templates/admin/settings/form-ai-settings.php:18
+msgid "Show the \"✨ AI\" button in the fields of this form."
+msgstr "Показывать кнопку «✨ ИИ» в полях этой формы."
+
+#: templates/admin/settings/form-ai-settings.php:24
+msgid "Check posts submitted with this form before publishing."
+msgstr "Проверять записи из этой формы перед публикацией."
+
+#: templates/admin/settings/form-ai-settings.php:30
+msgid "Generate excerpt, tags and SEO description for posts from this form."
+msgstr "Создавать отрывок, метки и SEO-описание для записей из этой формы."
+
+#: templates/admin/settings/form-ai-settings.php:40
+msgid "AI is not configured yet."
+msgstr "ИИ ещё не настроен."
+
+#: templates/admin/settings/form-ai-settings.php:41
+msgid "Add an API key"
+msgstr "Добавить API-ключ"
+
+#: templates/admin/settings/form-ai-settings.php:45
+msgid "AI features are off in every form until you enable them here."
+msgstr "Функции ИИ выключены во всех формах, пока вы не включите их здесь."
+
+#: templates/admin/settings/form-ai-settings.php:71
+msgid ""
+"Turned off in the global AI settings, so it does not work in any form now."
+msgstr ""
+"Выключено в общих настройках ИИ, поэтому сейчас не работает ни в одной форме."
+
+#: templates/admin/settings/form-design-color-settings.php:23
+msgid "Color Settings"
+msgstr "Настройки цвета"
+
+#: templates/admin/settings/form-design-color-settings.php:25
+msgid "Buttons background color"
+msgstr "Цвет фона кнопок"
+
+#: templates/admin/settings/form-design-color-settings.php:31
+msgid "Buttons text color"
+msgstr "Цвет текста кнопок"
+
+#: templates/admin/settings/form-design-color-settings.php:37
+msgid "Buttons border color"
+msgstr "Цвет границы кнопок"
+
+#: templates/admin/settings/form-design-color-settings.php:43
+msgid "Buttons border radius"
+msgstr "Радиус границы кнопок"
+
+#: templates/admin/settings/form-notification-settings.php:9
+msgid "No Reply"
+msgstr "Нет ответа"
+
+#: templates/admin/settings/form-notification-settings.php:32
+msgid "From Name"
+msgstr "От имени"
+
+#: templates/admin/settings/form-notification-settings.php:38
+msgid "From Email"
+msgstr "Из электронной почты"
+
+#: templates/admin/settings/form-payment-settings.php:10
+msgid ""
+"These settings are applicable only when the WooCommerce plugin is installed."
+msgstr "Эти настройки применимы только при установленном плагине WooCommerce."
+
+#: templates/admin/settings/form-payment-settings.php:12
+msgid "Payment Options"
+msgstr "Варианты оплаты"
+
+#: templates/admin/settings/form-payment-settings.php:19
+msgid "Enable Payments"
+msgstr "Включить платежи"
+
+#: templates/admin/settings/form-payment-settings.php:22
+msgid "Check to enable Payments for this form"
+msgstr "Установите флажок, чтобы включить платежи для этой формы"
+
+#: templates/admin/settings/form-payment-settings.php:26
+msgid "Select The Product"
+msgstr "Выберите продукт"
+
+#: templates/admin/settings/form-payment-settings.php:41
+msgid "WooCommerce is not activated. Please install and activate WooCommerce."
+msgstr ""
+"WooCommerce не активирован. Пожалуйста, установите и активируйте WooCommerce."
+
+#: templates/admin/settings/form-payment-settings.php:43
+msgid "The user will be redirect to this product when submit the form"
+msgstr "При отправке формы пользователь будет перенаправлен на этот продукт"
+
+#: templates/admin/settings/form-payment-settings.php:47
+msgid "Direct Checkout"
+msgstr "Прямая оформление"
+
+#: templates/admin/settings/form-payment-settings.php:54
+msgid "Go direct to checkout"
+msgstr "Перейдите непосредственно к оформлению заказа"
+
+#: templates/admin/settings/form-payment-settings.php:57
+msgid "Send your user direct to checkout not to the cart"
+msgstr "Отправляйте пользователя прямо к оформлению заказа, а не в корзину"
+
+#: templates/admin/settings/form-payment-settings.php:61
+msgid "Product Added"
+msgstr "Товар добавлен"
+
+#: templates/admin/settings/form-payment-settings.php:62
+msgid "Product added to the cart. Check the cart."
+msgstr "Товар добавлен в корзину. Проверьте корзину."
+
+#: templates/admin/settings/form-payment-settings.php:68
+msgid "This message user will see when product will be added to the cart."
+msgstr ""
+"Это сообщение пользователь увидит, когда товар будет добавлен в корзину."
+
+#: templates/admin/settings/form-payment-settings.php:73
+#: templates/admin/settings/form-settings-post-update.php:33
+#: templates/admin/settings/form-settings-post.php:55
+msgid "Redirect To"
+msgstr "Перенаправить на"
+
+#: templates/admin/settings/form-payment-settings.php:78
+#: templates/admin/settings/form-settings-post-update.php:38
+#: templates/admin/settings/form-settings-post.php:60
+msgid "No Redirect"
+msgstr "Нет перенаправления"
+
+#: templates/admin/settings/form-payment-settings.php:79
+msgid "Same Post"
+msgstr "Тот же пост"
+
+#: templates/admin/settings/form-payment-settings.php:80
+msgid "WooCommerce user admin"
+msgstr "Страница пользователя WooCommerce"
+
+#: templates/admin/settings/form-payment-settings.php:93
+#: templates/admin/settings/form-settings-post-update.php:49
+#: templates/admin/settings/form-settings-post.php:71
+msgid "After successfully submit, where the page will redirect to"
+msgstr "После успешной отправки записи будете перенаправлены на"
+
+#: templates/admin/settings/form-payment-settings.php:98
+#: templates/admin/settings/form-settings-post-update.php:54
+#: templates/admin/settings/form-settings-post.php:76
+msgid "Custom URL"
+msgstr "Пользовательская ссылка"
+
+#: templates/admin/settings/form-settings-migration.php:5
+msgid "JSON copied!"
+msgstr "JSON скопирован!"
+
+#: templates/admin/settings/form-settings-migration.php:7
+msgid "Copy"
+msgstr "Копировать"
+
+#: templates/admin/settings/form-settings-migration.php:8
+msgid "Migrate"
+msgstr "Миграция"
+
+#: templates/admin/settings/form-settings-migration.php:12
+msgid "Note:"
+msgstr "Примечание:"
+
+#: templates/admin/settings/form-settings-migration.php:13
+msgid ""
+"To transfer the form settings, simply copy the text from this textarea, "
+"paste it into the textarea of the other form, and click the \"Migrate\" "
+"button."
+msgstr ""
+"Чтобы перенести настройки формы, просто скопируйте текст из этой текстовой "
+"области, вставьте его в текстовую область другой формы и нажмите кнопку "
+"\"Миграция\"."
+
+#: templates/admin/settings/form-settings-post-update.php:2
+msgid "Post updated successfully"
+msgstr "Сообщение успешно обновлено"
+
+#: templates/admin/settings/form-settings-post-update.php:12
+msgid "Select edit page"
+msgstr "Выберите страницу редактирования"
+
+#: templates/admin/settings/form-settings-post-update.php:22
+msgid "Pages"
+msgstr "Страницы"
+
+#: templates/admin/settings/form-settings-post-update.php:27
+msgid "Select page same with other form shortcode"
+msgstr "Выберите страницу, на которой будет происходить редактирование"
+
+#: templates/admin/settings/form-settings-post-update.php:39
+#: templates/admin/settings/form-settings-post.php:61
+msgid "Currently Edited Post"
+msgstr "Только что редактированная запись"
+
+#: templates/admin/settings/form-settings-post-update.php:40
+#: templates/admin/settings/form-settings-post.php:62
+msgid "To a custom URL"
+msgstr "На пользовательскую ссылку"
+
+#: templates/admin/settings/form-settings-post-update.php:67
+msgid "Update Post Button text"
+msgstr "Текста кнопки обновить"
+
+#: templates/admin/settings/form-settings-post-update.php:73
+msgid "Lock User From Editing After"
+msgstr "Блокировка редактирования пользователем после"
+
+#: templates/admin/settings/form-settings-post-update.php:75
+msgid "hours"
+msgstr "час"
+
+#: templates/admin/settings/form-settings-post-update.php:76
+msgid ""
+"After how many hours user will be locked from editing the submitted post."
+msgstr ""
+"Через сколько часов пользователю будет закрыта возможность редактировать "
+"запись."
+
+#: templates/admin/settings/form-settings-post-update.php:79
+msgid "Restriction text if the time was passed"
+msgstr "Ограничительный текст, если время истекло"
+
+#: templates/admin/settings/form-settings-post.php:3
+msgid "Submit"
+msgstr "Отправить"
+
+#: templates/admin/settings/form-settings-post.php:27
+msgid "Add new button"
+msgstr "Добавить новую кнопку"
+
+#: templates/admin/settings/form-settings-post.php:33
+msgid "Always display"
+msgstr "Всегда показывайте"
+
+#: templates/admin/settings/form-settings-post.php:34
+#: templates/admin/settings/form-settings-post.php:91
+#: templates/admin/settings/form-settings-post.php:119
+msgid "Disable"
+msgstr "Отключить"
+
+#: templates/admin/settings/form-settings-post.php:43
+msgid "It will show add new button after post creation or on editing"
+msgstr ""
+"Кнопка добавления новой записи будет показана после создания поста или при "
+"редактировании"
+
+#: templates/admin/settings/form-settings-post.php:47
+msgid "Add new button text"
+msgstr "Добавьте новый текст кнопки"
+
+#: templates/admin/settings/form-settings-post.php:49
+msgid "Add New"
+msgstr "Добавить новый"
+
+#: templates/admin/settings/form-settings-post.php:100
+msgid "Show button save to draft"
+msgstr "Показать кнопку сохранения в черновик"
+
+#: templates/admin/settings/form-settings-post.php:104
+msgid "Draft button text"
+msgstr "Текст черновой кнопки"
+
+#: templates/admin/settings/form-settings-post.php:106
+#: templates/front-form-header.php:38
+msgid "Save Draft"
+msgstr "Сохранить черновик"
+
+#: templates/admin/settings/form-settings-post.php:113
+msgid "Preview button"
+msgstr "Кнопка предварительного просмотра"
+
+#: templates/admin/settings/form-settings-post.php:128
+msgid "Show button preview after post published."
+msgstr "Показывайте предварительный просмотр кнопок после публикации записи."
+
+#: templates/admin/settings/form-settings-post.php:132
+msgid "Preview button text"
+msgstr "Текст кнопки предпросмотр"
+
+#: templates/admin/settings/form-settings-post.php:134
+#: templates/front-form-header.php:54
+msgid "Preview"
+msgstr "Предпросмотр"
+
+#: templates/admin/settings/form-settings-post.php:140
+msgid "Comment Status"
+msgstr "Комментарии"
+
+#: templates/admin/settings/form-settings-post.php:143
+msgid "Open"
+msgstr "Открыть"
+
+#: templates/admin/settings/form-settings-post.php:144
+msgid "Closed"
+msgstr "Закрытый"
+
+#: templates/admin/settings/form-settings-post.php:149
+msgid "Submit Post Button text"
+msgstr "Текст кнопки отправки"
+
+#: templates/admin/settings/form-settings-post.php:155
+msgid "Post Added Message"
+msgstr "Текст успешного добавления записи"
+
+#: templates/admin/settings/form-submission-display.php:4
+msgid "Place of control buttons"
+msgstr "Расположение кнопок управления"
+
+#: templates/admin/settings/form-submission-display.php:9
+msgid "On Top"
+msgstr "В верху"
+
+#: templates/admin/settings/form-submission-display.php:10
+msgid "On Bottom"
+msgstr "В низу"
+
+#: templates/admin/settings/form-submission-display.php:11
+msgid "On Top and Bottom"
+msgstr "Сверху и снизу"
+
+#: templates/admin/settings/form-submission-display.php:20
+msgid "Select place where the form control buttons will be placed"
+msgstr "Выберите место, где будут размещены кнопки управления формой"
+
+#: templates/admin/settings/form-submission-display.php:25
+msgid "Place to show success or error messages"
+msgstr "Место для отображения сообщений об успехах или ошибках"
+
+#: templates/admin/settings/form-submission-display.php:30
+msgid "Popup on bottom right"
+msgstr "Всплывающее окно в правом нижнем углу"
+
+#: templates/admin/settings/form-submission-display.php:31
+msgid "On bottom after form"
+msgstr "Внизу после формы"
+
+#: templates/admin/settings/form-submission-display.php:32
+msgid "On top before form"
+msgstr "На вершине перед формой"
+
+#: templates/admin/settings/form-submission-display.php:41
+msgid "The place where will be displayed error and success messages"
+msgstr "Место, где будут отображаться сообщения об ошибках и успехах"
+
+#: templates/admin/settings/form-submission-display.php:46
+msgid "Form Designs"
+msgstr "Дизайны форм"
+
+#: templates/admin/settings/form-submission-display.php:58
+msgid "Simple Design"
+msgstr "Простой дизайн"
+
+#: templates/admin/settings/form-submission-display.php:63
+msgid "Modern Design"
+msgstr "Современный дизайн"
+
+#: templates/admin/settings/form-submission-display.php:68
+msgid "Minimum Style"
+msgstr "Минимальный стиль"
+
+#: templates/admin/settings/form-submission-display.php:103
+msgid ""
+"Choose the visual design for your form. Pro designs require a premium "
+"license."
+msgstr "Выберите оформление формы. Pro-дизайны требуют премиум-лицензию."
+
+#: templates/admin/settings/form-submission-display.php:110
+msgid ""
+"Select front form design. Each design offers a unique visual style and user "
+"experience."
+msgstr ""
+"Выберите дизайн формы на сайте. У каждого свой визуальный стиль и удобство "
+"использования."
+
+#: templates/admin/settings/form-submission-display.php:117
+msgid "Custom css for form"
+msgstr "Пользовательский css для формы"
+
+#: templates/admin/settings/form-submission-restriction.php:14
+msgid "Enable Guest Post"
+msgstr "Включить гостевой постинг"
+
+#: templates/admin/settings/form-submission-restriction.php:21
+msgid "Unregistered users will be able to submit posts"
+msgstr "Незарегистрированные пользователи смогут добовлять записи"
+
+#: templates/editor/attaches.php:6
+msgid "Download"
+msgstr "Скачать"
+
+#: templates/front-editor-form.php:9
+msgid "Post form is not selected please select existing one or"
+msgstr "Форма записи не выбрана, пожалуйста, выберите существующую или"
+
+#: templates/front-editor-form.php:11
+msgid "Create New One"
+msgstr "Создать новый"
+
+#: templates/front-editor-form.php:60
+msgid "Proudly powered by"
+msgstr "Форма создана с помощью плагина WP Front Editor"
+
+#: templates/front-editor/category.php:10
+#: templates/front-editor/category.php:11
+msgid "Select category"
+msgstr "Выберите категорию"
+
+#: templates/front-editor/google-map.php:3
+msgid "Write your address"
+msgstr "Введите адрес"
+
+#: templates/front-editor/post-featured-image.php:26
+msgid "Set featured image"
+msgstr "Установите изображение записи"
+
+#: templates/front-editor/tags.php:2 templates/front-editor/tags.php:3
+msgid "Select tags"
+msgstr "Выберите теги"
+
+#: templates/front-form-header.php:46
+msgid "Add new"
+msgstr "Добавить новый"
+
+#: templates/login-form.php:51
+msgid "Username or Email"
+msgstr "Имя пользователя или электронная почта"
+
+#: templates/login-form.php:81
+msgid "Remember Me"
+msgstr "Запомнить меня"
+
+#: templates/login-form.php:102
+msgid "Log In"
+msgstr "Войти"
+
+#: templates/register-form.php:50
+msgid "First Name"
+msgstr "Имя"
+
+#: templates/register-form.php:62
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: templates/register-form.php:88
+msgid "Email Address"
+msgstr "Email"
+
+#: templates/register-form.php:101
+msgid "Website"
+msgstr "Сайт"
+
+#: templates/register-form.php:127
+msgid "A password will be sent to your email address."
+msgstr "Пароль будет отправлен на ваш email."
+
+#: templates/register-form.php:135
+msgid "Register"
+msgstr "Регистрация"
+
+#: templates/user-admin.php:17
+msgid "Logout"
+msgstr "Выход из системы"
+
+#: templates/user-admin.php:84
+msgid "Edit Post"
+msgstr "Редактировать запись"
+
+#: templates/user-admin.php:84
+msgid "Cannot Edit"
+msgstr "Нельзя редактировать"
+
+#: templates/user-admin.php:91
+msgid "Delete Post"
+msgstr "Удалить запись"
+
+#: templates/user-admin.php:110
 msgid "« Previous"
 msgstr "« Предыдущий"
+
+#: templates/user-admin.php:111
+msgid "Next »"
+msgstr "Далее »"
+
+#: templates/user-admin.php:120
+msgid "0 posts found"
+msgstr "найдено 0 записей"
+
+#~ msgid "Aleksan Aharonyan"
+#~ msgstr "Aleksan Aharonyan"
+
+#~ msgid "CSS code to customize the admin page"
+#~ msgstr "Код CSS для настройки страницы администратора"
+
+#~ msgid ""
+#~ "Have you ever seen websites that allow users to submit posts or other "
+#~ "type of content? Do you want to have user-submitted content on your site? "
+#~ "Front Editor allow users to submit blog posts to your WordPress site with "
+#~ "new frontend block editor EditorJs."
+#~ msgstr ""
+#~ "Вы когда-нибудь видели сайты, которые позволяют пользователям отправлять "
+#~ "сообщения или другой тип контента? Хотите иметь на своем сайте контент, "
+#~ "отправляемый пользователями? Front Editor позволяет пользователям "
+#~ "отправлять записи в блог на вашем сайте WordPress с помощью нового "
+#~ "редактора блоков фронтенда EditorJs."
+
+#~ msgid "https://github.com/Aharonyan/"
+#~ msgstr "https://github.com/Aharonyan/"
+
+#~ msgid "https://wpfronteditor.com/"
+#~ msgstr "https://wpfronteditor.com/"
+
+#~ msgid "Log in successful"
+#~ msgstr "Вход в систему успешный"
+
+#~ msgid "Login"
+#~ msgstr "Вход в систему"
+
+#~ msgid "Select front form design"
+#~ msgstr "Выберите дизайн"
+
+#~ msgid "Theme Designs"
+#~ msgstr "Тематические дизайны"

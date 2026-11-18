@@ -1,6 +1,11 @@
 $error_color: #ff9494;
 
 .fus-form {
+    // Browsers give textarea a monospace font; use the form font instead
+    textarea {
+        font-family: inherit;
+    }
+
     .hidden-fields {
         display: none;
     }

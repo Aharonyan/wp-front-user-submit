@@ -1,21 +1,21 @@
 <?php
 
 /**
- * Plugin Name: Front User Submit | Front Editor
+ * Plugin Name: Front User Submit – Frontend Post Submission, Guest Posting & AI Writing Assistant
  * Plugin URI: https://wpfronteditor.com/
- * Description: Have you ever seen websites that allow users to submit posts or other type of content? Do you want to have user-submitted content on your site? Front Editor allow users to submit blog posts to your WordPress site with new frontend block editor EditorJs.
+ * Description: Let users submit and edit posts from the front end: guest posting, drag-and-drop form builder, EditorJS / Markdown / TinyMCE editors and an AI writing assistant (OpenAI, Claude, Gemini, OpenRouter) with your own API key.
  * Author: Aleksan Aharonyan
  * Author URI: https://github.com/Aharonyan/
  * Developer: Aleksan Aharonyan
  * Developer URI: https://wpfronteditor.com/
  * Text Domain: front-editor
  * Domain Path: /languages
- * PHP requires at least: 7.0
  * WP requires at least: 5.0
- * Tested up to: 6.9
+ * Tested up to: 7.1
+ * Requires PHP: 7.4
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Version: 5.0.6
+ * Version: 5.1.0
  */
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -51,22 +51,23 @@ if ( function_exists( 'fe_fs' ) ) {
                 // Include Freemius SDK.
                 require_once dirname( __FILE__ ) . '/vendor/freemius/wordpress-sdk/start.php';
                 $fe_fs = fs_dynamic_init( array(
-                    'id'              => '7886',
-                    'slug'            => 'front-editor',
-                    'type'            => 'plugin',
-                    'public_key'      => 'pk_721b5ebdb9cda3d26691a9fb5c35c',
-                    'is_premium'      => false,
-                    'has_addons'      => false,
-                    'has_paid_plans'  => true,
-                    'trial'           => array(
+                    'id'               => '7886',
+                    'slug'             => 'front-editor',
+                    'type'             => 'plugin',
+                    'public_key'       => 'pk_721b5ebdb9cda3d26691a9fb5c35c',
+                    'is_premium'       => false,
+                    'has_addons'       => false,
+                    'has_paid_plans'   => true,
+                    'trial'            => array(
                         'days'               => 3,
                         'is_require_payment' => true,
                     ),
-                    'has_affiliation' => 'selected',
-                    'menu'            => array(
+                    'has_affiliation'  => 'selected',
+                    'menu'             => array(
                         'slug' => 'front_editor_settings',
                     ),
-                    'is_live'         => true,
+                    'is_live'          => true,
+                    'is_org_compliant' => true,
                 ) );
             }
             return $fe_fs;

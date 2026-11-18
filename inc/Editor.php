@@ -87,7 +87,7 @@ class Editor
 		 * Activating wp media uploader
 		 */
 		if (!self::guest_posting_enabled($form_settings) || is_user_logged_in()) {
-			if ($wp_localize_data['post_thumb']['wp_media_uploader'] || $wp_localize_data['editor_settings']['editor_gallery_plugin']) {
+			if ($wp_localize_data['post_thumb']['wp_media_uploader'] || !empty($wp_localize_data['editor_settings']['editor_gallery_plugin'])) {
 				wp_enqueue_media();
 			}
 		}

@@ -1,3 +1,5 @@
+import aiFormGenerator from './admin/ai-form-generator';
+
 export default ($, Swal) => {
     // Make plugin menu active if we in editing page
     $('li.wp-has-current-submenu').removeClass('wp-has-current-submenu')
@@ -50,6 +52,8 @@ export default ($, Swal) => {
         current_forBuilder_controls,
         updated_forBuilder_controls,
         formBuilderOptions;
+
+    const mountAiFormGenerator = aiFormGenerator($, Swal, () => formBuilderContainer, () => formBuilderOptions);
 
     let options = {
         notify: {
@@ -226,6 +230,8 @@ export default ($, Swal) => {
 
                         // Add groups
                         add_groups()
+
+                        mountAiFormGenerator()
 
                         // Adding data 
                         if (action === 'load') {

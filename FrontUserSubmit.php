@@ -60,6 +60,7 @@ class FrontUserSubmit
     require_once FE_PLUGIN_DIR_PATH . '/inc/MenuSettings.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Shortcodes.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/UserAdmin.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/UploadSecurity.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/SavePost.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Editor.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/EditorWidget.php';
@@ -71,6 +72,10 @@ class FrontUserSubmit
     require_once FE_PLUGIN_DIR_PATH . '/inc/FormMetaBox.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/shortcodes/FUSGoogleMapsShortcode.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/shortcodes/FUSCustomFieldContent.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/ai/AiClient.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/ai/AiSettings.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/ai/AiUsageLimit.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/ai/AiAssistant.php';
     
 
     add_action('wp_enqueue_scripts', [__CLASS__, 'add_scripts']);
@@ -86,6 +91,12 @@ class FrontUserSubmit
   public static function true_load_plugin_textdomain()
   {
     load_plugin_textdomain('front-editor', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+
+    // Language packs from translate.wordpress.org win, bundled files fill strings missing there (new features)
+    $bundled = sprintf('%slanguages/front-editor-%s.mo', FE_PLUGIN_DIR_PATH, determine_locale());
+    if (file_exists($bundled)) {
+      load_textdomain('front-editor', $bundled);
+    }
   }
 
   /**

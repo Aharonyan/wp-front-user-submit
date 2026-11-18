@@ -50,6 +50,8 @@ export default ($) => {
         editor_data = window.editor_data,
         editor_js_settings;
     const editors = {};
+    // Shared with other modules (AI assistant)
+    window.fe_editorjs_editors = editors;
 
     $(document).ready(function () {
         $('.EditorJS-editor').each((i, val) => {
@@ -82,7 +84,6 @@ export default ($) => {
      */
     function onChangeSaveData(container_id) {
         const $editor_js_object = editors[container_id];
-        console.log($editor_js_object)
         if($editor_js_object.save()){
             $editor_js_object.save().then((data) => {
                 document.getElementById(`${container_id}-textarea`).value = JSON.stringify(data);

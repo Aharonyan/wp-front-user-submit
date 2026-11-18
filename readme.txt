@@ -1,143 +1,116 @@
-=== Guest posting / Frontend Posting / Front Editor – WP Front User Submit  ===
+=== Front User Submit – Frontend Post Submission, Guest Posting & AI Writing Assistant ===
 Contributors: aharonyan, freemius
-Tags: frontend post,guest post,public post,user post
+Tags: frontend post, guest post, submit post, user submitted posts, ai writing assistant
 Requires at least: 4.0
-Tested up to: 6.8
-Requires PHP: 7.0
-Stable tag: 5.0.6
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable tag: 5.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin enables users to submit post content from Front End. Use our plugin to implement guest posting
+Frontend post submission and guest posting forms: drag-and-drop builder, user post dashboard and a free AI writing assistant. No wp-admin needed.
 
 == Description ==
-[🌐 Demo](http://demo.wpfronteditor.com/) | [📖 Documentation](https://wpfronteditor.com/docs) | [💬 Community](https://t.me/+loTEjPRS6lw3NTli) | [🚀 Upgrade to PRO](https://wpfronteditor.com/)  
 
-WP Front User Submit is a versatile WordPress plugin designed to enable post submissions from the frontend with or without user login. Packed with configurable options, it offers a comprehensive solution for guest posting.
+**Front User Submit** lets visitors and members create, edit and manage WordPress posts from the front end of your site, without ever opening wp-admin. Build a submission form in minutes with the drag-and-drop form builder, drop it on any page with a shortcode or block, and start collecting guest posts, user-generated content, listings, reviews or news.
 
-<strong>✨ Core Features</strong>
+New in 5.1: a **free ✨ AI writing assistant** right inside your forms. Your users write from a prompt, improve their text, fix grammar, shorten or expand it, using OpenAI, Anthropic Claude, Google Gemini, OpenRouter or a local model with your own API key.
 
-* Includes a fast & secure post-submission form
-* Includes a simple login/register/password form
-* Display forms anywhere via shortcode or template tag
-* Flexibility for Admins
-* Drag and Drop Form Builder
-* Guest Post Support
-* Admin and User Notification Configurations
-* Redirection Options After Submission
-* Configure Submitted Post Status
-* Enable/Disable Form Components
-* Multiple Text Editors (EditorJS, MD Editor, TinyMCE Editor, Simple Text Area)
-* Use anywhere easily with shortcodes
-* Simple Login and Registration Forms [fus_form_login] & [fus_form_register]
-* Redirect user to any URL or current page after submission
-* Use the default form styles or add your own custom CSS
-* Form fields may be set as optional or required
-* Includes shortcode to display a list of submitted posts [fe_fs_user_admin]
-* Post Images
-* Google reCAPTCHA Integration
-* Responsive and Browser Compatible
-* Developer Documentation Available
-* WooCommerce integration: Enable payment collection for each post submission.
+[🌐 Live demo](http://demo.wpfronteditor.com/) · [📖 Documentation](https://wpfronteditor.com/docs) · [💬 Community](https://t.me/+loTEjPRS6lw3NTli) · [🚀 Pro version](https://wpfronteditor.com/)
 
-<strong> Detailed Features </strong>
+= Why site owners choose Front User Submit =
 
-<strong>Flexibility for Admins</strong>
-Manage users from the frontend and configure backend access for specific users.
+* **Focused and lightweight.** A frontend post submission plugin, not a membership suite. No extra modules you will never use.
+* **Modern editors your users enjoy.** Block-style EditorJS, Markdown, TinyMCE or a simple textarea, chosen per form.
+* **AI writing help in the free version.** Your users get an AI assistant inside the form, no Pro license needed.
+* **Your keys, your costs, your rules.** AI is off by default, per-form switch, who-can-use-it setting and a daily limit per user.
+* **Rated 5 stars** by the people who use it.
 
-<strong>Files & attachments</strong>
+= Who is it for? =
 
-Allow users to upload attachments, including post featured images, directly from the frontend.
+* **Guest posting and multi-author blogs:** accept articles from guest authors without giving them a wp-admin account.
+* **Community and news sites:** let members publish stories, events and announcements.
+* **Directories and classifieds:** collect listings with images, maps, dates and custom fields. Charge per submission with WooCommerce.
+* **Membership and course sites:** a frontend dashboard where users manage their own posts.
 
-<strong>Drag-n-Drop Form Builder</strong>
+= Core features (free) =
 
-Build and customize forms with ease using the drag-and-drop form builder with real-time preview.
+* Frontend post submission form, with or without login (guest posting)
+* Drag-and-drop form builder with live preview
+* Multiple forms, each with its own settings
+* Edit and delete posts from the front end
+* User post dashboard: `[fe_fs_user_admin]`
+* Login, registration and lost-password forms: `[fus_form_login]`, `[fus_form_register]`
+* Featured image and file uploads
+* Choose the post status after submission: pending review, draft or published
+* Admin and user email notifications
+* Redirect after submission to any URL or the current page
+* Google reCAPTCHA spam protection
+* Required and optional fields, custom success and error messages
+* Shortcode, Gutenberg block or template tag
+* Show custom field data on single posts
+* Ready-made form styles, or add your own CSS
+* Responsive, translation ready, developer hooks
+* Works with ACF and User Role Editor
 
-<strong>Shortcodes</strong>
+= ✨ AI writing assistant (free) =
 
-Use unique shortcodes to embed forms anywhere on your site without breaking your theme's style.
+An "✨ AI" button appears next to the title, textarea, Markdown, EditorJS and TinyMCE fields:
 
-<strong>Guest Post Submission</strong>
+* Write from a prompt
+* Improve writing
+* Fix spelling and grammar
+* Make shorter or longer
+* Preview the result, then replace the text or insert it below
 
-Enable guests to submit posts from the frontend without registering.
+Works with OpenAI, Anthropic Claude, Google Gemini, OpenRouter and any OpenAI compatible API, including self-hosted models (Ollama, LM Studio). Requests go from your server: the API key is never shown to visitors and can be defined in wp-config.php.
 
-<strong>Frontend Content Management</strong>
+You stay in control of costs: AI is off in every form until you turn it on, you choose who can use it (logged-in users only or everyone) and set a daily request limit per user.
 
-Users can upload files, fill out forms, and update their posts directly from the frontend.
+= 🚀 Pro features =
 
-<strong>Next-Generation Block Styled Editor (EditorJS)</strong>
+* ✨ AI form generator: describe the form in your own words and AI builds the fields
+* ✨ AI moderation: check submitted posts for spam, abuse and your own rules, hold flagged posts for review
+* ✨ AI auto-fill: excerpt, tags and SEO meta description (Yoast SEO, Rank Math, SEOPress or built-in) after submission
+* ✨ AI assistant extras: translate, change tone, custom instructions
+* WooCommerce integration: paid post submissions
+* Custom post types and custom taxonomies
+* Custom fields: text, textarea, number, email, URL, phone, date, hidden, radio group, checkbox group
+* Google Map location field
+* Advanced file and image uploader (FilePond) and WP Media Library thumbnail
+* Enhanced EditorJS blocks: gallery, image upload, table, carousel and more
+* Multiple category selection
+* Header, paragraph, button and action hook fields
+* hCaptcha
 
-Enhance post content with block-styled editing capabilities.
+[Compare Free and Pro](https://wpfronteditor.com/)
 
-<strong>Customizable Post Status and Messages</strong>
+= Try it out =
 
-Set default post statuses, customize submission messages, and modify submit button text.
-
-<strong>Display Custom Fields Data in Post</strong>
-
-Custom fields data are viewable to visitors on frontend on single post pages. Admins can disable this feature also.
-
-<strong>User Admin Panel</strong>
-Manage posts with ease, including editing and deleting capabilities, using the [fe_fs_user_admin] shortcode.
-
-
-<strong>Integrations</strong>
-
-* Compatible with the User Role Editor plugin for advanced permission configurations.
-* Compatible with ACF plugin.
-
-<strong>✨ Premium Features</strong>
-
-* Custom taxonomy support
-* Custom post types
-* Custom field support
-* FilePond integration for file uploads
-* Custom field with various field types
-	 – Textfield
-	 – Textarea
-	 – Number
-	 – Email
-	 – URL
-	 – Tel
-* Enhanced EditorJS features (Gallery, Image uploading, Table, Carousel, etc.)
-* Thumbnail using WP Media Uploader
-* Multiple categories selection
-* Files and images advanced uploader field using Filepond JavaScript library
-* Google Map Field
-* Date Field
-* Hidden field
-* Radio Group field
-* Number field
-* Button field
-* Header field
-* Checkbox Group field
-* Paragraph field
-* Action hook field
-* hCaptcha field
-* WooCommerce integration
-
-*Boost your site value with user-generated content!*
-
-<strong>Try It Out</strong>
-* [Online Demo](http://demo.wpfronteditor.com/wp-login.php) of the FREE & PRO version.
-* [Login Here](http://demo.wpfronteditor.com/wp-login.php)
+* [Online demo](http://demo.wpfronteditor.com/wp-login.php) of the Free and Pro version
 * Username: Demo
 * Password: Demo
 
-== Please help us to improve the plugin ==
-For revision and issues [here](https://wpfronteditor.com/docs)
+== Links ==
 
-== Pro Version ==
-* Front Editor Pro* now available [here](https://wpfronteditor.com/).
+* [Documentation](https://wpfronteditor.com/docs)
+* [Report a bug or suggest a feature](https://wpfronteditor.com/docs)
+* [Pro version](https://wpfronteditor.com/)
+* [Community chat](https://t.me/+loTEjPRS6lw3NTli)
 
-== Community ==
-https://wpfronteditor.com/docs/
+== External services ==
 
-== Documentation ==
-* Check documentation [here](https://wpfronteditor.com/docs)
+This plugin can connect to external services. Nothing is sent until you configure the service in the plugin settings.
 
+**AI providers** (Settings → ✨ AI). When a user clicks the "✨ AI" button in a form where AI is enabled, the text of that field, the post title and the user instructions are sent to the AI provider selected by the site administrator. With the Pro version, AI moderation sends the submitted post text when a post is submitted, AI auto-fill sends the post title and content after a post is submitted, and the AI form generator sends the form description entered by the administrator. The "Test connection" button sends a short test message.
 
-For more information please visit [our site](https://wpfronteditor.com/) .
+* OpenAI – [Terms of use](https://openai.com/policies/terms-of-use/), [Privacy policy](https://openai.com/policies/privacy-policy/)
+* Anthropic Claude – [Terms of service](https://www.anthropic.com/legal/commercial-terms), [Privacy policy](https://www.anthropic.com/legal/privacy)
+* Google Gemini – [Terms of service](https://ai.google.dev/gemini-api/terms), [Privacy policy](https://policies.google.com/privacy)
+* OpenRouter – [Terms of service](https://openrouter.ai/terms), [Privacy policy](https://openrouter.ai/privacy)
+* Any other OpenAI compatible API URL entered by the administrator – the terms of that service apply.
+
+**Features.Vote** (Settings → Suggest Feature). When a project slug is set, the feature request widget script is loaded from features.vote on the plugin settings page. If "Pass User Data" is enabled, the current user's name, email and ID are passed to the widget. [Terms of service](https://features.vote/terms), [Privacy policy](https://features.vote/privacy)
 
 == Installation ==
 Upload the plugin files to the /wp-content/plugins/front-editor directory, or install the plugin through the WordPress plugins screen directly.
@@ -171,27 +144,69 @@ That's all there is to it! Your site now can accept user-generated content. Ever
 * Russian – ru_RU
 
 == Frequently Asked Questions ==
-**Can I create new posts from frontend**
-Yes
-**Can I Edit my posts from frontend**
-Yes
-**Can I delete my posts from frontend**
-Yes
-**Can I upload photo/image/video**
-Yes
-**I am having problem with uploading files**
-Please check if you've specified the max upload size on setting
-**Can I translate plugin**
-Yes! plugins are localized/ translatable by default. For translating I recommend the awesome plugin [Loco Translate](https://wordpress.org/plugins/loco-translate/).
-**Is working with Gutenberg Block Editor ?**
-Works perfectly with or without Gutenberg Block Editor
-**How to use Shortcode with settings ?**
-Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](https://wpfronteditor.com/how-to-use-shortcode/)
+
+= How do I let visitors submit posts without registering? =
+
+Create a form under Front User Submit → Post Forms, allow guest submissions in the form settings and add the form to a page with the `[fe_form id="X"]` shortcode or the Front Editor block. Set the post status to "Pending" if you want to review guest posts before they go live.
+
+= Can users edit and delete their own posts from the front end? =
+
+Yes. Add the `[fe_fs_user_admin]` shortcode to a page to give users a dashboard with their posts, where they can edit and delete them.
+
+= Can users upload images and files? =
+
+Yes: a featured image and file attachments. Set the maximum upload size in the settings. Pro adds an advanced uploader and the WP Media Library.
+
+= Is the AI assistant free? =
+
+Yes, the AI writing assistant (write, improve, fix grammar, shorten, expand) is in the free version. You pay only your AI provider for the requests made with your own API key.
+
+= How do I enable the AI assistant? =
+
+1. Go to Front User Submit → Settings → ✨ AI, choose a provider, paste your API key, click "Test connection" and save.
+2. Open your form: Post Forms → edit form → Settings → ✨ AI and set "AI assistant" to Enabled. AI is off in every form by default.
+
+= Which AI providers are supported? =
+
+OpenAI, Anthropic Claude, Google Gemini, OpenRouter and any OpenAI compatible API, including local models with Ollama or LM Studio.
+
+= Who pays for AI requests? =
+
+Requests use your own API key and are billed by your provider. Limit usage with "Who can use it" and "Daily limit per user". Administrators and editors are not limited.
+
+= Can I keep the API key out of the database? =
+
+Yes. Define it in wp-config.php: FUS_OPENAI_API_KEY, FUS_ANTHROPIC_API_KEY, FUS_GEMINI_API_KEY or FUS_CUSTOM_AI_API_KEY.
+
+= How do I stop spam submissions? =
+
+Enable Google reCAPTCHA (free) or hCaptcha (Pro), require login for the form, or set new posts to "Pending" so nothing is published without your review. Pro can also check posts with AI moderation.
+
+= Can I charge for post submissions? =
+
+Yes, with the Pro WooCommerce integration you can require a payment for each submitted post.
+
+= Does it support custom post types and custom fields? =
+
+Custom fields data can be shown on single posts in the free version. Custom post types, custom taxonomies and the full set of custom field types are in Pro. ACF is supported.
+
+= Does it work with the block editor (Gutenberg)? =
+
+Yes. Use the Front Editor block or the shortcode, with or without the block editor.
+
+= How do I use shortcode settings? =
+
+See [how to use the shortcode](https://wpfronteditor.com/how-to-use-shortcode/).
+
+= Can I translate the plugin? =
+
+Yes, the plugin is translation ready. Translate it on translate.wordpress.org or with [Loco Translate](https://wordpress.org/plugins/loco-translate/).
 
 == Screenshots ==
-1. All-in-one forms with clean, modern styling
-2. All-in-one forms with clean, cart/panel styling
-3. All-in-one forms with clean, corporate/professional styling
+
+1. ✨ AI writing assistant (free): improve, fix grammar, shorten or expand text right in the form
+2. Drag-and-drop form builder
+3. Frontend post submission form in the Card/Panel design (Pro)
 4. Form builder fields
 5. Form post payment settings with WooCommerce integration
 6. Form post submit settings
@@ -209,6 +224,35 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.1.0 =
+* [new] ✨ AI writing assistant for title, textarea, Markdown, EditorJS and TinyMCE fields: write from prompt, improve, fix grammar, shorten, expand
+* [new] AI providers: OpenAI, Anthropic Claude, Google Gemini, OpenRouter / any OpenAI compatible API, with your own API key and model
+* [new] AI settings tab with connection test, access control and daily limit per user
+* [fix] Textarea fields use the form font instead of the browser monospace font
+* [fix] Simple Design: post title input is full width
+* [new] Turn AI on or off for every form (off by default)
+* [new][pro] AI form generator in the form builder
+* [new][pro] AI translate, change tone and custom instructions in the assistant
+* [new][pro] AI moderation of submitted posts
+* [new][pro] AI excerpt, tags and SEO meta description after submission
+* [new] Features.Vote "Suggest a Feature" widget settings
+* Fixed: settings page styles and scripts were not loaded when WordPress is not in English
+* Fixed: "Settings saved" message was not shown on the plugin settings page
+* Fixed: bundled translations are used for strings missing in the WordPress.org language pack
+* Fixed: PHP notice in Markdown editor field
+* Fixed: PHP warning when the form has no gallery setting
+* Tested with WordPress 7.1, requires PHP 7.4
+* Updated Russian translation
+
+= 5.0.7 =
+* Security: file uploads are now checked by their real content, and uploaded files are always served as downloads. Thanks to Enrico Marcolini, Claudio Marchesini and Dottor Marc for the responsible disclosure via WPScan
+* Security: featured image upload by URL no longer requests internal addresses
+* The File field upload endpoints are now available only in the Pro version, where the field is used
+
+= 5.0.* =
+* Small bug fixed
+* Fixed login registration redirect settings issue
 
 = 5.0.6 =
 * Fixed issue with add new form
@@ -419,6 +463,12 @@ Please check this article [https://wpfronteditor.com/how-to-use-shortcode/](http
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.1.0 =
+New: free ✨ AI writing assistant in your forms (OpenAI, Claude, Gemini, OpenRouter, local models).
+
+= 5.0.7 =
+Security release: safer file uploads. Please update.
 
 = 5.0.6 =
 Fixed issue with add new form | Fixed issue when user can not edit his own post

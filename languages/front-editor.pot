@@ -1,40 +1,260 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Front User Submit | Front Editor package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Best Front End Editor\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-12 12:25+0000\n"
+"Project-Id-Version: Front User Submit | Front Editor 5.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/Aharonyan/wp-front-user-submit/"
+"issues\n"
+"POT-Creation-Date: 2026-11-18 01:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.3.3; wp-5.4.1"
 
-#. filed is required
-#. Filed is required
-#. Label is required
-#: inc/fields/CheckboxGroupField.php:124 inc/fields/FileField.php:293
-#: inc/fields/FileField.php:324 inc/fields/RadioGroupField.php:124
-#: inc/fields/SelectField.php:135 inc/fields/TextareaField.php:156
+#: FrontUserSubmit.php:127 templates/user-admin.php:91
+msgid "Are you sure you want to delete this post?"
+msgstr ""
+
+#: FrontUserSubmit.php:144 inc/Blocks.php:53 inc/MenuSettings.php:129
+msgid "Edit in front editor"
+msgstr ""
+
+#: FrontUserSubmit.php:156 inc/PostFormsListTable.php:414
+msgid "Edit"
+msgstr ""
+
+#: functions.php:19 inc/PostFormsListTable.php:46
+msgid "Published"
+msgstr ""
+
+#: functions.php:22 inc/PostFormsListTable.php:437 inc/ai/AiSettings.php:332
+#: templates/user-admin.php:15
+msgid "Draft"
+msgstr ""
+
+#: functions.php:25 templates/admin/settings/form-settings-post.php:14
+#: templates/user-admin.php:14
+msgid "Pending"
+msgstr ""
+
+#: functions.php:28
+msgid "Scheduled"
+msgstr ""
+
+#: inc/Blocks.php:52
+msgid "Select Post Form"
+msgstr ""
+
+#: inc/Blocks.php:54 inc/MenuSettings.php:126
+msgid ""
+"This post created with the Front Editor plugin. Please edit it using Front "
+"Editor to not have issues with the plugin!"
+msgstr ""
+
+#: inc/Blocks.php:55 inc/Blocks.php:89
+msgid "Choose form"
+msgstr ""
+
+#: inc/Blocks.php:56
+msgid "Create new form"
+msgstr ""
+
+#: inc/DemoData.php:221 inc/DemoData.php:225
+msgid "Front Editor"
+msgstr ""
+
+#: inc/Editor.php:30 templates/admin/settings/form-settings-post-update.php:3
+msgid "Update"
+msgstr ""
+
+#: inc/Editor.php:31 templates/admin/settings/form-settings-post.php:13
+#: templates/user-admin.php:13
+msgid "Publish"
+msgstr ""
+
+#: inc/Editor.php:43 inc/Editor.php:47 inc/SavePost.php:274
+#: inc/SavePost.php:279
+msgid "The post you trying to edit is not exist, please create a new one"
+msgstr ""
+
+#: inc/Editor.php:77
+msgid "Updating"
+msgstr ""
+
+#: inc/Editor.php:80
+msgid "Something goes wrong try later"
+msgstr ""
+
+#: inc/Editor.php:141 inc/UserAdmin.php:16
+msgid "This page is restricted. Please Login to view this page."
+msgstr ""
+
+#: inc/Editor.php:166 templates/admin/settings/form-settings-post-update.php:6
+msgid "You are not allowed to edit anymore."
+msgstr ""
+
+#: inc/Editor.php:175
+msgid "You are not allowed to edit"
+msgstr ""
+
+#: inc/EditorWidget.php:91 inc/MenuSettings.php:1091
+msgid "Edit Current Post"
+msgstr ""
+
+#: inc/Form.php:123
+msgid "This field value will be saved into post meta using this name."
+msgstr ""
+
+#: inc/Form.php:124
+msgid "Help text will be shown under this field on the front end form."
+msgstr ""
+
+#: inc/Form.php:125
+msgid ""
+"Enable this option to save the field data directly to the post content.. "
+"Important: If multiple editors have this setting enabled, each new editor "
+"will overwrite the previous content in this field."
+msgstr ""
+
+#: inc/Form.php:126
+msgid ""
+"Enable this option to save the field data directly to the post content, "
+"excerpt or meta.. Important: If multiple editors have selected post content "
+"or excerpt, each new editor will overwrite the previous content in this "
+"field."
+msgstr ""
+
+#: inc/Form.php:134
+msgid "Post Fields"
+msgstr ""
+
+#: inc/Form.php:138
+msgid "Editors"
+msgstr ""
+
+#: inc/Form.php:142
+msgid "Taxonomies"
+msgstr ""
+
+#: inc/Form.php:146
+msgid "Custom Fields"
+msgstr ""
+
+#: inc/Form.php:154
+msgid "You already have this field in the form"
+msgstr ""
+
+#: inc/Form.php:155 templates/admin/settings/form-payment-settings.php:17
+#: templates/admin/settings/form-payment-settings.php:38
+#: templates/admin/settings/form-payment-settings.php:52
+#: templates/admin/settings/form-payment-settings.php:66
+#: templates/admin/settings/form-payment-settings.php:91
+#: templates/admin/settings/form-payment-settings.php:102
+#: templates/admin/settings/form-submission-restriction.php:18
+msgid "Available in Pro version"
+msgstr ""
+
+#: inc/Form.php:156
+msgid "Please upgrade to the Pro version to unlock all these awesome features"
+msgstr ""
+
+#: inc/Form.php:158 inc/ai/AiAssistant.php:189 inc/ai/AiSettings.php:314
+#: templates/admin/settings/form-ai-settings.php:83
+msgid "Get the Pro version"
+msgstr ""
+
+#: inc/Form.php:244
 #, php-format
-msgid "%s is required"
+msgid "%s (Copy)"
 msgstr ""
 
-#: inc/fields/PostThumbField.php:76
-msgid "(PRO) WP Media"
+#: inc/Form.php:347 templates/admin/post-form.php:49
+msgid "Sample Form"
 msgstr ""
 
-#: inc/MenuSettings.php:163
-msgid "- Edit Button Text"
+#: inc/Form.php:372 inc/fields/MdEditor.php:134
+#: inc/fields/PostTitleField.php:55
+msgid "Oops"
 msgstr ""
 
-#: templates/user-admin.php:113
-msgid "0 posts found"
+#: inc/Form.php:373
+msgid "Form builder cannot be empty"
+msgstr ""
+
+#: inc/Form.php:406
+msgid "Form Settings Saved"
+msgstr ""
+
+#: inc/Form.php:431
+msgid "post_id is empty."
+msgstr ""
+
+#: inc/Form.php:450
+msgid "Loading"
+msgstr ""
+
+#: inc/Form.php:460 inc/Form.php:472
+msgid "This is not a valid record."
+msgstr ""
+
+#: inc/Form.php:485
+msgid "Form Settings Migrated"
+msgstr ""
+
+#: inc/Form.php:584 inc/Form.php:585
+msgid "Post Form"
+msgstr ""
+
+#: inc/Form.php:586 inc/Form.php:587
+msgid "Add Post Form"
+msgstr ""
+
+#: inc/Form.php:588
+msgid "Edit Post Form"
+msgstr ""
+
+#: inc/Form.php:589
+msgid "New Post Form"
+msgstr ""
+
+#: inc/Form.php:590
+msgid "Watch Post Form"
+msgstr ""
+
+#: inc/Form.php:591
+msgid "Search Post Form"
+msgstr ""
+
+#: inc/Form.php:592
+msgid "Not Found"
+msgstr ""
+
+#: inc/Form.php:593
+msgid "Not found in trash"
+msgstr ""
+
+#: inc/Form.php:595
+msgid "All forms"
+msgstr ""
+
+#: inc/Form.php:791 inc/WooIntegration.php:366 inc/WooIntegration.php:377
+#: inc/fields/PostTitleField.php:192
+msgid "Post Title"
+msgstr ""
+
+#: inc/Form.php:792 templates/front-editor/post-title.php:3
+msgid "Add Title"
+msgstr ""
+
+#: inc/FormMetaBox.php:70
+msgid "FUS Form Data"
 msgstr ""
 
 #: inc/FormMetaBox.php:108
@@ -44,314 +264,63 @@ msgid ""
 "href=\"%s\">Edit -></a></div>"
 msgstr ""
 
-#: inc/LoginRegisterShortcode.php:110
-msgid "<strong>ERROR</strong>: Empty email"
+#: inc/FormMetaBox.php:146
+msgid "Untitled Field"
 msgstr ""
 
-#: inc/LoginRegisterShortcode.php:89
-msgid "<strong>ERROR</strong>: Empty password"
+#: inc/LoginRegisterShortcode.php:68
+msgid "Processing..."
 msgstr ""
 
-#: inc/LoginRegisterShortcode.php:87 inc/LoginRegisterShortcode.php:108
+#: inc/LoginRegisterShortcode.php:69
+msgid "An error occurred. Please try again."
+msgstr ""
+
+#: inc/LoginRegisterShortcode.php:70
+msgid "Network error. Please check your connection."
+msgstr ""
+
+#: inc/LoginRegisterShortcode.php:71
+msgid "Success!"
+msgstr ""
+
+#: inc/LoginRegisterShortcode.php:150
+msgid "User is logged in."
+msgstr ""
+
+#: inc/LoginRegisterShortcode.php:161 inc/LoginRegisterShortcode.php:182
+msgid "Security error, please refresh page"
+msgstr ""
+
+#: inc/LoginRegisterShortcode.php:203 inc/LoginRegisterShortcode.php:284
 msgid "<strong>ERROR</strong>: Empty username"
 msgstr ""
 
-#: inc/fields/FileField.php:198
-msgid "Accept"
+#: inc/LoginRegisterShortcode.php:210
+msgid "<strong>ERROR</strong>: Empty password"
 msgstr ""
 
-#: inc/MenuSettings.php:605
-msgid "Activate Login Form"
+#: inc/LoginRegisterShortcode.php:233
+msgid "Login successful"
 msgstr ""
 
-#: templates/admin/settings/form-notification-settings.php:17
-#: templates/admin/settings/form-admin-notification-settings.php:11
-msgid "Activate Notifications"
+#: inc/LoginRegisterShortcode.php:291
+msgid "<strong>ERROR</strong>: Empty email"
 msgstr ""
 
-#: inc/fields/EditorJsField.php:468
-msgid "Add"
+#: inc/LoginRegisterShortcode.php:324
+msgid "Registration successful. Your password will be sent via email shortly."
 msgstr ""
 
-#: inc/fields/EditorJsField.php:497
-msgid "Add a link"
-msgstr ""
-
-#: inc/fields/GoogleMapField.php:123
-msgid "Add API Key"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:385
-msgid "Add content"
-msgstr ""
-
-#: inc/MenuSettings.php:867
-msgid "Add edit button text"
-msgstr ""
-
-#: templates/admin/post-forms-list-table-view.php:8
-msgid "Add Form"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:49
-msgid "Add New"
-msgstr ""
-
-#: templates/front-form-header.php:46
-msgid "Add new"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:27
-msgid "Add new button"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:47
-msgid "Add new button text"
-msgstr ""
-
-#: inc/fields/TaxonomiesFields.php:144
-msgid "Add new functionality will not work without activating this input."
-msgstr ""
-
-#: inc/Form.php:519 inc/Form.php:520
-msgid "Add Post Form"
-msgstr ""
-
-#: inc/Form.php:725 templates/front-editor/post-title.php:3
-msgid "Add Title"
-msgstr ""
-
-#: templates/admin/post-form.php:112
-#: templates/admin/settings/form-admin-notification-settings.php:8
-msgid "Admin Notification"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:76
-msgid ""
-"After how many hours user will be locked from editing the submitted post."
-msgstr ""
-
-#: inc/MenuSettings.php:839
-msgid "After Post Content"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:49
-#: templates/admin/settings/form-payment-settings.php:93
-#: templates/admin/settings/form-settings-post.php:71
-msgid "After successfully submit, where the page will redirect to"
-msgstr ""
-
-#. Author of the plugin
-msgid "Aleksan Aharonyan"
-msgstr ""
-
-#: inc/PostFormsListTable.php:43
-msgid "All"
-msgstr ""
-
-#: inc/Form.php:528
-msgid "All forms"
-msgstr ""
-
-#: inc/fields/TaxonomiesFields.php:98
-msgid "Allow Add New"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:33
-msgid "Always display"
-msgstr ""
-
-#: FrontUserSubmit.php:97
-msgid "Are you sure you want to delete this post?"
-msgstr ""
-
-#: inc/fields/FileField.php:201
-msgid "Attach to post"
-msgstr ""
-
-#: inc/Form.php:153 templates/admin/settings/form-submission-restriction.php:18
-#: templates/admin/settings/form-payment-settings.php:17
-#: templates/admin/settings/form-payment-settings.php:38
-#: templates/admin/settings/form-payment-settings.php:52
-#: templates/admin/settings/form-payment-settings.php:66
-#: templates/admin/settings/form-payment-settings.php:91
-#: templates/admin/settings/form-payment-settings.php:102
-msgid "Available in Pro version"
-msgstr ""
-
-#: inc/MenuSettings.php:840
-msgid "Before Post Content"
-msgstr ""
-
-#: inc/fields/GoogleMapField.php:119
-#, php-format
-msgid "Before using this field, please add your Google API Key in %s."
-msgstr ""
-
-#: inc/fields/EditorJsField.php:485
-msgid "Bold"
-msgstr ""
-
-#: inc/fields/ButtonField.php:43
-msgid "Button Field"
-msgstr ""
-
-#: inc/MenuSettings.php:289 inc/MenuSettings.php:314
-msgid "Button Text"
-msgstr ""
-
-#: templates/admin/settings/form-design-color-settings.php:25
-msgid "Buttons background color"
-msgstr ""
-
-#: templates/admin/settings/form-design-color-settings.php:37
-msgid "Buttons border color"
-msgstr ""
-
-#: templates/admin/settings/form-design-color-settings.php:43
-msgid "Buttons border radius"
-msgstr ""
-
-#: templates/admin/settings/form-design-color-settings.php:31
-msgid "Buttons text color"
+#: inc/LoginRegisterShortcode.php:333
+msgid "Security error, please update page"
 msgstr ""
 
 #: inc/MenuSettings.php:22
 msgid "Buy pro version to use this functionality"
 msgstr ""
 
-#: inc/WooIntegration.php:288
-msgid "cart"
-msgstr ""
-
-#: inc/fields/GoogleRecaptcha.php:113
-msgid ""
-"Check the list of languages <a href=\"https://developers.google."
-"com/recaptcha/docs/language\" target=\"_blank\">here</a>"
-msgstr ""
-
-#: templates/admin/settings/form-payment-settings.php:22
-msgid "Check to enable Payments for this form"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:477
-msgid "Checklist"
-msgstr ""
-
-#: inc/Blocks.php:55 inc/Blocks.php:89
-msgid "Choose form"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:456
-msgid "Click to tune"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:144
-msgid "Closed"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:479
-msgid "Code"
-msgstr ""
-
-#: templates/admin/settings/form-design-color-settings.php:23
-msgid "Color Settings"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:462
-msgid "Convert to"
-msgstr ""
-
-#: templates/admin/settings/form-settings-migration.php:7
-msgid "Copy"
-msgstr ""
-
-#: inc/fields/GoogleMapField.php:96
-msgid "Country Code"
-msgstr ""
-
-#: inc/Blocks.php:56
-msgid "Create new form"
-msgstr ""
-
-#: templates/front-editor-form.php:11
-msgid "Create New One"
-msgstr ""
-
-#: inc/MenuSettings.php:688
-msgid "CSS code to customize the admin page"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:39
-#: templates/admin/settings/form-settings-post.php:61
-msgid "Currently Edited Post"
-msgstr ""
-
-#: inc/MenuSettings.php:367
-msgid "Custom CSS"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:69
-msgid "Custom css for form"
-msgstr ""
-
-#: inc/Form.php:144
-msgid "Custom Fields"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:54
-#: templates/admin/settings/form-payment-settings.php:98
-#: templates/admin/settings/form-settings-post.php:76
-msgid "Custom URL"
-msgstr ""
-
-#: inc/fields/DateField.php:70
-msgid "Date Field"
-msgstr ""
-
-#: inc/MenuSettings.php:905
-msgid "Default"
-msgstr ""
-
-#: inc/fields/TaxonomiesFields.php:113
-msgid "Default terms"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:505
-msgid "Delete"
-msgstr ""
-
-#: inc/PostFormsListTable.php:420
-msgid "Delete Permanently"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:480
-msgid "Delimiter"
-msgstr ""
-
-#: templates/admin/settings/form-payment-settings.php:47
-msgid "Direct Checkout"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:34
-#: templates/admin/settings/form-settings-post.php:91
-#: templates/admin/settings/form-settings-post.php:119
-msgid "Disable"
-msgstr ""
-
-#: inc/MenuSettings.php:908
-msgid "Disable for all"
-msgstr ""
-
-#: inc/MenuSettings.php:909
-msgid "Disable for all but admin"
-msgstr ""
-
-#: inc/MenuSettings.php:28
-msgid "Disable this field"
-msgstr ""
-
-#: inc/MenuSettings.php:26 inc/MenuSettings.php:906
+#: inc/MenuSettings.php:26 inc/MenuSettings.php:1158
 #: templates/admin/settings/form-settings-post.php:32
 #: templates/admin/settings/form-settings-post.php:90
 #: templates/admin/settings/form-settings-post.php:118
@@ -362,285 +331,517 @@ msgstr ""
 msgid "Display and require"
 msgstr ""
 
-#: inc/MenuSettings.php:907
-msgid "Display only for logged in users"
+#: inc/MenuSettings.php:28
+msgid "Disable this field"
 msgstr ""
 
-#: templates/admin/post-form.php:79
-msgid "Display Settings"
-msgstr ""
-
-#: templates/editor/attaches.php:6
-msgid "Download"
-msgstr ""
-
-#: inc/PostFormsListTable.php:429 templates/user-admin.php:15
-msgid "Draft"
-msgstr ""
-
-#: inc/MenuSettings.php:343 templates/admin/settings/form-settings-post.php:85
-msgid "Draft button"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:104
-msgid "Draft button text"
-msgstr ""
-
-#: inc/fields/TinyMCE.php:67
-msgid "Drag & Drop"
-msgstr ""
-
-#: inc/PostFormsListTable.php:408
-msgid "Duplicate"
-msgstr ""
-
-#: FrontUserSubmit.php:126 inc/PostFormsListTable.php:406
-msgid "Edit"
-msgstr ""
-
-#: inc/EditorWidget.php:91 inc/MenuSettings.php:862
-msgid "Edit Current Post"
-msgstr ""
-
-#: FrontUserSubmit.php:114 inc/Blocks.php:53 inc/MenuSettings.php:127
-msgid "Edit in front editor"
-msgstr ""
-
-#: inc/MenuSettings.php:146
-msgid "Edit Post button position in post"
-msgstr ""
-
-#: inc/Form.php:521
-msgid "Edit Post Form"
-msgstr ""
-
-#: templates/admin/post-form.php:77
-msgid "Edit Post Settings"
-msgstr ""
-
-#: inc/Form.php:136
-msgid "Editors"
-msgstr ""
-
-#: inc/MenuSettings.php:308
-msgid "Email"
-msgstr ""
-
-#: inc/fields/TinyMCE.php:118
-msgid "Enable Drag & Drop Upload Support"
-msgstr ""
-
-#: templates/admin/settings/form-submission-restriction.php:14
-msgid "Enable Guest Post"
-msgstr ""
-
-#: templates/admin/settings/form-payment-settings.php:19
-msgid "Enable Payments"
-msgstr ""
-
-#: inc/Form.php:124
-msgid ""
-"Enable this option to save the field data directly to the post content, "
-"excerpt or meta.. Important: If multiple editors have selected post content "
-"or excerpt, each new editor will overwrite the previous content in this "
-"field."
-msgstr ""
-
-#: inc/Form.php:123
-msgid ""
-"Enable this option to save the field data directly to the post content.. "
-"Important: If multiple editors have this setting enabled, each new editor "
-"will overwrite the previous content in this field."
-msgstr ""
-
-#: inc/fields/GoogleRecaptcha.php:101
-msgid "Error Message"
-msgstr ""
-
-#: inc/WooIntegration.php:153
-msgid "Failed to add product to cart"
-msgstr ""
-
-#: inc/fields/PostThumbField.php:43
-msgid "Featured Image"
-msgstr ""
-
-#: inc/fields/FileField.php:142
-msgid "File is not exist"
-msgstr ""
-
-#: inc/Form.php:306
-msgid "Form builder cannot be empty"
-msgstr ""
-
-#: templates/admin/post-form.php:27
-msgid "Form Editor"
-msgstr ""
-
-#: inc/WooIntegration.php:382
-msgid "Form Id"
-msgstr ""
-
-#: inc/PostFormsListTable.php:310
-msgid "Form Name"
-msgstr ""
-
-#: templates/admin/settings/form-admin-login-register.php:11
-msgid "Form Restriction Message"
-msgstr ""
-
-#: inc/Form.php:418
-msgid "Form Settings Migrated"
-msgstr ""
-
-#: inc/Form.php:339
-msgid "Form Settings Saved"
-msgstr ""
-
-#: templates/admin/post-form.php:10
-msgid "Form Title"
-msgstr ""
-
-#: templates/admin/settings/form-notification-settings.php:38
-msgid "From Email"
-msgstr ""
-
-#: templates/admin/settings/form-notification-settings.php:32
-msgid "From Name"
-msgstr ""
-
-#: inc/DemoData.php:217 inc/DemoData.php:221
-msgid "Front Editor"
-msgstr ""
-
-#: inc/MenuSettings.php:364
-msgid "Front user admin settings without login "
+#: inc/MenuSettings.php:38
+msgid "Front User Submit | Front Editor"
 msgstr ""
 
 #: inc/MenuSettings.php:39
 msgid "Front User Submit"
 msgstr ""
 
-#. Name of the plugin
-#: inc/MenuSettings.php:38
-msgid "Front User Submit | Front Editor"
+#: inc/MenuSettings.php:49 inc/MenuSettings.php:50
+#: templates/admin/post-forms-list-table-view.php:4
+msgid "Post Forms"
 msgstr ""
 
-#: inc/FormMetaBox.php:70
-msgid "FUS Form Data"
+#: inc/MenuSettings.php:59 inc/MenuSettings.php:60
+#: inc/fields/GoogleMapField.php:120 templates/admin/post-form.php:66
+#: templates/admin/settings/form-settings-post-update.php:19
+msgid "Settings"
 msgstr ""
 
-#: inc/fields/PostTitleField.php:258
-msgid "Generate title"
-msgstr ""
-
-#: inc/fields/PostTitleField.php:263
-msgid ""
-"Generate title using params: [{taxonomy_name}] [{field name}] <br> Example: "
-"Post [category] [text-1695547664968] <br> If empty will not work"
-msgstr ""
-
-#: inc/Form.php:156
-msgid "Get the Pro version"
-msgstr ""
-
-#: inc/MenuSettings.php:137
+#: inc/MenuSettings.php:139
 msgid "Global settings"
 msgstr ""
 
-#: templates/admin/settings/form-payment-settings.php:54
-msgid "Go direct to checkout"
+#: inc/MenuSettings.php:143
+msgid "Edit Post button position in post"
 msgstr ""
 
-#: inc/fields/GoogleMapField.php:76
-msgid "Google Map"
+#: inc/MenuSettings.php:147
+msgid "- Edit Button Text"
 msgstr ""
 
-#: inc/MenuSettings.php:197
+#: inc/MenuSettings.php:151
+msgid "WordPress admin bar"
+msgstr ""
+
+#: inc/MenuSettings.php:155
 msgid "Google Map API"
 msgstr ""
 
-#: inc/PostFormsListTable.php:313
-#: templates/admin/settings/form-submission-restriction.php:8
-msgid "Guest Post"
+#: inc/MenuSettings.php:188
+msgid "Main Settings"
 msgstr ""
 
-#. Description of the plugin
+#: inc/MenuSettings.php:189
+msgid "Settings Page"
+msgstr ""
+
+#: inc/MenuSettings.php:195
+msgid "Login & Registration Settings"
+msgstr ""
+
+#: inc/MenuSettings.php:196
+msgid "Login & Registration Forms Shortcode Settings"
+msgstr ""
+
+#: inc/MenuSettings.php:202
+msgid "User Admin"
+msgstr ""
+
+#: inc/MenuSettings.php:203
+msgid "User Admin Shortcode Settings"
+msgstr ""
+
+#: inc/MenuSettings.php:209
+msgid "Suggest Feature"
+msgstr ""
+
+#: inc/MenuSettings.php:210
+msgid "Suggest a Feature Widget"
+msgstr ""
+
+#: inc/MenuSettings.php:255
+msgid "Login Form Settings"
+msgstr ""
+
+#: inc/MenuSettings.php:256
+msgid "Registration Form Settings"
+msgstr ""
+
+#: inc/MenuSettings.php:267
+msgid "Form Design"
+msgstr ""
+
+#: inc/MenuSettings.php:278 inc/MenuSettings.php:303
+#: templates/register-form.php:75
+msgid "Username"
+msgstr ""
+
+#: inc/MenuSettings.php:281 templates/login-form.php:64
+msgid "Password"
+msgstr ""
+
+#: inc/MenuSettings.php:284 inc/MenuSettings.php:309
+msgid "Redirect"
+msgstr ""
+
+#: inc/MenuSettings.php:287 inc/MenuSettings.php:312
+msgid "Button Text"
+msgstr ""
+
+#: inc/MenuSettings.php:290
+msgid "Remember me"
+msgstr ""
+
+#: inc/MenuSettings.php:297
+msgid "Show User Name Inputs"
+msgstr ""
+
+#: inc/MenuSettings.php:300
+msgid "WebSite"
+msgstr ""
+
+#: inc/MenuSettings.php:306
+msgid "Email"
+msgstr ""
+
+#: inc/MenuSettings.php:315
+msgid "User Notification Email"
+msgstr ""
+
+#: inc/MenuSettings.php:318 inc/MenuSettings.php:540
+msgid "Custom CSS"
+msgstr ""
+
+#: inc/MenuSettings.php:335 inc/MenuSettings.php:403
+#: templates/admin/settings/form-submission-display.php:73
+msgid "Modern Minimal"
+msgstr ""
+
+#: inc/MenuSettings.php:340 inc/MenuSettings.php:413
+#: templates/admin/settings/form-submission-display.php:78
+msgid "Card/Panel Style"
+msgstr ""
+
+#: inc/MenuSettings.php:345
+msgid "Split Screen"
+msgstr ""
+
+#: inc/MenuSettings.php:350
+msgid "Gradient Background"
+msgstr ""
+
+#: inc/MenuSettings.php:355
+msgid "Glassmorphism"
+msgstr ""
+
+#: inc/MenuSettings.php:360 inc/MenuSettings.php:423
+#: templates/admin/settings/form-submission-display.php:88
+msgid "Borderless/Flat"
+msgstr ""
+
+#: inc/MenuSettings.php:365 inc/MenuSettings.php:418
+#: templates/admin/settings/form-submission-display.php:83
+msgid "Corporate/Professional"
+msgstr ""
+
+#: inc/MenuSettings.php:370
+msgid "Playful/Colorful"
+msgstr ""
+
+#: inc/MenuSettings.php:408
+msgid "No Style"
+msgstr ""
+
+#: inc/MenuSettings.php:456
+#, php-format
+msgid "Template not found: %s"
+msgstr ""
+
+#: inc/MenuSettings.php:477
+msgid "User Admin Settings"
+msgstr ""
+
+#: inc/MenuSettings.php:490
+msgid "Select Template"
+msgstr ""
+
+#: inc/MenuSettings.php:501
+msgid "Allowed Post Types"
+msgstr ""
+
+#: inc/MenuSettings.php:510
+msgid "Publish button"
+msgstr ""
+
+#: inc/MenuSettings.php:513
+msgid "Pending button"
+msgstr ""
+
+#: inc/MenuSettings.php:516 templates/admin/settings/form-settings-post.php:85
+msgid "Draft button"
+msgstr ""
+
+#: inc/MenuSettings.php:519
+msgid "Logout button"
+msgstr ""
+
+#: inc/MenuSettings.php:522
+msgid "Show all users posts link"
+msgstr ""
+
+#: inc/MenuSettings.php:525
+msgid "Remove post icon"
+msgstr ""
+
+#: inc/MenuSettings.php:528
+msgid "Pagination"
+msgstr ""
+
+#: inc/MenuSettings.php:534
+msgid "No post found text"
+msgstr ""
+
+#: inc/MenuSettings.php:537
+msgid "Front user admin settings without login "
+msgstr ""
+
+#: inc/MenuSettings.php:578
 msgid ""
-"Have you ever seen websites that allow users to submit posts or other type "
-"of content? Do you want to have user-submitted content on your site? Front "
-"Editor allow users to submit blog posts to your WordPress site with new "
-"frontend block editor EditorJs."
+"Hold Ctrl (Cmd on Mac) to select multiple post types. Users will be able to "
+"manage these post types in the frontend admin panel."
 msgstr ""
 
-#: inc/fields/HeaderField.php:43
-msgid "Header Field"
+#: inc/MenuSettings.php:622
+msgid "Short information"
 msgstr ""
 
-#: inc/fields/EditorJsField.php:474
-msgid "Heading"
-msgstr ""
-
-#: inc/Form.php:122
-msgid "Help text will be shown under this field on the front end form."
-msgstr ""
-
-#: inc/MenuSettings.php:886
-msgid "here"
-msgstr ""
-
-#: inc/fields/HiddenField.php:43
-msgid "Hidden Field"
-msgstr ""
-
-#: inc/MenuSettings.php:516 inc/MenuSettings.php:535 inc/MenuSettings.php:554
-#: inc/MenuSettings.php:573 inc/MenuSettings.php:592 inc/MenuSettings.php:623
-#: inc/MenuSettings.php:639 inc/MenuSettings.php:845
-msgid "Hide"
-msgstr ""
-
-#: inc/fields/PostTitleField.php:257
-msgid "Hide Field"
-msgstr ""
-
-#: inc/fields/PostTitleField.php:264
-msgid "Hide field so users will not see it"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:75
-msgid "hours"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://github.com/Aharonyan/"
-msgstr ""
-
-#. URI of the plugin
-msgid "https://wpfronteditor.com/"
-msgstr ""
-
-#. If you have some ideas or questions please contact me.
-#: inc/MenuSettings.php:398
+#: inc/MenuSettings.php:628
 #, php-format
 msgid ""
 "If you have some ideas or questions please contact us. \n"
 "\t\t\t\tThe contact information you can find on our website %s"
 msgstr ""
 
-#: inc/fields/EditorJsField.php:489
-msgid "Image"
+#. translators: You can buy pro version or find additional information.
+#: inc/MenuSettings.php:641
+#, php-format
+msgid ""
+"You can buy pro version or find additional information <a href=\"%1$s\" "
+"target=\"_blank\">here</a> or write some ideas or report issues in %2$s"
 msgstr ""
 
-#: inc/fields/EditorJsField.php:488
-msgid "Image & Gallery"
+#: inc/MenuSettings.php:656 inc/MenuSettings.php:676 inc/MenuSettings.php:944
+#: inc/MenuSettings.php:989 inc/MenuSettings.php:1009 inc/MenuSettings.php:1029
+#: inc/fields/FileField.php:232 inc/fields/PostTitleField.php:243
+msgid "Placeholder"
 msgstr ""
 
-#: inc/SavePost.php:174
+#: inc/MenuSettings.php:659 inc/MenuSettings.php:679 inc/MenuSettings.php:727
+#: inc/MenuSettings.php:746 inc/MenuSettings.php:765 inc/MenuSettings.php:784
+#: inc/MenuSettings.php:803 inc/MenuSettings.php:822 inc/MenuSettings.php:947
+#: inc/MenuSettings.php:992 inc/MenuSettings.php:1012 inc/MenuSettings.php:1032
+msgid "Label"
+msgstr ""
+
+#: inc/MenuSettings.php:705 inc/MenuSettings.php:964
+#: inc/fields/EditorJsField.php:483
+msgid "Link"
+msgstr ""
+
+#: inc/MenuSettings.php:745 inc/MenuSettings.php:764 inc/MenuSettings.php:783
+#: inc/MenuSettings.php:802 inc/MenuSettings.php:821 inc/MenuSettings.php:852
+#: inc/MenuSettings.php:868 inc/MenuSettings.php:1074
+msgid "Hide"
+msgstr ""
+
+#: inc/MenuSettings.php:815 templates/user-admin.php:18
+msgid "Show all users posts"
+msgstr ""
+
+#: inc/MenuSettings.php:834
+msgid "Activate Login Form"
+msgstr ""
+
+#: inc/MenuSettings.php:835
+msgid "User Not Logged In message."
+msgstr ""
+
+#: inc/MenuSettings.php:869
+msgid "Previous text"
+msgstr ""
+
+#: inc/MenuSettings.php:870
+msgid "Previous"
+msgstr ""
+
+#: inc/MenuSettings.php:872
+msgid "Next text"
+msgstr ""
+
+#: inc/MenuSettings.php:873
+msgid "Next"
+msgstr ""
+
+#: inc/MenuSettings.php:889
+msgid "Post count"
+msgstr ""
+
+#: inc/MenuSettings.php:906 inc/MenuSettings.php:907
+msgid "No post found"
+msgstr ""
+
+#: inc/MenuSettings.php:917
+msgid "CSS code to customize design"
+msgstr ""
+
+#: inc/MenuSettings.php:1068
+msgid "After Post Content"
+msgstr ""
+
+#: inc/MenuSettings.php:1069
+msgid "Before Post Content"
+msgstr ""
+
+#: inc/MenuSettings.php:1070
+msgid "Left bottom"
+msgstr ""
+
+#: inc/MenuSettings.php:1071
+msgid "Left top"
+msgstr ""
+
+#: inc/MenuSettings.php:1072
+msgid "Right bottom"
+msgstr ""
+
+#: inc/MenuSettings.php:1073
+msgid "Right top"
+msgstr ""
+
+#: inc/MenuSettings.php:1081
+msgid "Select Edit Post button position on created post"
+msgstr ""
+
+#: inc/MenuSettings.php:1096
+msgid "Add edit button text"
+msgstr ""
+
+#: inc/MenuSettings.php:1114
+#, php-format
+msgid "You can check %1$s how to get Google Map API Key and how to set it up."
+msgstr ""
+
+#: inc/MenuSettings.php:1115
+msgid "here"
+msgstr ""
+
+#: inc/MenuSettings.php:1137
+#, php-format
+msgid ""
+"You can find information about getting a Yandex Maps API key %1$s here %2$s"
+msgstr ""
+
+#: inc/MenuSettings.php:1157
+msgid "Default"
+msgstr ""
+
+#: inc/MenuSettings.php:1159
+msgid "Display only for logged in users"
+msgstr ""
+
+#: inc/MenuSettings.php:1160
+msgid "Disable for all"
+msgstr ""
+
+#: inc/MenuSettings.php:1161
+msgid "Disable for all but admin"
+msgstr ""
+
+#: inc/MenuSettings.php:1224
+msgid "Features.Vote Integration"
+msgstr ""
+
+#: inc/MenuSettings.php:1237
+msgid "Features.Vote Slug"
+msgstr ""
+
+#: inc/MenuSettings.php:1246
+msgid "Color Mode"
+msgstr ""
+
+#: inc/MenuSettings.php:1255
+msgid "Pass User Data"
+msgstr ""
+
+#: inc/MenuSettings.php:1268
+msgid ""
+"Configure the \"Suggest a Feature\" popup widget from Features.Vote. Users "
+"can submit feature requests directly from your site."
+msgstr ""
+
+#: inc/MenuSettings.php:1272
+msgid "✨ Open Widget Preview"
+msgstr ""
+
+#: inc/MenuSettings.php:1273
+msgid "Click to preview the widget with your current settings."
+msgstr ""
+
+#: inc/MenuSettings.php:1276
+msgid "Enter your Features.Vote slug below to enable the widget preview."
+msgstr ""
+
+#: inc/MenuSettings.php:1290
+msgid "your-project-slug"
+msgstr ""
+
+#: inc/MenuSettings.php:1292
+msgid ""
+"Your Features.Vote project slug (e.g. \"my-app\"). Find it in your "
+"Features.Vote dashboard."
+msgstr ""
+
+#: inc/MenuSettings.php:1299
+msgid "Light"
+msgstr ""
+
+#: inc/MenuSettings.php:1299
+msgid "Dark"
+msgstr ""
+
+#: inc/MenuSettings.php:1317
+msgid "Pass the logged-in user's name, email, and ID to the widget"
+msgstr ""
+
+#: inc/MenuSettings.php:1319
+msgid ""
+"When enabled, the current user's details are pre-filled in the feature "
+"request form."
+msgstr ""
+
+#: inc/PostFormsListTable.php:45
+msgid "All"
+msgstr ""
+
+#: inc/PostFormsListTable.php:47 inc/PostFormsListTable.php:415
+msgid "Trash"
+msgstr ""
+
+#: inc/PostFormsListTable.php:103
+msgid "No form found."
+msgstr ""
+
+#: inc/PostFormsListTable.php:117
+msgid "Move to Trash"
+msgstr ""
+
+#: inc/PostFormsListTable.php:121 inc/PostFormsListTable.php:427
+msgid "Restore"
+msgstr ""
+
+#: inc/PostFormsListTable.php:122 inc/PostFormsListTable.php:428
+msgid "Delete Permanently"
+msgstr ""
+
+#: inc/PostFormsListTable.php:318
+msgid "Form Name"
+msgstr ""
+
+#: inc/PostFormsListTable.php:319
+msgid "Post Type"
+msgstr ""
+
+#: inc/PostFormsListTable.php:320
+#: templates/admin/settings/form-settings-post.php:8
+msgid "Post Status"
+msgstr ""
+
+#: inc/PostFormsListTable.php:321
+#: templates/admin/settings/form-submission-restriction.php:8
+msgid "Guest Post"
+msgstr ""
+
+#: inc/PostFormsListTable.php:322 templates/admin/post-form.php:52
+msgid "Shortcode"
+msgstr ""
+
+#: inc/PostFormsListTable.php:368
+msgid "Yes"
+msgstr ""
+
+#: inc/PostFormsListTable.php:369
+msgid "No"
+msgstr ""
+
+#: inc/PostFormsListTable.php:416
+msgid "Duplicate"
+msgstr ""
+
+#: inc/SavePost.php:190 inc/SavePost.php:489
 msgid "Image type is not supported, please select another image"
 msgstr ""
 
-#: inc/fields/EditorJsField.php:487
-msgid "InlineCode"
+#: inc/SavePost.php:350
+msgid "Post updated"
+msgstr ""
+
+#: inc/SavePost.php:351 templates/admin/settings/form-settings-post.php:4
+msgid "New post created"
+msgstr ""
+
+#: inc/SavePost.php:400
+msgid "No post created."
+msgstr ""
+
+#: inc/WooIntegration.php:153
+msgid "Failed to add product to cart"
 msgstr ""
 
 #: inc/WooIntegration.php:193
@@ -649,592 +850,8 @@ msgid ""
 "exist. Please contact support for assistance."
 msgstr ""
 
-#: templates/admin/settings/form-settings-post.php:43
-msgid "It will show add new button after post creation or on editing"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:486
-msgid "Italic"
-msgstr ""
-
-#: templates/admin/settings/form-settings-migration.php:5
-msgid "JSON copied!"
-msgstr ""
-
-#: inc/MenuSettings.php:430 inc/MenuSettings.php:450 inc/MenuSettings.php:498
-#: inc/MenuSettings.php:517 inc/MenuSettings.php:536 inc/MenuSettings.php:555
-#: inc/MenuSettings.php:574 inc/MenuSettings.php:593 inc/MenuSettings.php:718
-#: inc/MenuSettings.php:763 inc/MenuSettings.php:783 inc/MenuSettings.php:803
-msgid "Label"
-msgstr ""
-
-#: inc/fields/FileField.php:218
-msgid "Label Abort Item Load"
-msgstr ""
-
-#: inc/fields/FileField.php:220
-msgid "Label Cancel Item Load"
-msgstr ""
-
-#: inc/fields/FileField.php:225
-msgid "Label Expected Type"
-msgstr ""
-
-#: inc/fields/FileField.php:206
-msgid "Label File Loading"
-msgstr ""
-
-#: inc/fields/FileField.php:208
-msgid "Label File Processing"
-msgstr ""
-
-#: inc/fields/FileField.php:213
-msgid "Label File Remove Error"
-msgstr ""
-
-#: inc/fields/FileField.php:224
-msgid "Label File Type not Allowed"
-msgstr ""
-
-#: inc/fields/FileField.php:203
-msgid "Label invalid field"
-msgstr ""
-
-#: inc/fields/FileField.php:207
-msgid "Label Load Error"
-msgstr ""
-
-#: inc/fields/FileField.php:210
-msgid "Label Processing Aborted"
-msgstr ""
-
-#: inc/fields/FileField.php:209
-msgid "Label Processing Complete"
-msgstr ""
-
-#: inc/fields/FileField.php:211
-msgid "Label Processing Error"
-msgstr ""
-
-#: inc/fields/FileField.php:212
-msgid "Label Processing Revert Error"
-msgstr ""
-
-#: inc/fields/FileField.php:217
-msgid "Label Remove Item"
-msgstr ""
-
-#: inc/fields/FileField.php:219 inc/fields/FileField.php:222
-msgid "Label Retry Item Load"
-msgstr ""
-
-#: inc/fields/FileField.php:229
-msgid "Label size exceeded"
-msgstr ""
-
-#: inc/fields/FileField.php:226
-msgid "Label size must be"
-msgstr ""
-
-#: inc/fields/FileField.php:205
-msgid "Label Size not available"
-msgstr ""
-
-#: inc/fields/FileField.php:214
-msgid "Label Tap To Cancel"
-msgstr ""
-
-#: inc/fields/FileField.php:215
-msgid "Label Tap To Retry"
-msgstr ""
-
-#: inc/fields/FileField.php:216
-msgid "Label Tap To Undo"
-msgstr ""
-
-#: inc/fields/FileField.php:221
-msgid "Label Undo Item Load"
-msgstr ""
-
-#: inc/fields/FileField.php:223
-msgid "Label Upload Item Load"
-msgstr ""
-
-#: inc/fields/FileField.php:204
-msgid "Label waiting for size"
-msgstr ""
-
-#: inc/fields/GoogleRecaptcha.php:98
-msgid "Language"
-msgstr ""
-
-#: inc/MenuSettings.php:841
-msgid "Left bottom"
-msgstr ""
-
-#: inc/MenuSettings.php:842
-msgid "Left top"
-msgstr ""
-
-#: inc/MenuSettings.php:476 inc/MenuSettings.php:735
-#: inc/fields/EditorJsField.php:483
-msgid "Link"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:475
-msgid "List"
-msgstr ""
-
-#: inc/Form.php:383
-msgid "Loading"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:73
-msgid "Lock User From Editing After"
-msgstr ""
-
-#: inc/LoginRegisterShortcode.php:101
-msgid "Log in successful"
-msgstr ""
-
-#: templates/login-form.php:14
-msgid "Login"
-msgstr ""
-
-#: inc/MenuSettings.php:246
-msgid "Login & Registration Forms Shortcode Settings"
-msgstr ""
-
-#: inc/MenuSettings.php:223
-msgid "Login & Registration Settings"
-msgstr ""
-
-#: templates/admin/settings/form-admin-login-register.php:8
-msgid "Login / Register Settings"
-msgstr ""
-
-#: inc/MenuSettings.php:270
-msgid "Login Form Settings"
-msgstr ""
-
-#: templates/admin/post-form.php:30
-msgid "Login/Register"
-msgstr ""
-
-#: templates/user-admin.php:17
-msgid "Logout"
-msgstr ""
-
-#: inc/MenuSettings.php:346
-msgid "Logout button"
-msgstr ""
-
-#: inc/MenuSettings.php:222
-msgid "Main Settings"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:484
-msgid "Marker"
-msgstr ""
-
-#: inc/fields/DateField.php:107
-msgid "Max"
-msgstr ""
-
-#: inc/fields/FileField.php:246
-msgid "Max count of files user can select"
-msgstr ""
-
-#: inc/fields/FileField.php:199
-msgid "Max File Size"
-msgstr ""
-
-#: inc/fields/FileField.php:200
-msgid "Max Files"
-msgstr ""
-
-#: inc/fields/FileField.php:247
-msgid "Max size in KB"
-msgstr ""
-
-#: inc/fields/FileField.php:227
-msgid "Maximum total size exceeded"
-msgstr ""
-
-#: inc/fields/FileField.php:228
-msgid "Maximum total size is"
-msgstr ""
-
-#: inc/fields/TinyMCE.php:57
-msgid "Media Support"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:494
-#: templates/admin/settings/form-notification-settings.php:44
-msgid "Message"
-msgstr ""
-
-#: templates/admin/settings/form-settings-migration.php:8
-msgid "Migrate"
-msgstr ""
-
-#: templates/admin/post-form.php:81
-msgid "Migration Settings"
-msgstr ""
-
-#: inc/fields/DateField.php:106
-msgid "Min"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:53
-msgid "Minimum Style"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:52
-msgid "Modern Design"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:511
-msgid "Move down"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:508
-msgid "Move up"
-msgstr ""
-
-#: inc/fields/TaxonomiesFields.php:88
-msgid "Multiple Selections"
-msgstr ""
-
-#: inc/SavePost.php:351 templates/admin/settings/form-settings-post.php:4
-msgid "New post created"
-msgstr ""
-
-#: templates/admin/settings/form-admin-notification-settings.php:4
-msgid "New post created - [post_title]"
-msgstr ""
-
-#: inc/Form.php:522
-msgid "New Post Form"
-msgstr ""
-
-#: inc/MenuSettings.php:644
-msgid "Next"
-msgstr ""
-
-#: inc/MenuSettings.php:643
-msgid "Next text"
-msgstr ""
-
-#: templates/user-admin.php:106
-msgid "Next »"
-msgstr ""
-
-#: inc/PostFormsListTable.php:361
-msgid "No"
-msgstr ""
-
-#: inc/PostFormsListTable.php:95
-msgid "No form found."
-msgstr ""
-
-#: inc/MenuSettings.php:677 inc/MenuSettings.php:678
-msgid "No post found"
-msgstr ""
-
-#: inc/MenuSettings.php:361
-msgid "No post found text"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:38
-#: templates/admin/settings/form-payment-settings.php:78
-#: templates/admin/settings/form-settings-post.php:60
-msgid "No Redirect"
-msgstr ""
-
-#: templates/admin/settings/form-notification-settings.php:9
-msgid "No Reply"
-msgstr ""
-
-#: inc/fields/TaxonomiesFields.php:116 inc/fields/SelectField.php:98
-msgid "No result text"
-msgstr ""
-
-#: inc/fields/NumberField.php:113 inc/fields/PostTitleField.php:260
-#: inc/fields/TextField.php:88 inc/fields/MdEditor.php:201
-#: inc/fields/TinyMCE.php:72 inc/fields/DateField.php:110
-#: inc/fields/GoogleMapField.php:98
-msgid "Not correct content"
-msgstr ""
-
-#: inc/Form.php:525
-msgid "Not Found"
-msgstr ""
-
-#: inc/Form.php:526
-msgid "Not found in trash"
-msgstr ""
-
-#: templates/admin/settings/form-settings-migration.php:12
-msgid "Note:"
-msgstr ""
-
-#: templates/admin/post-form.php:29
-msgid "Notifications"
-msgstr ""
-
-#: inc/fields/NumberField.php:75
-msgid "Number Field"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:10
-msgid "On Bottom"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:31
-msgid "On bottom after form"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:9
-msgid "On Top"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:11
-msgid "On Top and Bottom"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:32
-msgid "On top before form"
-msgstr ""
-
-#: inc/Form.php:305 inc/fields/PostTitleField.php:55
-#: inc/fields/MdEditor.php:136
-msgid "Oops"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:143
-msgid "Open"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:457
-msgid "or drag to move"
-msgstr ""
-
-#: inc/fields/TaxonomiesFields.php:80
-msgid "Order"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:22
-msgid "Pages"
-msgstr ""
-
-#: inc/MenuSettings.php:355
-msgid "Pagination"
-msgstr ""
-
-#: inc/fields/ParagraphField.php:43
-msgid "Paragraph Field"
-msgstr ""
-
-#: inc/MenuSettings.php:283 templates/login-form.php:10
-#: templates/login-form.php:11
-msgid "Password"
-msgstr ""
-
-#: templates/admin/settings/form-payment-settings.php:12
-msgid "Payment Options"
-msgstr ""
-
-#: templates/admin/post-form.php:80
-msgid "Payment Settings"
-msgstr ""
-
-#: templates/user-admin.php:14
-#: templates/admin/settings/form-settings-post.php:14
-msgid "Pending"
-msgstr ""
-
-#: inc/MenuSettings.php:340
-msgid "Pending button"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:4
-msgid "Place of control buttons"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:25
-msgid "Place to show success or error messages"
-msgstr ""
-
-#: inc/MenuSettings.php:427 inc/MenuSettings.php:447 inc/MenuSettings.php:715
-#: inc/MenuSettings.php:760 inc/MenuSettings.php:780 inc/MenuSettings.php:800
-#: inc/fields/FileField.php:202 inc/fields/PostTitleField.php:248
-msgid "Placeholder"
-msgstr ""
-
-#: inc/fields/CheckboxGroupField.php:83
-msgid "Please add checkbox field"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:63
-msgid "Please add content to EditorJS"
-msgstr ""
-
-#: inc/fields/NumberField.php:57
-msgid "Please add correct number field"
-msgstr ""
-
-#: inc/fields/PostTitleField.php:85
-msgid "Please add correct post title"
-msgstr ""
-
-#: inc/fields/DateField.php:49
-msgid "Please add date field"
-msgstr ""
-
-#: inc/fields/MdEditor.php:59 inc/fields/TinyMCE.php:196
-msgid "Please add editor field"
-msgstr ""
-
-#: inc/fields/GoogleMapField.php:50
-msgid "Please add google map field"
-msgstr ""
-
-#: inc/fields/NumberField.php:49
-msgid "Please add number field"
-msgstr ""
-
-#: inc/fields/PostTitleField.php:76
-msgid "Please add post title"
-msgstr ""
-
-#: inc/fields/RadioGroupField.php:49
-msgid "Please add radio field"
-msgstr ""
-
-#: inc/fields/TextField.php:49
-msgid "Please add text field"
-msgstr ""
-
-#: inc/WooIntegration.php:303
-msgid "Please complete payment to ensure the publication of your post."
-msgstr ""
-
-#: inc/Form.php:154
-msgid "Please upgrade to the Pro version to unlock all these awesome features"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:30
-msgid "Popup on bottom right"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:155
-msgid "Post Added Message"
-msgstr ""
-
-#: inc/fields/MdEditor.php:137
-msgid "Post Content Field is missing"
-msgstr ""
-
-#: inc/MenuSettings.php:660
-msgid "Post count"
-msgstr ""
-
-#: inc/Form.php:132
-msgid "Post Fields"
-msgstr ""
-
-#: inc/Form.php:517 inc/Form.php:518
-msgid "Post Form"
-msgstr ""
-
-#: templates/front-editor-form.php:9
-msgid "Post form is not selected please select existing one or"
-msgstr ""
-
-#: inc/MenuSettings.php:49 inc/MenuSettings.php:50
-#: templates/admin/post-forms-list-table-view.php:4
-msgid "Post Forms"
-msgstr ""
-
-#: inc/WooIntegration.php:378
-msgid "Post Id"
-msgstr ""
-
-#: templates/admin/post-form.php:113
-msgid "Post Publish Notification"
-msgstr ""
-
-#: inc/PostFormsListTable.php:312
-#: templates/admin/settings/form-settings-post.php:8
-msgid "Post Status"
-msgstr ""
-
-#: templates/admin/post-form.php:114
-msgid "Post Submit Notification"
-msgstr ""
-
-#: templates/admin/post-form.php:76
-msgid "Post Submit Settings"
-msgstr ""
-
-#: inc/WooIntegration.php:366 inc/WooIntegration.php:377 inc/Form.php:724
-#: inc/fields/PostTitleField.php:197
-msgid "Post Title"
-msgstr ""
-
-#: inc/fields/PostTitleField.php:56
-msgid "Post Title Field is missing"
-msgstr ""
-
-#: templates/admin/post-form.php:115
-msgid "Post Trash Notification"
-msgstr ""
-
-#: inc/PostFormsListTable.php:311
-msgid "Post Type"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:61
-#: templates/admin/settings/form-admin-notification-settings.php:32
-msgid "Post Update Message"
-msgstr ""
-
-#: inc/SavePost.php:350
-msgid "Post updated"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:2
-msgid "Post updated successfully"
-msgstr ""
-
-#: inc/Form.php:364
-msgid "post_id is empty."
-msgstr ""
-
-#: templates/front-form-header.php:54
-#: templates/admin/settings/form-settings-post.php:134
-msgid "Preview"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:113
-msgid "Preview button"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post.php:132
-msgid "Preview button text"
-msgstr ""
-
-#: inc/MenuSettings.php:641
-msgid "Previous"
-msgstr ""
-
-#: inc/MenuSettings.php:640
-msgid "Previous text"
-msgstr ""
-
-#: templates/admin/settings/form-payment-settings.php:61
-msgid "Product Added"
+#: inc/WooIntegration.php:288
+msgid "cart"
 msgstr ""
 
 #: inc/WooIntegration.php:289
@@ -1242,303 +859,800 @@ msgstr ""
 msgid "Product added to the cart. Check the %s."
 msgstr ""
 
-#: templates/admin/settings/form-payment-settings.php:62
-msgid "Product added to the cart. Check the cart."
-msgstr ""
-
-#: templates/front-editor-form.php:60
-msgid "Proudly powered by"
-msgstr ""
-
-#: inc/Editor.php:31 templates/user-admin.php:13
-#: templates/admin/settings/form-settings-post.php:13
-msgid "Publish"
-msgstr ""
-
-#: inc/MenuSettings.php:337
-msgid "Publish button"
-msgstr ""
-
-#: inc/PostFormsListTable.php:44
-msgid "Published"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:478
-msgid "Quote"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:481
-msgid "Raw HTML"
-msgstr ""
-
-#: inc/MenuSettings.php:286 inc/MenuSettings.php:311
-msgid "Redirect"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:33
-#: templates/admin/settings/form-payment-settings.php:73
-#: templates/admin/settings/form-settings-post.php:55
-msgid "Redirect To"
-msgstr ""
-
-#: templates/register-form.php:101
-msgid "Register"
-msgstr ""
-
-#: inc/MenuSettings.php:271
-msgid "Registration Form Settings"
-msgstr ""
-
-#: inc/LoginRegisterShortcode.php:136
-msgid "Registration successful. Your password will be sent via email shortly."
-msgstr ""
-
-#: inc/MenuSettings.php:292
-msgid "Remember me"
-msgstr ""
-
-#: inc/MenuSettings.php:352
-msgid "Remove post icon"
-msgstr ""
-
-#: inc/fields/CheckboxGroupField.php:61 inc/fields/NumberField.php:112
-#: inc/fields/TaxonomiesFields.php:114 inc/fields/PostTitleField.php:259
-#: inc/fields/EditorJsField.php:239 inc/fields/RadioGroupField.php:86
-#: inc/fields/TextField.php:87 inc/fields/MdEditor.php:200
-#: inc/fields/TinyMCE.php:71 inc/fields/DateField.php:109
-#: inc/fields/SelectField.php:96 inc/fields/GoogleMapField.php:97
-msgid "Required error text"
-msgstr ""
-
-#: inc/PostFormsListTable.php:419
-msgid "Restore"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:79
-msgid "Restriction text if the time was passed"
-msgstr ""
-
-#: inc/MenuSettings.php:843
-msgid "Right bottom"
-msgstr ""
-
-#: inc/MenuSettings.php:844
-msgid "Right top"
-msgstr ""
-
-#: templates/admin/settings/form-payment-settings.php:79
-msgid "Same Post"
-msgstr ""
-
-#: inc/Form.php:280 templates/admin/post-form.php:11
-#: templates/admin/post-form.php:11
-msgid "Sample Form"
-msgstr ""
-
-#: templates/admin/post-form.php:22
-msgid "Save"
-msgstr ""
-
-#: templates/front-form-header.php:38
-#: templates/admin/settings/form-settings-post.php:106
-msgid "Save Draft"
-msgstr ""
-
-#: templates/admin/post-forms-list-table-view.php:23
-msgid "Search Forms"
-msgstr ""
-
-#: inc/fields/TaxonomiesFields.php:115 inc/fields/SelectField.php:97
-msgid "Search placeholder"
-msgstr ""
-
-#: inc/Form.php:524
-msgid "Search Post Form"
-msgstr ""
-
-#: inc/fields/GoogleRecaptcha.php:100
-msgid "Secret key"
-msgstr ""
-
-#: inc/LoginRegisterShortcode.php:79
-msgid "Security error, please update page"
-msgstr ""
-
-#: inc/fields/TaxonomiesFields.php:54
-msgid "Select"
-msgstr ""
-
-#: templates/front-editor/category.php:10
-#: templates/front-editor/category.php:11
-msgid "Select category"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:12
-msgid "Select edit page"
-msgstr ""
-
-#: inc/MenuSettings.php:852
-msgid "Select Edit Post button position on created post"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:62
-msgid "Select front form design"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:27
-msgid "Select page same with other form shortcode"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:20
-msgid "Select place where the form control buttons will be placed"
-msgstr ""
-
-#: inc/Blocks.php:52
-msgid "Select Post Form"
-msgstr ""
-
-#: templates/admin/post-form.php:38
-msgid "Select post type"
+#: inc/WooIntegration.php:303
+msgid "Please complete payment to ensure the publication of your post."
 msgstr ""
 
 #: inc/WooIntegration.php:340
 msgid "Select Product"
 msgstr ""
 
-#: templates/front-editor/tags.php:2 templates/front-editor/tags.php:3
-msgid "Select tags"
+#: inc/WooIntegration.php:378
+msgid "Post Id"
 msgstr ""
 
-#: templates/admin/settings/form-payment-settings.php:26
-msgid "Select The Product"
+#: inc/WooIntegration.php:382
+msgid "Form Id"
 msgstr ""
 
-#: templates/admin/settings/form-payment-settings.php:57
-msgid "Send your user direct to checkout not to the cart"
+#: inc/ai/AiAssistant.php:60
+msgid "Write from prompt"
 msgstr ""
 
-#: templates/front-editor/post-featured-image.php:26
-msgid "Set featured image"
+#: inc/ai/AiAssistant.php:65
+msgid "Improve writing"
 msgstr ""
 
-#: inc/MenuSettings.php:59 inc/MenuSettings.php:60
-#: inc/fields/GoogleMapField.php:120 templates/admin/post-form.php:28
-#: templates/admin/settings/form-settings-post-update.php:19
-msgid "Settings"
+#: inc/ai/AiAssistant.php:69
+msgid "Fix spelling & grammar"
 msgstr ""
 
-#: inc/MenuSettings.php:242
-msgid "Settings Page"
+#: inc/ai/AiAssistant.php:73
+msgid "Make shorter"
 msgstr ""
 
-#: inc/MenuSettings.php:393
-msgid "Short information"
+#: inc/ai/AiAssistant.php:77
+msgid "Make longer"
 msgstr ""
 
-#: inc/PostFormsListTable.php:314 templates/admin/post-form.php:14
-msgid "Shortcode"
+#: inc/ai/AiAssistant.php:84
+msgid "Translate"
 msgstr ""
 
-#: inc/MenuSettings.php:586 templates/user-admin.php:18
-msgid "Show all users posts"
+#: inc/ai/AiAssistant.php:87
+msgid "Target language, e.g. German"
 msgstr ""
 
-#: inc/MenuSettings.php:349
-msgid "Show all users posts link"
+#: inc/ai/AiAssistant.php:90
+msgid "Change tone"
 msgstr ""
 
-#: templates/admin/settings/form-settings-post.php:128
-msgid "Show button preview after post published."
+#: inc/ai/AiAssistant.php:93
+msgid "Tone, e.g. friendly, professional, funny"
 msgstr ""
 
-#: templates/admin/settings/form-settings-post.php:100
-msgid "Show button save to draft"
+#: inc/ai/AiAssistant.php:96
+msgid "Custom instruction"
 msgstr ""
 
-#: inc/fields/TaxonomiesFields.php:93
-msgid "Show empty"
+#: inc/ai/AiAssistant.php:125
+msgid "Security check failed, please reload the page"
 msgstr ""
 
-#: inc/fields/TaxonomiesFields.php:103
-msgid "Show Hierarchically"
+#: inc/ai/AiAssistant.php:130
+msgid "Form not found"
 msgstr ""
 
-#: templates/admin/settings/form-admin-login-register.php:18
-msgid "Show login"
+#: inc/ai/AiAssistant.php:135 inc/ai/AiAssistant.php:139
+msgid "AI assistant is not available"
 msgstr ""
 
-#: templates/admin/settings/form-admin-login-register.php:25
-msgid "Show login instead of restricted message (Pro)"
+#: inc/ai/AiAssistant.php:156
+msgid "Describe what to write…"
 msgstr ""
 
-#: inc/fields/TaxonomiesFields.php:108 inc/fields/SelectField.php:92
-msgid "Show Search Input"
+#: inc/ai/AiAssistant.php:159
+msgid "AI"
 msgstr ""
 
-#: inc/MenuSettings.php:299
-msgid "Show User Name Inputs"
+#: inc/ai/AiAssistant.php:160
+msgid "AI Assistant"
 msgstr ""
 
-#: templates/admin/settings/form-submission-display.php:51
-msgid "Simple Design"
+#: inc/ai/AiAssistant.php:161
+msgid "What to do"
 msgstr ""
 
-#: inc/fields/GoogleRecaptcha.php:99
-msgid "Site key"
+#: inc/ai/AiAssistant.php:162
+msgid "Instructions"
 msgstr ""
 
-#: inc/Editor.php:80
-msgid "Something goes wrong try later"
+#: inc/ai/AiAssistant.php:163 inc/ai/AiFormGenerator__premium_only.php:54
+msgid "Generate"
 msgstr ""
 
-#: inc/fields/EditorJsField.php:517
-msgid "Start writing or enter Tab to choose a block"
+#: inc/ai/AiAssistant.php:164
+msgid "Try again"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:165
+msgid "Replace"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:166
+msgid "Insert below"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:167 inc/ai/AiFormGenerator__premium_only.php:55
+msgid "Cancel"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:168
+msgid "Result"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:169 inc/ai/AiAssistant.php:222
+msgid "Add some text to the field first"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:170 inc/ai/AiAssistant.php:219
+msgid "Please add instructions"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:171 inc/ai/AiAssistant.php:333
+msgid "AI request failed, please try again later"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:186
+msgid "✨ Generate with AI"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:187
+msgid "AI form generation is a Pro feature"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:188
+msgid "Describe the form in your own words and AI will build it for you."
+msgstr ""
+
+#: inc/ai/AiAssistant.php:190
+msgid "Add your AI provider API key in Settings → AI first."
+msgstr ""
+
+#: inc/ai/AiAssistant.php:191 templates/admin/settings/form-ai-settings.php:72
+msgid "Open AI settings"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:213
+msgid "Unknown AI action"
+msgstr ""
+
+#: inc/ai/AiAssistant.php:271
+#, php-format
+msgid "Connected to %1$s (%2$s). Do not forget to save the settings."
+msgstr ""
+
+#: inc/ai/AiClient.php:51
+msgid "OpenRouter / OpenAI compatible URL"
+msgstr ""
+
+#: inc/ai/AiClient.php:155
+msgid "AI API key is not configured"
+msgstr ""
+
+#: inc/ai/AiClient.php:185
+#, php-format
+msgid "AI request failed: %s"
+msgstr ""
+
+#: inc/ai/AiClient.php:192
+#, php-format
+msgid "AI provider error (%1$s): %2$s"
+msgstr ""
+
+#: inc/ai/AiClient.php:197
+msgid "AI provider returned an empty response"
+msgstr ""
+
+#: inc/ai/AiClient.php:220
+msgid "AI response is not valid JSON"
+msgstr ""
+
+#: inc/ai/AiClient.php:253
+msgid "AI endpoint URL is not valid"
+msgstr ""
+
+#: inc/ai/AiClient.php:342 inc/ai/AiClient.php:344
+msgid "Unknown error"
+msgstr ""
+
+#: inc/ai/AiFormGenerator__premium_only.php:50
+msgid "Generate form with AI"
+msgstr ""
+
+#: inc/ai/AiFormGenerator__premium_only.php:51
+msgid ""
+"E.g. A form to submit a recipe: title, photo, ingredients, cooking time, "
+"difficulty (easy/medium/hard) and step by step instructions."
+msgstr ""
+
+#: inc/ai/AiFormGenerator__premium_only.php:52
+msgid "Add fields to the current form"
+msgstr ""
+
+#: inc/ai/AiFormGenerator__premium_only.php:53
+msgid "Replace current form fields"
+msgstr ""
+
+#: inc/ai/AiFormGenerator__premium_only.php:56
+#: inc/ai/AiFormGenerator__premium_only.php:76
+msgid "Please describe the form"
+msgstr ""
+
+#: inc/ai/AiFormGenerator__premium_only.php:57
+msgid "Form generated. Review the fields and click Save."
+msgstr ""
+
+#: inc/ai/AiFormGenerator__premium_only.php:58
+msgid "AI request failed"
+msgstr ""
+
+#: inc/ai/AiFormGenerator__premium_only.php:79
+msgid "No field types available"
+msgstr ""
+
+#: inc/ai/AiFormGenerator__premium_only.php:89
+msgid ""
+"AI did not return any usable fields, try to describe the form differently"
+msgstr ""
+
+#: inc/ai/AiModeration__premium_only.php:187
+msgid "AI Moderation"
+msgstr ""
+
+#: inc/ai/AiModeration__premium_only.php:196
+msgid "Flagged for review"
+msgstr ""
+
+#: inc/ai/AiModeration__premium_only.php:196
+msgid "No problems found"
+msgstr ""
+
+#: inc/ai/AiSettings.php:101 templates/admin/post-form.php:92
+msgid "✨ AI"
+msgstr ""
+
+#: inc/ai/AiSettings.php:102
+msgid "AI Assistant Settings"
+msgstr ""
+
+#: inc/ai/AiSettings.php:116
+msgid "AI Provider"
+msgstr ""
+
+#: inc/ai/AiSettings.php:117
+msgid "Editor Assistant"
+msgstr ""
+
+#: inc/ai/AiSettings.php:118
+msgid "Pro AI Features"
+msgstr ""
+
+#: inc/ai/AiSettings.php:180
+msgid ""
+"Choose the AI provider and add your own API key. Requests are sent from your "
+"server, the key is never shown to site visitors."
+msgstr ""
+
+#: inc/ai/AiSettings.php:184
+msgid "Provider"
+msgstr ""
+
+#: inc/ai/AiSettings.php:196
+msgid "Connection"
+msgstr ""
+
+#: inc/ai/AiSettings.php:197
+msgid "Test connection"
+msgstr ""
+
+#: inc/ai/AiSettings.php:198
+msgid "Sends a short test request with the values entered above."
+msgstr ""
+
+#: inc/ai/AiSettings.php:209
+#, php-format
+msgid "Ready: %1$s · %2$s"
+msgstr ""
+
+#: inc/ai/AiSettings.php:213
+msgid "Not configured: add an API key below and save."
+msgstr ""
+
+#: inc/ai/AiSettings.php:226
+msgid "API base URL"
+msgstr ""
+
+#: inc/ai/AiSettings.php:229
+msgid ""
+"Any OpenAI compatible API: OpenRouter, Groq, Together, local Ollama (http://"
+"localhost:11434/v1)…"
+msgstr ""
+
+#: inc/ai/AiSettings.php:234
+msgid "is defined in wp-config.php and used as the API key."
+msgstr ""
+
+#: inc/ai/AiSettings.php:240
+#, php-format
+msgid "Saved key ••••%s — leave empty to keep"
+msgstr ""
+
+#: inc/ai/AiSettings.php:240
+msgid "Paste your API key"
+msgstr ""
+
+#: inc/ai/AiSettings.php:243
+msgid "Remove key"
+msgstr ""
+
+#: inc/ai/AiSettings.php:248
+msgid "Get an API key"
+msgstr ""
+
+#: inc/ai/AiSettings.php:249
+msgid "or define it in wp-config.php as"
+msgstr ""
+
+#: inc/ai/AiSettings.php:254
+msgid "API key"
+msgstr ""
+
+#: inc/ai/AiSettings.php:261
+msgid "Model"
+msgstr ""
+
+#: inc/ai/AiSettings.php:266
+#, php-format
+msgid "Leave empty to use %s."
+msgstr ""
+
+#: inc/ai/AiSettings.php:275
+msgid ""
+"Adds an \"✨ AI\" button to the title, textarea and editor fields of your "
+"front-end forms: write from a prompt, improve, fix grammar, shorten or "
+"expand text."
+msgstr ""
+
+#: inc/ai/AiSettings.php:276
+msgid ""
+"AI is off in every form by default. Turn it on per form: Post Forms → edit "
+"form → Settings → ✨ AI."
+msgstr ""
+
+#: inc/ai/AiSettings.php:281
+msgid "Enable assistant"
+msgstr ""
+
+#: inc/ai/AiSettings.php:284
+msgid "Show the AI button in front-end forms"
+msgstr ""
+
+#: inc/ai/AiSettings.php:287
+msgid "Who can use it"
+msgstr ""
+
+#: inc/ai/AiSettings.php:288
+msgid "Logged-in users only"
+msgstr ""
+
+#: inc/ai/AiSettings.php:289
+msgid "Everyone, including guests"
+msgstr ""
+
+#: inc/ai/AiSettings.php:290
+msgid ""
+"Requests are paid from your API key, so guest access is not recommended."
+msgstr ""
+
+#: inc/ai/AiSettings.php:294
+msgid "Daily limit per user"
+msgstr ""
+
+#: inc/ai/AiSettings.php:297
+msgid ""
+"Maximum AI requests per user (or IP for guests) per day. 0 = unlimited. "
+"Administrators and editors are not limited."
+msgstr ""
+
+#: inc/ai/AiSettings.php:312 templates/admin/settings/form-ai-settings.php:82
+msgid ""
+"AI form generation, translation and tone change in the assistant, post "
+"moderation and automatic excerpt, tags and SEO description are available in "
+"the Pro version."
+msgstr ""
+
+#: inc/ai/AiSettings.php:317
+msgid ""
+"Use the \"✨ Generate with AI\" button in the form builder to create forms "
+"from a description."
+msgstr ""
+
+#: inc/ai/AiSettings.php:324 templates/admin/settings/form-ai-settings.php:23
+msgid "AI moderation"
+msgstr ""
+
+#: inc/ai/AiSettings.php:328
+msgid ""
+"Check submitted posts for spam, abuse and unsafe content before publishing"
+msgstr ""
+
+#: inc/ai/AiSettings.php:330
+msgid "Flagged posts are saved as"
+msgstr ""
+
+#: inc/ai/AiSettings.php:331
+msgid "Pending review"
+msgstr ""
+
+#: inc/ai/AiSettings.php:336
+msgid ""
+"Extra rules, e.g. \"No links to other shops. Only posts about gardening.\""
+msgstr ""
+
+#: inc/ai/AiSettings.php:339
+msgid ""
+"Administrators and editors are not moderated. If the AI provider is "
+"unavailable, posts are saved as usual."
+msgstr ""
+
+#: inc/ai/AiSettings.php:343
+msgid "Generate excerpt when it is empty"
+msgstr ""
+
+#: inc/ai/AiSettings.php:344
+msgid "Suggest and add tags"
+msgstr ""
+
+#: inc/ai/AiSettings.php:345
+msgid "Generate SEO meta description (Yoast, Rank Math, SEOPress or built-in)"
+msgstr ""
+
+#: inc/ai/AiSettings.php:347 templates/admin/settings/form-ai-settings.php:29
+msgid "Auto-fill after submit"
+msgstr ""
+
+#: inc/ai/AiSettings.php:358
+msgid "Runs in the background right after a new post is submitted."
+msgstr ""
+
+#: inc/ai/AiSettings.php:374
+msgid "Testing…"
+msgstr ""
+
+#: inc/ai/AiSettings.php:375
+msgid "Connection failed"
+msgstr ""
+
+#: inc/ai/AiUsageLimit.php:67
+msgid "You have reached the daily AI limit. Please try again tomorrow."
+msgstr ""
+
+#: inc/fields/ActionHook.php:54
+msgid "Action Hook Name"
+msgstr ""
+
+#: inc/fields/ActionHook.php:55
+msgid "Description"
+msgstr ""
+
+#: inc/fields/ActionHook.php:58
+msgid ""
+"Enter the name of your custom action hook. This will be called when form is "
+"rendered."
+msgstr ""
+
+#: inc/fields/ActionHook.php:59
+msgid ""
+"Add a description to help other developers understand the purpose of this "
+"hook."
+msgstr ""
+
+#: inc/fields/ButtonField.php:43
+msgid "Button Field"
+msgstr ""
+
+#: inc/fields/CheckboxGroupField.php:61 inc/fields/DateField.php:109
+#: inc/fields/EditorJsField.php:239 inc/fields/GoogleMapField.php:97
+#: inc/fields/MdEditor.php:198 inc/fields/NumberField.php:112
+#: inc/fields/PostTitleField.php:254 inc/fields/RadioGroupField.php:86
+#: inc/fields/SelectField.php:96 inc/fields/TaxonomiesFields.php:114
+#: inc/fields/TextField.php:87 inc/fields/TinyMCE.php:71
+msgid "Required error text"
+msgstr ""
+
+#: inc/fields/CheckboxGroupField.php:83
+msgid "Please add checkbox field"
+msgstr ""
+
+#: inc/fields/CheckboxGroupField.php:124 inc/fields/FileField.php:323
+#: inc/fields/FileField.php:354 inc/fields/RadioGroupField.php:124
+#: inc/fields/SelectField.php:135 inc/fields/TextareaField.php:156
+#, php-format
+msgid "%s is required"
+msgstr ""
+
+#: inc/fields/DateField.php:49
+msgid "Please add date field"
+msgstr ""
+
+#: inc/fields/DateField.php:70
+msgid "Date Field"
+msgstr ""
+
+#: inc/fields/DateField.php:106
+msgid "Min"
+msgstr ""
+
+#: inc/fields/DateField.php:107
+msgid "Max"
 msgstr ""
 
 #: inc/fields/DateField.php:108
 msgid "Step"
 msgstr ""
 
-#: templates/admin/settings/form-notification-settings.php:23
-#: templates/admin/settings/form-admin-notification-settings.php:23
-msgid "Subject"
+#: inc/fields/DateField.php:110 inc/fields/GoogleMapField.php:98
+#: inc/fields/MdEditor.php:199 inc/fields/NumberField.php:113
+#: inc/fields/PostTitleField.php:255 inc/fields/TextField.php:88
+#: inc/fields/TinyMCE.php:72
+msgid "Not correct content"
 msgstr ""
 
-#: templates/admin/post-form.php:78
-msgid "Submission Restriction"
+#: inc/fields/EditorJsField.php:63
+msgid "Please add content to EditorJS"
 msgstr ""
 
-#: templates/admin/settings/form-settings-post.php:3
-msgid "Submit"
+#: inc/fields/EditorJsField.php:385
+msgid "Add content"
 msgstr ""
 
-#: inc/fields/EditorJsField.php:482
-msgid "Table"
+#: inc/fields/EditorJsField.php:456
+msgid "Click to tune"
 msgstr ""
 
-#: inc/Form.php:140
-msgid "Taxonomies"
+#: inc/fields/EditorJsField.php:457
+msgid "or drag to move"
 msgstr ""
 
-#: inc/fields/TinyMCE.php:62
-msgid "Teeny"
+#: inc/fields/EditorJsField.php:462
+msgid "Convert to"
 msgstr ""
 
-#: inc/fields/TaxonomiesFields.php:112
-msgid "Terms to excluded"
+#: inc/fields/EditorJsField.php:468
+msgid "Add"
 msgstr ""
 
 #: inc/fields/EditorJsField.php:473
 msgid "Text"
 msgstr ""
 
-#: inc/fields/TaxonomiesFields.php:193 inc/fields/SelectField.php:47
-#, php-format
-msgid "The %s selection is required"
+#: inc/fields/EditorJsField.php:474
+msgid "Heading"
 msgstr ""
 
-#. The accept attribute takes as its value a comma-separated list of one or more file types.
+#: inc/fields/EditorJsField.php:475
+msgid "List"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:476
+msgid "Warning"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:477
+msgid "Checklist"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:478
+msgid "Quote"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:479
+msgid "Code"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:480
+msgid "Delimiter"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:481
+msgid "Raw HTML"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:482
+msgid "Table"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:484
+msgid "Marker"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:485
+msgid "Bold"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:486
+msgid "Italic"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:487
+msgid "InlineCode"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:488
+msgid "Image & Gallery"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:489
+msgid "Image"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:493
+msgid "Title"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:494
+#: templates/admin/settings/form-notification-settings.php:44
+msgid "Message"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:497
+msgid "Add a link"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:500
+msgid "The block can not be displayed correctly."
+msgstr ""
+
+#: inc/fields/EditorJsField.php:505
+msgid "Delete"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:508
+msgid "Move up"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:511
+msgid "Move down"
+msgstr ""
+
+#: inc/fields/EditorJsField.php:517
+msgid "Start writing or enter Tab to choose a block"
+msgstr ""
+
+#: inc/fields/FileField.php:75 inc/fields/FileField.php:100
+#: inc/fields/FileField.php:200
+msgid "File is not exist"
+msgstr ""
+
+#: inc/fields/FileField.php:104
+msgid "Error during upload"
+msgstr ""
+
+#: inc/fields/FileField.php:108
+msgid "File is too large"
+msgstr ""
+
+#: inc/fields/FileField.php:156
+msgid "Invalid attachment ID."
+msgstr ""
+
+#: inc/fields/FileField.php:174
+msgid "Sorry, you are not allowed to delete this attachment."
+msgstr ""
+
+#: inc/fields/FileField.php:228
+msgid "Accept"
+msgstr ""
+
+#: inc/fields/FileField.php:229
+msgid "Max File Size"
+msgstr ""
+
+#: inc/fields/FileField.php:230
+msgid "Max Files"
+msgstr ""
+
+#: inc/fields/FileField.php:231
+msgid "Attach to post"
+msgstr ""
+
+#: inc/fields/FileField.php:233
+msgid "Label invalid field"
+msgstr ""
+
+#: inc/fields/FileField.php:234
+msgid "Label waiting for size"
+msgstr ""
+
+#: inc/fields/FileField.php:235
+msgid "Label Size not available"
+msgstr ""
+
+#: inc/fields/FileField.php:236
+msgid "Label File Loading"
+msgstr ""
+
+#: inc/fields/FileField.php:237
+msgid "Label Load Error"
+msgstr ""
+
+#: inc/fields/FileField.php:238
+msgid "Label File Processing"
+msgstr ""
+
+#: inc/fields/FileField.php:239
+msgid "Label Processing Complete"
+msgstr ""
+
+#: inc/fields/FileField.php:240
+msgid "Label Processing Aborted"
+msgstr ""
+
+#: inc/fields/FileField.php:241
+msgid "Label Processing Error"
+msgstr ""
+
+#: inc/fields/FileField.php:242
+msgid "Label Processing Revert Error"
+msgstr ""
+
+#: inc/fields/FileField.php:243
+msgid "Label File Remove Error"
+msgstr ""
+
 #: inc/fields/FileField.php:244
+msgid "Label Tap To Cancel"
+msgstr ""
+
+#: inc/fields/FileField.php:245
+msgid "Label Tap To Retry"
+msgstr ""
+
+#: inc/fields/FileField.php:246
+msgid "Label Tap To Undo"
+msgstr ""
+
+#: inc/fields/FileField.php:247
+msgid "Label Remove Item"
+msgstr ""
+
+#: inc/fields/FileField.php:248
+msgid "Label Abort Item Load"
+msgstr ""
+
+#: inc/fields/FileField.php:249 inc/fields/FileField.php:252
+msgid "Label Retry Item Load"
+msgstr ""
+
+#: inc/fields/FileField.php:250
+msgid "Label Cancel Item Load"
+msgstr ""
+
+#: inc/fields/FileField.php:251
+msgid "Label Undo Item Load"
+msgstr ""
+
+#: inc/fields/FileField.php:253
+msgid "Label Upload Item Load"
+msgstr ""
+
+#: inc/fields/FileField.php:254
+msgid "Label File Type not Allowed"
+msgstr ""
+
+#: inc/fields/FileField.php:255
+msgid "Label Expected Type"
+msgstr ""
+
+#: inc/fields/FileField.php:256
+msgid "Label size must be"
+msgstr ""
+
+#: inc/fields/FileField.php:257
+msgid "Maximum total size exceeded"
+msgstr ""
+
+#: inc/fields/FileField.php:258
+msgid "Maximum total size is"
+msgstr ""
+
+#: inc/fields/FileField.php:259
+msgid "Label size exceeded"
+msgstr ""
+
+#. translators: The accept attribute takes as its value a comma-separated list of one or more file types.
+#: inc/fields/FileField.php:274
 #, php-format
 msgid ""
 "The accept attribute takes as its value a comma-separated list of one or "
@@ -1546,148 +1660,217 @@ msgid ""
 "specifiers</a>, describing which file types to allow."
 msgstr ""
 
-#: inc/fields/EditorJsField.php:500
-msgid "The block can not be displayed correctly."
+#: inc/fields/FileField.php:276
+msgid "Max count of files user can select"
+msgstr ""
+
+#: inc/fields/FileField.php:277
+msgid "Max size in KB"
+msgstr ""
+
+#: inc/fields/GoogleMapField.php:50
+msgid "Please add google map field"
+msgstr ""
+
+#: inc/fields/GoogleMapField.php:76
+msgid "Google Map"
+msgstr ""
+
+#: inc/fields/GoogleMapField.php:96
+msgid "Country Code"
+msgstr ""
+
+#: inc/fields/GoogleMapField.php:119
+#, php-format
+msgid "Before using this field, please add your Google API Key in %s."
+msgstr ""
+
+#: inc/fields/GoogleMapField.php:123
+msgid "Add API Key"
+msgstr ""
+
+#: inc/fields/GoogleRecaptcha.php:96 inc/fields/hCaptcha.php:117
+msgid "Language"
+msgstr ""
+
+#: inc/fields/GoogleRecaptcha.php:97
+msgid "Site key"
+msgstr ""
+
+#: inc/fields/GoogleRecaptcha.php:98
+msgid "Secret key"
+msgstr ""
+
+#: inc/fields/GoogleRecaptcha.php:99 inc/fields/hCaptcha.php:100
+msgid "Error Message"
+msgstr ""
+
+#: inc/fields/GoogleRecaptcha.php:111
+msgid ""
+"Check the list of languages <a href=\"https://developers.google.com/"
+"recaptcha/docs/language\" target=\"_blank\">here</a>"
+msgstr ""
+
+#: inc/fields/HeaderField.php:43
+msgid "Header Field"
+msgstr ""
+
+#: inc/fields/HiddenField.php:43
+msgid "Hidden Field"
+msgstr ""
+
+#: inc/fields/MdEditor.php:57 inc/fields/TinyMCE.php:196
+msgid "Please add editor field"
+msgstr ""
+
+#: inc/fields/MdEditor.php:135
+msgid "Post Content Field is missing"
+msgstr ""
+
+#: inc/fields/NumberField.php:49
+msgid "Please add number field"
+msgstr ""
+
+#: inc/fields/NumberField.php:57
+msgid "Please add correct number field"
+msgstr ""
+
+#: inc/fields/NumberField.php:75
+msgid "Number Field"
+msgstr ""
+
+#: inc/fields/ParagraphField.php:43
+msgid "Paragraph Field"
+msgstr ""
+
+#: inc/fields/PostThumbField.php:43
+msgid "Featured Image"
+msgstr ""
+
+#: inc/fields/PostThumbField.php:76
+msgid "(PRO) WP Media"
 msgstr ""
 
 #: inc/fields/PostThumbField.php:146
 msgid "The featured image is required"
 msgstr ""
 
-#: templates/admin/settings/form-submission-display.php:41
-msgid "The place where will be displayed error and success messages"
+#: inc/fields/PostTitleField.php:56
+msgid "Post Title Field is missing"
 msgstr ""
 
-#: inc/SavePost.php:273 inc/SavePost.php:278 inc/Editor.php:43
-#: inc/Editor.php:47
-msgid "The post you trying to edit is not exist, please create a new one"
+#: inc/fields/PostTitleField.php:76
+msgid "Please add post title"
 msgstr ""
 
-#: templates/admin/settings/form-payment-settings.php:43
-msgid "The user will be redirect to this product when submit the form"
+#: inc/fields/PostTitleField.php:85
+msgid "Please add correct post title"
 msgstr ""
 
-#: templates/admin/settings/form-submission-display.php:46
-msgid "Theme Designs"
+#: inc/fields/PostTitleField.php:252
+msgid "Hide Field"
 msgstr ""
 
-#: templates/admin/settings/form-payment-settings.php:10
+#: inc/fields/PostTitleField.php:253
+msgid "Generate title"
+msgstr ""
+
+#: inc/fields/PostTitleField.php:258
 msgid ""
-"These settings are applicable only when the WooCommerce plugin is installed."
+"Generate title using params: [{taxonomy_name}] [{field name}] <br> Example: "
+"Post [category] [text-1695547664968] <br> If empty will not work"
 msgstr ""
 
-#: inc/Form.php:121
-msgid "This field value will be saved into post meta using this name."
+#: inc/fields/PostTitleField.php:259
+msgid "Hide field so users will not see it"
 msgstr ""
 
-#: inc/Form.php:393 inc/Form.php:405
-msgid "This is not a valid record."
+#: inc/fields/RadioGroupField.php:49
+msgid "Please add radio field"
 msgstr ""
 
-#: templates/admin/settings/form-payment-settings.php:68
-msgid "This message user will see when product will be added to the cart."
+#: inc/fields/SelectField.php:47 inc/fields/TaxonomiesFields.php:193
+#, php-format
+msgid "The %s selection is required"
 msgstr ""
 
-#: inc/UserAdmin.php:18 inc/Editor.php:141
-msgid "This page is restricted. Please Login to view this page."
+#: inc/fields/SelectField.php:92 inc/fields/TaxonomiesFields.php:108
+msgid "Show Search Input"
 msgstr ""
 
-#: inc/Blocks.php:54 inc/MenuSettings.php:124
+#: inc/fields/SelectField.php:97 inc/fields/TaxonomiesFields.php:115
+msgid "Search placeholder"
+msgstr ""
+
+#: inc/fields/SelectField.php:98 inc/fields/TaxonomiesFields.php:116
+msgid "No result text"
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:54
+msgid "Select"
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:80
+msgid "Order"
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:88
+msgid "Multiple Selections"
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:93
+msgid "Show empty"
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:98
+msgid "Allow Add New"
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:103
+msgid "Show Hierarchically"
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:112
+msgid "Terms to excluded"
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:113
+msgid "Default terms"
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:143
+msgid "You can specify a comma-separated terms IDs that need to be excluded."
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:144
+msgid "Add new functionality will not work without activating this input."
+msgstr ""
+
+#: inc/fields/TaxonomiesFields.php:148
+#, php-format
 msgid ""
-"This post created with the Front Editor plugin. Please edit it using Front "
-"Editor to not have issues with the plugin!"
+"You can specify a comma-separated term IDs that need to be included. Check "
+"the tutorial to find the term ID using this %s"
 msgstr ""
 
-#: inc/fields/EditorJsField.php:493
-msgid "Title"
-msgstr ""
-
-#: templates/admin/settings/form-admin-notification-settings.php:17
-msgid "To"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:40
-#: templates/admin/settings/form-settings-post.php:62
-msgid "To a custom URL"
-msgstr ""
-
-#: templates/admin/settings/form-settings-migration.php:13
-msgid ""
-"To transfer the form settings, simply copy the text from this textarea, "
-"paste it into the textarea of the other form, and click the \"Migrate\" "
-"button."
-msgstr ""
-
-#: inc/PostFormsListTable.php:45 inc/PostFormsListTable.php:407
-msgid "Trash"
+#: inc/fields/TextField.php:49
+msgid "Please add text field"
 msgstr ""
 
 #: inc/fields/TextField.php:76
 msgid "Type"
 msgstr ""
 
-#: templates/admin/settings/form-submission-restriction.php:21
-msgid "Unregistered users will be able to submit posts"
+#: inc/fields/TinyMCE.php:57
+msgid "Media Support"
 msgstr ""
 
-#: inc/FormMetaBox.php:146
-msgid "Untitled Field"
+#: inc/fields/TinyMCE.php:62
+msgid "Teeny"
 msgstr ""
 
-#: inc/Editor.php:30 templates/admin/settings/form-settings-post-update.php:3
-msgid "Update"
-msgstr ""
-
-#: templates/admin/settings/form-settings-post-update.php:67
-msgid "Update Post Button text"
-msgstr ""
-
-#: inc/Editor.php:77
-msgid "Updating"
-msgstr ""
-
-#: inc/MenuSettings.php:224
-msgid "User Admin"
-msgstr ""
-
-#: inc/MenuSettings.php:328
-msgid "User Admin Settings"
-msgstr ""
-
-#: inc/MenuSettings.php:251
-msgid "User Admin Shortcode Settings"
-msgstr ""
-
-#: inc/LoginRegisterShortcode.php:73
-msgid "User is logged in."
-msgstr ""
-
-#: inc/MenuSettings.php:606
-msgid "User Not Logged In message."
-msgstr ""
-
-#: inc/MenuSettings.php:317
-msgid "User Notification Email"
-msgstr ""
-
-#: inc/MenuSettings.php:280 inc/MenuSettings.php:305
-msgid "Username"
-msgstr ""
-
-#: templates/login-form.php:7 templates/login-form.php:8
-msgid "Username or Email"
-msgstr ""
-
-#: inc/fields/EditorJsField.php:476
-msgid "Warning"
-msgstr ""
-
-#: inc/Form.php:523
-msgid "Watch Post Form"
-msgstr ""
-
-#: inc/MenuSettings.php:302
-msgid "WebSite"
+#: inc/fields/TinyMCE.php:67
+msgid "Drag & Drop"
 msgstr ""
 
 #: inc/fields/TinyMCE.php:116
@@ -1698,64 +1881,653 @@ msgstr ""
 msgid "Whether to output the minimal editor configuration"
 msgstr ""
 
+#: inc/fields/TinyMCE.php:118
+msgid "Enable Drag & Drop Upload Support"
+msgstr ""
+
+#: inc/fields/hCaptcha.php:98
+msgid "Site Key"
+msgstr ""
+
+#: inc/fields/hCaptcha.php:99
+msgid "Secret Key"
+msgstr ""
+
+#: inc/fields/hCaptcha.php:123
+msgid ""
+"Check the list of languages <a href=\"https://docs.hcaptcha.com/languages\" "
+"target=\"_blank\">here</a>"
+msgstr ""
+
+#: inc/shortcodes/FUSGoogleMapsShortcode.php:27
+msgid "Location data not found"
+msgstr ""
+
+#: inc/shortcodes/FUSGoogleMapsShortcode.php:32
+msgid "Invalid location data format"
+msgstr ""
+
+#: templates/admin/design-selector.php:61
+msgid "Available in Pro Version"
+msgstr ""
+
+#: templates/admin/design-selector.php:72
+msgid "🎨 Unlock All Form Designs"
+msgstr ""
+
+#: templates/admin/design-selector.php:73
+msgid ""
+"Get access to 7 additional professional form designs with the Pro version. "
+"Perfect for matching your brand and increasing conversions."
+msgstr ""
+
+#: templates/admin/design-selector.php:75
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: templates/admin/post-form.php:48
+msgid "Form Title"
+msgstr ""
+
+#: templates/admin/post-form.php:60
+msgid "Save"
+msgstr ""
+
+#: templates/admin/post-form.php:65
+msgid "Form Editor"
+msgstr ""
+
+#: templates/admin/post-form.php:67
+msgid "Notifications"
+msgstr ""
+
+#: templates/admin/post-form.php:68
+msgid "Login/Register"
+msgstr ""
+
+#: templates/admin/post-form.php:76
+msgid "Select post type"
+msgstr ""
+
+#: templates/admin/post-form.php:87
+msgid "Post Submit Settings"
+msgstr ""
+
+#: templates/admin/post-form.php:88
+msgid "Edit Post Settings"
+msgstr ""
+
+#: templates/admin/post-form.php:89
+msgid "Submission Restriction"
+msgstr ""
+
+#: templates/admin/post-form.php:90
+msgid "Display Settings"
+msgstr ""
+
+#: templates/admin/post-form.php:91
+msgid "Payment Settings"
+msgstr ""
+
+#: templates/admin/post-form.php:93
+msgid "Migration Settings"
+msgstr ""
+
+#: templates/admin/post-form.php:127
+#: templates/admin/settings/form-admin-notification-settings.php:8
+msgid "Admin Notification"
+msgstr ""
+
+#: templates/admin/post-form.php:128
+msgid "Post Publish Notification"
+msgstr ""
+
+#: templates/admin/post-form.php:129
+msgid "Post Submit Notification"
+msgstr ""
+
+#: templates/admin/post-form.php:130
+msgid "Post Trash Notification"
+msgstr ""
+
+#: templates/admin/post-forms-list-table-view.php:8
+msgid "Add Form"
+msgstr ""
+
+#: templates/admin/post-forms-list-table-view.php:23
+msgid "Search Forms"
+msgstr ""
+
+#: templates/admin/settings/form-admin-login-register.php:8
+msgid "Login / Register Settings"
+msgstr ""
+
+#: templates/admin/settings/form-admin-login-register.php:11
+msgid "Form Restriction Message"
+msgstr ""
+
 #: templates/admin/settings/form-admin-login-register.php:14
 msgid ""
 "Will be shown to the user if he is not registered and guest posting is not "
 "active"
 msgstr ""
 
+#: templates/admin/settings/form-admin-login-register.php:18
+msgid "Show login"
+msgstr ""
+
+#: templates/admin/settings/form-admin-login-register.php:25
+msgid "Show login instead of restricted message (Pro)"
+msgstr ""
+
+#: templates/admin/settings/form-admin-notification-settings.php:4
+msgid "New post created - [post_title]"
+msgstr ""
+
+#: templates/admin/settings/form-admin-notification-settings.php:11
+#: templates/admin/settings/form-notification-settings.php:17
+msgid "Activate Notifications"
+msgstr ""
+
+#: templates/admin/settings/form-admin-notification-settings.php:17
+msgid "To"
+msgstr ""
+
+#: templates/admin/settings/form-admin-notification-settings.php:23
+#: templates/admin/settings/form-notification-settings.php:23
+msgid "Subject"
+msgstr ""
+
+#: templates/admin/settings/form-admin-notification-settings.php:32
+#: templates/admin/settings/form-settings-post-update.php:61
+msgid "Post Update Message"
+msgstr ""
+
+#: templates/admin/settings/form-ai-settings.php:11
+msgid "Enabled"
+msgstr ""
+
+#: templates/admin/settings/form-ai-settings.php:12
+msgid "Disabled"
+msgstr ""
+
+#: templates/admin/settings/form-ai-settings.php:17
+msgid "AI assistant"
+msgstr ""
+
+#: templates/admin/settings/form-ai-settings.php:18
+msgid "Show the \"✨ AI\" button in the fields of this form."
+msgstr ""
+
+#: templates/admin/settings/form-ai-settings.php:24
+msgid "Check posts submitted with this form before publishing."
+msgstr ""
+
+#: templates/admin/settings/form-ai-settings.php:30
+msgid "Generate excerpt, tags and SEO description for posts from this form."
+msgstr ""
+
+#: templates/admin/settings/form-ai-settings.php:40
+msgid "AI is not configured yet."
+msgstr ""
+
+#: templates/admin/settings/form-ai-settings.php:41
+msgid "Add an API key"
+msgstr ""
+
+#: templates/admin/settings/form-ai-settings.php:45
+msgid "AI features are off in every form until you enable them here."
+msgstr ""
+
+#: templates/admin/settings/form-ai-settings.php:71
+msgid ""
+"Turned off in the global AI settings, so it does not work in any form now."
+msgstr ""
+
+#: templates/admin/settings/form-design-color-settings.php:23
+msgid "Color Settings"
+msgstr ""
+
+#: templates/admin/settings/form-design-color-settings.php:25
+msgid "Buttons background color"
+msgstr ""
+
+#: templates/admin/settings/form-design-color-settings.php:31
+msgid "Buttons text color"
+msgstr ""
+
+#: templates/admin/settings/form-design-color-settings.php:37
+msgid "Buttons border color"
+msgstr ""
+
+#: templates/admin/settings/form-design-color-settings.php:43
+msgid "Buttons border radius"
+msgstr ""
+
+#: templates/admin/settings/form-notification-settings.php:9
+msgid "No Reply"
+msgstr ""
+
+#: templates/admin/settings/form-notification-settings.php:32
+msgid "From Name"
+msgstr ""
+
+#: templates/admin/settings/form-notification-settings.php:38
+msgid "From Email"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:10
+msgid ""
+"These settings are applicable only when the WooCommerce plugin is installed."
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:12
+msgid "Payment Options"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:19
+msgid "Enable Payments"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:22
+msgid "Check to enable Payments for this form"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:26
+msgid "Select The Product"
+msgstr ""
+
 #: templates/admin/settings/form-payment-settings.php:41
 msgid "WooCommerce is not activated. Please install and activate WooCommerce."
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:43
+msgid "The user will be redirect to this product when submit the form"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:47
+msgid "Direct Checkout"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:54
+msgid "Go direct to checkout"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:57
+msgid "Send your user direct to checkout not to the cart"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:61
+msgid "Product Added"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:62
+msgid "Product added to the cart. Check the cart."
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:68
+msgid "This message user will see when product will be added to the cart."
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:73
+#: templates/admin/settings/form-settings-post-update.php:33
+#: templates/admin/settings/form-settings-post.php:55
+msgid "Redirect To"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:78
+#: templates/admin/settings/form-settings-post-update.php:38
+#: templates/admin/settings/form-settings-post.php:60
+msgid "No Redirect"
+msgstr ""
+
+#: templates/admin/settings/form-payment-settings.php:79
+msgid "Same Post"
 msgstr ""
 
 #: templates/admin/settings/form-payment-settings.php:80
 msgid "WooCommerce user admin"
 msgstr ""
 
-#: inc/MenuSettings.php:180
-msgid "WordPress admin bar"
+#: templates/admin/settings/form-payment-settings.php:93
+#: templates/admin/settings/form-settings-post-update.php:49
+#: templates/admin/settings/form-settings-post.php:71
+msgid "After successfully submit, where the page will redirect to"
 msgstr ""
 
-#: inc/PostFormsListTable.php:360
-msgid "Yes"
+#: templates/admin/settings/form-payment-settings.php:98
+#: templates/admin/settings/form-settings-post-update.php:54
+#: templates/admin/settings/form-settings-post.php:76
+msgid "Custom URL"
 msgstr ""
 
-#: inc/Form.php:152
-msgid "You already have this field in the form"
+#: templates/admin/settings/form-settings-migration.php:5
+msgid "JSON copied!"
 msgstr ""
 
-#: inc/Editor.php:173
-msgid "You are not allowed to edit"
+#: templates/admin/settings/form-settings-migration.php:7
+msgid "Copy"
 msgstr ""
 
-#: inc/Editor.php:162 templates/admin/settings/form-settings-post-update.php:6
-msgid "You are not allowed to edit anymore."
+#: templates/admin/settings/form-settings-migration.php:8
+msgid "Migrate"
 msgstr ""
 
-#. You can buy pro version or find additional information.
-#: inc/MenuSettings.php:412
-#, php-format
+#: templates/admin/settings/form-settings-migration.php:12
+msgid "Note:"
+msgstr ""
+
+#: templates/admin/settings/form-settings-migration.php:13
 msgid ""
-"You can buy pro version or find additional information <a href=\"%1$s\" "
-"target=\"_blank\">here</a> or write some ideas or report issues in %2$s"
+"To transfer the form settings, simply copy the text from this textarea, "
+"paste it into the textarea of the other form, and click the \"Migrate\" "
+"button."
 msgstr ""
 
-#: inc/MenuSettings.php:885
-#, php-format
-msgid "You can check %1$s how to get Google Map API Key and how to set it up."
+#: templates/admin/settings/form-settings-post-update.php:2
+msgid "Post updated successfully"
 msgstr ""
 
-#: inc/fields/TaxonomiesFields.php:148
-#, php-format
+#: templates/admin/settings/form-settings-post-update.php:12
+msgid "Select edit page"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post-update.php:22
+msgid "Pages"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post-update.php:27
+msgid "Select page same with other form shortcode"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post-update.php:39
+#: templates/admin/settings/form-settings-post.php:61
+msgid "Currently Edited Post"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post-update.php:40
+#: templates/admin/settings/form-settings-post.php:62
+msgid "To a custom URL"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post-update.php:67
+msgid "Update Post Button text"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post-update.php:73
+msgid "Lock User From Editing After"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post-update.php:75
+msgid "hours"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post-update.php:76
 msgid ""
-"You can specify a comma-separated term IDs that need to be included. Check "
-"the tutorial to find the term ID using this %s"
+"After how many hours user will be locked from editing the submitted post."
 msgstr ""
 
-#: inc/fields/TaxonomiesFields.php:143
-msgid "You can specify a comma-separated terms IDs that need to be excluded."
+#: templates/admin/settings/form-settings-post-update.php:79
+msgid "Restriction text if the time was passed"
 msgstr ""
 
-#: templates/user-admin.php:105
+#: templates/admin/settings/form-settings-post.php:3
+msgid "Submit"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:27
+msgid "Add new button"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:33
+msgid "Always display"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:34
+#: templates/admin/settings/form-settings-post.php:91
+#: templates/admin/settings/form-settings-post.php:119
+msgid "Disable"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:43
+msgid "It will show add new button after post creation or on editing"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:47
+msgid "Add new button text"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:49
+msgid "Add New"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:100
+msgid "Show button save to draft"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:104
+msgid "Draft button text"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:106
+#: templates/front-form-header.php:38
+msgid "Save Draft"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:113
+msgid "Preview button"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:128
+msgid "Show button preview after post published."
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:132
+msgid "Preview button text"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:134
+#: templates/front-form-header.php:54
+msgid "Preview"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:140
+msgid "Comment Status"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:143
+msgid "Open"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:144
+msgid "Closed"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:149
+msgid "Submit Post Button text"
+msgstr ""
+
+#: templates/admin/settings/form-settings-post.php:155
+msgid "Post Added Message"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:4
+msgid "Place of control buttons"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:9
+msgid "On Top"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:10
+msgid "On Bottom"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:11
+msgid "On Top and Bottom"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:20
+msgid "Select place where the form control buttons will be placed"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:25
+msgid "Place to show success or error messages"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:30
+msgid "Popup on bottom right"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:31
+msgid "On bottom after form"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:32
+msgid "On top before form"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:41
+msgid "The place where will be displayed error and success messages"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:46
+msgid "Form Designs"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:58
+msgid "Simple Design"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:63
+msgid "Modern Design"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:68
+msgid "Minimum Style"
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:103
+msgid ""
+"Choose the visual design for your form. Pro designs require a premium "
+"license."
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:110
+msgid ""
+"Select front form design. Each design offers a unique visual style and user "
+"experience."
+msgstr ""
+
+#: templates/admin/settings/form-submission-display.php:117
+msgid "Custom css for form"
+msgstr ""
+
+#: templates/admin/settings/form-submission-restriction.php:14
+msgid "Enable Guest Post"
+msgstr ""
+
+#: templates/admin/settings/form-submission-restriction.php:21
+msgid "Unregistered users will be able to submit posts"
+msgstr ""
+
+#: templates/editor/attaches.php:6
+msgid "Download"
+msgstr ""
+
+#: templates/front-editor-form.php:9
+msgid "Post form is not selected please select existing one or"
+msgstr ""
+
+#: templates/front-editor-form.php:11
+msgid "Create New One"
+msgstr ""
+
+#: templates/front-editor-form.php:60
+msgid "Proudly powered by"
+msgstr ""
+
+#: templates/front-editor/category.php:10
+#: templates/front-editor/category.php:11
+msgid "Select category"
+msgstr ""
+
+#: templates/front-editor/google-map.php:3
+msgid "Write your address"
+msgstr ""
+
+#: templates/front-editor/post-featured-image.php:26
+msgid "Set featured image"
+msgstr ""
+
+#: templates/front-editor/tags.php:2 templates/front-editor/tags.php:3
+msgid "Select tags"
+msgstr ""
+
+#: templates/front-form-header.php:46
+msgid "Add new"
+msgstr ""
+
+#: templates/login-form.php:51
+msgid "Username or Email"
+msgstr ""
+
+#: templates/login-form.php:81
+msgid "Remember Me"
+msgstr ""
+
+#: templates/login-form.php:102
+msgid "Log In"
+msgstr ""
+
+#: templates/register-form.php:50
+msgid "First Name"
+msgstr ""
+
+#: templates/register-form.php:62
+msgid "Last Name"
+msgstr ""
+
+#: templates/register-form.php:88
+msgid "Email Address"
+msgstr ""
+
+#: templates/register-form.php:101
+msgid "Website"
+msgstr ""
+
+#: templates/register-form.php:127
+msgid "A password will be sent to your email address."
+msgstr ""
+
+#: templates/register-form.php:135
+msgid "Register"
+msgstr ""
+
+#: templates/user-admin.php:17
+msgid "Logout"
+msgstr ""
+
+#: templates/user-admin.php:84
+msgid "Edit Post"
+msgstr ""
+
+#: templates/user-admin.php:84
+msgid "Cannot Edit"
+msgstr ""
+
+#: templates/user-admin.php:91
+msgid "Delete Post"
+msgstr ""
+
+#: templates/user-admin.php:110
 msgid "« Previous"
+msgstr ""
+
+#: templates/user-admin.php:111
+msgid "Next »"
+msgstr ""
+
+#: templates/user-admin.php:120
+msgid "0 posts found"
 msgstr ""

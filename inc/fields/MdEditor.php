@@ -8,8 +8,6 @@
 
 namespace BFE\Field;
 
-use BFE\Editor;
-
 use BFE\Form;
 
 defined('ABSPATH') || exit;
@@ -110,7 +108,7 @@ class MdEditor
                 } else {
                     update_post_meta($post_id, $name, $content);
                 }
-            } elseif ($settings['post_content'] === true) {
+            } elseif (isset($settings['post_content']) && $settings['post_content'] === true) {
                 $post_data['post_content'] = $content;
                 wp_update_post($post_data);
             } else {

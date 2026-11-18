@@ -89,6 +89,7 @@ function fe_render_post_type_select($form_settings) {
                     <a href="#fe-metabox-submission-restriction" class="nav-tab sub "><?= __('Submission Restriction', 'front-editor') ?></a>
                     <a href="#fe-metabox-submission-display-design" class="nav-tab sub "><?= __('Display Settings', 'front-editor') ?></a>
                     <a href="#fe-metabox-payment-settings" class="nav-tab sub"><?= __('Payment Settings', 'front-editor') ?></a>
+                    <a href="#fe-metabox-ai-settings" class="nav-tab sub"><?= __('✨ AI', 'front-editor') ?></a>
                     <a href="#fe-metabox-settings-migration" class="nav-tab sub fe-migration-settings-tab " data-migrate="export"><?= __('Migration Settings', 'front-editor') ?></a>
                     <!-- <a href="#fe-metabox-post_expiration" class="nav-tab sub ">Post Expiration</a> -->
                 </h2>
@@ -108,6 +109,9 @@ function fe_render_post_type_select($form_settings) {
                 </div>
                 <div id="fe-metabox-payment-settings" class="group sub">
                     <?php require_once __DIR__ . '/settings/form-payment-settings.php' ?>
+                </div>
+                <div id="fe-metabox-ai-settings" class="group sub">
+                    <?php require_once __DIR__ . '/settings/form-ai-settings.php' ?>
                 </div>
                 <div id="fe-metabox-settings-migration" class="group sub">
                     <?php require_once __DIR__ . '/settings/form-settings-migration.php' 

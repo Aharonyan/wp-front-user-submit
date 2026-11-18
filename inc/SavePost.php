@@ -144,46 +144,46 @@ class SavePost {
      * @param string $image_url image url.
      */
     public static function upload_image( $image = [], $image_url = '', $parent_post_id = 0 ) {
-        if ( empty( $image ) ) {
-            if ( empty( $image_url ) ) {
-                return false;
-            }
+        if ( empty( $image ) && empty( $image_url ) ) {
             return false;
         }
         require_once ABSPATH . 'wp-admin/includes/image.php';
-        if ( !empty( $image ) ) {
-            if ( !file_is_displayable_image( $image['tmp_name'] ) ) {
-                wp_send_json_error( [
-                    'message' => __( 'Image type is not supported, please select another image', 'front-editor' ),
-                ] );
-                return;
-            }
-            $cont = file_get_contents( $image['tmp_name'] );
-            $new_file_name = $image['name'];
-            $ext = sanitize_mime_type( $image['type'] );
-        }
-        if ( !empty( $image_url ) ) {
-            $url = $image_url;
-            $get = wp_remote_get( $url );
-            $new_file_name = basename( $url );
-            // to get file name
-            $ext = 'image/' . pathinfo( $url, PATHINFO_EXTENSION );
-            // to get extension
-            if ( empty( $get['response']['code'] ) ) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        $downloaded = '';
+        if ( empty( $image ) ) {
+            // download_url() uses wp_safe_remote_get(), no requests to internal hosts
+            $downloaded = download_url( $image_url );
+            if ( is_wp_error( $downloaded ) ) {
                 return false;
             }
-            $cont = wp_remote_retrieve_body( $get );
+            $image = [
+                'tmp_name' => $downloaded,
+                'name'     => basename( (string) wp_parse_url( $image_url, PHP_URL_PATH ) ),
+            ];
         }
-        $new_file_name = sanitize_file_name( $new_file_name );
-        $upload = wp_upload_bits( $new_file_name, null, $cont );
+        $checked = ( file_is_displayable_image( $image['tmp_name'] ) ? UploadSecurity::validate_file( $image['tmp_name'], $image['name'] ) : null );
+        if ( empty( $checked ) || is_wp_error( $checked ) ) {
+            if ( $downloaded ) {
+                wp_delete_file( $downloaded );
+            }
+            wp_send_json_error( [
+                'message' => __( 'Image type is not supported, please select another image', 'front-editor' ),
+            ] );
+            return;
+        }
+        $cont = file_get_contents( $image['tmp_name'] );
+        if ( $downloaded ) {
+            wp_delete_file( $downloaded );
+        }
+        $upload = wp_upload_bits( $checked['name'], null, $cont );
         if ( isset( $upload['error'] ) && !empty( $upload['error'] ) ) {
             return [
                 'message' => $upload['error'],
             ];
         }
         $attachment = [
-            'post_title'     => $new_file_name,
-            'post_mime_type' => $ext,
+            'post_title'     => $checked['name'],
+            'post_mime_type' => $checked['type'],
             'post_status'    => 'inherit',
         ];
         $attach_id = wp_insert_attachment( $attachment, $upload['file'], $parent_post_id );
@@ -439,6 +439,11 @@ class SavePost {
             }
         }
         $upload_data = self::upload_image( $image, $image_url );
+        if ( empty( $upload_data['attach_id'] ) ) {
+            wp_send_json_error( [
+                'message' => __( 'Image type is not supported, please select another image', 'front-editor' ),
+            ] );
+        }
         wp_send_json_success( [
             'url' => $upload_data['upload']['url'],
             'id'  => $upload_data['attach_id'],

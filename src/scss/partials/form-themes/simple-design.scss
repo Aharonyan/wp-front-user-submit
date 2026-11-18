@@ -28,6 +28,11 @@ $shadow_border: 1px 2px 5px 0px rgba(227, 218, 227, 1);
         box-shadow: $shadow_border;
         border: 0px;
     }
+    // Title input is rendered outside .wrapper, so it needs its own full width
+    input.fus_post_title {
+        width: 100%;
+        box-sizing: border-box;
+    }
     .wrapper {
         .column {
             label {

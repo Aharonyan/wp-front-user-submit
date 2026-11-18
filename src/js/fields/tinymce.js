@@ -6,7 +6,6 @@ export default ($) => {
         $('.textarea-field.tinymce').each((i, val) => {
             container = $(val);
             var textarea_id = $(container).find('textarea').attr('id')
-            console.log(textarea_id)
             $(container).parent().mouseenter(function () {
                 document.getElementById(textarea_id).value = tinyMCE.get(textarea_id).getContent();
             });

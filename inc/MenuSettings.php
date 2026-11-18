@@ -72,6 +72,8 @@ class MenuSettings
 
 		add_action('admin_init', [__CLASS__, 'user_admin_settings'], $priority = 10, $accepted_args = 1);
 
+		add_action('admin_init', [__CLASS__, 'suggest_feature_settings'], $priority = 10, $accepted_args = 1);
+
 		/**
 		 * short information and instruction
 		 */
@@ -202,8 +204,17 @@ class MenuSettings
 				'fields_group' => 'bfe_general_user_admin_settings_group',
 				'sections' => 'bfe_general_user_admin_settings',
 				'shortcode' => sprintf('User admin Shortcode:<code>%s</code>', '[fe_fs_user_admin]')
+			],
+			'suggest_feature' => [
+				'title' => __('Suggest Feature', 'front-editor'),
+				'heading' => __('Suggest a Feature Widget', 'front-editor'),
+				'fields_group' => 'bfe_suggest_feature_settings_group',
+				'sections' => 'bfe_suggest_feature_settings',
+				'shortcode' => ''
 			]
 		];
+
+		$tabs = apply_filters('bfe_settings_tabs', $tabs);
 
 		printf(
 			'<div class="wrap">
@@ -223,6 +234,7 @@ class MenuSettings
 
 		if (isset($tabs[$active_tab])) {
 			printf('<h1>%s</h1>%s', $tabs[$active_tab]['heading'], $tabs[$active_tab]['shortcode']);
+			settings_errors();
 			settings_fields($tabs[$active_tab]['fields_group']);
 			do_settings_sections($tabs[$active_tab]['sections']);
 		}
@@ -1201,11 +1213,177 @@ class MenuSettings
 		}
 	}
 
+	public static function suggest_feature_settings()
+	{
+		$page = 'bfe_suggest_feature_settings';
+		$option_group = 'bfe_suggest_feature_settings_group';
+		$option_name = 'bfe_suggest_feature_options';
+
+		add_settings_section(
+			'bfe_suggest_feature_section',
+			__('Features.Vote Integration', 'front-editor'),
+			[__CLASS__, 'suggest_feature_section_description'],
+			$page
+		);
+
+		register_setting($option_group, $option_name, [
+			'sanitize_callback' => [__CLASS__, 'sanitize_suggest_feature_options']
+		]);
+
+		$option_value = get_option($option_name, []);
+
+		add_settings_field(
+			'slug',
+			__('Features.Vote Slug', 'front-editor'),
+			[__CLASS__, 'suggest_feature_slug_field'],
+			$page,
+			'bfe_suggest_feature_section',
+			['field_name' => 'slug', 'name' => $option_name, 'option' => $option_value]
+		);
+
+		add_settings_field(
+			'color_mode',
+			__('Color Mode', 'front-editor'),
+			[__CLASS__, 'suggest_feature_color_mode_field'],
+			$page,
+			'bfe_suggest_feature_section',
+			['field_name' => 'color_mode', 'name' => $option_name, 'option' => $option_value]
+		);
+
+		add_settings_field(
+			'pass_user_data',
+			__('Pass User Data', 'front-editor'),
+			[__CLASS__, 'suggest_feature_pass_user_data_field'],
+			$page,
+			'bfe_suggest_feature_section',
+			['field_name' => 'pass_user_data', 'name' => $option_name, 'option' => $option_value]
+		);
+	}
+
+	public static function suggest_feature_section_description()
+	{
+		$options = get_option('bfe_suggest_feature_options', []);
+		$slug = sanitize_text_field($options['slug'] ?? '');
+
+		echo '<p>' . esc_html__('Configure the "Suggest a Feature" popup widget from Features.Vote. Users can submit feature requests directly from your site.', 'front-editor') . '</p>';
+
+		if ($slug) {
+			echo '<div style="margin-bottom:16px;">';
+			echo '<button type="button" id="fus-suggest-feature-preview-btn" class="button button-secondary">' . esc_html__('✨ Open Widget Preview', 'front-editor') . '</button>';
+			echo '<p class="description">' . esc_html__('Click to preview the widget with your current settings.', 'front-editor') . '</p>';
+			echo '</div>';
+		} else {
+			echo '<p class="description">' . esc_html__('Enter your Features.Vote slug below to enable the widget preview.', 'front-editor') . '</p>';
+		}
+	}
+
+	public static function suggest_feature_slug_field($args)
+	{
+		$field_name = $args['field_name'];
+		$value = sanitize_text_field($args['option'][$field_name] ?? '');
+		printf(
+			'<input type="text" style="width:300px;" id="%s" name="%s[%s]" value="%s" placeholder="%s">',
+			esc_attr($field_name),
+			esc_attr($args['name']),
+			esc_attr($field_name),
+			esc_attr($value),
+			esc_attr__('your-project-slug', 'front-editor')
+		);
+		echo '<p class="description">' . esc_html__('Your Features.Vote project slug (e.g. "my-app"). Find it in your Features.Vote dashboard.', 'front-editor') . '</p>';
+	}
+
+	public static function suggest_feature_color_mode_field($args)
+	{
+		$field_name = $args['field_name'];
+		$value = $args['option'][$field_name] ?? 'light';
+		$modes = ['light' => __('Light', 'front-editor'), 'dark' => __('Dark', 'front-editor')];
+		printf('<select id="%s" name="%s[%s]">', esc_attr($field_name), esc_attr($args['name']), esc_attr($field_name));
+		foreach ($modes as $key => $label) {
+			printf('<option value="%s" %s>%s</option>', esc_attr($key), selected($value, $key, false), esc_html($label));
+		}
+		echo '</select>';
+	}
+
+	public static function suggest_feature_pass_user_data_field($args)
+	{
+		$field_name = $args['field_name'];
+		$checked = !empty($args['option'][$field_name]) ? 'checked' : '';
+		printf(
+			'<label><input type="checkbox" id="%s" name="%s[%s]" value="1" %s> %s</label>',
+			esc_attr($field_name),
+			esc_attr($args['name']),
+			esc_attr($field_name),
+			$checked,
+			esc_html__("Pass the logged-in user's name, email, and ID to the widget", 'front-editor')
+		);
+		echo '<p class="description">' . esc_html__("When enabled, the current user's details are pre-filled in the feature request form.", 'front-editor') . '</p>';
+	}
+
+	public static function sanitize_suggest_feature_options($input)
+	{
+		return [
+			'slug' => sanitize_text_field($input['slug'] ?? ''),
+			'color_mode' => in_array($input['color_mode'] ?? '', ['light', 'dark']) ? $input['color_mode'] : 'light',
+			'pass_user_data' => !empty($input['pass_user_data']) ? '1' : ''
+		];
+	}
+
+	public static function output_suggest_feature_preview_script()
+	{
+		$options = get_option('bfe_suggest_feature_options', []);
+		$slug = sanitize_text_field($options['slug'] ?? '');
+
+		if (!$slug) {
+			return;
+		}
+
+		$color_mode = in_array($options['color_mode'] ?? '', ['light', 'dark']) ? $options['color_mode'] : 'light';
+
+		$extra_attrs = '';
+		if (!empty($options['pass_user_data']) && is_user_logged_in()) {
+			$user = wp_get_current_user();
+			$extra_attrs = sprintf(
+				' user_email="%s" user_name="%s" user_id="%s"',
+				esc_attr($user->user_email),
+				esc_attr($user->display_name),
+				esc_attr((string) $user->ID)
+			);
+		}
+
+		printf(
+			'<script src="https://features.vote/widget/widget.js" slug="%s" color_mode="%s"%s></script>' . "\n",
+			esc_attr($slug),
+			esc_attr($color_mode),
+			$extra_attrs
+		);
+
+		echo '<script>
+(function () {
+	function initPreviewBtn() {
+		var btn = document.getElementById("fus-suggest-feature-preview-btn");
+		if (btn) {
+			btn.addEventListener("click", function () {
+				if (typeof window.openFeatureRequestPopup === "function") {
+					window.openFeatureRequestPopup();
+				}
+			});
+		}
+	}
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initPreviewBtn);
+	} else {
+		initPreviewBtn();
+	}
+})();
+</script>' . "\n";
+	}
+
 	public static function enqueue_custom_option_page_scripts()
 	{
 		// Check if we're on the custom options page
 		$screen = get_current_screen();
-		if ($screen->id === 'front-user-submit_page_fe-global-settings') {
+		// Screen id contains the translated parent menu title, so compare only the page slug
+		if ($screen && substr($screen->id, -strlen('_page_fe-global-settings')) === '_page_fe-global-settings') {
 			// Get asset file for admin build
 			$asset_file = FE_PLUGIN_DIR_PATH . 'build/adminStyle.asset.php';
 			$asset = file_exists($asset_file) ? require $asset_file : ['version' => '1.0.0', 'dependencies' => []];
@@ -1223,6 +1401,11 @@ class MenuSettings
 			wp_enqueue_script('codemirror-init', FUS__PLUGIN_URL . 'assets/vendors/codemirror-init.js', array('codemirror-css'), '1.0.1', true);
 			wp_enqueue_style('codemirror', FUS__PLUGIN_URL . 'assets/vendors/codemirror.min.css', array(), '1.0.0');
 			wp_enqueue_style('dracula', FUS__PLUGIN_URL . 'assets/vendors/dracula.min.css', array(), '1.0.0');
+
+			$active_tab = sanitize_text_field($_GET['tab'] ?? 'global_settings');
+			if ($active_tab === 'suggest_feature') {
+				add_action('admin_footer', [__CLASS__, 'output_suggest_feature_preview_script']);
+			}
 		}
 	}
 }

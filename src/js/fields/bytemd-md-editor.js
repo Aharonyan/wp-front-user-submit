@@ -30,6 +30,9 @@ $('.md-editor').each((i, val) => {
     props: props,
   });
 
+  window.fe_md_editors = window.fe_md_editors || {};
+  window.fe_md_editors[id] = md_editor;
+
   md_editor.$on('change', (e) => {
     md_editor.$set({ value: e.detail.value });
     textarea.val(e.detail.value)

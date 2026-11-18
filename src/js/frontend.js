@@ -44,6 +44,11 @@ jQuery('.fus-form').each((i, val) => {
     front_post_form(val, jQuery, SlimSelect, Swal)
 })
 
+import aiAssistant from './inc/ai-assistant';
+jQuery(() => {
+    document.querySelectorAll('.fus-form').forEach((form) => aiAssistant(form))
+})
+
 
 import './fields/bytemd-md-editor';
 

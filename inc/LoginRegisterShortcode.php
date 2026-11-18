@@ -110,7 +110,12 @@ class LoginRegisterShortcodes
             // Pass AJAX flag to template
             $fus_ajax_enabled = $ajax;
             $fus_form_id = $fus_form_count;
-            $fus_redirect = $redirect;
+            if (!empty($redirect)) {
+                $fus_redirect = $redirect;
+            } else {
+                $options = get_option('bfe_general_settings_login_register_group_options', []);
+                $fus_redirect = !empty($options['login_redirect']['link']) ? $options['login_redirect']['link'] : false;
+            }
 
             require fe_template_path('login-form.php');
             return ob_get_clean();
@@ -131,7 +136,12 @@ class LoginRegisterShortcodes
             // Pass AJAX flag to template
             $fus_ajax_enabled = $ajax;
             $fus_form_id = $fus_form_count;
-            $fus_redirect = $redirect;
+            if (!empty($redirect)) {
+                $fus_redirect = $redirect;
+            } else {
+                $options = get_option('bfe_general_settings_login_register_group_options', []);
+                $fus_redirect = !empty($options['registration_redirect']['link']) ? $options['registration_redirect']['link'] : false;
+            }
 
             require fe_template_path('register-form.php');
             return ob_get_clean();

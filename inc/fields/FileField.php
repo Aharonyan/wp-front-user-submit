@@ -8,6 +8,7 @@
 namespace BFE\Field;
 
 use BFE\Form;
+use BFE\UploadSecurity;
 defined( 'ABSPATH' ) || exit;
 class FileField {
     public static $field_label = 'File';
@@ -16,7 +17,6 @@ class FileField {
 
     public static function init() {
         add_filter( 'admin_post_form_formBuilder_settings', [__CLASS__, 'add_field_settings'] );
-        add_action( 'rest_api_init', [__CLASS__, 'file_upload_endpoints'] );
         add_filter( 'bfe_front_editor_localize_data', function ( $data ) {
             $data['get_rest_url'] = get_rest_url( null, 'bfe/v1' );
             return $data;
@@ -50,9 +50,17 @@ class FileField {
     public static function process_files( \WP_REST_Request $request ) {
         self::start_session_if_needed();
         $files = $request->get_file_params();
+        if ( empty( $files ) ) {
+            return new \WP_Error('upload_error', __( 'File is not exist', 'front-editor' ), [
+                'status' => 400,
+            ]);
+        }
         foreach ( $files as $file ) {
             apply_filters( 'bfe_before_file_filed_process_file', $file );
             $image = self::upload_file( $file );
+            if ( is_wp_error( $image ) ) {
+                return $image;
+            }
             if ( !isset( $_SESSION['bfe_uploaded_files'] ) ) {
                 $_SESSION['bfe_uploaded_files'] = [];
             }
@@ -68,19 +76,36 @@ class FileField {
      * @return array
      */
     public static function upload_file( $file = [] ) {
-        if ( empty( $file ) ) {
-            return false;
+        if ( empty( $file ) || empty( $file['tmp_name'] ) ) {
+            return new \WP_Error('upload_error', __( 'File is not exist', 'front-editor' ), [
+                'status' => 400,
+            ]);
+        }
+        if ( !empty( $file['error'] ) || !is_uploaded_file( $file['tmp_name'] ) ) {
+            return new \WP_Error('upload_error', __( 'Error during upload', 'front-editor' ), [
+                'status' => 400,
+            ]);
+        }
+        if ( filesize( $file['tmp_name'] ) > wp_max_upload_size() ) {
+            return new \WP_Error('upload_error', __( 'File is too large', 'front-editor' ), [
+                'status' => 413,
+            ]);
         }
         require_once ABSPATH . 'wp-admin/includes/image.php';
         require_once ABSPATH . 'wp-admin/includes/file.php';
         require_once ABSPATH . 'wp-admin/includes/media.php';
-        if ( !empty( $file ) ) {
-            $cont = file_get_contents( $file['tmp_name'] );
-            $new_file_name = $file['name'];
-            $ext = sanitize_mime_type( $file['type'] );
+        // type comes from the file content, never from the client
+        $checked = UploadSecurity::validate_file( $file['tmp_name'], $file['name'] );
+        if ( is_wp_error( $checked ) ) {
+            return $checked;
         }
-        $new_file_name = sanitize_file_name( $new_file_name );
+        $cont = file_get_contents( $file['tmp_name'] );
+        $new_file_name = $checked['name'];
+        $ext = $checked['type'];
         $upload = wp_upload_bits( $new_file_name, null, $cont );
+        if ( !empty( $upload['error'] ) ) {
+            return new \WP_Error('upload_error', $upload['error']);
+        }
         $attachment = array(
             'post_title'     => $new_file_name,
             'post_mime_type' => $ext,
@@ -138,42 +163,15 @@ class FileField {
 
     public static function load_file( \WP_REST_Request $request ) {
         $att_id = (int) $request['id'];
-        $att = wp_get_attachment_metadata( $att_id );
-        $type = get_post_mime_type( $att_id );
-        $path = get_attached_file( $att_id );
-        $file = self::getTempFile( $att_id );
-        if ( empty( $file ) ) {
+        $path = ( 'attachment' === get_post_type( $att_id ) ? get_attached_file( $att_id ) : '' );
+        if ( empty( $path ) || !is_file( $path ) ) {
             wp_send_json_error( [
                 'field'    => self::$field_type,
                 'messages' => __( 'File is not exist', 'front-editor' ),
-            ] );
+            ], 404 );
         }
-        header( 'Access-Control-Expose-Headers: Content-Disposition' );
-        header( 'Content-Type: ' . $file['type'] );
-        header( 'Content-Length: ' . $file['length'] );
-        header( 'Content-Disposition: inline; filename="' . $file['name'] . '"' );
-        echo $file['content'];
+        UploadSecurity::send_file( $path );
         exit;
-    }
-
-    public static function getTempFile( $att_id ) {
-        $file = get_attached_file( $att_id );
-        try {
-            if ( file_exists( $file ) ) {
-                $handle = fopen( $file, 'r' );
-                $content = fread( $handle, filesize( $file ) );
-                fclose( $handle );
-                return array(
-                    'name'    => basename( $file ),
-                    'content' => $content,
-                    'type'    => mime_content_type( $file ),
-                    'length'  => filesize( $file ),
-                );
-            }
-        } catch ( \Exception $e ) {
-            return null;
-        }
-        return false;
     }
 
     /**
