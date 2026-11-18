@@ -1,0 +1,16 @@
+# Files left out of the WordPress.org SVN by 10up/action-wordpress-plugin-deploy.
+# .wordpress-org/ is deployed separately to SVN /assets.
+.git
+.github
+.gitignore
+.distignore
+.DS_Store
+.wordpress-org
+README.md
+CLAUDE.md
+.mcp.json
+node_modules
+tests
+test-results
+playwright-report
+playwright.config.ts
