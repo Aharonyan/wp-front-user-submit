@@ -824,8 +824,8 @@ class Form
         wp_register_script(
             'jquery-ui',
             plugins_url('assets/vendors/jquery-ui.min.js', dirname(__FILE__)),
-            $asset['dependencies'],
-            $asset['version'],
+            ['jquery'],
+            '1.13.3',
             true
         );
         wp_register_script(

@@ -327,9 +327,12 @@ class LoginRegisterShortcodes
             ];
         }
 
+        // Same emails as wp-login.php registration: a set-password link to the user, a notice to the admin
+        wp_new_user_notification($user, null, 'both');
+
         return [
             'success' => true,
-            'message' => __('Registration successful. Your password will be sent via email shortly.', 'front-editor'),
+            'message' => __('Registration successful. Check your email for a link to set your password.', 'front-editor'),
             'redirect' => !empty($data['redirect']) ? wp_validate_redirect(esc_url_raw(wp_unslash($data['redirect'])), home_url()) : home_url()
         ];
     }

@@ -1,5 +1,5 @@
 /*!
- * FilePond 4.30.4
+ * FilePond 4.32.14
  * Licensed under MIT, https://opensource.org/licenses/MIT/
  * Please visit https://pqina.nl/filepond/ for details.
  */
@@ -173,7 +173,7 @@
     right: -0.75em;
     top: -0.75em;
     bottom: -0.75em;
-    content: "";
+    content: '';
 }
 /* Soft styles */
 .filepond--file-action-button {
@@ -212,10 +212,10 @@
     height: 2em;
     padding: 0.1875em;
 }
-.filepond--action-edit-item.filepond--action-edit-item[data-align*="center"] {
+.filepond--action-edit-item.filepond--action-edit-item[data-align*='center'] {
     margin-left: -0.1875em;
 }
-.filepond--action-edit-item.filepond--action-edit-item[data-align*="bottom"] {
+.filepond--action-edit-item.filepond--action-edit-item[data-align*='bottom'] {
     margin-bottom: -0.1875em;
 }
 .filepond--action-edit-item-alt {
@@ -379,77 +379,77 @@
 .filepond--file {
     /* .filepond--file-action-button */
 }
-.filepond--file [data-align*="left"] {
+.filepond--file [data-align*='left'] {
     left: 0.5625em;
 }
-.filepond--file [data-align*="right"] {
+.filepond--file [data-align*='right'] {
     right: 0.5625em;
 }
-.filepond--file [data-align*="center"] {
+.filepond--file [data-align*='center'] {
     left: calc(50% - 0.8125em); /* .8125 is half of button width */
 }
-.filepond--file [data-align*="bottom"] {
+.filepond--file [data-align*='bottom'] {
     bottom: 1.125em;
 }
-.filepond--file [data-align="center"] {
+.filepond--file [data-align='center'] {
     top: calc(50% - 0.8125em);
 }
 .filepond--file .filepond--progress-indicator {
     margin-top: 0.1875em;
 }
-.filepond--file .filepond--progress-indicator[data-align*="right"] {
+.filepond--file .filepond--progress-indicator[data-align*='right'] {
     margin-right: 0.1875em;
 }
-.filepond--file .filepond--progress-indicator[data-align*="left"] {
+.filepond--file .filepond--progress-indicator[data-align*='left'] {
     margin-left: 0.1875em;
 }
 /* make sure text does not overlap */
-[data-filepond-item-state="cancelled"] .filepond--file-info,
-[data-filepond-item-state*="invalid"] .filepond--file-info,
-[data-filepond-item-state*="error"] .filepond--file-info {
+[data-filepond-item-state='cancelled'] .filepond--file-info,
+[data-filepond-item-state*='invalid'] .filepond--file-info,
+[data-filepond-item-state*='error'] .filepond--file-info {
     margin-right: 2.25em;
 }
-[data-filepond-item-state~="processing"] .filepond--file-status-sub {
+[data-filepond-item-state~='processing'] .filepond--file-status-sub {
     opacity: 0;
 }
-[data-filepond-item-state~="processing"]
+[data-filepond-item-state~='processing']
     .filepond--action-abort-item-processing
     ~ .filepond--file-status
     .filepond--file-status-sub {
     opacity: 0.5;
 }
-[data-filepond-item-state="processing-error"] .filepond--file-status-sub {
+[data-filepond-item-state='processing-error'] .filepond--file-status-sub {
     opacity: 0;
 }
-[data-filepond-item-state="processing-error"]
+[data-filepond-item-state='processing-error']
     .filepond--action-retry-item-processing
     ~ .filepond--file-status
     .filepond--file-status-sub {
     opacity: 0.5;
 }
-[data-filepond-item-state="processing-complete"] {
+[data-filepond-item-state='processing-complete'] {
     /* busy state */
 }
-[data-filepond-item-state="processing-complete"] .filepond--action-revert-item-processing svg {
+[data-filepond-item-state='processing-complete'] .filepond--action-revert-item-processing svg {
     -webkit-animation: fall 0.5s 0.125s linear both;
     animation: fall 0.5s 0.125s linear both;
 }
-[data-filepond-item-state="processing-complete"] {
+[data-filepond-item-state='processing-complete'] {
     /* hide details by default, only show when can revert */
 }
-[data-filepond-item-state="processing-complete"] .filepond--file-status-sub {
+[data-filepond-item-state='processing-complete'] .filepond--file-status-sub {
     opacity: 0.5;
 }
-[data-filepond-item-state="processing-complete"]
-    .filepond--processing-complete-indicator:not([style*="hidden"])
+[data-filepond-item-state='processing-complete']
+    .filepond--processing-complete-indicator:not([style*='hidden'])
     ~ .filepond--file-status
     .filepond--file-status-sub {
     opacity: 0;
 }
-[data-filepond-item-state="processing-complete"] .filepond--file-info-sub {
+[data-filepond-item-state='processing-complete'] .filepond--file-info-sub {
     opacity: 0;
 }
-[data-filepond-item-state="processing-complete"]
+[data-filepond-item-state='processing-complete']
     .filepond--action-revert-item-processing
     ~ .filepond--file-info
     .filepond--file-info-sub {
@@ -457,15 +457,15 @@
 }
 /* file state can be invalid or error, both are visually similar but */
 /* having them as separate states might be useful */
-[data-filepond-item-state*="invalid"] .filepond--panel,
-[data-filepond-item-state*="invalid"] .filepond--file-wrapper,
-[data-filepond-item-state*="error"] .filepond--panel,
-[data-filepond-item-state*="error"] .filepond--file-wrapper {
+[data-filepond-item-state*='invalid'] .filepond--panel,
+[data-filepond-item-state*='invalid'] .filepond--file-wrapper,
+[data-filepond-item-state*='error'] .filepond--panel,
+[data-filepond-item-state*='error'] .filepond--file-wrapper {
     -webkit-animation: shake 0.65s linear both;
     animation: shake 0.65s linear both;
 }
 /* spins progress indicator when file is marked as busy */
-[data-filepond-item-state*="busy"] .filepond--progress-indicator svg {
+[data-filepond-item-state*='busy'] .filepond--progress-indicator svg {
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
 }
@@ -595,12 +595,12 @@
     }
 }
 /* ignore all other interaction elements while dragging a file */
-.filepond--hopper[data-hopper-state="drag-over"] > * {
+.filepond--hopper[data-hopper-state='drag-over'] > * {
     pointer-events: none;
 }
 /* capture all hit tests using a hidden layer, this speeds up the event flow */
-.filepond--hopper[data-hopper-state="drag-over"]::after {
-    content: "";
+.filepond--hopper[data-hopper-state='drag-over']::after {
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
@@ -632,6 +632,8 @@
 
     will-change: transform, opacity;
 
+    touch-action: auto;
+
     /* item children order */
 }
 .filepond--item > .filepond--panel {
@@ -656,25 +658,25 @@
     transition: box-shadow 0.125s ease-in-out;
     box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
-.filepond--item[data-drag-state="drag"] {
+.filepond--item[data-drag-state='drag'] {
     cursor: -webkit-grabbing;
     cursor: grabbing;
 }
-.filepond--item[data-drag-state="drag"] > .filepond--panel {
+.filepond--item[data-drag-state='drag'] > .filepond--panel {
     box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.325);
 }
-.filepond--item[data-drag-state]:not([data-drag-state="idle"]) {
+.filepond--item[data-drag-state]:not([data-drag-state='idle']) {
     z-index: 2;
 }
 /* states */
 .filepond--item-panel {
     background-color: #64605e;
 }
-[data-filepond-item-state="processing-complete"] .filepond--item-panel {
+[data-filepond-item-state='processing-complete'] .filepond--item-panel {
     background-color: #369763;
 }
-[data-filepond-item-state*="invalid"] .filepond--item-panel,
-[data-filepond-item-state*="error"] .filepond--item-panel {
+[data-filepond-item-state*='invalid'] .filepond--item-panel,
+[data-filepond-item-state*='error'] .filepond--item-panel {
     background-color: #c44e47;
 }
 /* style of item panel */
@@ -692,11 +694,11 @@
     will-change: transform;
 }
 /* scroll mode */
-.filepond--list-scroller[data-state="overflow"] .filepond--list {
+.filepond--list-scroller[data-state='overflow'] .filepond--list {
     bottom: 0;
     right: 0;
 }
-.filepond--list-scroller[data-state="overflow"] {
+.filepond--list-scroller[data-state='overflow'] {
     overflow-y: scroll;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -735,22 +737,22 @@
     left: 0.75em;
     right: 0.75em;
 }
-.filepond--root[data-style-panel-layout~="integrated"] {
+.filepond--root[data-style-panel-layout~='integrated'] {
     width: 100%;
     height: 100%;
     max-width: none;
     margin: 0;
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--panel-root,
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--panel-root {
+.filepond--root[data-style-panel-layout~='circle'] .filepond--panel-root,
+.filepond--root[data-style-panel-layout~='integrated'] .filepond--panel-root {
     border-radius: 0;
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--panel-root > *,
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--panel-root > * {
+.filepond--root[data-style-panel-layout~='circle'] .filepond--panel-root > *,
+.filepond--root[data-style-panel-layout~='integrated'] .filepond--panel-root > * {
     display: none;
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--drop-label,
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--drop-label {
+.filepond--root[data-style-panel-layout~='circle'] .filepond--drop-label,
+.filepond--root[data-style-panel-layout~='integrated'] .filepond--drop-label {
     bottom: 0;
     height: auto;
     display: flex;
@@ -758,66 +760,66 @@
     align-items: center;
     z-index: 7;
 }
-.filepond--root[data-style-panel-layout~="circle"],
-.filepond--root[data-style-panel-layout~="integrated"] {
+.filepond--root[data-style-panel-layout~='circle'],
+.filepond--root[data-style-panel-layout~='integrated'] {
     /* we're only loading one item, this makes the intro animation a bit nicer */
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--item-panel,
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--item-panel {
+.filepond--root[data-style-panel-layout~='circle'] .filepond--item-panel,
+.filepond--root[data-style-panel-layout~='integrated'] .filepond--item-panel {
     display: none;
 }
-.filepond--root[data-style-panel-layout~="compact"] .filepond--list-scroller,
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--list-scroller {
+.filepond--root[data-style-panel-layout~='compact'] .filepond--list-scroller,
+.filepond--root[data-style-panel-layout~='integrated'] .filepond--list-scroller {
     overflow: hidden;
     height: 100%;
     margin-top: 0;
     margin-bottom: 0;
 }
-.filepond--root[data-style-panel-layout~="compact"] .filepond--list,
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--list {
+.filepond--root[data-style-panel-layout~='compact'] .filepond--list,
+.filepond--root[data-style-panel-layout~='integrated'] .filepond--list {
     left: 0;
     right: 0;
     height: 100%;
 }
-.filepond--root[data-style-panel-layout~="compact"] .filepond--item,
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--item {
+.filepond--root[data-style-panel-layout~='compact'] .filepond--item,
+.filepond--root[data-style-panel-layout~='integrated'] .filepond--item {
     margin: 0;
 }
-.filepond--root[data-style-panel-layout~="compact"] .filepond--file-wrapper,
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--file-wrapper {
+.filepond--root[data-style-panel-layout~='compact'] .filepond--file-wrapper,
+.filepond--root[data-style-panel-layout~='integrated'] .filepond--file-wrapper {
     height: 100%;
 }
-.filepond--root[data-style-panel-layout~="compact"] .filepond--drop-label,
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--drop-label {
+.filepond--root[data-style-panel-layout~='compact'] .filepond--drop-label,
+.filepond--root[data-style-panel-layout~='integrated'] .filepond--drop-label {
     z-index: 7;
 }
-.filepond--root[data-style-panel-layout~="circle"] {
+.filepond--root[data-style-panel-layout~='circle'] {
     border-radius: 99999rem;
     overflow: hidden;
 }
-.filepond--root[data-style-panel-layout~="circle"] > .filepond--panel {
+.filepond--root[data-style-panel-layout~='circle'] > .filepond--panel {
     border-radius: inherit;
 }
-.filepond--root[data-style-panel-layout~="circle"] > .filepond--panel > * {
+.filepond--root[data-style-panel-layout~='circle'] > .filepond--panel > * {
     display: none;
 }
-.filepond--root[data-style-panel-layout~="circle"] {
+.filepond--root[data-style-panel-layout~='circle'] {
     /* circle cuts of this info, so best to hide it */
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--file-info {
+.filepond--root[data-style-panel-layout~='circle'] .filepond--file-info {
     display: none;
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--file-status {
+.filepond--root[data-style-panel-layout~='circle'] .filepond--file-status {
     display: none;
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--action-edit-item {
+.filepond--root[data-style-panel-layout~='circle'] .filepond--action-edit-item {
     opacity: 1 !important;
     visibility: visible !important;
 }
 /* dirfty way to fix circular overflow issue on safari 11+ */
 @media not all and (min-resolution: 0.001dpcm) {
     @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-        .filepond--root[data-style-panel-layout~="circle"] {
+        .filepond--root[data-style-panel-layout~='circle'] {
             will-change: transform;
         }
     }
@@ -839,13 +841,13 @@
     /* no interaction possible with panel */
     pointer-events: none;
 }
-.filepond-panel:not([data-scalable="false"]) {
+.filepond-panel:not([data-scalable='false']) {
     height: auto !important;
 }
-.filepond--panel[data-scalable="false"] > div {
+.filepond--panel[data-scalable='false'] > div {
     display: none;
 }
-.filepond--panel[data-scalable="true"] {
+.filepond--panel[data-scalable='true'] {
     /* this seems to fix Chrome performance issues */
     /* - when box-shadow is enabled */
     /* - when multiple ponds are active on the same page */
@@ -878,7 +880,7 @@
     /* fixes tiny transparant line between top and center panel */
 }
 .filepond--panel-top::after {
-    content: "";
+    content: '';
     position: absolute;
     height: 2px;
     left: 0;
@@ -904,7 +906,7 @@
     /* fixes tiny transparant line between bottom and center of panel */
 }
 .filepond--panel-bottom::before {
-    content: "";
+    content: '';
     position: absolute;
     height: 2px;
     left: 0;
@@ -979,8 +981,8 @@
     line-height: normal;
 
     /* up uses default system font family */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
     /* will increase font weight a bit on Safari */
     font-weight: 450;
@@ -1032,7 +1034,7 @@
 .filepond--root .filepond--credits {
     position: absolute;
     right: 0;
-    opacity: 0.175;
+    opacity: 0.4;
     line-height: 0.85;
     font-size: 11px;
     color: inherit;
@@ -1046,158 +1048,167 @@
     margin-top: 14px;
 }
 /*!
- * FilePondPluginImagePreview 4.6.11
+ * FilePondPluginImagePreview 4.6.12
  * Licensed under MIT, https://opensource.org/licenses/MIT/
  * Please visit https://pqina.nl/filepond/ for details.
  */
 
 /* eslint-disable */
 .filepond--image-preview-markup {
-    position: absolute;
-    left: 0;
-    top: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 .filepond--image-preview-wrapper {
-    z-index: 2;
+  z-index: 2;
 }
 .filepond--image-preview-overlay {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    min-height: 5rem;
-    max-height: 7rem;
-    margin: 0;
-    opacity: 0;
-    z-index: 2;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 5rem;
+  max-height: 7rem;
+  margin: 0;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .filepond--image-preview-overlay svg {
-    width: 100%;
-    height: auto;
-    color: inherit;
-    max-height: inherit;
+  width: 100%;
+  height: auto;
+  color: inherit;
+  max-height: inherit;
 }
 .filepond--image-preview-overlay-idle {
-    mix-blend-mode: multiply;
-    color: rgba(40, 40, 40, 0.85);
+  mix-blend-mode: multiply;
+  color: rgba(40, 40, 40, 0.85);
 }
 .filepond--image-preview-overlay-success {
-    mix-blend-mode: normal;
-    color: rgba(54, 151, 99, 1);
+  mix-blend-mode: normal;
+  color: rgba(54, 151, 99, 1);
 }
 .filepond--image-preview-overlay-failure {
-    mix-blend-mode: normal;
-    color: rgba(196, 78, 71, 1);
+  mix-blend-mode: normal;
+  color: rgba(196, 78, 71, 1);
 }
 /* disable for Safari as mix-blend-mode causes the overflow:hidden of the parent container to not work */
-@supports (-webkit-marquee-repetition: infinite) and ((-o-object-fit: fill) or (object-fit: fill)) {
-    .filepond--image-preview-overlay-idle {
-        mix-blend-mode: normal;
-    }
+@supports (-webkit-marquee-repetition: infinite) and
+  ((-o-object-fit: fill) or (object-fit: fill)) {
+  .filepond--image-preview-overlay-idle {
+    mix-blend-mode: normal;
+  }
 }
 .filepond--image-preview-wrapper {
-    /* no interaction */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  /* no interaction */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
-    /* have preview fill up all available space */
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    height: 100%;
-    margin: 0;
+  /* have preview fill up all available space */
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  margin: 0;
 
-    /* radius is .05em less to prevent the panel background color from shining through */
-    border-radius: 0.45em;
-    overflow: hidden;
+  /* radius is .05em less to prevent the panel background color from shining through */
+  border-radius: 0.45em;
+  overflow: hidden;
 
-    /* this seems to prevent Chrome from redrawing this layer constantly */
-    background: rgba(0, 0, 0, 0.01);
+  /* this seems to prevent Chrome from redrawing this layer constantly */
+  background: rgba(0, 0, 0, 0.01);
 }
 .filepond--image-preview {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    display: flex; /* this aligns the graphic vertically if the panel is higher than the image */
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    pointer-events: none;
-    background: #222;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: flex; /* this aligns the graphic vertically if the panel is higher than the image */
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  background: #222;
 
-    /* will be animated */
-    will-change: transform, opacity;
+  /* will be animated */
+  will-change: transform, opacity;
 }
 .filepond--image-clip {
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
 
-    /* transparency indicator (currently only supports grid or basic color) */
+  /* transparency indicator (currently only supports grid or basic color) */
 }
-.filepond--image-clip[data-transparency-indicator="grid"] img,
-.filepond--image-clip[data-transparency-indicator="grid"] canvas {
-    background-color: #fff;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' fill='%23eee'%3E%3Cpath d='M0 0 H50 V50 H0'/%3E%3Cpath d='M50 50 H100 V100 H50'/%3E%3C/svg%3E");
-    background-size: 1.25em 1.25em;
+.filepond--image-clip[data-transparency-indicator='grid'] img,
+.filepond--image-clip[data-transparency-indicator='grid'] canvas {
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' fill='%23eee'%3E%3Cpath d='M0 0 H50 V50 H0'/%3E%3Cpath d='M50 50 H100 V100 H50'/%3E%3C/svg%3E");
+  background-size: 1.25em 1.25em;
 }
 .filepond--image-bitmap,
 .filepond--image-vector {
-    position: absolute;
-    left: 0;
-    top: 0;
-    will-change: transform;
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
 }
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--image-preview-wrapper {
-    border-radius: 0;
+.filepond--root[data-style-panel-layout~='integrated']
+  .filepond--image-preview-wrapper {
+  border-radius: 0;
 }
-.filepond--root[data-style-panel-layout~="integrated"] .filepond--image-preview {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.filepond--root[data-style-panel-layout~='integrated']
+  .filepond--image-preview {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--image-preview-wrapper {
-    border-radius: 99999rem;
+.filepond--root[data-style-panel-layout~='circle']
+  .filepond--image-preview-wrapper {
+  border-radius: 99999rem;
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--image-preview-overlay {
-    top: auto;
-    bottom: 0;
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
+.filepond--root[data-style-panel-layout~='circle']
+  .filepond--image-preview-overlay {
+  top: auto;
+  bottom: 0;
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
 }
-.filepond--root[data-style-panel-layout~="circle"]
-    .filepond--file
-    .filepond--file-action-button[data-align*="bottom"]:not([data-align*="center"]) {
-    margin-bottom: 0.325em;
+.filepond--root[data-style-panel-layout~='circle']
+  .filepond--file
+  .filepond--file-action-button[data-align*='bottom']:not([data-align*='center']) {
+  margin-bottom: 0.325em;
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--file [data-align*="left"] {
-    left: calc(50% - 3em);
+.filepond--root[data-style-panel-layout~='circle']
+  .filepond--file
+  [data-align*='left'] {
+  left: calc(50% - 3em);
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--file [data-align*="right"] {
-    right: calc(50% - 3em);
+.filepond--root[data-style-panel-layout~='circle']
+  .filepond--file
+  [data-align*='right'] {
+  right: calc(50% - 3em);
 }
-.filepond--root[data-style-panel-layout~="circle"]
-    .filepond--progress-indicator[data-align*="bottom"][data-align*="left"],
-.filepond--root[data-style-panel-layout~="circle"]
-    .filepond--progress-indicator[data-align*="bottom"][data-align*="right"] {
-    margin-bottom: calc(0.325em + 0.1875em);
+.filepond--root[data-style-panel-layout~='circle']
+  .filepond--progress-indicator[data-align*='bottom'][data-align*='left'],
+.filepond--root[data-style-panel-layout~='circle']
+  .filepond--progress-indicator[data-align*='bottom'][data-align*='right'] {
+  margin-bottom: calc(0.325em + 0.1875em);
 }
-.filepond--root[data-style-panel-layout~="circle"]
-    .filepond--progress-indicator[data-align*="bottom"][data-align*="center"] {
-    margin-top: 0;
-    margin-bottom: 0.1875em;
-    margin-left: 0.1875em;
+.filepond--root[data-style-panel-layout~='circle']
+  .filepond--progress-indicator[data-align*='bottom'][data-align*='center'] {
+  margin-top: 0;
+  margin-bottom: 0.1875em;
+  margin-left: 0.1875em;
 }
 /*!
  * FilePondPluginImageEdit 1.6.3
@@ -1207,42 +1218,42 @@
 
 /* eslint-disable */
 .filepond--action-edit-item.filepond--action-edit-item {
-    width: 2em;
-    height: 2em;
-    padding: 0.1875em;
+  width: 2em;
+  height: 2em;
+  padding: 0.1875em;
 }
 
-.filepond--action-edit-item.filepond--action-edit-item[data-align*="center"] {
-    margin-left: -0.1875em;
+.filepond--action-edit-item.filepond--action-edit-item[data-align*='center'] {
+  margin-left: -0.1875em;
 }
 
-.filepond--action-edit-item.filepond--action-edit-item[data-align*="bottom"] {
-    margin-bottom: -0.1875em;
+.filepond--action-edit-item.filepond--action-edit-item[data-align*='bottom'] {
+  margin-bottom: -0.1875em;
 }
 
 .filepond--action-edit-item-alt {
-    border: none;
-    line-height: inherit;
-    background: transparent;
-    font-family: inherit;
-    color: inherit;
-    outline: none;
-    padding: 0;
-    margin: 0 0 0 0.25em;
-    pointer-events: all;
-    position: absolute;
+  border: none;
+  line-height: inherit;
+  background: transparent;
+  font-family: inherit;
+  color: inherit;
+  outline: none;
+  padding: 0;
+  margin: 0 0 0 0.25em;
+  pointer-events: all;
+  position: absolute;
 }
 
 .filepond--action-edit-item-alt svg {
-    width: 1.3125em;
-    height: 1.3125em;
+  width: 1.3125em;
+  height: 1.3125em;
 }
 
 .filepond--action-edit-item-alt span {
-    font-size: 0;
-    opacity: 0;
+  font-size: 0;
+  opacity: 0;
 }
-.filepond--root[data-style-panel-layout~="circle"] .filepond--action-edit-item {
-    opacity: 1 !important;
-    visibility: visible !important;
+.filepond--root[data-style-panel-layout~='circle'] .filepond--action-edit-item {
+  opacity: 1 !important;
+  visibility: visible !important;
 }

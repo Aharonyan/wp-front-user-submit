@@ -1,9 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://github.com/Aharonyan/wp-front-user-submit/"
-"issues\n"
-"POT-Creation-Date: 2026-11-18 12:04+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-18 17:31+0200\n"
 "PO-Revision-Date: 2024-12-12 12:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: Русский\n"
@@ -79,31 +78,31 @@ msgstr "Обновить"
 msgid "Publish"
 msgstr "Опубликовать"
 
-#: inc/Editor.php:43 inc/Editor.php:47 inc/SavePost.php:274
-#: inc/SavePost.php:279
+#: inc/Editor.php:43 inc/Editor.php:47 inc/SavePost.php:433
+#: inc/SavePost.php:438
 msgid "The post you trying to edit is not exist, please create a new one"
 msgstr ""
 "Запись, которое вы пытаетесь отредактировать, не существует, пожалуйста, "
 "создайте новое"
 
-#: inc/Editor.php:77
+#: inc/Editor.php:81
 msgid "Updating"
 msgstr "Обновление"
 
-#: inc/Editor.php:80
+#: inc/Editor.php:84
 msgid "Something goes wrong try later"
 msgstr "Что-то пошло не так, попробуйте позже"
 
-#: inc/Editor.php:141 inc/UserAdmin.php:16
+#: inc/Editor.php:145 inc/UserAdmin.php:16
 msgid "This page is restricted. Please Login to view this page."
 msgstr ""
 "Эта страница недоступна. Пожалуйста, войдите для просмотра этой страницы."
 
-#: inc/Editor.php:166 templates/admin/settings/form-settings-post-update.php:6
+#: inc/Editor.php:177 templates/admin/settings/form-settings-post-update.php:6
 msgid "You are not allowed to edit anymore."
 msgstr "Вам больше не разрешено редактировать."
 
-#: inc/Editor.php:175
+#: inc/Editor.php:186
 msgid "You are not allowed to edit"
 msgstr "Вам не разрешено редактировать"
 
@@ -111,16 +110,16 @@ msgstr "Вам не разрешено редактировать"
 msgid "Edit Current Post"
 msgstr "Редактировать текущее сообщение"
 
-#: inc/Form.php:123
+#: inc/Form.php:222
 msgid "This field value will be saved into post meta using this name."
 msgstr "Значение этого поля будет сохранено в post meta под этим именем."
 
-#: inc/Form.php:124
+#: inc/Form.php:223
 msgid "Help text will be shown under this field on the front end form."
 msgstr ""
 "Текст описания будет отображаться под этим полем на лицевой стороне формы."
 
-#: inc/Form.php:125
+#: inc/Form.php:224
 msgid ""
 "Enable this option to save the field data directly to the post content.. "
 "Important: If multiple editors have this setting enabled, each new editor "
@@ -130,7 +129,7 @@ msgstr ""
 "поста. Важно: Если эта настройка включена у нескольких редакторов, каждый "
 "новый редактор будет перезаписывать предыдущее содержимое этого поля."
 
-#: inc/Form.php:126
+#: inc/Form.php:225
 msgid ""
 "Enable this option to save the field data directly to the post content, "
 "excerpt or meta.. Important: If multiple editors have selected post content "
@@ -142,27 +141,27 @@ msgstr ""
 "выбрали содержимое поста или отрывка, каждый новый редактор будет "
 "перезаписывать предыдущее содержимое в этом поле."
 
-#: inc/Form.php:134
+#: inc/Form.php:233
 msgid "Post Fields"
 msgstr "Поля Записи"
 
-#: inc/Form.php:138
+#: inc/Form.php:237
 msgid "Editors"
 msgstr "Редакторы"
 
-#: inc/Form.php:142
+#: inc/Form.php:241
 msgid "Taxonomies"
 msgstr "Таксономии"
 
-#: inc/Form.php:146
+#: inc/Form.php:245
 msgid "Custom Fields"
 msgstr "Пользовательские поля"
 
-#: inc/Form.php:154
+#: inc/Form.php:253
 msgid "You already have this field in the form"
 msgstr "У вас уже есть это поле в форме"
 
-#: inc/Form.php:155 templates/admin/settings/form-payment-settings.php:17
+#: inc/Form.php:254 templates/admin/settings/form-payment-settings.php:17
 #: templates/admin/settings/form-payment-settings.php:38
 #: templates/admin/settings/form-payment-settings.php:52
 #: templates/admin/settings/form-payment-settings.php:66
@@ -172,97 +171,111 @@ msgstr "У вас уже есть это поле в форме"
 msgid "Available in Pro version"
 msgstr "Доступно в версии Pro"
 
-#: inc/Form.php:156
+#: inc/Form.php:255
 msgid "Please upgrade to the Pro version to unlock all these awesome features"
 msgstr ""
 "Пожалуйста, перейдите на версию Pro, чтобы разблокировать все эти "
 "потрясающие возможности"
 
-#: inc/Form.php:158 inc/ai/AiAssistant.php:191 inc/ai/AiSettings.php:314
+#: inc/Form.php:257 inc/ai/AiAssistant.php:191 inc/ai/AiSettings.php:314
 #: templates/admin/settings/form-ai-settings.php:83
 msgid "Get the Pro version"
 msgstr "Получите версию Pro"
 
-#: inc/Form.php:244
+#: inc/Form.php:343
 #, php-format
 msgid "%s (Copy)"
 msgstr "%s (копия)"
 
-#: inc/Form.php:347 templates/admin/post-form.php:49
+#: inc/Form.php:446 templates/admin/post-form.php:49
 msgid "Sample Form"
 msgstr "Новая форма"
 
-#: inc/Form.php:372 inc/fields/MdEditor.php:134
+#: inc/Form.php:454 inc/Form.php:474 inc/ai/AiAssistant.php:130
+msgid "Form not found"
+msgstr "Форма не найдена"
+
+#: inc/Form.php:490 inc/fields/MdEditor.php:122
 #: inc/fields/PostTitleField.php:55
 msgid "Oops"
 msgstr "Упс"
 
-#: inc/Form.php:373
+#: inc/Form.php:491
 msgid "Form builder cannot be empty"
 msgstr "Конструктор форм не может быть пустым"
 
-#: inc/Form.php:406
+#: inc/Form.php:517
 msgid "Form Settings Saved"
 msgstr "Сохранение настроек формы"
 
-#: inc/Form.php:431
+#: inc/Form.php:542
+msgid "Sorry, you are not allowed to do that."
+msgstr "Извините, у вас нет прав на это действие."
+
+#: inc/Form.php:553
 msgid "post_id is empty."
 msgstr "post_id пуст."
 
-#: inc/Form.php:450
+#: inc/Form.php:572
 msgid "Loading"
 msgstr "Загрузка"
 
-#: inc/Form.php:460 inc/Form.php:472
+#: inc/Form.php:582 inc/Form.php:594
 msgid "This is not a valid record."
 msgstr "Это не действительная запись."
 
-#: inc/Form.php:485
+#: inc/Form.php:609
 msgid "Form Settings Migrated"
 msgstr "Перенесены настройки формы"
 
-#: inc/Form.php:584 inc/Form.php:585
+#: inc/Form.php:773 inc/fields/FileField.php:376 inc/fields/FileField.php:414
+#: inc/fields/TextareaField.php:158
+#, php-format
+msgid "%s is required"
+msgstr "требуется %s"
+
+#: inc/Form.php:858 inc/Form.php:859
 msgid "Post Form"
 msgstr "Форма Записи"
 
-#: inc/Form.php:586 inc/Form.php:587
+#: inc/Form.php:860 inc/Form.php:861
 msgid "Add Post Form"
 msgstr "Добавить форму записи"
 
-#: inc/Form.php:588
+#: inc/Form.php:862
 msgid "Edit Post Form"
 msgstr "Форма редактирования записи"
 
-#: inc/Form.php:589
+#: inc/Form.php:863
 msgid "New Post Form"
 msgstr "Форма новой записи"
 
-#: inc/Form.php:590
+#: inc/Form.php:864
 msgid "Watch Post Form"
 msgstr "Посмотреть форму"
 
-#: inc/Form.php:591
+#: inc/Form.php:865
 msgid "Search Post Form"
 msgstr "Форма поиска записей"
 
-#: inc/Form.php:592
+#: inc/Form.php:866
 msgid "Not Found"
 msgstr "Не найдено"
 
-#: inc/Form.php:593
+#: inc/Form.php:867
 msgid "Not found in trash"
 msgstr "Не найдено в корзине"
 
-#: inc/Form.php:595
+#: inc/Form.php:869
 msgid "All forms"
 msgstr "Все формы"
 
-#: inc/Form.php:791 inc/WooIntegration.php:366 inc/WooIntegration.php:377
-#: inc/fields/PostTitleField.php:192
+#: inc/Form.php:1065 inc/WooIntegration.php:366 inc/WooIntegration.php:377
+#: inc/fields/PostTitleField.php:196
 msgid "Post Title"
 msgstr "Заголовок записи"
 
-#: inc/Form.php:792 templates/front-editor/post-title.php:3
+#: inc/Form.php:1066 templates/front-editor/post-title.php:3
 msgid "Add Title"
 msgstr "Добавить загаловок"
 
@@ -351,7 +364,7 @@ msgstr "Пользователь вошел в систему."
 msgid "Security error, please refresh page"
 msgstr "Ошибка безопасности, обновите страницу"
 
-#: inc/LoginRegisterShortcode.php:203 inc/LoginRegisterShortcode.php:284
+#: inc/LoginRegisterShortcode.php:203 inc/LoginRegisterShortcode.php:292
 msgid "<strong>ERROR</strong>: Empty username"
 msgstr "<strong>ERROR</strong>: Пустое имя пользователя"
 
@@ -363,17 +376,22 @@ msgstr "<strong>ОШИБКА</strong>: Пустой пароль"
 msgid "Login successful"
 msgstr "Вход выполнен"
 
-#: inc/LoginRegisterShortcode.php:291
+#: inc/LoginRegisterShortcode.php:285
+msgid "User registration is currently not allowed."
+msgstr "Регистрация пользователей сейчас отключена."
+
+#: inc/LoginRegisterShortcode.php:299
 msgid "<strong>ERROR</strong>: Empty email"
 msgstr "<strong>ОШИБКА</strong>: Пустое адрес почты"
 
-#: inc/LoginRegisterShortcode.php:324
-msgid "Registration successful. Your password will be sent via email shortly."
+#: inc/LoginRegisterShortcode.php:335
+msgid ""
+"Registration successful. Check your email for a link to set your password."
 msgstr ""
-"Регистрация прошла успешно. Ваш пароль будет отправлен по электронной почте "
-"в ближайшее время."
+"Регистрация прошла успешно. Проверьте почту: мы отправили ссылку для "
+"установки пароля."
 
-#: inc/LoginRegisterShortcode.php:333
+#: inc/LoginRegisterShortcode.php:344
 msgid "Security error, please update page"
 msgstr "Ошибка безопасности, пожалуйста, обновите страницу"
 
@@ -410,7 +428,7 @@ msgid "Post Forms"
 msgstr "Формы Записи"
 
 #: inc/MenuSettings.php:59 inc/MenuSettings.php:60
-#: inc/fields/GoogleMapField.php:120 templates/admin/post-form.php:66
+#: inc/fields/GoogleMapField.php:124 templates/admin/post-form.php:66
 #: templates/admin/settings/form-settings-post-update.php:19
 msgid "Settings"
 msgstr "Настройки"
@@ -627,7 +645,7 @@ msgstr ""
 
 #: inc/MenuSettings.php:656 inc/MenuSettings.php:676 inc/MenuSettings.php:944
 #: inc/MenuSettings.php:989 inc/MenuSettings.php:1009 inc/MenuSettings.php:1029
-#: inc/fields/FileField.php:232 inc/fields/PostTitleField.php:243
+#: inc/fields/FileField.php:285 inc/fields/PostTitleField.php:247
 msgid "Placeholder"
 msgstr "Placeholder"
 
@@ -639,7 +657,7 @@ msgid "Label"
 msgstr "Метка"
 
 #: inc/MenuSettings.php:705 inc/MenuSettings.php:964
-#: inc/fields/EditorJsField.php:483
+#: inc/fields/EditorJsField.php:611
 msgid "Link"
 msgstr "Ссылка"
 
@@ -880,29 +898,49 @@ msgstr "Нет"
 msgid "Duplicate"
 msgstr "Дубликат"
 
-#: inc/SavePost.php:190 inc/SavePost.php:489
+#: inc/SavePost.php:143
+msgid "Too many uploads, please try again later."
+msgstr "Слишком много загрузок, попробуйте позже."
+
+#: inc/SavePost.php:246 inc/SavePost.php:293 inc/SavePost.php:670
 msgid "Image type is not supported, please select another image"
 msgstr ""
 "Тип изображения не поддерживается, пожалуйста, выберите другое изображение"
 
-#: inc/SavePost.php:350
+#: inc/SavePost.php:361
+msgid "We can not find file"
+msgstr "Файл не найден"
+
+#: inc/SavePost.php:364 inc/fields/FileField.php:154
+msgid "File is too large"
+msgstr "Файл слишком большой"
+
+#: inc/SavePost.php:388 inc/fields/FileField.php:150
+msgid "Error during upload"
+msgstr "Ошибка при загрузке"
+
+#: inc/SavePost.php:502
+msgid "This post is in the trash and cannot be edited."
+msgstr "Эта запись в корзине, её нельзя редактировать."
+
+#: inc/SavePost.php:526
 msgid "Post updated"
 msgstr "Пост обновлен"
 
-#: inc/SavePost.php:351 templates/admin/settings/form-settings-post.php:4
+#: inc/SavePost.php:527 templates/admin/settings/form-settings-post.php:4
 msgid "New post created"
 msgstr "Создано новое запись"
 
-#: inc/SavePost.php:400
+#: inc/SavePost.php:581
 msgid "No post created."
 msgstr "Запись не создана."
 
-#: inc/UploadSecurity.php:42 inc/fields/FileField.php:75
-#: inc/fields/FileField.php:100 inc/fields/FileField.php:200
+#: inc/UploadSecurity.php:159 inc/fields/FileField.php:121
+#: inc/fields/FileField.php:146 inc/fields/FileField.php:253
 msgid "File is not exist"
 msgstr "Файл не существует"
 
-#: inc/UploadSecurity.php:49 inc/UploadSecurity.php:53
+#: inc/UploadSecurity.php:166 inc/UploadSecurity.php:170
 msgid "Sorry, this file type is not permitted."
 msgstr "Извините, этот тип файла не разрешён."
 
@@ -987,10 +1025,6 @@ msgstr "Своя инструкция"
 #: inc/ai/AiAssistant.php:125
 msgid "Security check failed, please reload the page"
 msgstr "Проверка безопасности не пройдена, обновите страницу"
-
-#: inc/ai/AiAssistant.php:130
-msgid "Form not found"
-msgstr "Форма не найдена"
 
 #: inc/ai/AiAssistant.php:135 inc/ai/AiAssistant.php:139
 msgid "AI assistant is not available"
@@ -1438,312 +1472,297 @@ msgstr ""
 msgid "Button Field"
 msgstr "Кнопка"
 
-#: inc/fields/CheckboxGroupField.php:61 inc/fields/DateField.php:109
-#: inc/fields/EditorJsField.php:239 inc/fields/GoogleMapField.php:97
-#: inc/fields/MdEditor.php:198 inc/fields/NumberField.php:112
-#: inc/fields/PostTitleField.php:254 inc/fields/RadioGroupField.php:86
-#: inc/fields/SelectField.php:96 inc/fields/TaxonomiesFields.php:114
-#: inc/fields/TextField.php:87 inc/fields/TinyMCE.php:71
+#: inc/fields/CheckboxGroupField.php:61 inc/fields/DateField.php:113
+#: inc/fields/EditorJsField.php:366 inc/fields/GoogleMapField.php:101
+#: inc/fields/MdEditor.php:186 inc/fields/NumberField.php:116
+#: inc/fields/PostTitleField.php:258 inc/fields/RadioGroupField.php:90
+#: inc/fields/SelectField.php:98 inc/fields/TaxonomiesFields.php:114
+#: inc/fields/TextField.php:91 inc/fields/TinyMCE.php:71
 msgid "Required error text"
 msgstr "Требуемый текст ошибки"
 
-#: inc/fields/CheckboxGroupField.php:83
+#: inc/fields/CheckboxGroupField.php:87
 msgid "Please add checkbox field"
 msgstr "Надо выбрать"
 
-#: inc/fields/CheckboxGroupField.php:124 inc/fields/FileField.php:323
-#: inc/fields/FileField.php:354 inc/fields/RadioGroupField.php:124
-#: inc/fields/SelectField.php:135 inc/fields/TextareaField.php:156
-#, php-format
-msgid "%s is required"
-msgstr "требуется %s"
-
-#: inc/fields/DateField.php:49
+#: inc/fields/DateField.php:53
 msgid "Please add date field"
 msgstr "Пожалуйста, добавьте поле даты"
 
-#: inc/fields/DateField.php:70
+#: inc/fields/DateField.php:74
 msgid "Date Field"
 msgstr "Поле даты"
 
-#: inc/fields/DateField.php:106
+#: inc/fields/DateField.php:110
 msgid "Min"
 msgstr "Мин"
 
-#: inc/fields/DateField.php:107
+#: inc/fields/DateField.php:111
 msgid "Max"
 msgstr "Макс"
 
-#: inc/fields/DateField.php:108
+#: inc/fields/DateField.php:112
 msgid "Step"
 msgstr "Шаг"
 
-#: inc/fields/DateField.php:110 inc/fields/GoogleMapField.php:98
-#: inc/fields/MdEditor.php:199 inc/fields/NumberField.php:113
-#: inc/fields/PostTitleField.php:255 inc/fields/TextField.php:88
+#: inc/fields/DateField.php:114 inc/fields/GoogleMapField.php:102
+#: inc/fields/MdEditor.php:187 inc/fields/NumberField.php:117
+#: inc/fields/PostTitleField.php:259 inc/fields/TextField.php:92
 #: inc/fields/TinyMCE.php:72
 msgid "Not correct content"
 msgstr "Неправильное содержание"
 
-#: inc/fields/EditorJsField.php:63
+#: inc/fields/EditorJsField.php:71
 msgid "Please add content to EditorJS"
 msgstr "Пожалуйста, добавьте содержимое для EditorJS"
 
-#: inc/fields/EditorJsField.php:385
+#: inc/fields/EditorJsField.php:513
 msgid "Add content"
 msgstr "Добавить содержание"
 
-#: inc/fields/EditorJsField.php:456
+#: inc/fields/EditorJsField.php:584
 msgid "Click to tune"
 msgstr "Нажмите, чтобы настроить"
 
-#: inc/fields/EditorJsField.php:457
+#: inc/fields/EditorJsField.php:585
 msgid "or drag to move"
 msgstr "или перетащите"
 
-#: inc/fields/EditorJsField.php:462
+#: inc/fields/EditorJsField.php:590
 msgid "Convert to"
 msgstr "Конвертировать в"
 
-#: inc/fields/EditorJsField.php:468
+#: inc/fields/EditorJsField.php:596
 msgid "Add"
 msgstr "Добавить"
 
-#: inc/fields/EditorJsField.php:473
+#: inc/fields/EditorJsField.php:601
 msgid "Text"
 msgstr "Параграф"
 
-#: inc/fields/EditorJsField.php:474
+#: inc/fields/EditorJsField.php:602
 msgid "Heading"
 msgstr "Заголовок"
 
-#: inc/fields/EditorJsField.php:475
+#: inc/fields/EditorJsField.php:603
 msgid "List"
 msgstr "Список"
 
-#: inc/fields/EditorJsField.php:476
+#: inc/fields/EditorJsField.php:604
 msgid "Warning"
 msgstr "Примечание"
 
-#: inc/fields/EditorJsField.php:477
+#: inc/fields/EditorJsField.php:605
 msgid "Checklist"
 msgstr "Чеклист"
 
-#: inc/fields/EditorJsField.php:478
+#: inc/fields/EditorJsField.php:606
 msgid "Quote"
 msgstr "Цитата"
 
-#: inc/fields/EditorJsField.php:479
+#: inc/fields/EditorJsField.php:607
 msgid "Code"
 msgstr "Код"
 
-#: inc/fields/EditorJsField.php:480
+#: inc/fields/EditorJsField.php:608
 msgid "Delimiter"
 msgstr "Разделитель"
 
-#: inc/fields/EditorJsField.php:481
+#: inc/fields/EditorJsField.php:609
 msgid "Raw HTML"
 msgstr "HTML-фрагмент"
 
-#: inc/fields/EditorJsField.php:482
+#: inc/fields/EditorJsField.php:610
 msgid "Table"
 msgstr "Таблица"
 
-#: inc/fields/EditorJsField.php:484
+#: inc/fields/EditorJsField.php:612
 msgid "Marker"
 msgstr "Маркер"
 
-#: inc/fields/EditorJsField.php:485
+#: inc/fields/EditorJsField.php:613
 msgid "Bold"
 msgstr "Полужирный"
 
-#: inc/fields/EditorJsField.php:486
+#: inc/fields/EditorJsField.php:614
 msgid "Italic"
 msgstr "Курсив"
 
-#: inc/fields/EditorJsField.php:487
+#: inc/fields/EditorJsField.php:615
 msgid "InlineCode"
 msgstr "Моноширинный"
 
-#: inc/fields/EditorJsField.php:488
+#: inc/fields/EditorJsField.php:616
 msgid "Image & Gallery"
 msgstr "Изображение и галерея"
 
-#: inc/fields/EditorJsField.php:489
+#: inc/fields/EditorJsField.php:617
 msgid "Image"
 msgstr "Изображение"
 
-#: inc/fields/EditorJsField.php:493
+#: inc/fields/EditorJsField.php:621
 msgid "Title"
 msgstr "Название"
 
-#: inc/fields/EditorJsField.php:494
+#: inc/fields/EditorJsField.php:622
 #: templates/admin/settings/form-notification-settings.php:44
 msgid "Message"
 msgstr "Сообщение"
 
-#: inc/fields/EditorJsField.php:497
+#: inc/fields/EditorJsField.php:625
 msgid "Add a link"
 msgstr "Вставьте ссылку"
 
-#: inc/fields/EditorJsField.php:500
+#: inc/fields/EditorJsField.php:628
 msgid "The block can not be displayed correctly."
 msgstr "Блок не может быть отображен"
 
-#: inc/fields/EditorJsField.php:505
+#: inc/fields/EditorJsField.php:633
 msgid "Delete"
 msgstr "Удалить"
 
-#: inc/fields/EditorJsField.php:508
+#: inc/fields/EditorJsField.php:636
 msgid "Move up"
 msgstr "Переместить вверх"
 
-#: inc/fields/EditorJsField.php:511
+#: inc/fields/EditorJsField.php:639
 msgid "Move down"
 msgstr "Переместить вниз"
 
-#: inc/fields/EditorJsField.php:517
+#: inc/fields/EditorJsField.php:645
 msgid "Start writing or enter Tab to choose a block"
 msgstr "Начните писать или введите Tab, чтобы выбрать блок"
 
-#: inc/fields/FileField.php:104
-msgid "Error during upload"
-msgstr "Ошибка при загрузке"
-
-#: inc/fields/FileField.php:108
-msgid "File is too large"
-msgstr "Файл слишком большой"
-
-#: inc/fields/FileField.php:156
+#: inc/fields/FileField.php:203
 msgid "Invalid attachment ID."
 msgstr "Неверный ID вложения."
 
-#: inc/fields/FileField.php:174
+#: inc/fields/FileField.php:227
 msgid "Sorry, you are not allowed to delete this attachment."
 msgstr "У вас нет прав на удаление этого вложения."
 
-#: inc/fields/FileField.php:228
+#: inc/fields/FileField.php:281
 msgid "Accept"
 msgstr "Принять"
 
-#: inc/fields/FileField.php:229
+#: inc/fields/FileField.php:282
 msgid "Max File Size"
 msgstr "Максимальный размер файла"
 
-#: inc/fields/FileField.php:230
+#: inc/fields/FileField.php:283
 msgid "Max Files"
 msgstr "Максимум Файлов"
 
-#: inc/fields/FileField.php:231
+#: inc/fields/FileField.php:284
 msgid "Attach to post"
 msgstr "Прикрепить к сообщению"
 
-#: inc/fields/FileField.php:233
+#: inc/fields/FileField.php:286
 msgid "Label invalid field"
 msgstr "Некорректное поле"
 
-#: inc/fields/FileField.php:234
+#: inc/fields/FileField.php:287
 msgid "Label waiting for size"
 msgstr "Ожидание размера"
 
-#: inc/fields/FileField.php:235
+#: inc/fields/FileField.php:288
 msgid "Label Size not available"
 msgstr "Размер недоступен"
 
-#: inc/fields/FileField.php:236
+#: inc/fields/FileField.php:289
 msgid "Label File Loading"
 msgstr "Текст загрузки файла"
 
-#: inc/fields/FileField.php:237
+#: inc/fields/FileField.php:290
 msgid "Label Load Error"
 msgstr "Ошибка загрузки"
 
-#: inc/fields/FileField.php:238
+#: inc/fields/FileField.php:291
 msgid "Label File Processing"
 msgstr "Обработка файла"
 
-#: inc/fields/FileField.php:239
+#: inc/fields/FileField.php:292
 msgid "Label Processing Complete"
 msgstr "Обработка завершена"
 
-#: inc/fields/FileField.php:240
+#: inc/fields/FileField.php:293
 msgid "Label Processing Aborted"
 msgstr "Обработка прервана"
 
-#: inc/fields/FileField.php:241
+#: inc/fields/FileField.php:294
 msgid "Label Processing Error"
 msgstr "Ошибка обработки"
 
-#: inc/fields/FileField.php:242
+#: inc/fields/FileField.php:295
 msgid "Label Processing Revert Error"
 msgstr "Ошибка отмены обработки"
 
-#: inc/fields/FileField.php:243
+#: inc/fields/FileField.php:296
 msgid "Label File Remove Error"
 msgstr "Ошибка удаления файла"
 
-#: inc/fields/FileField.php:244
+#: inc/fields/FileField.php:297
 msgid "Label Tap To Cancel"
 msgstr "Нажмите для отмены"
 
-#: inc/fields/FileField.php:245
+#: inc/fields/FileField.php:298
 msgid "Label Tap To Retry"
 msgstr "Нажмите чтобы повторить"
 
-#: inc/fields/FileField.php:246
+#: inc/fields/FileField.php:299
 msgid "Label Tap To Undo"
 msgstr "Нажмите для отмены"
 
-#: inc/fields/FileField.php:247
+#: inc/fields/FileField.php:300
 msgid "Label Remove Item"
 msgstr "Удалить элемент"
 
-#: inc/fields/FileField.php:248
+#: inc/fields/FileField.php:301
 msgid "Label Abort Item Load"
 msgstr "Метка отмены загрузки"
 
-#: inc/fields/FileField.php:249 inc/fields/FileField.php:252
+#: inc/fields/FileField.php:302 inc/fields/FileField.php:305
 msgid "Label Retry Item Load"
 msgstr "Повторная попытка загрузки"
 
-#: inc/fields/FileField.php:250
+#: inc/fields/FileField.php:303
 msgid "Label Cancel Item Load"
 msgstr "Метка отмены загрузки элемента"
 
-#: inc/fields/FileField.php:251
+#: inc/fields/FileField.php:304
 msgid "Label Undo Item Load"
 msgstr "Отмена загрузки элемента"
 
-#: inc/fields/FileField.php:253
+#: inc/fields/FileField.php:306
 msgid "Label Upload Item Load"
 msgstr "Текст загрузка элемента"
 
-#: inc/fields/FileField.php:254
+#: inc/fields/FileField.php:307
 msgid "Label File Type not Allowed"
 msgstr "Тип файла не разрешен"
 
-#: inc/fields/FileField.php:255
+#: inc/fields/FileField.php:308
 msgid "Label Expected Type"
 msgstr "Ожидаемый тип"
 
-#: inc/fields/FileField.php:256
+#: inc/fields/FileField.php:309
 msgid "Label size must be"
 msgstr "Размер должен быть"
 
-#: inc/fields/FileField.php:257
+#: inc/fields/FileField.php:310
 msgid "Maximum total size exceeded"
 msgstr "Превышен максимальный общий размер"
 
-#: inc/fields/FileField.php:258
+#: inc/fields/FileField.php:311
 msgid "Maximum total size is"
 msgstr "Максимальный общий размер"
 
-#: inc/fields/FileField.php:259
+#: inc/fields/FileField.php:312
 msgid "Label size exceeded"
 msgstr "Размер превышен"
 
 #. translators: The accept attribute takes as its value a comma-separated list of one or more file types.
-#: inc/fields/FileField.php:274
+#: inc/fields/FileField.php:327
 #, php-format
 msgid ""
 "The accept attribute takes as its value a comma-separated list of one or "
@@ -1755,52 +1774,52 @@ msgstr ""
 "уникальные спецификаторы типов файлов</a>, описывающие, какие типы файлов "
 "разрешить."
 
-#: inc/fields/FileField.php:276
+#: inc/fields/FileField.php:329
 msgid "Max count of files user can select"
 msgstr "Максимальное количество файлов, которые может выбрать пользователь"
 
-#: inc/fields/FileField.php:277
+#: inc/fields/FileField.php:330
 msgid "Max size in KB"
 msgstr "Максимальный размер в КБ"
 
-#: inc/fields/GoogleMapField.php:50
+#: inc/fields/GoogleMapField.php:54
 msgid "Please add google map field"
 msgstr "Пожалуйста, выберите локацию"
 
-#: inc/fields/GoogleMapField.php:76
+#: inc/fields/GoogleMapField.php:80
 msgid "Google Map"
 msgstr "Google Карты"
 
-#: inc/fields/GoogleMapField.php:96
+#: inc/fields/GoogleMapField.php:100
 msgid "Country Code"
 msgstr "Код страны"
 
-#: inc/fields/GoogleMapField.php:119
+#: inc/fields/GoogleMapField.php:123
 #, php-format
 msgid "Before using this field, please add your Google API Key in %s."
 msgstr "Прежде чем использовать это поле, добавьте свой ключ Google API в %s."
 
-#: inc/fields/GoogleMapField.php:123
+#: inc/fields/GoogleMapField.php:127
 msgid "Add API Key"
 msgstr "Добавить ключ API"
 
-#: inc/fields/GoogleRecaptcha.php:96 inc/fields/hCaptcha.php:117
+#: inc/fields/GoogleRecaptcha.php:101 inc/fields/hCaptcha.php:119
 msgid "Language"
 msgstr "Язык"
 
-#: inc/fields/GoogleRecaptcha.php:97
+#: inc/fields/GoogleRecaptcha.php:102
 msgid "Site key"
 msgstr "Ключ к сайту"
 
-#: inc/fields/GoogleRecaptcha.php:98
+#: inc/fields/GoogleRecaptcha.php:103
 msgid "Secret key"
 msgstr "Секретный ключ"
 
-#: inc/fields/GoogleRecaptcha.php:99 inc/fields/hCaptcha.php:100
+#: inc/fields/GoogleRecaptcha.php:104 inc/fields/hCaptcha.php:102
 msgid "Error Message"
 msgstr "Сообщение об ошибке"
 
-#: inc/fields/GoogleRecaptcha.php:111
+#: inc/fields/GoogleRecaptcha.php:116
 msgid ""
 "Check the list of languages <a href=\"https://developers.google.com/"
 "recaptcha/docs/language\" target=\"_blank\">here</a>"
@@ -1816,23 +1835,23 @@ msgstr "Поле заголовка"
 msgid "Hidden Field"
 msgstr "Скрытое поле"
 
-#: inc/fields/MdEditor.php:57 inc/fields/TinyMCE.php:196
+#: inc/fields/MdEditor.php:61 inc/fields/TinyMCE.php:205
 msgid "Please add editor field"
 msgstr "Пожалуйста, добавьте поле редактора"
 
-#: inc/fields/MdEditor.php:135
+#: inc/fields/MdEditor.php:123
 msgid "Post Content Field is missing"
 msgstr "Содержание записи отсутствует"
 
-#: inc/fields/NumberField.php:49
+#: inc/fields/NumberField.php:53
 msgid "Please add number field"
 msgstr "Пожалуйста, выберите число"
 
-#: inc/fields/NumberField.php:57
+#: inc/fields/NumberField.php:61
 msgid "Please add correct number field"
 msgstr "Пожалуйста, добавьте правильное числовое поле"
 
-#: inc/fields/NumberField.php:75
+#: inc/fields/NumberField.php:79
 msgid "Number Field"
 msgstr "Числовое поле"
 
@@ -1856,23 +1875,23 @@ msgstr "Обязательно наличие изображения запис�
 msgid "Post Title Field is missing"
 msgstr "Поле заголовка записи отсутствует"
 
-#: inc/fields/PostTitleField.php:76
+#: inc/fields/PostTitleField.php:80
 msgid "Please add post title"
 msgstr "Пожалуйста, добавьте название поста"
 
-#: inc/fields/PostTitleField.php:85
+#: inc/fields/PostTitleField.php:89
 msgid "Please add correct post title"
 msgstr "Пожалуйста, добавьте правильное название записи"
 
-#: inc/fields/PostTitleField.php:252
+#: inc/fields/PostTitleField.php:256
 msgid "Hide Field"
 msgstr "Скрыть поле"
 
-#: inc/fields/PostTitleField.php:253
+#: inc/fields/PostTitleField.php:257
 msgid "Generate title"
 msgstr "Сгенерировать заголовок"
 
-#: inc/fields/PostTitleField.php:258
+#: inc/fields/PostTitleField.php:262
 msgid ""
 "Generate title using params: [{taxonomy_name}] [{field name}] <br> Example: "
 "Post [category] [text-1695547664968] <br> If empty will not work"
@@ -1881,28 +1900,28 @@ msgstr ""
 "name}] <br> Пример: Пост [категория] [text-1695547664968] <br> Если пусто, "
 "то не будет работать"
 
-#: inc/fields/PostTitleField.php:259
+#: inc/fields/PostTitleField.php:263
 msgid "Hide field so users will not see it"
 msgstr "Скрыть поле, чтобы пользователи его не видели"
 
-#: inc/fields/RadioGroupField.php:49
+#: inc/fields/RadioGroupField.php:53
 msgid "Please add radio field"
 msgstr "Пожалуйста, добавьте радиополе"
 
-#: inc/fields/SelectField.php:47 inc/fields/TaxonomiesFields.php:193
+#: inc/fields/SelectField.php:51 inc/fields/TaxonomiesFields.php:198
 #, php-format
 msgid "The %s selection is required"
 msgstr "Необходимо выбрать %s"
 
-#: inc/fields/SelectField.php:92 inc/fields/TaxonomiesFields.php:108
+#: inc/fields/SelectField.php:94 inc/fields/TaxonomiesFields.php:108
 msgid "Show Search Input"
 msgstr "Показать поисковый поле"
 
-#: inc/fields/SelectField.php:97 inc/fields/TaxonomiesFields.php:115
+#: inc/fields/SelectField.php:99 inc/fields/TaxonomiesFields.php:115
 msgid "Search placeholder"
 msgstr "Пример текста поиска"
 
-#: inc/fields/SelectField.php:98 inc/fields/TaxonomiesFields.php:116
+#: inc/fields/SelectField.php:100 inc/fields/TaxonomiesFields.php:116
 msgid "No result text"
 msgstr "Текст без результата"
 
@@ -1959,11 +1978,11 @@ msgstr ""
 "должны быть включены. Посмотрите учебник, чтобы найти идентификатор термина "
 "с помощью этого %s"
 
-#: inc/fields/TextField.php:49
+#: inc/fields/TextField.php:53
 msgid "Please add text field"
 msgstr "Пожалуйста, добавьте текстовое поле"
 
-#: inc/fields/TextField.php:76
+#: inc/fields/TextField.php:80
 msgid "Type"
 msgstr "Тип"
 
@@ -1991,15 +2010,15 @@ msgstr "Выводить ли минимальную конфигурацию р
 msgid "Enable Drag & Drop Upload Support"
 msgstr "Включите поддержку загрузки с помощью перетаскивания"
 
-#: inc/fields/hCaptcha.php:98
+#: inc/fields/hCaptcha.php:100
 msgid "Site Key"
 msgstr "Ключ сайта"
 
-#: inc/fields/hCaptcha.php:99
+#: inc/fields/hCaptcha.php:101
 msgid "Secret Key"
 msgstr "Секретный ключ"
 
-#: inc/fields/hCaptcha.php:123
+#: inc/fields/hCaptcha.php:125
 msgid ""
 "Check the list of languages <a href=\"https://docs.hcaptcha.com/languages\" "
 "target=\"_blank\">here</a>"
@@ -2007,11 +2026,11 @@ msgstr ""
 "Список языков смотрите <a href=\"https://docs.hcaptcha.com/languages\" "
 "target=\"_blank\">здесь</a>"
 
-#: inc/shortcodes/FUSGoogleMapsShortcode.php:27
+#: inc/shortcodes/FUSGoogleMapsShortcode.php:33
 msgid "Location data not found"
 msgstr "Данные о местоположении не найдены"
 
-#: inc/shortcodes/FUSGoogleMapsShortcode.php:32
+#: inc/shortcodes/FUSGoogleMapsShortcode.php:38
 msgid "Invalid location data format"
 msgstr "Неверный формат данных о местоположении"
 
@@ -2655,6 +2674,12 @@ msgstr "Далее »"
 #: templates/user-admin.php:120
 msgid "0 posts found"
 msgstr "найдено 0 записей"
+
+#~ msgid ""
+#~ "Registration successful. Your password will be sent via email shortly."
+#~ msgstr ""
+#~ "Регистрация прошла успешно. Ваш пароль будет отправлен по электронной "
+#~ "почте в ближайшее время."
 
 #~ msgid "Aleksan Aharonyan"
 #~ msgstr "Aleksan Aharonyan"

@@ -1396,11 +1396,11 @@ class MenuSettings
 				$asset['version']
 			);
 
-			wp_enqueue_script('codemirror', FUS__PLUGIN_URL . 'assets/vendors/codemirror.min.js', array('jquery'), '1.0.0', true);
-			wp_enqueue_script('codemirror-css', FUS__PLUGIN_URL . 'assets/vendors/css.min.js', array('jquery'), '1.0.0', true);
+			wp_enqueue_script('codemirror', FUS__PLUGIN_URL . 'assets/vendors/codemirror.min.js', array('jquery'), '5.65.21', true);
+			wp_enqueue_script('codemirror-css', FUS__PLUGIN_URL . 'assets/vendors/css.min.js', array('codemirror'), '5.65.21', true);
 			wp_enqueue_script('codemirror-init', FUS__PLUGIN_URL . 'assets/vendors/codemirror-init.js', array('codemirror-css'), '1.0.1', true);
-			wp_enqueue_style('codemirror', FUS__PLUGIN_URL . 'assets/vendors/codemirror.min.css', array(), '1.0.0');
-			wp_enqueue_style('dracula', FUS__PLUGIN_URL . 'assets/vendors/dracula.min.css', array(), '1.0.0');
+			wp_enqueue_style('codemirror', FUS__PLUGIN_URL . 'assets/vendors/codemirror.min.css', array(), '5.65.21');
+			wp_enqueue_style('dracula', FUS__PLUGIN_URL . 'assets/vendors/dracula.min.css', array(), '5.65.21');
 
 			$active_tab = sanitize_text_field($_GET['tab'] ?? 'global_settings');
 			if ($active_tab === 'suggest_feature') {

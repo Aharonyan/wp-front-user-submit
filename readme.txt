@@ -4,7 +4,7 @@ Tags: frontend post, guest post, submit post, user submitted posts, ai writing a
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 5.2.4
+Stable tag: 5.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -220,6 +220,12 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.2.5 =
+* [fix] The registration form now sends the new user an email with a link to set their password, and notifies the admin, like the WordPress registration page
+* [fix] Security: updated bundled libraries (webpack runtime, jQuery UI 1.13.3 in the form builder)
+* Updated EditorJS 2.31, FilePond 4.32, CodeMirror, Parsedown 1.8, HTML To Markdown 5.2 and the Freemius SDK 2.13.5
+* Updated Russian translation
 
 = 5.2.4 =
 * [fix] Pro File field: guests who pick several files at once get all of them saved with the post, and can remove any of them before submitting (in 5.2.3 only some of the files were kept)
@@ -495,6 +501,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.2.5 =
+Registration emails, updated libraries with security fixes.
 
 = 5.2.4 =
 Fixes guest file uploads in the Pro File field.
