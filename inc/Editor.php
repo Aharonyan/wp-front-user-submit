@@ -153,8 +153,9 @@ class Editor
 
 		// when trying to edit already existing post
 		if ('new' !== $post_id) {
-			// Check if the current user is the post author (allows editing own submissions regardless of WP role)
-			$is_post_author = $cur_post && (int) $cur_post->post_author === $cur_user_id;
+			// Check if the current user is the post author (allows editing own submissions regardless of WP role).
+			// Guests are user 0 and guest posts have author 0, so a logged-out visitor is never an author.
+			$is_post_author = $cur_user_id > 0 && $cur_post && (int) $cur_post->post_author === (int) $cur_user_id;
 
 			// if user have rights to edit or is the post author
 			if (current_user_can('edit_post', $post_id) || $is_post_author) {

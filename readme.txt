@@ -4,7 +4,7 @@ Tags: frontend post, guest post, submit post, user submitted posts, ai writing a
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 5.2.0
+Stable tag: 5.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -225,6 +225,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.2.1 =
+* [fix] Security: a logged-out visitor could edit posts submitted by other guests through a form with guest posting enabled. Guests can now only create new posts
 
 = 5.2.0 =
 * [new] Clean form design: free, the default for new forms, looks the same on any theme
@@ -470,6 +473,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.2.1 =
+Security release: guests can no longer edit posts submitted by other guests. Please update.
 
 = 5.2.0 =
 New free Clean form design and design preview on your own form.
