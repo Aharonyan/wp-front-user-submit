@@ -32,6 +32,8 @@
         transition: all 0.2s ease;
         cursor: pointer;
         position: relative;
+        display: flex;
+        flex-direction: column;
 
         &:hover:not(.disabled) {
             border-color: #0073aa;
@@ -62,7 +64,7 @@
             cursor: inherit;
             padding: 0;
             margin: 0;
-            height: 100%;
+            flex: 1;
 
             input[type="radio"] {
                 position: absolute;
@@ -139,6 +141,13 @@
                 color: #d63638;
                 font-weight: 500;
             }
+        }
+
+        // "Preview on my form" link, also on locked Pro designs
+        .fus-design-preview-link {
+            align-self: flex-start;
+            margin: 0 15px 15px;
+            cursor: pointer;
         }
 
         // Hover effects for non-disabled options

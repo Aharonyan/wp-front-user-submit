@@ -65,6 +65,7 @@ class FrontUserSubmit
     require_once FE_PLUGIN_DIR_PATH . '/inc/Editor.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/EditorWidget.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Form.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/FormDesignPreview.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Notifications.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/WooIntegration.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/LoginRegisterShortcode.php';

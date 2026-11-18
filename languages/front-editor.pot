@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Front User Submit | Front Editor 5.1.0\n"
+"Project-Id-Version: Front User Submit | Front Editor 5.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/Aharonyan/wp-front-user-submit/"
 "issues\n"
-"POT-Creation-Date: 2026-11-18 01:17+0200\n"
+"POT-Creation-Date: 2026-11-18 12:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: FrontUserSubmit.php:127 templates/user-admin.php:91
+#: FrontUserSubmit.php:128 templates/user-admin.php:91
 msgid "Are you sure you want to delete this post?"
 msgstr ""
 
-#: FrontUserSubmit.php:144 inc/Blocks.php:53 inc/MenuSettings.php:129
+#: FrontUserSubmit.php:145 inc/Blocks.php:53 inc/MenuSettings.php:129
 msgid "Edit in front editor"
 msgstr ""
 
-#: FrontUserSubmit.php:156 inc/PostFormsListTable.php:414
+#: FrontUserSubmit.php:157 inc/PostFormsListTable.php:414
 msgid "Edit"
 msgstr ""
 
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Please upgrade to the Pro version to unlock all these awesome features"
 msgstr ""
 
-#: inc/Form.php:158 inc/ai/AiAssistant.php:189 inc/ai/AiSettings.php:314
+#: inc/Form.php:158 inc/ai/AiAssistant.php:191 inc/ai/AiSettings.php:314
 #: templates/admin/settings/form-ai-settings.php:83
 msgid "Get the Pro version"
 msgstr ""
@@ -251,6 +251,50 @@ msgstr ""
 
 #: inc/Form.php:792 templates/front-editor/post-title.php:3
 msgid "Add Title"
+msgstr ""
+
+#: inc/FormDesignPreview.php:34
+msgid "Clean"
+msgstr ""
+
+#: inc/FormDesignPreview.php:39
+msgid "Simple Design"
+msgstr ""
+
+#: inc/FormDesignPreview.php:44
+msgid "Modern Design"
+msgstr ""
+
+#: inc/FormDesignPreview.php:49
+msgid "Minimum Style"
+msgstr ""
+
+#: inc/FormDesignPreview.php:54 inc/MenuSettings.php:335
+#: inc/MenuSettings.php:403
+msgid "Modern Minimal"
+msgstr ""
+
+#: inc/FormDesignPreview.php:59 inc/MenuSettings.php:340
+#: inc/MenuSettings.php:413
+msgid "Card/Panel Style"
+msgstr ""
+
+#: inc/FormDesignPreview.php:64 inc/MenuSettings.php:365
+#: inc/MenuSettings.php:418
+msgid "Corporate/Professional"
+msgstr ""
+
+#: inc/FormDesignPreview.php:69 inc/MenuSettings.php:360
+#: inc/MenuSettings.php:423
+msgid "Borderless/Flat"
+msgstr ""
+
+#: inc/FormDesignPreview.php:105
+msgid "You are not allowed to preview this form."
+msgstr ""
+
+#: inc/FormDesignPreview.php:110
+msgid "Form or design not found."
 msgstr ""
 
 #: inc/FormMetaBox.php:70
@@ -459,16 +503,6 @@ msgstr ""
 msgid "Custom CSS"
 msgstr ""
 
-#: inc/MenuSettings.php:335 inc/MenuSettings.php:403
-#: templates/admin/settings/form-submission-display.php:73
-msgid "Modern Minimal"
-msgstr ""
-
-#: inc/MenuSettings.php:340 inc/MenuSettings.php:413
-#: templates/admin/settings/form-submission-display.php:78
-msgid "Card/Panel Style"
-msgstr ""
-
 #: inc/MenuSettings.php:345
 msgid "Split Screen"
 msgstr ""
@@ -479,16 +513,6 @@ msgstr ""
 
 #: inc/MenuSettings.php:355
 msgid "Glassmorphism"
-msgstr ""
-
-#: inc/MenuSettings.php:360 inc/MenuSettings.php:423
-#: templates/admin/settings/form-submission-display.php:88
-msgid "Borderless/Flat"
-msgstr ""
-
-#: inc/MenuSettings.php:365 inc/MenuSettings.php:418
-#: templates/admin/settings/form-submission-display.php:83
-msgid "Corporate/Professional"
 msgstr ""
 
 #: inc/MenuSettings.php:370
@@ -840,6 +864,15 @@ msgstr ""
 msgid "No post created."
 msgstr ""
 
+#: inc/UploadSecurity.php:42 inc/fields/FileField.php:75
+#: inc/fields/FileField.php:100 inc/fields/FileField.php:200
+msgid "File is not exist"
+msgstr ""
+
+#: inc/UploadSecurity.php:49 inc/UploadSecurity.php:53
+msgid "Sorry, this file type is not permitted."
+msgstr ""
+
 #: inc/WooIntegration.php:153
 msgid "Failed to add product to cart"
 msgstr ""
@@ -927,161 +960,161 @@ msgstr ""
 msgid "AI assistant is not available"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:156
+#: inc/ai/AiAssistant.php:157
 msgid "Describe what to write…"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:159
+#: inc/ai/AiAssistant.php:161
 msgid "AI"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:160
+#: inc/ai/AiAssistant.php:162
 msgid "AI Assistant"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:161
+#: inc/ai/AiAssistant.php:163
 msgid "What to do"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:162
+#: inc/ai/AiAssistant.php:164
 msgid "Instructions"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:163 inc/ai/AiFormGenerator__premium_only.php:54
+#: inc/ai/AiAssistant.php:165 inc/ai/AiFormGenerator__premium_only.php:59
 msgid "Generate"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:164
+#: inc/ai/AiAssistant.php:166
 msgid "Try again"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:165
+#: inc/ai/AiAssistant.php:167
 msgid "Replace"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:166
+#: inc/ai/AiAssistant.php:168
 msgid "Insert below"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:167 inc/ai/AiFormGenerator__premium_only.php:55
+#: inc/ai/AiAssistant.php:169 inc/ai/AiFormGenerator__premium_only.php:60
 msgid "Cancel"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:168
+#: inc/ai/AiAssistant.php:170
 msgid "Result"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:169 inc/ai/AiAssistant.php:222
+#: inc/ai/AiAssistant.php:171 inc/ai/AiAssistant.php:224
 msgid "Add some text to the field first"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:170 inc/ai/AiAssistant.php:219
+#: inc/ai/AiAssistant.php:172 inc/ai/AiAssistant.php:221
 msgid "Please add instructions"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:171 inc/ai/AiAssistant.php:333
+#: inc/ai/AiAssistant.php:173 inc/ai/AiAssistant.php:335
 msgid "AI request failed, please try again later"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:186
+#: inc/ai/AiAssistant.php:188
 msgid "✨ Generate with AI"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:187
+#: inc/ai/AiAssistant.php:189
 msgid "AI form generation is a Pro feature"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:188
+#: inc/ai/AiAssistant.php:190
 msgid "Describe the form in your own words and AI will build it for you."
 msgstr ""
 
-#: inc/ai/AiAssistant.php:190
+#: inc/ai/AiAssistant.php:192
 msgid "Add your AI provider API key in Settings → AI first."
 msgstr ""
 
-#: inc/ai/AiAssistant.php:191 templates/admin/settings/form-ai-settings.php:72
+#: inc/ai/AiAssistant.php:193 templates/admin/settings/form-ai-settings.php:72
 msgid "Open AI settings"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:213
+#: inc/ai/AiAssistant.php:215
 msgid "Unknown AI action"
 msgstr ""
 
-#: inc/ai/AiAssistant.php:271
+#: inc/ai/AiAssistant.php:273
 #, php-format
 msgid "Connected to %1$s (%2$s). Do not forget to save the settings."
 msgstr ""
 
-#: inc/ai/AiClient.php:51
+#: inc/ai/AiClient.php:53
 msgid "OpenRouter / OpenAI compatible URL"
 msgstr ""
 
-#: inc/ai/AiClient.php:155
+#: inc/ai/AiClient.php:157
 msgid "AI API key is not configured"
 msgstr ""
 
-#: inc/ai/AiClient.php:185
+#: inc/ai/AiClient.php:187
 #, php-format
 msgid "AI request failed: %s"
 msgstr ""
 
-#: inc/ai/AiClient.php:192
+#: inc/ai/AiClient.php:194
 #, php-format
 msgid "AI provider error (%1$s): %2$s"
 msgstr ""
 
-#: inc/ai/AiClient.php:197
+#: inc/ai/AiClient.php:199
 msgid "AI provider returned an empty response"
 msgstr ""
 
-#: inc/ai/AiClient.php:220
+#: inc/ai/AiClient.php:222
 msgid "AI response is not valid JSON"
 msgstr ""
 
-#: inc/ai/AiClient.php:253
+#: inc/ai/AiClient.php:255
 msgid "AI endpoint URL is not valid"
 msgstr ""
 
-#: inc/ai/AiClient.php:342 inc/ai/AiClient.php:344
+#: inc/ai/AiClient.php:348 inc/ai/AiClient.php:350
 msgid "Unknown error"
 msgstr ""
 
-#: inc/ai/AiFormGenerator__premium_only.php:50
+#: inc/ai/AiFormGenerator__premium_only.php:55
 msgid "Generate form with AI"
 msgstr ""
 
-#: inc/ai/AiFormGenerator__premium_only.php:51
+#: inc/ai/AiFormGenerator__premium_only.php:56
 msgid ""
 "E.g. A form to submit a recipe: title, photo, ingredients, cooking time, "
 "difficulty (easy/medium/hard) and step by step instructions."
 msgstr ""
 
-#: inc/ai/AiFormGenerator__premium_only.php:52
+#: inc/ai/AiFormGenerator__premium_only.php:57
 msgid "Add fields to the current form"
 msgstr ""
 
-#: inc/ai/AiFormGenerator__premium_only.php:53
+#: inc/ai/AiFormGenerator__premium_only.php:58
 msgid "Replace current form fields"
 msgstr ""
 
-#: inc/ai/AiFormGenerator__premium_only.php:56
-#: inc/ai/AiFormGenerator__premium_only.php:76
+#: inc/ai/AiFormGenerator__premium_only.php:61
+#: inc/ai/AiFormGenerator__premium_only.php:81
 msgid "Please describe the form"
 msgstr ""
 
-#: inc/ai/AiFormGenerator__premium_only.php:57
+#: inc/ai/AiFormGenerator__premium_only.php:62
 msgid "Form generated. Review the fields and click Save."
 msgstr ""
 
-#: inc/ai/AiFormGenerator__premium_only.php:58
+#: inc/ai/AiFormGenerator__premium_only.php:63
 msgid "AI request failed"
 msgstr ""
 
-#: inc/ai/AiFormGenerator__premium_only.php:79
+#: inc/ai/AiFormGenerator__premium_only.php:84
 msgid "No field types available"
 msgstr ""
 
-#: inc/ai/AiFormGenerator__premium_only.php:89
+#: inc/ai/AiFormGenerator__premium_only.php:94
 msgid ""
 "AI did not return any usable fields, try to describe the form differently"
 msgstr ""
@@ -1510,11 +1543,6 @@ msgstr ""
 msgid "Start writing or enter Tab to choose a block"
 msgstr ""
 
-#: inc/fields/FileField.php:75 inc/fields/FileField.php:100
-#: inc/fields/FileField.php:200
-msgid "File is not exist"
-msgstr ""
-
 #: inc/fields/FileField.php:104
 msgid "Error during upload"
 msgstr ""
@@ -1907,21 +1935,25 @@ msgstr ""
 msgid "Invalid location data format"
 msgstr ""
 
-#: templates/admin/design-selector.php:61
+#: templates/admin/design-selector.php:62
 msgid "Available in Pro Version"
 msgstr ""
 
-#: templates/admin/design-selector.php:72
+#: templates/admin/design-selector.php:71
+msgid "Preview on my form"
+msgstr ""
+
+#: templates/admin/design-selector.php:80
 msgid "🎨 Unlock All Form Designs"
 msgstr ""
 
-#: templates/admin/design-selector.php:73
+#: templates/admin/design-selector.php:81
 msgid ""
-"Get access to 7 additional professional form designs with the Pro version. "
-"Perfect for matching your brand and increasing conversions."
+"Get access to all professional form designs with the Pro version. Perfect "
+"for matching your brand and increasing conversions."
 msgstr ""
 
-#: templates/admin/design-selector.php:75
+#: templates/admin/design-selector.php:83 templates/design-preview.php:91
 msgid "Upgrade to Pro"
 msgstr ""
 
@@ -2395,31 +2427,19 @@ msgstr ""
 msgid "Form Designs"
 msgstr ""
 
-#: templates/admin/settings/form-submission-display.php:58
-msgid "Simple Design"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:63
-msgid "Modern Design"
-msgstr ""
-
 #: templates/admin/settings/form-submission-display.php:68
-msgid "Minimum Style"
-msgstr ""
-
-#: templates/admin/settings/form-submission-display.php:103
 msgid ""
 "Choose the visual design for your form. Pro designs require a premium "
 "license."
 msgstr ""
 
-#: templates/admin/settings/form-submission-display.php:110
+#: templates/admin/settings/form-submission-display.php:75
 msgid ""
 "Select front form design. Each design offers a unique visual style and user "
 "experience."
 msgstr ""
 
-#: templates/admin/settings/form-submission-display.php:117
+#: templates/admin/settings/form-submission-display.php:82
 msgid "Custom css for form"
 msgstr ""
 
@@ -2429,6 +2449,14 @@ msgstr ""
 
 #: templates/admin/settings/form-submission-restriction.php:21
 msgid "Unregistered users will be able to submit posts"
+msgstr ""
+
+#: templates/design-preview.php:82
+msgid "Design preview:"
+msgstr ""
+
+#: templates/design-preview.php:89
+msgid "Back to form"
 msgstr ""
 
 #: templates/editor/attaches.php:6

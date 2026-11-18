@@ -13,7 +13,7 @@ if ( !$attributes['id'] && current_user_can( 'manage_options' ) ) {
 }
 $fields_list = json_decode( get_post_meta( $attributes['id'], 'formBuilderData', true ), true ) ?? BFE\Form::get_form_builder_demo_data();
 $form_id = $attributes['id'] ?? 0;
-$form_theme = $form_settings['form_theme'] ?? 'default_2';
+$form_theme = apply_filters( 'bfe_form_theme', $form_settings['form_theme'] ?? 'default_2', $form_id );
 $form_control_buttons = $form_settings['control_buttons'] ?? 'bottom';
 $message_place = $form_settings['error_success_messages'] ?? 'bottom';
 $form_css = sprintf( '<style>%s</style>', esc_html( $form_settings['form_custom_css'] ?? '' ) );
@@ -21,7 +21,7 @@ echo $form_css;
 ?>
 
 <form class="fus-form bfe-editor <?php 
-echo $form_theme;
+echo esc_attr( $form_theme );
 ?>" id="fus-form-<?php 
 echo $form_id;
 ?>" post_id="<?php 

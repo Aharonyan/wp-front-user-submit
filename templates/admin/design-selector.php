@@ -10,6 +10,7 @@
  * $has_pro - boolean if user has pro license
  * $field_name - field name for form
  * $field_args - field arguments
+ * $preview_form_id - optional form ID for the "Preview on my form" links
  */
 
 if (!defined('ABSPATH')) {
@@ -63,6 +64,13 @@ if (!defined('ABSPATH')) {
                         <?php endif; ?>
                     </div>
                 </label>
+
+                <?php if (!empty($preview_form_id)): ?>
+                    <a class="button button-small fus-design-preview-link" target="_blank"
+                        href="<?php echo esc_url(\BFE\FormDesignPreview::get_preview_url($preview_form_id, $design_key)); ?>">
+                        <?php esc_html_e('Preview on my form', 'front-editor'); ?>
+                    </a>
+                <?php endif; ?>
             </div>
         <?php endforeach; ?>
     </div>
@@ -70,7 +78,7 @@ if (!defined('ABSPATH')) {
     <?php if (!$has_pro): ?>
         <div class="pro-upgrade-notice">
             <h4><?php _e('🎨 Unlock All Form Designs', 'front-editor'); ?></h4>
-            <p><?php _e('Get access to 7 additional professional form designs with the Pro version. Perfect for matching your brand and increasing conversions.', 'front-editor'); ?></p>
+            <p><?php _e('Get access to all professional form designs with the Pro version. Perfect for matching your brand and increasing conversions.', 'front-editor'); ?></p>
             <a href="https://wpfronteditor.com/pricing/" target="_blank" class="button button-primary">
                 <?php _e('Upgrade to Pro', 'front-editor'); ?>
             </a>

@@ -1,0 +1,262 @@
+/**
+ * Clean Form Theme (free, default for new forms)
+ * Calm white card that looks the same on any WordPress theme:
+ * every property themes like to change is set explicitly.
+ * File: src/scss/partials/form-themes/_clean.scss
+ */
+
+.fus-form.bfe-editor.clean {
+    --fus-clean-accent: #6161ff;
+    --fus-clean-ring: rgba(97, 97, 255, 0.18);
+    --fus-clean-text: #1f2937;
+    --fus-clean-muted: #6b7280;
+    --fus-clean-placeholder: #9ca3af;
+    --fus-clean-border: #d1d5db;
+    --fus-clean-field-bg: #ffffff;
+    --fus-clean-radius: 8px;
+    --fus-clean-gap: 22px;
+
+    box-sizing: border-box;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06);
+    color: var(--fus-clean-text);
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    .wrapper .column {
+        display: flex;
+        flex-direction: column;
+        gap: var(--fus-clean-gap);
+        padding: 0;
+
+        > div {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+    }
+
+    // Label row: label on the left, AI button on the right
+    .fus-post-title,
+    .textarea-field,
+    .select-wrap,
+    .thumb-img-wrap,
+    .fus-wrap,
+    .fe_custom_field {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        column-gap: 12px;
+
+        > :not(label):not(.fus-ai-toolbar):not(input[type="hidden"]) {
+            grid-column: 1 / -1;
+        }
+    }
+
+    label {
+        display: block;
+        margin: 0 0 6px;
+        padding: 0;
+        color: var(--fus-clean-text);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-transform: none;
+
+        .required {
+            color: #dc2626;
+        }
+    }
+
+    .checkbox-item label,
+    .radio-item label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 400;
+    }
+
+    .fus-ai-toolbar {
+        position: static;
+        justify-self: end;
+        margin: 0 0 6px;
+    }
+
+    // Text controls
+    input[type="fus_post_title"],
+    input[type="text"]:not(.fus_post_id):not([name="form_id"]),
+    input[type="email"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    input[type="google_map"],
+    textarea:not(.editor-textarea),
+    select {
+        display: block;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 44px;
+        margin: 0;
+        padding: 10px 14px;
+        color: var(--fus-clean-text);
+        font: inherit;
+        font-size: 16px;
+        line-height: 1.5;
+        background: var(--fus-clean-field-bg);
+        border: 1px solid var(--fus-clean-border);
+        border-radius: var(--fus-clean-radius);
+        box-shadow: none;
+        outline: none;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+        &::placeholder {
+            color: var(--fus-clean-placeholder);
+            opacity: 1;
+        }
+
+        &:focus {
+            border-color: var(--fus-clean-accent);
+            box-shadow: 0 0 0 3px var(--fus-clean-ring);
+        }
+    }
+
+    textarea:not(.editor-textarea) {
+        min-height: 160px;
+        resize: vertical;
+    }
+
+    // Editors keep their own toolbars, only the frame is unified
+    .EditorJS-editor,
+    .bytemd,
+    .wp-editor-wrap {
+        border: 1px solid var(--fus-clean-border);
+        border-radius: var(--fus-clean-radius);
+        box-shadow: none;
+        overflow: hidden;
+    }
+
+    // SlimSelect (categories, tags, selects)
+    .ss-main {
+        width: 100%;
+
+        .ss-single-selected,
+        .ss-multi-selected {
+            height: auto;
+            min-height: 44px;
+            padding: 8px 14px;
+            font-size: 16px;
+            background: var(--fus-clean-field-bg);
+            border: 1px solid var(--fus-clean-border);
+            border-radius: var(--fus-clean-radius);
+            box-shadow: none;
+        }
+
+        .ss-single-selected .placeholder .ss-disabled {
+            color: var(--fus-clean-placeholder);
+        }
+    }
+
+    // Featured image
+    .image_loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 120px;
+        margin: 0;
+        background: #fafafa;
+        border: 1.5px dashed var(--fus-clean-border);
+        border-radius: var(--fus-clean-radius);
+        box-shadow: none;
+        transition: border-color 0.15s ease, background-color 0.15s ease;
+
+        &:hover {
+            background: #f7f7ff;
+            border-color: var(--fus-clean-accent);
+        }
+
+        .button-icon {
+            width: 36px;
+            height: 36px;
+            opacity: 0.55;
+        }
+    }
+
+    // Buttons: colours come from the form design settings (inline style),
+    // the accent is only a fallback for forms saved without them
+    .fus-form-block-header {
+        margin: var(--fus-clean-gap) 0 0;
+        padding: 0;
+
+        .sub-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            background: none;
+            border: 0;
+            box-shadow: none;
+        }
+
+        button.editor-button {
+            min-height: 44px;
+            margin: 0;
+            padding: 10px 22px;
+            color: #ffffff;
+            font: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: 0;
+            text-transform: none;
+            background: var(--fus-clean-accent);
+            border: 1px solid var(--fus-clean-accent);
+            border-radius: var(--fus-clean-radius) !important;
+            box-shadow: none;
+            cursor: pointer;
+            transition: filter 0.15s ease;
+
+            &:hover {
+                filter: brightness(1.08);
+            }
+
+            &:focus-visible {
+                outline: 3px solid var(--fus-clean-ring);
+                outline-offset: 2px;
+            }
+        }
+    }
+
+    .fus_powered_by {
+        margin-top: 18px;
+        color: var(--fus-clean-muted);
+        font-size: 13px;
+        text-align: center;
+    }
+
+    @media (max-width: 600px) {
+        padding: 20px;
+        border-radius: 12px;
+
+        .fus-form-block-header button.editor-button {
+            flex: 1 1 100%;
+        }
+    }
+}

@@ -48,6 +48,32 @@
   }
 }
 
+// Themes style every <button> (Twenty Twenty-One paints them dark), keep the trigger ours
+.fus-form.bfe-editor .fus-ai-toolbar button.fus-ai-trigger {
+  min-height: 0;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--fus-ai-accent-soft);
+  color: var(--fus-ai-accent);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  text-transform: none;
+  box-shadow: none;
+
+  &:hover {
+    background: var(--fus-ai-accent);
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(109, 74, 255, 0.35);
+  }
+}
+
 body.fus-ai-open {
   overflow: hidden;
 }

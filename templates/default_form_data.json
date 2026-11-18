@@ -51,6 +51,7 @@
         "post_added_message": "New post created",
         "update_message": "Post updated successfully",
         "post_update_button_text": "Update",
-        "guest_post": "false"
+        "guest_post": "false",
+        "form_theme": "clean"
     }
 }

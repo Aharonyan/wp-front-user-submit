@@ -4,7 +4,7 @@ Tags: frontend post, guest post, submit post, user submitted posts, ai writing a
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 5.1.0
+Stable tag: 5.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,7 +49,8 @@ New in 5.1: a **free ✨ AI writing assistant** right inside your forms. Your us
 * Required and optional fields, custom success and error messages
 * Shortcode, Gutenberg block or template tag
 * Show custom field data on single posts
-* Ready-made form styles, or add your own CSS
+* Clean form design that looks right with any theme, or add your own CSS
+* Preview every design, including Pro ones, on your own form before you choose
 * Responsive, translation ready, developer hooks
 * Works with ACF and User Role Editor
 
@@ -206,7 +207,7 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 
 1. ✨ AI writing assistant (free): improve, fix grammar, shorten or expand text right in the form
 2. Drag-and-drop form builder
-3. Frontend post submission form in the Card/Panel design (Pro)
+3. Frontend post submission form in the free Clean design
 4. Form builder fields
 5. Form post payment settings with WooCommerce integration
 6. Form post submit settings
@@ -224,6 +225,12 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.2.0 =
+* [new] Clean form design: free, the default for new forms, looks the same on any theme
+* [new] "Preview on my form": see any design, including Pro ones, on your own form before choosing
+* [fix] AI button sits on the field label row and keeps its colours on themes that style all buttons
+* [fix] Demo form created on activation uses the Clean design with readable buttons
 
 = 5.1.0 =
 * [new] ✨ AI writing assistant for title, textarea, Markdown, EditorJS and TinyMCE fields: write from prompt, improve, fix grammar, shorten, expand
@@ -463,6 +470,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.2.0 =
+New free Clean form design and design preview on your own form.
 
 = 5.1.0 =
 New: free ✨ AI writing assistant in your forms (OpenAI, Claude, Gemini, OpenRouter, local models).

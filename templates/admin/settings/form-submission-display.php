@@ -47,49 +47,13 @@
     <td>
         <?php
         // Get current selection
-        $current_design = isset($form_settings['form_theme']) ? $form_settings['form_theme'] : 'default_2';
+        // New forms start with Clean; existing forms without a design keep the front-end default
+        $current_design = $form_settings['form_theme'] ?? ($post_ID === 'new' ? 'clean' : 'default_2');
         
         // Check if user has pro license
         $has_pro = fe_fs()->can_use_premium_code__premium_only();
         
-        // Define available designs with preview images
-        $designs = [
-            'default_2' => [
-                'name' => __('Simple Design', 'front-editor'),
-                'pro' => false,
-                'preview' => FE_PLUGIN_URL . '/assets/img/simple-design-preview.png'
-            ],
-            'default' => [
-                'name' => __('Modern Design', 'front-editor'),
-                'pro' => false,
-                'preview' => FE_PLUGIN_URL . '/assets/img/modern-design-preview.png'
-            ],
-            'no_style' => [
-                'name' => __('Minimum Style', 'front-editor'),
-                'pro' => false,
-                'preview' => FE_PLUGIN_URL . '/assets/img/minimum-style-preview.png'
-            ],
-            'modern-minimal' => [
-                'name' => __('Modern Minimal', 'front-editor'),
-                'pro' => true,
-                'preview' => FE_PLUGIN_URL . '/assets/img/form-modern-minimal-preview.png'
-            ],
-            'card-panel' => [
-                'name' => __('Card/Panel Style', 'front-editor'),
-                'pro' => true,
-                'preview' => FE_PLUGIN_URL . '/assets/img/form-card-panel-preview.png'
-            ],
-            'corporate-professional' => [
-                'name' => __('Corporate/Professional', 'front-editor'),
-                'pro' => true,
-                'preview' => FE_PLUGIN_URL . '/assets/img/form-corporate-preview.png'
-            ],
-            'borderless-flat' => [
-                'name' => __('Borderless/Flat', 'front-editor'),
-                'pro' => true,
-                'preview' => FE_PLUGIN_URL . '/assets/img/form-borderless-flat-preview.png'
-            ]
-        ];
+        $designs = \BFE\FormDesignPreview::get_designs();
 
         // Prepare template variables
         $template_vars = [
@@ -97,6 +61,7 @@
             'current_design' => $current_design,
             'has_pro' => $has_pro,
             'field_name' => 'form_theme',
+            'preview_form_id' => is_numeric($post_ID) ? (int) $post_ID : 0,
             'field_args' => [
                 'name' => 'settings'
             ],

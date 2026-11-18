@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/Aharonyan/wp-front-user-submit/"
 "issues\n"
-"POT-Creation-Date: 2026-11-18 01:17+0200\n"
+"POT-Creation-Date: 2026-11-18 12:04+0200\n"
 "PO-Revision-Date: 2024-12-12 12:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: Русский\n"
@@ -16,15 +16,15 @@ msgstr ""
 "&& n%10<=4) && ((n%100<12 || n%100>14))) ? 1 : 2;\n"
 "X-Loco-Version: 2.6.14; wp-6.7.1\n"
 
-#: FrontUserSubmit.php:127 templates/user-admin.php:91
+#: FrontUserSubmit.php:128 templates/user-admin.php:91
 msgid "Are you sure you want to delete this post?"
 msgstr "Вы уверены, что хотите удалить это сообщение?"
 
-#: FrontUserSubmit.php:144 inc/Blocks.php:53 inc/MenuSettings.php:129
+#: FrontUserSubmit.php:145 inc/Blocks.php:53 inc/MenuSettings.php:129
 msgid "Edit in front editor"
 msgstr "Редактирование во фронтальном редакторе"
 
-#: FrontUserSubmit.php:156 inc/PostFormsListTable.php:414
+#: FrontUserSubmit.php:157 inc/PostFormsListTable.php:414
 msgid "Edit"
 msgstr "Редактировать"
 
@@ -178,7 +178,7 @@ msgstr ""
 "Пожалуйста, перейдите на версию Pro, чтобы разблокировать все эти "
 "потрясающие возможности"
 
-#: inc/Form.php:158 inc/ai/AiAssistant.php:189 inc/ai/AiSettings.php:314
+#: inc/Form.php:158 inc/ai/AiAssistant.php:191 inc/ai/AiSettings.php:314
 #: templates/admin/settings/form-ai-settings.php:83
 msgid "Get the Pro version"
 msgstr "Получите версию Pro"
@@ -265,6 +265,50 @@ msgstr "Заголовок записи"
 #: inc/Form.php:792 templates/front-editor/post-title.php:3
 msgid "Add Title"
 msgstr "Добавить загаловок"
+
+#: inc/FormDesignPreview.php:34
+msgid "Clean"
+msgstr "Чистый"
+
+#: inc/FormDesignPreview.php:39
+msgid "Simple Design"
+msgstr "Простой дизайн"
+
+#: inc/FormDesignPreview.php:44
+msgid "Modern Design"
+msgstr "Современный дизайн"
+
+#: inc/FormDesignPreview.php:49
+msgid "Minimum Style"
+msgstr "Минимальный стиль"
+
+#: inc/FormDesignPreview.php:54 inc/MenuSettings.php:335
+#: inc/MenuSettings.php:403
+msgid "Modern Minimal"
+msgstr "Современный минимализм"
+
+#: inc/FormDesignPreview.php:59 inc/MenuSettings.php:340
+#: inc/MenuSettings.php:413
+msgid "Card/Panel Style"
+msgstr "Карточка/панель"
+
+#: inc/FormDesignPreview.php:64 inc/MenuSettings.php:365
+#: inc/MenuSettings.php:418
+msgid "Corporate/Professional"
+msgstr "Корпоративный"
+
+#: inc/FormDesignPreview.php:69 inc/MenuSettings.php:360
+#: inc/MenuSettings.php:423
+msgid "Borderless/Flat"
+msgstr "Без рамок/плоский"
+
+#: inc/FormDesignPreview.php:105
+msgid "You are not allowed to preview this form."
+msgstr "У вас нет прав на предпросмотр этой формы."
+
+#: inc/FormDesignPreview.php:110
+msgid "Form or design not found."
+msgstr "Форма или дизайн не найдены."
 
 #: inc/FormMetaBox.php:70
 msgid "FUS Form Data"
@@ -476,16 +520,6 @@ msgstr "Уведомление пользователя по электронн�
 msgid "Custom CSS"
 msgstr "Пользовательский CSS"
 
-#: inc/MenuSettings.php:335 inc/MenuSettings.php:403
-#: templates/admin/settings/form-submission-display.php:73
-msgid "Modern Minimal"
-msgstr "Современный минимализм"
-
-#: inc/MenuSettings.php:340 inc/MenuSettings.php:413
-#: templates/admin/settings/form-submission-display.php:78
-msgid "Card/Panel Style"
-msgstr "Карточка/панель"
-
 #: inc/MenuSettings.php:345
 msgid "Split Screen"
 msgstr "Разделённый экран"
@@ -497,16 +531,6 @@ msgstr "Градиентный фон"
 #: inc/MenuSettings.php:355
 msgid "Glassmorphism"
 msgstr "Глассморфизм"
-
-#: inc/MenuSettings.php:360 inc/MenuSettings.php:423
-#: templates/admin/settings/form-submission-display.php:88
-msgid "Borderless/Flat"
-msgstr "Без рамок/плоский"
-
-#: inc/MenuSettings.php:365 inc/MenuSettings.php:418
-#: templates/admin/settings/form-submission-display.php:83
-msgid "Corporate/Professional"
-msgstr "Корпоративный"
 
 #: inc/MenuSettings.php:370
 msgid "Playful/Colorful"
@@ -873,6 +897,15 @@ msgstr "Создано новое запись"
 msgid "No post created."
 msgstr "Запись не создана."
 
+#: inc/UploadSecurity.php:42 inc/fields/FileField.php:75
+#: inc/fields/FileField.php:100 inc/fields/FileField.php:200
+msgid "File is not exist"
+msgstr "Файл не существует"
+
+#: inc/UploadSecurity.php:49 inc/UploadSecurity.php:53
+msgid "Sorry, this file type is not permitted."
+msgstr "Извините, этот тип файла не разрешён."
+
 #: inc/WooIntegration.php:153
 msgid "Failed to add product to cart"
 msgstr "Не удалось добавить товар в корзину"
@@ -963,130 +996,130 @@ msgstr "Форма не найдена"
 msgid "AI assistant is not available"
 msgstr "ИИ-помощник недоступен"
 
-#: inc/ai/AiAssistant.php:156
+#: inc/ai/AiAssistant.php:157
 msgid "Describe what to write…"
 msgstr "Опишите, что нужно написать…"
 
-#: inc/ai/AiAssistant.php:159
+#: inc/ai/AiAssistant.php:161
 msgid "AI"
 msgstr "ИИ"
 
-#: inc/ai/AiAssistant.php:160
+#: inc/ai/AiAssistant.php:162
 msgid "AI Assistant"
 msgstr "ИИ-помощник"
 
-#: inc/ai/AiAssistant.php:161
+#: inc/ai/AiAssistant.php:163
 msgid "What to do"
 msgstr "Что сделать"
 
-#: inc/ai/AiAssistant.php:162
+#: inc/ai/AiAssistant.php:164
 msgid "Instructions"
 msgstr "Инструкция"
 
-#: inc/ai/AiAssistant.php:163 inc/ai/AiFormGenerator__premium_only.php:54
+#: inc/ai/AiAssistant.php:165 inc/ai/AiFormGenerator__premium_only.php:59
 msgid "Generate"
 msgstr "Сгенерировать"
 
-#: inc/ai/AiAssistant.php:164
+#: inc/ai/AiAssistant.php:166
 msgid "Try again"
 msgstr "Ещё раз"
 
-#: inc/ai/AiAssistant.php:165
+#: inc/ai/AiAssistant.php:167
 msgid "Replace"
 msgstr "Заменить"
 
-#: inc/ai/AiAssistant.php:166
+#: inc/ai/AiAssistant.php:168
 msgid "Insert below"
 msgstr "Вставить ниже"
 
-#: inc/ai/AiAssistant.php:167 inc/ai/AiFormGenerator__premium_only.php:55
+#: inc/ai/AiAssistant.php:169 inc/ai/AiFormGenerator__premium_only.php:60
 msgid "Cancel"
 msgstr "Отмена"
 
-#: inc/ai/AiAssistant.php:168
+#: inc/ai/AiAssistant.php:170
 msgid "Result"
 msgstr "Результат"
 
-#: inc/ai/AiAssistant.php:169 inc/ai/AiAssistant.php:222
+#: inc/ai/AiAssistant.php:171 inc/ai/AiAssistant.php:224
 msgid "Add some text to the field first"
 msgstr "Сначала добавьте текст в поле"
 
-#: inc/ai/AiAssistant.php:170 inc/ai/AiAssistant.php:219
+#: inc/ai/AiAssistant.php:172 inc/ai/AiAssistant.php:221
 msgid "Please add instructions"
 msgstr "Добавьте инструкцию"
 
-#: inc/ai/AiAssistant.php:171 inc/ai/AiAssistant.php:333
+#: inc/ai/AiAssistant.php:173 inc/ai/AiAssistant.php:335
 msgid "AI request failed, please try again later"
 msgstr "Не удалось выполнить запрос к ИИ, попробуйте позже"
 
-#: inc/ai/AiAssistant.php:186
+#: inc/ai/AiAssistant.php:188
 msgid "✨ Generate with AI"
 msgstr "✨ Создать с ИИ"
 
-#: inc/ai/AiAssistant.php:187
+#: inc/ai/AiAssistant.php:189
 msgid "AI form generation is a Pro feature"
 msgstr "Генерация форм с ИИ доступна в Pro"
 
-#: inc/ai/AiAssistant.php:188
+#: inc/ai/AiAssistant.php:190
 msgid "Describe the form in your own words and AI will build it for you."
 msgstr "Опишите форму своими словами, и ИИ соберёт её за вас."
 
-#: inc/ai/AiAssistant.php:190
+#: inc/ai/AiAssistant.php:192
 msgid "Add your AI provider API key in Settings → AI first."
 msgstr "Сначала добавьте API-ключ провайдера в Настройки → ИИ."
 
-#: inc/ai/AiAssistant.php:191 templates/admin/settings/form-ai-settings.php:72
+#: inc/ai/AiAssistant.php:193 templates/admin/settings/form-ai-settings.php:72
 msgid "Open AI settings"
 msgstr "Открыть настройки ИИ"
 
-#: inc/ai/AiAssistant.php:213
+#: inc/ai/AiAssistant.php:215
 msgid "Unknown AI action"
 msgstr "Неизвестное действие ИИ"
 
-#: inc/ai/AiAssistant.php:271
+#: inc/ai/AiAssistant.php:273
 #, php-format
 msgid "Connected to %1$s (%2$s). Do not forget to save the settings."
 msgstr "Подключено к %1$s (%2$s). Не забудьте сохранить настройки."
 
-#: inc/ai/AiClient.php:51
+#: inc/ai/AiClient.php:53
 msgid "OpenRouter / OpenAI compatible URL"
 msgstr "OpenRouter / OpenAI-совместимый URL"
 
-#: inc/ai/AiClient.php:155
+#: inc/ai/AiClient.php:157
 msgid "AI API key is not configured"
 msgstr "API-ключ ИИ не настроен"
 
-#: inc/ai/AiClient.php:185
+#: inc/ai/AiClient.php:187
 #, php-format
 msgid "AI request failed: %s"
 msgstr "Ошибка запроса к ИИ: %s"
 
-#: inc/ai/AiClient.php:192
+#: inc/ai/AiClient.php:194
 #, php-format
 msgid "AI provider error (%1$s): %2$s"
 msgstr "Ошибка провайдера ИИ (%1$s): %2$s"
 
-#: inc/ai/AiClient.php:197
+#: inc/ai/AiClient.php:199
 msgid "AI provider returned an empty response"
 msgstr "Провайдер ИИ вернул пустой ответ"
 
-#: inc/ai/AiClient.php:220
+#: inc/ai/AiClient.php:222
 msgid "AI response is not valid JSON"
 msgstr "Ответ ИИ не является корректным JSON"
 
-#: inc/ai/AiClient.php:253
+#: inc/ai/AiClient.php:255
 msgid "AI endpoint URL is not valid"
 msgstr "Некорректный URL API"
 
-#: inc/ai/AiClient.php:342 inc/ai/AiClient.php:344
+#: inc/ai/AiClient.php:348 inc/ai/AiClient.php:350
 msgid "Unknown error"
 msgstr "Неизвестная ошибка"
 
-#: inc/ai/AiFormGenerator__premium_only.php:50
+#: inc/ai/AiFormGenerator__premium_only.php:55
 msgid "Generate form with AI"
 msgstr "Создать форму с ИИ"
 
-#: inc/ai/AiFormGenerator__premium_only.php:51
+#: inc/ai/AiFormGenerator__premium_only.php:56
 msgid ""
 "E.g. A form to submit a recipe: title, photo, ingredients, cooking time, "
 "difficulty (easy/medium/hard) and step by step instructions."
@@ -1094,32 +1127,32 @@ msgstr ""
 "Например: форма для рецепта — название, фото, ингредиенты, время "
 "приготовления, сложность (легко/средне/сложно) и пошаговая инструкция."
 
-#: inc/ai/AiFormGenerator__premium_only.php:52
+#: inc/ai/AiFormGenerator__premium_only.php:57
 msgid "Add fields to the current form"
 msgstr "Добавить поля к текущей форме"
 
-#: inc/ai/AiFormGenerator__premium_only.php:53
+#: inc/ai/AiFormGenerator__premium_only.php:58
 msgid "Replace current form fields"
 msgstr "Заменить поля текущей формы"
 
-#: inc/ai/AiFormGenerator__premium_only.php:56
-#: inc/ai/AiFormGenerator__premium_only.php:76
+#: inc/ai/AiFormGenerator__premium_only.php:61
+#: inc/ai/AiFormGenerator__premium_only.php:81
 msgid "Please describe the form"
 msgstr "Опишите форму"
 
-#: inc/ai/AiFormGenerator__premium_only.php:57
+#: inc/ai/AiFormGenerator__premium_only.php:62
 msgid "Form generated. Review the fields and click Save."
 msgstr "Форма создана. Проверьте поля и нажмите «Сохранить»."
 
-#: inc/ai/AiFormGenerator__premium_only.php:58
+#: inc/ai/AiFormGenerator__premium_only.php:63
 msgid "AI request failed"
 msgstr "Ошибка запроса к ИИ"
 
-#: inc/ai/AiFormGenerator__premium_only.php:79
+#: inc/ai/AiFormGenerator__premium_only.php:84
 msgid "No field types available"
 msgstr "Нет доступных типов полей"
 
-#: inc/ai/AiFormGenerator__premium_only.php:89
+#: inc/ai/AiFormGenerator__premium_only.php:94
 msgid ""
 "AI did not return any usable fields, try to describe the form differently"
 msgstr "ИИ не вернул подходящих полей, попробуйте описать форму иначе"
@@ -1573,11 +1606,6 @@ msgstr "Переместить вниз"
 msgid "Start writing or enter Tab to choose a block"
 msgstr "Начните писать или введите Tab, чтобы выбрать блок"
 
-#: inc/fields/FileField.php:75 inc/fields/FileField.php:100
-#: inc/fields/FileField.php:200
-msgid "File is not exist"
-msgstr "Файл не существует"
-
 #: inc/fields/FileField.php:104
 msgid "Error during upload"
 msgstr "Ошибка при загрузке"
@@ -1987,23 +2015,27 @@ msgstr "Данные о местоположении не найдены"
 msgid "Invalid location data format"
 msgstr "Неверный формат данных о местоположении"
 
-#: templates/admin/design-selector.php:61
+#: templates/admin/design-selector.php:62
 msgid "Available in Pro Version"
 msgstr "Доступно в Pro-версии"
 
-#: templates/admin/design-selector.php:72
+#: templates/admin/design-selector.php:71
+msgid "Preview on my form"
+msgstr "Посмотреть на моей форме"
+
+#: templates/admin/design-selector.php:80
 msgid "🎨 Unlock All Form Designs"
 msgstr "🎨 Откройте все дизайны форм"
 
-#: templates/admin/design-selector.php:73
+#: templates/admin/design-selector.php:81
 msgid ""
-"Get access to 7 additional professional form designs with the Pro version. "
-"Perfect for matching your brand and increasing conversions."
+"Get access to all professional form designs with the Pro version. Perfect "
+"for matching your brand and increasing conversions."
 msgstr ""
-"Получите 7 дополнительных профессиональных дизайнов форм в Pro-версии — под "
-"ваш бренд и для роста конверсии."
+"Получите все профессиональные дизайны форм в Pro-версии — под ваш бренд и "
+"для роста конверсии."
 
-#: templates/admin/design-selector.php:75
+#: templates/admin/design-selector.php:83 templates/design-preview.php:91
 msgid "Upgrade to Pro"
 msgstr "Перейти на Pro"
 
@@ -2489,25 +2521,13 @@ msgstr "Место, где будут отображаться сообщени�
 msgid "Form Designs"
 msgstr "Дизайны форм"
 
-#: templates/admin/settings/form-submission-display.php:58
-msgid "Simple Design"
-msgstr "Простой дизайн"
-
-#: templates/admin/settings/form-submission-display.php:63
-msgid "Modern Design"
-msgstr "Современный дизайн"
-
 #: templates/admin/settings/form-submission-display.php:68
-msgid "Minimum Style"
-msgstr "Минимальный стиль"
-
-#: templates/admin/settings/form-submission-display.php:103
 msgid ""
 "Choose the visual design for your form. Pro designs require a premium "
 "license."
 msgstr "Выберите оформление формы. Pro-дизайны требуют премиум-лицензию."
 
-#: templates/admin/settings/form-submission-display.php:110
+#: templates/admin/settings/form-submission-display.php:75
 msgid ""
 "Select front form design. Each design offers a unique visual style and user "
 "experience."
@@ -2515,7 +2535,7 @@ msgstr ""
 "Выберите дизайн формы на сайте. У каждого свой визуальный стиль и удобство "
 "использования."
 
-#: templates/admin/settings/form-submission-display.php:117
+#: templates/admin/settings/form-submission-display.php:82
 msgid "Custom css for form"
 msgstr "Пользовательский css для формы"
 
@@ -2526,6 +2546,14 @@ msgstr "Включить гостевой постинг"
 #: templates/admin/settings/form-submission-restriction.php:21
 msgid "Unregistered users will be able to submit posts"
 msgstr "Незарегистрированные пользователи смогут добовлять записи"
+
+#: templates/design-preview.php:82
+msgid "Design preview:"
+msgstr "Предпросмотр дизайна:"
+
+#: templates/design-preview.php:89
+msgid "Back to form"
+msgstr "Вернуться к форме"
 
 #: templates/editor/attaches.php:6
 msgid "Download"
