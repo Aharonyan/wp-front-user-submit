@@ -743,6 +743,7 @@ class SavePost {
     public static function mark_guest_upload( $attachment_id ) {
         if ( $attachment_id && !is_user_logged_in() ) {
             update_post_meta( (int) $attachment_id, self::GUEST_UPLOAD_META, UploadSecurity::guest_upload_marker() );
+            GuestUploadCleanup::mark_unclaimed( $attachment_id );
         }
     }
 

@@ -315,15 +315,9 @@ $error_color: #ff9494;
         padding: 5px;
         border-radius: 5px !important;
     }
-    .fus_powered_by {
-        display: flex;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        font-size: 14px;
-        column-gap: 5px;
-        margin: 20px 10px;
+    // a hidden field has nothing to show, it must not take a row in the form
+    .fus-hidden-field {
+        display: none !important;
     }
 }
 

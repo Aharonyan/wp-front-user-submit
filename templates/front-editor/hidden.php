@@ -1,4 +1,4 @@
-<div class="fe_custom_field <?= esc_attr($field['name']) ?>">
+<div class="fe_custom_field fus-hidden-field <?= esc_attr($field['name']) ?>">
     <?php
     
     $custom_keys = get_post_custom_keys($post_id);

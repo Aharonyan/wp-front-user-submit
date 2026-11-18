@@ -3,7 +3,7 @@
     <?php
     $all_file_props = [];
     foreach ($field as $key => $prop) {
-        if (str_contains($key, 'label')) {
+        if (strpos($key, 'label') !== false) {
             $all_file_props[$key] = $prop;
         }
     }

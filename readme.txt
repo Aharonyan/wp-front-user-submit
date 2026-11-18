@@ -4,7 +4,7 @@ Tags: frontend post, guest post, submit post, user submitted posts, ai writing a
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 5.2.5
+Stable tag: 5.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,8 @@ Frontend post submission and guest posting forms: drag-and-drop builder, user po
 == Description ==
 
 **Front User Submit** lets visitors and members create, edit and manage WordPress posts from the front end of your site, without ever opening wp-admin. Build a submission form in minutes with the drag-and-drop form builder, drop it on any page with a shortcode or block, and start collecting guest posts, user-generated content, listings, reviews or news.
+
+New in 5.3: guest posting, captcha fields (Cloudflare Turnstile, hCaptcha, reCAPTCHA), simple custom fields, file uploads and the ✨ AI form generator are now in the free version.
 
 New in 5.1: a **free ✨ AI writing assistant** right inside your forms. Your users write from a prompt, improve their text, fix grammar, shorten or expand it, using OpenAI, Anthropic Claude, Google Gemini, OpenRouter or a local model with your own API key.
 
@@ -35,13 +37,20 @@ New in 5.1: a **free ✨ AI writing assistant** right inside your forms. Your us
 
 = Core features (free) =
 
-* Frontend post submission form for logged-in users (guest posting without login is in Pro)
+* Frontend post submission form for logged-in users and for guests without an account
 * Drag-and-drop form builder with live preview
+* ✨ AI form generator: describe the form in your own words and AI adds the fields (uses your own AI provider key)
 * Multiple forms, each with its own settings
 * Edit and delete posts from the front end
 * User post dashboard: `[fe_fs_user_admin]`
 * Login and registration forms: `[fus_form_login]`, `[fus_form_register]`
-* Featured image and file uploads
+* Show the login form to visitors who are not logged in, instead of a "restricted" message
+* Spam protection: Cloudflare Turnstile, hCaptcha and Google reCAPTCHA v2 fields
+* Categories and tags fields: several terms, new terms from users, child terms under their parent
+* Custom fields: text, email, phone, password, color, number and hidden
+* Layout fields: header and paragraph
+* Featured image upload
+* File upload field: images and PDF, up to 2 MB per file and 3 files per field
 * Choose the post status after submission: pending review, draft or published
 * Admin and user email notifications
 * Redirect after submission to any URL or the current page
@@ -69,20 +78,18 @@ You stay in control of costs: AI is off in every form until you turn it on, you 
 
 = 🚀 Pro features =
 
-* Guest posting: accept posts from visitors without an account
-* Google reCAPTCHA and hCaptcha spam protection
-* ✨ AI form generator: describe the form in your own words and AI builds the fields
 * ✨ AI moderation: check submitted posts for spam, abuse and your own rules, hold flagged posts for review
 * ✨ AI auto-fill: excerpt, tags and SEO meta description (Yoast SEO, Rank Math, SEOPress or built-in) after submission
 * ✨ AI assistant extras: translate, change tone, custom instructions
 * WooCommerce integration: paid post submissions
 * Custom post types and custom taxonomies
-* Custom fields: text, textarea, number, email, URL, phone, date, hidden, radio group, checkbox group
+* More custom fields: date, select, radio group, checkbox group, button and action hook
 * Google Map location field
-* Advanced file and image uploader (FilePond) and WP Media Library thumbnail
-* Enhanced EditorJS blocks: gallery, image upload, table, carousel and more
-* Multiple category selection
-* Header, paragraph, button and action hook fields
+* File upload settings: choose the allowed file types, the maximum file size and the number of files
+* WP Media Library for the featured image and the EditorJS gallery
+* More EditorJS blocks: gallery, images carousel, table, file attachments and warning
+* Generated post titles built from other fields
+* More form designs: Modern Minimal, Card/Panel, Corporate/Professional and Borderless/Flat
 
 [Compare Free and Pro](https://wpuserpublish.com/pricing/)
 
@@ -98,13 +105,19 @@ You stay in control of costs: AI is off in every form until you turn it on, you 
 
 This plugin can connect to external services. Nothing is sent until you configure the service in the plugin settings.
 
-**AI providers** (Settings → ✨ AI). When a user clicks the "✨ AI" button in a form where AI is enabled, the text of that field, the post title and the user instructions are sent to the AI provider selected by the site administrator. With the Pro version, AI moderation sends the submitted post text when a post is submitted, AI auto-fill sends the post title and content after a post is submitted, and the AI form generator sends the form description entered by the administrator. The "Test connection" button sends a short test message.
+**AI providers** (Settings → ✨ AI). When a user clicks the "✨ AI" button in a form where AI is enabled, the text of that field, the post title and the user instructions are sent to the AI provider selected by the site administrator. The AI form generator in the form builder sends the form description entered by the administrator. With the Pro version, AI moderation sends the submitted post text when a post is submitted, and AI auto-fill sends the post title and content after a post is submitted. The "Test connection" button sends a short test message.
 
 * OpenAI – [Terms of use](https://openai.com/policies/terms-of-use/), [Privacy policy](https://openai.com/policies/privacy-policy/)
 * Anthropic Claude – [Terms of service](https://www.anthropic.com/legal/commercial-terms), [Privacy policy](https://www.anthropic.com/legal/privacy)
 * Google Gemini – [Terms of service](https://ai.google.dev/gemini-api/terms), [Privacy policy](https://policies.google.com/privacy)
 * OpenRouter – [Terms of service](https://openrouter.ai/terms), [Privacy policy](https://openrouter.ai/privacy)
 * Any other OpenAI compatible API URL entered by the administrator – the terms of that service apply.
+
+**Captcha services** (form builder → Custom Fields). Used only when you add a captcha field with your keys to a form. The visitor's browser loads the captcha widget from the provider. When the form is sent, the plugin sends the captcha answer and your secret key to the provider to check it.
+
+* Cloudflare Turnstile – [Terms of use](https://www.cloudflare.com/website-terms/), [Privacy policy](https://www.cloudflare.com/privacypolicy/)
+* hCaptcha – [Terms of service](https://www.hcaptcha.com/terms), [Privacy policy](https://www.hcaptcha.com/privacy)
+* Google reCAPTCHA – [Terms of service](https://policies.google.com/terms), [Privacy policy](https://policies.google.com/privacy)
 
 **Features.Vote** (Settings → Suggest Feature). When a project slug is set, the feature request widget script is loaded from features.vote on the plugin settings page. If "Pass User Data" is enabled, the current user's name, email and ID are passed to the widget. [Terms of service](https://features.vote/terms), [Privacy policy](https://features.vote/privacy)
 
@@ -143,7 +156,11 @@ That's all there is to it! Your site now can accept user-generated content. Ever
 
 = How do I let visitors submit posts without registering? =
 
-Create a form under Front User Submit → Post Forms, allow guest submissions in the form settings and add the form to a page with the `[fe_form id="X"]` shortcode or the Front Editor block. Set the post status to "Pending" if you want to review guest posts before they go live.
+Create a form under Front User Submit → Post Forms, tick "Enable Guest Post" in Settings → Submission Restriction and add the form to a page with the `[fe_form id="X"]` shortcode or the Front Editor block. Set the post status to "Pending" if you want to review guest posts before they go live. Guest posting is free.
+
+= How do I stop spam in guest posts? =
+
+Add a Cloudflare Turnstile, hCaptcha or reCAPTCHA v2 field to the form (all free) and set the post status to "Pending", so you review every post before it is published. AI moderation of submitted posts is in Pro.
 
 = Can users edit and delete their own posts from the front end? =
 
@@ -151,11 +168,11 @@ Yes. Add the `[fe_fs_user_admin]` shortcode to a page to give users a dashboard 
 
 = Can users upload images and files? =
 
-Yes: a featured image and file attachments. Set the maximum upload size in the settings. Pro adds an advanced uploader and the WP Media Library.
+Yes. The featured image field and the EditorJS image block are free. The file upload field is free too: images and PDF files, up to 2 MB per file and 3 files. Pro lets you change the file types, size and number of files, and adds the WP Media Library and EditorJS gallery and file blocks.
 
 = Is the AI assistant free? =
 
-Yes, the AI writing assistant (write, improve, fix grammar, shorten, expand) is in the free version. You pay only your AI provider for the requests made with your own API key.
+Yes, the AI writing assistant (write, improve, fix grammar, shorten, expand) and the AI form generator are in the free version. You pay only your AI provider for the requests made with your own API key.
 
 = How do I enable the AI assistant? =
 
@@ -176,7 +193,7 @@ Yes. Define it in wp-config.php: FUS_OPENAI_API_KEY, FUS_ANTHROPIC_API_KEY, FUS_
 
 = How do I stop spam submissions? =
 
-Require login for the form and set new posts to "Pending" so nothing is published without your review. Pro adds Google reCAPTCHA, hCaptcha and AI moderation of submitted posts.
+Require login for the form, or add a Cloudflare Turnstile, hCaptcha or reCAPTCHA v2 field. Set new posts to "Pending" so nothing is published without your review. Pro adds AI moderation of submitted posts.
 
 = Can I charge for post submissions? =
 
@@ -184,7 +201,7 @@ Yes, with the Pro WooCommerce integration you can require a payment for each sub
 
 = Does it support custom post types and custom fields? =
 
-Custom fields data can be shown on single posts in the free version. Custom post types, custom taxonomies and the full set of custom field types are in Pro. ACF is supported.
+The free version has text, email, phone, number, hidden, header, paragraph and file upload fields, and can show custom field data on single posts. Custom post types, custom taxonomies and the date, select, radio, checkbox, Google Map, button and action hook fields are in Pro. ACF is supported.
 
 = Does it work with the block editor (Gutenberg)? =
 
@@ -220,6 +237,27 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.3.0 =
+* [new] Guest posting is free: tick "Enable Guest Post" in the form settings (Submission Restriction)
+* [new] "Show login" is free: show the login form instead of the restricted message
+* [new] Cloudflare Turnstile field: free spam protection, once per form
+* [new] reCAPTCHA v2 and hCaptcha fields are free
+* [new] Text (text, email, password, tel, color, hidden), Number, Hidden, Header and Paragraph fields are free
+* [new] File upload field is free with fixed limits: images and PDF, up to 2 MB per file and 3 files. Changing the types, size and number of files stays in Pro
+* [new] Categories and tags: "Multiple Selections", "Allow Add New" and "Show Hierarchically" are free
+* [new] TinyMCE: "Media Support", "Teeny" and "Drag & Drop" are free. Add Media and drag and drop work for users who may upload files (Author and above)
+* [new] ✨ AI form generator is free and uses your own AI provider key
+* [new] The "Proudly powered by Front User Submit" line under forms is removed
+* [fix] The reCAPTCHA field in the free version is now shown and checked. Before, it could be added but did nothing
+* [fix] The captcha is reset after each submit, so a second try after an error gets a fresh check
+* [fix] Security: the server checks the file type, size and number of files of the File field, not only the browser
+* [fix] Security: a taxonomy field without "Multiple Selections" saves one term, and one submit can add at most 5 new terms
+* [fix] Header and Paragraph fields allow only heading and text tags
+* [fix] The File field works on PHP 7.4 with WordPress older than 5.9
+* [new] Files guests uploaded but never sent a post with are deleted once a day, two days after the upload (filter `bfe_guest_upload_cleanup_age`)
+* [fix] reCAPTCHA, hCaptcha and Turnstile are shown compact in narrow forms on phones instead of sticking out of the screen
+* [fix] hCaptcha no longer takes over a reCAPTCHA widget on the same page
 
 = 5.2.5 =
 * [fix] The registration form now sends the new user an email with a link to set their password, and notifies the admin, like the WordPress registration page
@@ -501,6 +539,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.3.0 =
+Guest posting, captcha fields (new Cloudflare Turnstile, hCaptcha, reCAPTCHA), simple custom fields, file uploads and the AI form generator are now free.
 
 = 5.2.5 =
 Registration emails, updated libraries with security fixes.

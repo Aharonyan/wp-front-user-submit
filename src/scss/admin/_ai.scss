@@ -22,15 +22,6 @@
     box-shadow: 0 0 0 3px rgba(109, 74, 255, 0.35);
     outline: none;
   }
-
-  &.is-pro-locked::after {
-    content: 'PRO';
-    padding: 1px 6px;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.25);
-    font-size: 10px;
-    letter-spacing: 0.05em;
-  }
 }
 
 .swal2-popup.fus-ai-form-generator {

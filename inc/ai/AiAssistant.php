@@ -29,6 +29,7 @@ class AiAssistant {
             3
         );
         add_filter( 'bfe_fe_post_form_backend_block_localize_data', [__CLASS__, 'add_admin_data'] );
+        require_once __DIR__ . '/AiFormGenerator.php';
     }
 
     public static function new_endpoints() {
@@ -154,15 +155,10 @@ class AiAssistant {
 
     public static function add_admin_data( $data ) {
         $data['ai'] = [
-            'configured'     => AiClient::is_configured(),
-            'form_generator' => false,
-            'settings_url'   => admin_url( 'admin.php?page=fe-global-settings&tab=' . AiSettings::TAB ),
-            'pricing_url'    => admin_url( 'admin.php?page=front_editor_settings-pricing' ),
-            'i18n'           => [
+            'configured'   => AiClient::is_configured(),
+            'settings_url' => admin_url( 'admin.php?page=fe-global-settings&tab=' . AiSettings::TAB ),
+            'i18n'         => [
                 'button'         => __( '✨ Generate with AI', 'front-editor' ),
-                'pro_title'      => __( 'AI form generation is a Pro feature', 'front-editor' ),
-                'pro_text'       => __( 'Describe the form in your own words and AI will build it for you.', 'front-editor' ),
-                'pro_button'     => __( 'Get the Pro version', 'front-editor' ),
                 'not_configured' => __( 'Add your AI provider API key in Settings → AI first.', 'front-editor' ),
                 'open_settings'  => __( 'Open AI settings', 'front-editor' ),
             ],

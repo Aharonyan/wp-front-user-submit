@@ -5,17 +5,25 @@
  *
  * @package BFE;
  */
+
 namespace BFE\Field;
 
 use BFE\Form;
-defined( 'ABSPATH' ) || exit;
-class HeaderField {
+
+defined('ABSPATH') || exit;
+
+
+class HeaderField
+{
     public static $field_label = 'Header Field';
+    public static $field_type =  'header';
 
-    public static $field_type = 'header';
+    public static function init()
+    {
+        add_filter('admin_post_form_formBuilder_settings', [__CLASS__, 'add_field_settings']);
 
-    public static function init() {
-        add_filter( 'admin_post_form_formBuilder_settings', [__CLASS__, 'add_field_settings'] );
+        add_action('bfe_editor_on_front_field_adding', [__CLASS__, 'add_field_to_front_form'], 10, 3);
+        add_action('bfe_ajax_after_front_editor_post_update_or_creation', [__CLASS__, 'save_field_to_front_form'], 10, 2);
     }
 
     /**
@@ -24,30 +32,40 @@ class HeaderField {
      * @param [type] $data
      * @return void
      */
-    public static function add_field_settings( $data ) {
-        $data['formBuilder_options']['disableProFields'][] = self::$field_type;
-        $field_label = __( 'Header Field', 'front-editor' );
+    public static function add_field_settings($data)
+    {
+        $field_label = __('Header Field', 'front-editor');
+
         /**
          * Adding field
          */
-        $data['formBuilder_options']['fields'][] = [
-            'label' => $field_label,
-            'attrs' => [
-                'type' => self::$field_type,
-            ],
-        ];
+        $data['formBuilder_options']['fields'][] =
+            [
+                'label' => $field_label,
+                'attrs' => [
+                    'type' => self::$field_type
+                ],
+                //'icon' => '<span class="dashicons dashicons-hidden"></span>',
+            ];
+
         $data['formBuilder_options']['temp_back'][self::$field_type] = [
-            'field'    => sprintf( '<input type="text" class="%s" name="%s">', self::$field_type, self::$field_type ),
+            'field' => sprintf('<input type="text" class="%s" name="%s">', self::$field_type, self::$field_type),
             'onRender' => '',
         ];
+
         /**
          * Disabling default settings
          */
-        $data['formBuilder_options']['typeUserDisabledAttrs'][self::$field_type] = ['access'];
+        $data['formBuilder_options']['typeUserDisabledAttrs'][self::$field_type] =
+            [
+                'access',
+            ];
+
         /**
          * Adding field to group
          */
         $data['formBuilder_options']['controls_group']['custom_fields']['types'][] = self::$field_type;
+
         return $data;
     }
 
@@ -56,11 +74,14 @@ class HeaderField {
      *
      * @return void
      */
-    public static function add_field_to_front_form( $post_id, $attributes, $field ) {
-        if ( $field['type'] !== self::$field_type ) {
+    public static function add_field_to_front_form($post_id, $attributes, $field)
+    {
+
+        if ($field['type'] !== self::$field_type) {
             return;
         }
-        require fe_template_path( 'front-editor/header.php' );
+
+        require fe_template_path('front-editor/header.php');
     }
 
     /**
@@ -71,20 +92,15 @@ class HeaderField {
      * @param [type] $file
      * @return void
      */
-    public static function save_field_to_front_form( $post_id, $form_id = 0 ) {
-        if ( !isset( $_POST['header'] ) ) {
+    public static function save_field_to_front_form($post_id, $form_id = 0)
+    {
+        if (!isset($_POST['header'])) {
             return;
         }
-        // only fields of this form, so a visitor cannot write other post meta
-        Form::save_submitted_meta(
-            $post_id,
-            Form::submitted_form_id( $form_id ),
-            $_POST['header'],
-            self::$field_type,
-            ['\\BFE\\Form', 'sanitize_text_value']
-        );
-    }
 
+        // only fields of this form, so a visitor cannot write other post meta
+        Form::save_submitted_meta($post_id, Form::submitted_form_id($form_id), $_POST['header'], self::$field_type, ['\\BFE\\Form', 'sanitize_text_value']);
+    }
 }
 
 HeaderField::init();

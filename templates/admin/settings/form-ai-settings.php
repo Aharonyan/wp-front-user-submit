@@ -79,7 +79,7 @@ $ai_rows = [
 
     <?php if (!$ai_is_pro) : ?>
         <p class="fus-ai-pro-notice">
-            <?= esc_html__('AI form generation, translation and tone change in the assistant, post moderation and automatic excerpt, tags and SEO description are available in the Pro version.', 'front-editor') ?>
+            <?= esc_html__('Translation and tone change in the assistant, post moderation and automatic excerpt, tags and SEO description are available in the Pro version.', 'front-editor') ?>
             <a href="<?= esc_url(admin_url('admin.php?page=front_editor_settings-pricing')) ?>"><?= esc_html__('Get the Pro version', 'front-editor') ?></a>
         </p>
     <?php endif; ?>

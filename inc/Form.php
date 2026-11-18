@@ -30,6 +30,7 @@ class Form
         '_fus_ai_moderation',
         '_fus_seo_description',
         '_fus_guest_upload',
+        '_fus_unclaimed_upload',
         '_thumbnail_id',
         '_wp_page_template',
         '_edit_lock',
@@ -74,6 +75,7 @@ class Form
         require_once __DIR__ . '/fields/GoogleMapField.php';
         require_once __DIR__ . '/fields/DateField.php';
         require_once __DIR__ . '/fields/hCaptcha.php';
+        require_once __DIR__ . '/fields/Turnstile.php';
         require_once __DIR__ . '/fields/ActionHook.php';
         require_once FE_PLUGIN_DIR_PATH . '/inc/PostFormsListTable.php';
 

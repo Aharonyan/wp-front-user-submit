@@ -117,6 +117,8 @@ export default (form, $, SlimSelect, Swal) => {
         })
             .then(response => response.json())
             .then(data => {
+                reset_captchas();
+
                 if (data.success) {
                     save_button.disabled = false;
 
@@ -192,11 +194,28 @@ export default (form, $, SlimSelect, Swal) => {
                     }
                 }
             }).catch((response) => {
+                reset_captchas();
                 show_message('error', response.statusText)
                 show_loading.forEach((element) => {
                     element.classList.toggle('active');
                 });
             })
+    }
+
+    /**
+     * Captcha answers can be used only once, so every submit needs a new one
+     */
+    function reset_captchas() {
+        try {
+            currentForm.querySelectorAll('.cf-turnstile').forEach((widget) => window.turnstile?.reset?.(widget));
+            currentForm.querySelectorAll('.h-captcha iframe[data-hcaptcha-widget-id]').forEach((frame) => window.hcaptcha?.reset?.(frame.dataset.hcaptchaWidgetId));
+            // reCAPTCHA widgets rendered from the markup are numbered in page order
+            const recaptchas = [...document.querySelectorAll('.g-recaptcha')];
+            currentForm.querySelectorAll('.g-recaptcha').forEach((widget) => window.grecaptcha?.reset?.(recaptchas.indexOf(widget)));
+        } catch (error) {
+            // a captcha script that is still loading must not block the form
+            console.warn('Front User Submit: captcha reset failed', error);
+        }
     }
 
     function update_url_param(key, value) {

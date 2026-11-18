@@ -274,6 +274,7 @@ class AiSettings
 
     printf('<p>%s</p>', esc_html__('Adds an "✨ AI" button to the title, textarea and editor fields of your front-end forms: write from a prompt, improve, fix grammar, shorten or expand text.', 'front-editor'));
     printf('<p class="description">%s</p>', esc_html__('AI is off in every form by default. Turn it on per form: Post Forms → edit form → Settings → ✨ AI.', 'front-editor'));
+    printf('<p class="description">%s</p>', esc_html__('Use the "✨ Generate with AI" button in the form builder to create forms from a description.', 'front-editor'));
     echo '<table class="form-table" role="presentation"><tbody>';
 
     printf(
@@ -309,12 +310,10 @@ class AiSettings
     if (!$is_pro) {
       printf(
         '<p class="fus-ai-pro-notice">%s <a href="%s">%s</a></p>',
-        esc_html__('AI form generation, translation and tone change in the assistant, post moderation and automatic excerpt, tags and SEO description are available in the Pro version.', 'front-editor'),
+        esc_html__('Translation and tone change in the assistant, post moderation and automatic excerpt, tags and SEO description are available in the Pro version.', 'front-editor'),
         esc_url(admin_url('admin.php?page=front_editor_settings-pricing')),
         esc_html__('Get the Pro version', 'front-editor')
       );
-    } else {
-      printf('<p>%s</p>', esc_html__('Use the "✨ Generate with AI" button in the form builder to create forms from a description.', 'front-editor'));
     }
 
     echo '<table class="form-table" role="presentation"><tbody>';

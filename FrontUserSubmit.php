@@ -61,6 +61,7 @@ class FrontUserSubmit
     require_once FE_PLUGIN_DIR_PATH . '/inc/Shortcodes.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/UserAdmin.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/UploadSecurity.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/GuestUploadCleanup.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/SavePost.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Editor.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/EditorWidget.php';

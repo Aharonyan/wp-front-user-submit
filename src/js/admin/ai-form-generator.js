@@ -1,5 +1,5 @@
 /**
- * Form builder: generate fields from a text description (Pro)
+ * Form builder: generate fields from a text description
  */
 
 const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -41,18 +41,6 @@ export default ($, Swal, getBuilder, getOptions) => {
     }
     const i18n = ai.i18n;
 
-    const showProDialog = () => Swal.fire({
-        title: i18n.pro_title,
-        text: i18n.pro_text,
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonText: i18n.pro_button
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.open(ai.pricing_url, '_blank');
-        }
-    });
-
     const showNotConfiguredDialog = () => Swal.fire({
         text: i18n.not_configured,
         icon: 'warning',
@@ -83,10 +71,6 @@ export default ($, Swal, getBuilder, getOptions) => {
     };
 
     const openGenerator = async () => {
-        if (!ai.form_generator) {
-            showProDialog();
-            return;
-        }
         if (!ai.configured) {
             showNotConfiguredDialog();
             return;
@@ -147,7 +131,6 @@ export default ($, Swal, getBuilder, getOptions) => {
         }
         const button = $('<button type="button" id="fus-ai-generate-form" class="button fus-ai-generate-form"></button>')
             .text(i18n.button)
-            .toggleClass('is-pro-locked', !ai.form_generator)
             .on('click', openGenerator);
         $('#post-form-builder .post_type_selection').append(button);
     };

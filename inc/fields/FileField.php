@@ -16,8 +16,41 @@ class FileField {
 
     public static $field_type = 'file';
 
+    /**
+     * Upload limits of the free version: types, size in KB and number of files.
+     * Pro lets the form owner change them per field.
+     */
+    const FREE_LIMITS = [
+        'accept'    => 'image/*,application/pdf',
+        'max_size'  => 2048,
+        'max_files' => 3,
+    ];
+
     public static function init() {
         add_filter( 'admin_post_form_formBuilder_settings', [__CLASS__, 'add_field_settings'] );
+        // front form template
+        add_action(
+            'bfe_editor_on_front_field_adding',
+            [__CLASS__, 'add_field_to_front_form'],
+            10,
+            3
+        );
+        // save field after post created
+        add_action(
+            'bfe_ajax_after_front_editor_post_update_or_creation',
+            [__CLASS__, 'save_field_to_front_form'],
+            10,
+            2
+        );
+        // Validate field on front form submit
+        add_action(
+            'bfe_ajax_before_post_update_or_creation',
+            [__CLASS__, 'validate_field_on_front_form_submit'],
+            10,
+            2
+        );
+        // upload endpoints of the file field
+        add_action( 'rest_api_init', [__CLASS__, 'file_upload_endpoints'] );
         add_filter( 'bfe_front_editor_localize_data', function ( $data ) {
             $data['get_rest_url'] = get_rest_url( null, 'bfe/v1' );
             return $data;
@@ -94,9 +127,15 @@ class FileField {
                 'status' => 400,
             ]);
         }
-        foreach ( $files as $file ) {
+        foreach ( $files as $input_name => $file ) {
+            $field = self::field_for_upload( (int) $request->get_param( 'form_id' ), (string) $input_name );
+            if ( !$field ) {
+                return new \WP_Error('upload_error', __( 'File field not found', 'front-editor' ), [
+                    'status' => 400,
+                ]);
+            }
             apply_filters( 'bfe_before_file_filed_process_file', $file );
-            $image = self::upload_file( $file );
+            $image = self::upload_file( $file, self::get_limits( $field ) );
             if ( is_wp_error( $image ) ) {
                 return $image;
             }
@@ -109,12 +148,78 @@ class FileField {
     }
 
     /**
-     * Uploading image logic
+     * File field of the form an upload belongs to. FilePond sends the file under the
+     * input name "files_{field name}"; a form with one file field also accepts other names.
      *
-     * @param array  $file image array.
+     * @param int    $form_id
+     * @param string $input_name
+     * @return array|null field settings
+     */
+    private static function field_for_upload( $form_id, $input_name ) {
+        $fields = Form::get_fields_of_type( $form_id, self::$field_type );
+        foreach ( $fields as $field ) {
+            if ( sprintf( 'files_%s', $field['name'] ?? '' ) === $input_name ) {
+                return $field;
+            }
+        }
+        return ( count( $fields ) === 1 ? $fields[0] : null );
+    }
+
+    /**
+     * Upload limits of a file field: accepted types, max size in KB, max number of files.
+     * The free version always uses FREE_LIMITS, an empty value means no limit.
+     *
+     * @param array $field
      * @return array
      */
-    public static function upload_file( $file = [] ) {
+    public static function get_limits( array $field ) {
+        $limits = [
+            'accept'    => (string) ($field['accept'] ?? ''),
+            'max_size'  => (int) ($field['max_size'] ?? 0),
+            'max_files' => (int) ($field['max_files'] ?? 0),
+        ];
+        $limits = self::FREE_LIMITS;
+        return $limits;
+    }
+
+    /**
+     * Does a file match the "accept" setting: MIME types, "type/*" groups or ".ext" extensions
+     *
+     * @param string $accept    comma separated list, empty or "*" accepts everything.
+     * @param string $mime      type detected from the file content.
+     * @param string $file_name
+     * @return bool
+     */
+    public static function accepts_file( $accept, $mime, $file_name ) {
+        $patterns = array_filter( array_map( 'trim', explode( ',', strtolower( (string) $accept ) ) ) );
+        if ( empty( $patterns ) || array_intersect( $patterns, ['*', '*/*'] ) ) {
+            return true;
+        }
+        $mime = strtolower( (string) $mime );
+        $extension = '.' . strtolower( pathinfo( (string) $file_name, PATHINFO_EXTENSION ) );
+        foreach ( $patterns as $pattern ) {
+            if ( $pattern[0] === '.' ) {
+                $matches = $pattern === $extension;
+            } elseif ( substr( $pattern, -2 ) === '/*' ) {
+                $matches = strpos( $mime, substr( $pattern, 0, -1 ) ) === 0;
+            } else {
+                $matches = $pattern === $mime;
+            }
+            if ( $matches ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Uploading image logic
+     *
+     * @param array $file   image array.
+     * @param array $limits limits of the field (see get_limits()).
+     * @return array|\WP_Error
+     */
+    public static function upload_file( $file = [], array $limits = [] ) {
         if ( empty( $file ) || empty( $file['tmp_name'] ) ) {
             return new \WP_Error('upload_error', __( 'File is not exist', 'front-editor' ), [
                 'status' => 400,
@@ -125,7 +230,8 @@ class FileField {
                 'status' => 400,
             ]);
         }
-        if ( filesize( $file['tmp_name'] ) > wp_max_upload_size() ) {
+        $max_size = ( !empty( $limits['max_size'] ) ? min( wp_max_upload_size(), (int) $limits['max_size'] * KB_IN_BYTES ) : wp_max_upload_size() );
+        if ( filesize( $file['tmp_name'] ) > $max_size ) {
             return new \WP_Error('upload_error', __( 'File is too large', 'front-editor' ), [
                 'status' => 413,
             ]);
@@ -137,6 +243,11 @@ class FileField {
         $checked = UploadSecurity::validate_file( $file['tmp_name'], $file['name'] );
         if ( is_wp_error( $checked ) ) {
             return $checked;
+        }
+        if ( !self::accepts_file( $limits['accept'] ?? '', $checked['type'], $checked['name'] ) ) {
+            return new \WP_Error('upload_error', __( 'File of invalid type', 'front-editor' ), [
+                'status' => 415,
+            ]);
         }
         $cont = file_get_contents( $file['tmp_name'] );
         $new_file_name = $checked['name'];
@@ -226,7 +337,6 @@ class FileField {
      * @return void
      */
     public static function add_field_settings( $data ) {
-        $data['formBuilder_options']['disableProFields'][] = self::$field_type;
         $data['formBuilder_options']['defaultControls'][] = self::$field_type;
         /**
          * Adding attribute settings
@@ -234,16 +344,16 @@ class FileField {
         $data['formBuilder_options']['typeUserAttrs'][self::$field_type] = [
             'accept'                             => [
                 'label' => sprintf( '%s', __( 'Accept', 'front-editor' ) ),
-                'value' => 'image/*,application/pdf',
+                'value' => self::FREE_LIMITS['accept'],
             ],
             'max_size'                           => [
                 'label' => __( 'Max File Size', 'front-editor' ),
-                'value' => 500,
+                'value' => self::FREE_LIMITS['max_size'],
                 'type'  => 'number',
             ],
             'max_files'                          => [
                 'label' => __( 'Max Files', 'front-editor' ),
-                'value' => 3,
+                'value' => self::FREE_LIMITS['max_files'],
                 'type'  => 'number',
             ],
             'attach_to_post'                     => [
@@ -388,6 +498,7 @@ class FileField {
         if ( $field['type'] !== self::$field_type ) {
             return;
         }
+        $field = array_merge( $field, self::FREE_LIMITS );
         require fe_template_path( 'front-editor/file.php' );
     }
 
@@ -406,10 +517,7 @@ class FileField {
         }
         foreach ( $file_field as $name => $value ) {
             $settings = Form::get_form_field_settings_by_name( $name, $form_id );
-            if ( !empty( $value ) ) {
-                $value = str_replace( "\\", "", $value );
-                $value = json_decode( $value );
-            }
+            $value = ( is_string( $value ) && $value !== '' ? json_decode( str_replace( "\\", "", $value ) ) : null );
             if ( isset( $settings['required'] ) ) {
                 if ( $settings['required'] && empty( $value ) ) {
                     /* Translators: Filed is required */
@@ -447,6 +555,10 @@ class FileField {
             $ids = array_values( array_unique( array_filter( $ids, function ( $att_id ) use($current) {
                 return in_array( $att_id, $current, true ) || SavePost::can_use_attachment( $att_id );
             } ) ) );
+            $max_files = self::get_limits( $settings )['max_files'];
+            if ( $max_files > 0 ) {
+                $ids = array_slice( $ids, 0, $max_files );
+            }
             if ( !empty( $settings['required'] ) && empty( $ids ) ) {
                 /* Translators: Filed is required */
                 wp_send_json_error( [

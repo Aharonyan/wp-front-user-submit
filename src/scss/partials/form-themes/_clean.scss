@@ -96,6 +96,42 @@
         margin: 0 0 6px;
     }
 
+    // Header and Paragraph fields: spacing comes from the column gap, fonts from the form
+    .fe-header > *,
+    .fe-paragraph > * {
+        margin: 0;
+        padding: 0;
+        color: var(--fus-clean-text);
+        font-family: inherit;
+        letter-spacing: 0;
+        text-transform: none;
+    }
+
+    .fe-header > * {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+
+    .fe-header > h1 {
+        font-size: 26px;
+    }
+
+    .fe-header > h2 {
+        font-size: 22px;
+    }
+
+    .fe-header > h4,
+    .fe-header > h5,
+    .fe-header > h6 {
+        font-size: 17px;
+    }
+
+    .fe-paragraph > * {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
     // Text controls
     input[type="fus_post_title"],
     input[type="text"]:not(.fus_post_id):not([name="form_id"]),
@@ -242,13 +278,6 @@
                 outline-offset: 2px;
             }
         }
-    }
-
-    .fus_powered_by {
-        margin-top: 18px;
-        color: var(--fus-clean-muted);
-        font-size: 13px;
-        text-align: center;
     }
 
     @media (max-width: 600px) {

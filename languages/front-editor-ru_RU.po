@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 17:31+0200\n"
+"POT-Creation-Date: 2026-11-18 17:52+0200\n"
 "PO-Revision-Date: 2024-12-12 12:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: Русский\n"
@@ -31,7 +31,7 @@ msgstr "Редактировать"
 msgid "Published"
 msgstr "Опубликовано"
 
-#: functions.php:22 inc/PostFormsListTable.php:437 inc/ai/AiSettings.php:332
+#: functions.php:22 inc/PostFormsListTable.php:437 inc/ai/AiSettings.php:331
 #: templates/user-admin.php:15
 msgid "Draft"
 msgstr "Черновик"
@@ -110,16 +110,16 @@ msgstr "Вам не разрешено редактировать"
 msgid "Edit Current Post"
 msgstr "Редактировать текущее сообщение"
 
-#: inc/Form.php:222
+#: inc/Form.php:223
 msgid "This field value will be saved into post meta using this name."
 msgstr "Значение этого поля будет сохранено в post meta под этим именем."
 
-#: inc/Form.php:223
+#: inc/Form.php:224
 msgid "Help text will be shown under this field on the front end form."
 msgstr ""
 "Текст описания будет отображаться под этим полем на лицевой стороне формы."
 
-#: inc/Form.php:224
+#: inc/Form.php:225
 msgid ""
 "Enable this option to save the field data directly to the post content.. "
 "Important: If multiple editors have this setting enabled, each new editor "
@@ -129,7 +129,7 @@ msgstr ""
 "поста. Важно: Если эта настройка включена у нескольких редакторов, каждый "
 "новый редактор будет перезаписывать предыдущее содержимое этого поля."
 
-#: inc/Form.php:225
+#: inc/Form.php:226
 msgid ""
 "Enable this option to save the field data directly to the post content, "
 "excerpt or meta.. Important: If multiple editors have selected post content "
@@ -141,141 +141,140 @@ msgstr ""
 "выбрали содержимое поста или отрывка, каждый новый редактор будет "
 "перезаписывать предыдущее содержимое в этом поле."
 
-#: inc/Form.php:233
+#: inc/Form.php:234
 msgid "Post Fields"
 msgstr "Поля Записи"
 
-#: inc/Form.php:237
+#: inc/Form.php:238
 msgid "Editors"
 msgstr "Редакторы"
 
-#: inc/Form.php:241
+#: inc/Form.php:242
 msgid "Taxonomies"
 msgstr "Таксономии"
 
-#: inc/Form.php:245
+#: inc/Form.php:246
 msgid "Custom Fields"
 msgstr "Пользовательские поля"
 
-#: inc/Form.php:253
+#: inc/Form.php:254
 msgid "You already have this field in the form"
 msgstr "У вас уже есть это поле в форме"
 
-#: inc/Form.php:254 templates/admin/settings/form-payment-settings.php:17
+#: inc/Form.php:255 templates/admin/settings/form-payment-settings.php:17
 #: templates/admin/settings/form-payment-settings.php:38
 #: templates/admin/settings/form-payment-settings.php:52
 #: templates/admin/settings/form-payment-settings.php:66
 #: templates/admin/settings/form-payment-settings.php:91
 #: templates/admin/settings/form-payment-settings.php:102
-#: templates/admin/settings/form-submission-restriction.php:18
 msgid "Available in Pro version"
 msgstr "Доступно в версии Pro"
 
-#: inc/Form.php:255
+#: inc/Form.php:256
 msgid "Please upgrade to the Pro version to unlock all these awesome features"
 msgstr ""
 "Пожалуйста, перейдите на версию Pro, чтобы разблокировать все эти "
 "потрясающие возможности"
 
-#: inc/Form.php:257 inc/ai/AiAssistant.php:191 inc/ai/AiSettings.php:314
+#: inc/Form.php:258 inc/ai/AiSettings.php:315
 #: templates/admin/settings/form-ai-settings.php:83
 msgid "Get the Pro version"
 msgstr "Получите версию Pro"
 
-#: inc/Form.php:343
+#: inc/Form.php:344
 #, php-format
 msgid "%s (Copy)"
 msgstr "%s (копия)"
 
-#: inc/Form.php:446 templates/admin/post-form.php:49
+#: inc/Form.php:447 templates/admin/post-form.php:49
 msgid "Sample Form"
 msgstr "Новая форма"
 
-#: inc/Form.php:454 inc/Form.php:474 inc/ai/AiAssistant.php:130
+#: inc/Form.php:455 inc/Form.php:475 inc/ai/AiAssistant.php:131
 msgid "Form not found"
 msgstr "Форма не найдена"
 
-#: inc/Form.php:490 inc/fields/MdEditor.php:122
+#: inc/Form.php:491 inc/fields/MdEditor.php:122
 #: inc/fields/PostTitleField.php:55
 msgid "Oops"
 msgstr "Упс"
 
-#: inc/Form.php:491
+#: inc/Form.php:492
 msgid "Form builder cannot be empty"
 msgstr "Конструктор форм не может быть пустым"
 
-#: inc/Form.php:517
+#: inc/Form.php:518
 msgid "Form Settings Saved"
 msgstr "Сохранение настроек формы"
 
-#: inc/Form.php:542
+#: inc/Form.php:543
 msgid "Sorry, you are not allowed to do that."
-msgstr "Извините, у вас нет прав на это действие."
+msgstr "У вас нет прав на это действие."
 
-#: inc/Form.php:553
+#: inc/Form.php:554
 msgid "post_id is empty."
 msgstr "post_id пуст."
 
-#: inc/Form.php:572
+#: inc/Form.php:573
 msgid "Loading"
 msgstr "Загрузка"
 
-#: inc/Form.php:582 inc/Form.php:594
+#: inc/Form.php:583 inc/Form.php:595
 msgid "This is not a valid record."
 msgstr "Это не действительная запись."
 
-#: inc/Form.php:609
+#: inc/Form.php:610
 msgid "Form Settings Migrated"
 msgstr "Перенесены настройки формы"
 
-#: inc/Form.php:773 inc/fields/FileField.php:376 inc/fields/FileField.php:414
+#: inc/Form.php:774 inc/fields/FileField.php:467 inc/fields/FileField.php:510
 #: inc/fields/TextareaField.php:158
 #, php-format
 msgid "%s is required"
 msgstr "требуется %s"
 
-#: inc/Form.php:858 inc/Form.php:859
+#: inc/Form.php:859 inc/Form.php:860
 msgid "Post Form"
 msgstr "Форма Записи"
 
-#: inc/Form.php:860 inc/Form.php:861
+#: inc/Form.php:861 inc/Form.php:862
 msgid "Add Post Form"
 msgstr "Добавить форму записи"
 
-#: inc/Form.php:862
+#: inc/Form.php:863
 msgid "Edit Post Form"
 msgstr "Форма редактирования записи"
 
-#: inc/Form.php:863
+#: inc/Form.php:864
 msgid "New Post Form"
 msgstr "Форма новой записи"
 
-#: inc/Form.php:864
+#: inc/Form.php:865
 msgid "Watch Post Form"
 msgstr "Посмотреть форму"
 
-#: inc/Form.php:865
+#: inc/Form.php:866
 msgid "Search Post Form"
 msgstr "Форма поиска записей"
 
-#: inc/Form.php:866
+#: inc/Form.php:867
 msgid "Not Found"
 msgstr "Не найдено"
 
-#: inc/Form.php:867
+#: inc/Form.php:868
 msgid "Not found in trash"
 msgstr "Не найдено в корзине"
 
-#: inc/Form.php:869
+#: inc/Form.php:870
 msgid "All forms"
 msgstr "Все формы"
 
-#: inc/Form.php:1065 inc/WooIntegration.php:366 inc/WooIntegration.php:377
+#: inc/Form.php:1066 inc/WooIntegration.php:366 inc/WooIntegration.php:377
 #: inc/fields/PostTitleField.php:196
 msgid "Post Title"
 msgstr "Заголовок записи"
 
-#: inc/Form.php:1066 templates/front-editor/post-title.php:3
+#: inc/Form.php:1067 templates/front-editor/post-title.php:3
 msgid "Add Title"
 msgstr "Добавить загаловок"
 
@@ -378,7 +377,7 @@ msgstr "Вход выполнен"
 
 #: inc/LoginRegisterShortcode.php:285
 msgid "User registration is currently not allowed."
-msgstr "Регистрация пользователей сейчас отключена."
+msgstr "Регистрация пользователей сейчас закрыта."
 
 #: inc/LoginRegisterShortcode.php:299
 msgid "<strong>ERROR</strong>: Empty email"
@@ -645,7 +644,7 @@ msgstr ""
 
 #: inc/MenuSettings.php:656 inc/MenuSettings.php:676 inc/MenuSettings.php:944
 #: inc/MenuSettings.php:989 inc/MenuSettings.php:1009 inc/MenuSettings.php:1029
-#: inc/fields/FileField.php:285 inc/fields/PostTitleField.php:247
+#: inc/fields/FileField.php:374 inc/fields/PostTitleField.php:247
 msgid "Placeholder"
 msgstr "Placeholder"
 
@@ -911,17 +910,17 @@ msgstr ""
 msgid "We can not find file"
 msgstr "Файл не найден"
 
-#: inc/SavePost.php:364 inc/fields/FileField.php:154
+#: inc/SavePost.php:364 inc/fields/FileField.php:243
 msgid "File is too large"
 msgstr "Файл слишком большой"
 
-#: inc/SavePost.php:388 inc/fields/FileField.php:150
+#: inc/SavePost.php:388 inc/fields/FileField.php:238
 msgid "Error during upload"
 msgstr "Ошибка при загрузке"
 
 #: inc/SavePost.php:502
 msgid "This post is in the trash and cannot be edited."
-msgstr "Эта запись в корзине, её нельзя редактировать."
+msgstr "Запись в корзине, её нельзя редактировать."
 
 #: inc/SavePost.php:526
 msgid "Post updated"
@@ -935,8 +934,8 @@ msgstr "Создано новое запись"
 msgid "No post created."
 msgstr "Запись не создана."
 
-#: inc/UploadSecurity.php:159 inc/fields/FileField.php:121
-#: inc/fields/FileField.php:146 inc/fields/FileField.php:253
+#: inc/UploadSecurity.php:159 inc/fields/FileField.php:129
+#: inc/fields/FileField.php:234 inc/fields/FileField.php:346
 msgid "File is not exist"
 msgstr "Файл не существует"
 
@@ -982,135 +981,127 @@ msgstr "ID Записи"
 msgid "Form Id"
 msgstr "ID формы"
 
-#: inc/ai/AiAssistant.php:60
+#: inc/ai/AiAssistant.php:61
 msgid "Write from prompt"
 msgstr "Написать по запросу"
 
-#: inc/ai/AiAssistant.php:65
+#: inc/ai/AiAssistant.php:66
 msgid "Improve writing"
 msgstr "Улучшить текст"
 
-#: inc/ai/AiAssistant.php:69
+#: inc/ai/AiAssistant.php:70
 msgid "Fix spelling & grammar"
 msgstr "Исправить ошибки"
 
-#: inc/ai/AiAssistant.php:73
+#: inc/ai/AiAssistant.php:74
 msgid "Make shorter"
 msgstr "Сократить"
 
-#: inc/ai/AiAssistant.php:77
+#: inc/ai/AiAssistant.php:78
 msgid "Make longer"
 msgstr "Расширить"
 
-#: inc/ai/AiAssistant.php:84
+#: inc/ai/AiAssistant.php:85
 msgid "Translate"
 msgstr "Перевести"
 
-#: inc/ai/AiAssistant.php:87
+#: inc/ai/AiAssistant.php:88
 msgid "Target language, e.g. German"
 msgstr "Язык перевода, например немецкий"
 
-#: inc/ai/AiAssistant.php:90
+#: inc/ai/AiAssistant.php:91
 msgid "Change tone"
 msgstr "Изменить тон"
 
-#: inc/ai/AiAssistant.php:93
+#: inc/ai/AiAssistant.php:94
 msgid "Tone, e.g. friendly, professional, funny"
 msgstr "Тон, например дружелюбный, деловой, с юмором"
 
-#: inc/ai/AiAssistant.php:96
+#: inc/ai/AiAssistant.php:97
 msgid "Custom instruction"
 msgstr "Своя инструкция"
 
-#: inc/ai/AiAssistant.php:125
+#: inc/ai/AiAssistant.php:126
 msgid "Security check failed, please reload the page"
 msgstr "Проверка безопасности не пройдена, обновите страницу"
 
-#: inc/ai/AiAssistant.php:135 inc/ai/AiAssistant.php:139
+#: inc/ai/AiAssistant.php:136 inc/ai/AiAssistant.php:140
 msgid "AI assistant is not available"
 msgstr "ИИ-помощник недоступен"
 
-#: inc/ai/AiAssistant.php:157
+#: inc/ai/AiAssistant.php:158
 msgid "Describe what to write…"
 msgstr "Опишите, что нужно написать…"
 
-#: inc/ai/AiAssistant.php:161
+#: inc/ai/AiAssistant.php:162
 msgid "AI"
 msgstr "ИИ"
 
-#: inc/ai/AiAssistant.php:162
+#: inc/ai/AiAssistant.php:163
 msgid "AI Assistant"
 msgstr "ИИ-помощник"
 
-#: inc/ai/AiAssistant.php:163
+#: inc/ai/AiAssistant.php:164
 msgid "What to do"
 msgstr "Что сделать"
 
-#: inc/ai/AiAssistant.php:164
+#: inc/ai/AiAssistant.php:165
 msgid "Instructions"
 msgstr "Инструкция"
 
-#: inc/ai/AiAssistant.php:165 inc/ai/AiFormGenerator__premium_only.php:59
+#: inc/ai/AiAssistant.php:166 inc/ai/AiFormGenerator.php:58
 msgid "Generate"
 msgstr "Сгенерировать"
 
-#: inc/ai/AiAssistant.php:166
+#: inc/ai/AiAssistant.php:167
 msgid "Try again"
 msgstr "Ещё раз"
 
-#: inc/ai/AiAssistant.php:167
+#: inc/ai/AiAssistant.php:168
 msgid "Replace"
 msgstr "Заменить"
 
-#: inc/ai/AiAssistant.php:168
+#: inc/ai/AiAssistant.php:169
 msgid "Insert below"
 msgstr "Вставить ниже"
 
-#: inc/ai/AiAssistant.php:169 inc/ai/AiFormGenerator__premium_only.php:60
+#: inc/ai/AiAssistant.php:170 inc/ai/AiFormGenerator.php:59
 msgid "Cancel"
 msgstr "Отмена"
 
-#: inc/ai/AiAssistant.php:170
+#: inc/ai/AiAssistant.php:171
 msgid "Result"
 msgstr "Результат"
 
-#: inc/ai/AiAssistant.php:171 inc/ai/AiAssistant.php:224
+#: inc/ai/AiAssistant.php:172 inc/ai/AiAssistant.php:220
 msgid "Add some text to the field first"
 msgstr "Сначала добавьте текст в поле"
 
-#: inc/ai/AiAssistant.php:172 inc/ai/AiAssistant.php:221
+#: inc/ai/AiAssistant.php:173 inc/ai/AiAssistant.php:217
 msgid "Please add instructions"
 msgstr "Добавьте инструкцию"
 
-#: inc/ai/AiAssistant.php:173 inc/ai/AiAssistant.php:335
+#: inc/ai/AiAssistant.php:174 inc/ai/AiAssistant.php:331
 msgid "AI request failed, please try again later"
 msgstr "Не удалось выполнить запрос к ИИ, попробуйте позже"
 
-#: inc/ai/AiAssistant.php:188
+#: inc/ai/AiAssistant.php:187
 msgid "✨ Generate with AI"
 msgstr "✨ Создать с ИИ"
 
-#: inc/ai/AiAssistant.php:189
-msgid "AI form generation is a Pro feature"
-msgstr "Генерация форм с ИИ доступна в Pro"
-
-#: inc/ai/AiAssistant.php:190
-msgid "Describe the form in your own words and AI will build it for you."
-msgstr "Опишите форму своими словами, и ИИ соберёт её за вас."
-
-#: inc/ai/AiAssistant.php:192
+#: inc/ai/AiAssistant.php:188
 msgid "Add your AI provider API key in Settings → AI first."
 msgstr "Сначала добавьте API-ключ провайдера в Настройки → ИИ."
 
-#: inc/ai/AiAssistant.php:193 templates/admin/settings/form-ai-settings.php:72
+#: inc/ai/AiAssistant.php:189 templates/admin/settings/form-ai-settings.php:72
 msgid "Open AI settings"
 msgstr "Открыть настройки ИИ"
 
-#: inc/ai/AiAssistant.php:215
+#: inc/ai/AiAssistant.php:211
 msgid "Unknown AI action"
 msgstr "Неизвестное действие ИИ"
 
-#: inc/ai/AiAssistant.php:273
+#: inc/ai/AiAssistant.php:269
 #, php-format
 msgid "Connected to %1$s (%2$s). Do not forget to save the settings."
 msgstr "Подключено к %1$s (%2$s). Не забудьте сохранить настройки."
@@ -1149,11 +1140,11 @@ msgstr "Некорректный URL API"
 msgid "Unknown error"
 msgstr "Неизвестная ошибка"
 
-#: inc/ai/AiFormGenerator__premium_only.php:55
+#: inc/ai/AiFormGenerator.php:54
 msgid "Generate form with AI"
 msgstr "Создать форму с ИИ"
 
-#: inc/ai/AiFormGenerator__premium_only.php:56
+#: inc/ai/AiFormGenerator.php:55
 msgid ""
 "E.g. A form to submit a recipe: title, photo, ingredients, cooking time, "
 "difficulty (easy/medium/hard) and step by step instructions."
@@ -1161,32 +1152,31 @@ msgstr ""
 "Например: форма для рецепта — название, фото, ингредиенты, время "
 "приготовления, сложность (легко/средне/сложно) и пошаговая инструкция."
 
-#: inc/ai/AiFormGenerator__premium_only.php:57
+#: inc/ai/AiFormGenerator.php:56
 msgid "Add fields to the current form"
 msgstr "Добавить поля к текущей форме"
 
-#: inc/ai/AiFormGenerator__premium_only.php:58
+#: inc/ai/AiFormGenerator.php:57
 msgid "Replace current form fields"
 msgstr "Заменить поля текущей формы"
 
-#: inc/ai/AiFormGenerator__premium_only.php:61
-#: inc/ai/AiFormGenerator__premium_only.php:81
+#: inc/ai/AiFormGenerator.php:60 inc/ai/AiFormGenerator.php:80
 msgid "Please describe the form"
 msgstr "Опишите форму"
 
-#: inc/ai/AiFormGenerator__premium_only.php:62
+#: inc/ai/AiFormGenerator.php:61
 msgid "Form generated. Review the fields and click Save."
 msgstr "Форма создана. Проверьте поля и нажмите «Сохранить»."
 
-#: inc/ai/AiFormGenerator__premium_only.php:63
+#: inc/ai/AiFormGenerator.php:62
 msgid "AI request failed"
 msgstr "Ошибка запроса к ИИ"
 
-#: inc/ai/AiFormGenerator__premium_only.php:84
+#: inc/ai/AiFormGenerator.php:83
 msgid "No field types available"
 msgstr "Нет доступных типов полей"
 
-#: inc/ai/AiFormGenerator__premium_only.php:94
+#: inc/ai/AiFormGenerator.php:93
 msgid ""
 "AI did not return any usable fields, try to describe the form differently"
 msgstr "ИИ не вернул подходящих полей, попробуйте описать форму иначе"
@@ -1324,55 +1314,7 @@ msgstr ""
 "По умолчанию ИИ выключен во всех формах. Включите его в нужной форме: Формы "
 "записи → редактировать форму → Настройки → ✨ ИИ."
 
-#: inc/ai/AiSettings.php:281
-msgid "Enable assistant"
-msgstr "Включить помощника"
-
-#: inc/ai/AiSettings.php:284
-msgid "Show the AI button in front-end forms"
-msgstr "Показывать кнопку ИИ в формах на сайте"
-
-#: inc/ai/AiSettings.php:287
-msgid "Who can use it"
-msgstr "Кому доступно"
-
-#: inc/ai/AiSettings.php:288
-msgid "Logged-in users only"
-msgstr "Только авторизованным"
-
-#: inc/ai/AiSettings.php:289
-msgid "Everyone, including guests"
-msgstr "Всем, включая гостей"
-
-#: inc/ai/AiSettings.php:290
-msgid ""
-"Requests are paid from your API key, so guest access is not recommended."
-msgstr ""
-"Запросы оплачиваются с вашего API-ключа, поэтому доступ гостям не "
-"рекомендуется."
-
-#: inc/ai/AiSettings.php:294
-msgid "Daily limit per user"
-msgstr "Дневной лимит на пользователя"
-
-#: inc/ai/AiSettings.php:297
-msgid ""
-"Maximum AI requests per user (or IP for guests) per day. 0 = unlimited. "
-"Administrators and editors are not limited."
-msgstr ""
-"Максимум запросов к ИИ на пользователя (для гостей — на IP) в день. 0 — без "
-"ограничений. На администраторов и редакторов лимит не действует."
-
-#: inc/ai/AiSettings.php:312 templates/admin/settings/form-ai-settings.php:82
-msgid ""
-"AI form generation, translation and tone change in the assistant, post "
-"moderation and automatic excerpt, tags and SEO description are available in "
-"the Pro version."
-msgstr ""
-"Генерация форм, перевод и смена тона в помощнике, модерация записей, "
-"автоматические отрывок, метки и SEO-описание доступны в Pro-версии."
-
-#: inc/ai/AiSettings.php:317
+#: inc/ai/AiSettings.php:277
 msgid ""
 "Use the \"✨ Generate with AI\" button in the form builder to create forms "
 "from a description."
@@ -1380,33 +1322,80 @@ msgstr ""
 "Используйте кнопку «✨ Создать с ИИ» в конструкторе, чтобы создавать формы "
 "по описанию."
 
-#: inc/ai/AiSettings.php:324 templates/admin/settings/form-ai-settings.php:23
+#: inc/ai/AiSettings.php:282
+msgid "Enable assistant"
+msgstr "Включить помощника"
+
+#: inc/ai/AiSettings.php:285
+msgid "Show the AI button in front-end forms"
+msgstr "Показывать кнопку ИИ в формах на сайте"
+
+#: inc/ai/AiSettings.php:288
+msgid "Who can use it"
+msgstr "Кому доступно"
+
+#: inc/ai/AiSettings.php:289
+msgid "Logged-in users only"
+msgstr "Только авторизованным"
+
+#: inc/ai/AiSettings.php:290
+msgid "Everyone, including guests"
+msgstr "Всем, включая гостей"
+
+#: inc/ai/AiSettings.php:291
+msgid ""
+"Requests are paid from your API key, so guest access is not recommended."
+msgstr ""
+"Запросы оплачиваются с вашего API-ключа, поэтому доступ гостям не "
+"рекомендуется."
+
+#: inc/ai/AiSettings.php:295
+msgid "Daily limit per user"
+msgstr "Дневной лимит на пользователя"
+
+#: inc/ai/AiSettings.php:298
+msgid ""
+"Maximum AI requests per user (or IP for guests) per day. 0 = unlimited. "
+"Administrators and editors are not limited."
+msgstr ""
+"Максимум запросов к ИИ на пользователя (для гостей — на IP) в день. 0 — без "
+"ограничений. На администраторов и редакторов лимит не действует."
+
+#: inc/ai/AiSettings.php:313 templates/admin/settings/form-ai-settings.php:82
+msgid ""
+"Translation and tone change in the assistant, post moderation and automatic "
+"excerpt, tags and SEO description are available in the Pro version."
+msgstr ""
+"Перевод и смена тона в помощнике, модерация записей, автоматические отрывок, "
+"метки и SEO-описание доступны в Pro-версии."
+
+#: inc/ai/AiSettings.php:323 templates/admin/settings/form-ai-settings.php:23
 msgid "AI moderation"
 msgstr "ИИ-модерация"
 
-#: inc/ai/AiSettings.php:328
+#: inc/ai/AiSettings.php:327
 msgid ""
 "Check submitted posts for spam, abuse and unsafe content before publishing"
 msgstr ""
 "Проверять присланные записи на спам, оскорбления и опасный контент перед "
 "публикацией"
 
-#: inc/ai/AiSettings.php:330
+#: inc/ai/AiSettings.php:329
 msgid "Flagged posts are saved as"
 msgstr "Подозрительные записи сохранять как"
 
-#: inc/ai/AiSettings.php:331
+#: inc/ai/AiSettings.php:330
 msgid "Pending review"
 msgstr "На утверждении"
 
-#: inc/ai/AiSettings.php:336
+#: inc/ai/AiSettings.php:335
 msgid ""
 "Extra rules, e.g. \"No links to other shops. Only posts about gardening.\""
 msgstr ""
 "Дополнительные правила, например: «Без ссылок на другие магазины. Только "
 "записи о садоводстве»."
 
-#: inc/ai/AiSettings.php:339
+#: inc/ai/AiSettings.php:338
 msgid ""
 "Administrators and editors are not moderated. If the AI provider is "
 "unavailable, posts are saved as usual."
@@ -1414,31 +1403,31 @@ msgstr ""
 "Записи администраторов и редакторов не проверяются. Если провайдер ИИ "
 "недоступен, записи сохраняются как обычно."
 
-#: inc/ai/AiSettings.php:343
+#: inc/ai/AiSettings.php:342
 msgid "Generate excerpt when it is empty"
 msgstr "Создавать отрывок, если он пустой"
 
-#: inc/ai/AiSettings.php:344
+#: inc/ai/AiSettings.php:343
 msgid "Suggest and add tags"
 msgstr "Подбирать и добавлять метки"
 
-#: inc/ai/AiSettings.php:345
+#: inc/ai/AiSettings.php:344
 msgid "Generate SEO meta description (Yoast, Rank Math, SEOPress or built-in)"
 msgstr "Создавать SEO-описание (Yoast, Rank Math, SEOPress или встроенное)"
 
-#: inc/ai/AiSettings.php:347 templates/admin/settings/form-ai-settings.php:29
+#: inc/ai/AiSettings.php:346 templates/admin/settings/form-ai-settings.php:29
 msgid "Auto-fill after submit"
 msgstr "Автозаполнение после отправки"
 
-#: inc/ai/AiSettings.php:358
+#: inc/ai/AiSettings.php:357
 msgid "Runs in the background right after a new post is submitted."
 msgstr "Выполняется в фоне сразу после отправки новой записи."
 
-#: inc/ai/AiSettings.php:374
+#: inc/ai/AiSettings.php:373
 msgid "Testing…"
 msgstr "Проверка…"
 
-#: inc/ai/AiSettings.php:375
+#: inc/ai/AiSettings.php:374
 msgid "Connection failed"
 msgstr "Не удалось подключиться"
 
@@ -1474,10 +1463,10 @@ msgstr "Кнопка"
 
 #: inc/fields/CheckboxGroupField.php:61 inc/fields/DateField.php:113
 #: inc/fields/EditorJsField.php:366 inc/fields/GoogleMapField.php:101
-#: inc/fields/MdEditor.php:186 inc/fields/NumberField.php:116
+#: inc/fields/MdEditor.php:186 inc/fields/NumberField.php:110
 #: inc/fields/PostTitleField.php:258 inc/fields/RadioGroupField.php:90
-#: inc/fields/SelectField.php:98 inc/fields/TaxonomiesFields.php:114
-#: inc/fields/TextField.php:91 inc/fields/TinyMCE.php:71
+#: inc/fields/SelectField.php:98 inc/fields/TaxonomiesFields.php:119
+#: inc/fields/TextField.php:85 inc/fields/TinyMCE.php:71
 msgid "Required error text"
 msgstr "Требуемый текст ошибки"
 
@@ -1506,8 +1495,8 @@ msgid "Step"
 msgstr "Шаг"
 
 #: inc/fields/DateField.php:114 inc/fields/GoogleMapField.php:102
-#: inc/fields/MdEditor.php:187 inc/fields/NumberField.php:117
-#: inc/fields/PostTitleField.php:259 inc/fields/TextField.php:92
+#: inc/fields/MdEditor.php:187 inc/fields/NumberField.php:111
+#: inc/fields/PostTitleField.php:259 inc/fields/TextField.php:86
 #: inc/fields/TinyMCE.php:72
 msgid "Not correct content"
 msgstr "Неправильное содержание"
@@ -1633,136 +1622,144 @@ msgstr "Переместить вниз"
 msgid "Start writing or enter Tab to choose a block"
 msgstr "Начните писать или введите Tab, чтобы выбрать блок"
 
-#: inc/fields/FileField.php:203
+#: inc/fields/FileField.php:134
+msgid "File field not found"
+msgstr "Поле файла не найдено"
+
+#: inc/fields/FileField.php:257
+msgid "File of invalid type"
+msgstr "Недопустимый тип файла"
+
+#: inc/fields/FileField.php:296
 msgid "Invalid attachment ID."
 msgstr "Неверный ID вложения."
 
-#: inc/fields/FileField.php:227
+#: inc/fields/FileField.php:320
 msgid "Sorry, you are not allowed to delete this attachment."
 msgstr "У вас нет прав на удаление этого вложения."
 
-#: inc/fields/FileField.php:281
+#: inc/fields/FileField.php:370
 msgid "Accept"
 msgstr "Принять"
 
-#: inc/fields/FileField.php:282
+#: inc/fields/FileField.php:371
 msgid "Max File Size"
 msgstr "Максимальный размер файла"
 
-#: inc/fields/FileField.php:283
+#: inc/fields/FileField.php:372
 msgid "Max Files"
 msgstr "Максимум Файлов"
 
-#: inc/fields/FileField.php:284
+#: inc/fields/FileField.php:373
 msgid "Attach to post"
 msgstr "Прикрепить к сообщению"
 
-#: inc/fields/FileField.php:286
+#: inc/fields/FileField.php:375
 msgid "Label invalid field"
 msgstr "Некорректное поле"
 
-#: inc/fields/FileField.php:287
+#: inc/fields/FileField.php:376
 msgid "Label waiting for size"
 msgstr "Ожидание размера"
 
-#: inc/fields/FileField.php:288
+#: inc/fields/FileField.php:377
 msgid "Label Size not available"
 msgstr "Размер недоступен"
 
-#: inc/fields/FileField.php:289
+#: inc/fields/FileField.php:378
 msgid "Label File Loading"
 msgstr "Текст загрузки файла"
 
-#: inc/fields/FileField.php:290
+#: inc/fields/FileField.php:379
 msgid "Label Load Error"
 msgstr "Ошибка загрузки"
 
-#: inc/fields/FileField.php:291
+#: inc/fields/FileField.php:380
 msgid "Label File Processing"
 msgstr "Обработка файла"
 
-#: inc/fields/FileField.php:292
+#: inc/fields/FileField.php:381
 msgid "Label Processing Complete"
 msgstr "Обработка завершена"
 
-#: inc/fields/FileField.php:293
+#: inc/fields/FileField.php:382
 msgid "Label Processing Aborted"
 msgstr "Обработка прервана"
 
-#: inc/fields/FileField.php:294
+#: inc/fields/FileField.php:383
 msgid "Label Processing Error"
 msgstr "Ошибка обработки"
 
-#: inc/fields/FileField.php:295
+#: inc/fields/FileField.php:384
 msgid "Label Processing Revert Error"
 msgstr "Ошибка отмены обработки"
 
-#: inc/fields/FileField.php:296
+#: inc/fields/FileField.php:385
 msgid "Label File Remove Error"
 msgstr "Ошибка удаления файла"
 
-#: inc/fields/FileField.php:297
+#: inc/fields/FileField.php:386
 msgid "Label Tap To Cancel"
 msgstr "Нажмите для отмены"
 
-#: inc/fields/FileField.php:298
+#: inc/fields/FileField.php:387
 msgid "Label Tap To Retry"
 msgstr "Нажмите чтобы повторить"
 
-#: inc/fields/FileField.php:299
+#: inc/fields/FileField.php:388
 msgid "Label Tap To Undo"
 msgstr "Нажмите для отмены"
 
-#: inc/fields/FileField.php:300
+#: inc/fields/FileField.php:389
 msgid "Label Remove Item"
 msgstr "Удалить элемент"
 
-#: inc/fields/FileField.php:301
+#: inc/fields/FileField.php:390
 msgid "Label Abort Item Load"
 msgstr "Метка отмены загрузки"
 
-#: inc/fields/FileField.php:302 inc/fields/FileField.php:305
+#: inc/fields/FileField.php:391 inc/fields/FileField.php:394
 msgid "Label Retry Item Load"
 msgstr "Повторная попытка загрузки"
 
-#: inc/fields/FileField.php:303
+#: inc/fields/FileField.php:392
 msgid "Label Cancel Item Load"
 msgstr "Метка отмены загрузки элемента"
 
-#: inc/fields/FileField.php:304
+#: inc/fields/FileField.php:393
 msgid "Label Undo Item Load"
 msgstr "Отмена загрузки элемента"
 
-#: inc/fields/FileField.php:306
+#: inc/fields/FileField.php:395
 msgid "Label Upload Item Load"
 msgstr "Текст загрузка элемента"
 
-#: inc/fields/FileField.php:307
+#: inc/fields/FileField.php:396
 msgid "Label File Type not Allowed"
 msgstr "Тип файла не разрешен"
 
-#: inc/fields/FileField.php:308
+#: inc/fields/FileField.php:397
 msgid "Label Expected Type"
 msgstr "Ожидаемый тип"
 
-#: inc/fields/FileField.php:309
+#: inc/fields/FileField.php:398
 msgid "Label size must be"
 msgstr "Размер должен быть"
 
-#: inc/fields/FileField.php:310
+#: inc/fields/FileField.php:399
 msgid "Maximum total size exceeded"
 msgstr "Превышен максимальный общий размер"
 
-#: inc/fields/FileField.php:311
+#: inc/fields/FileField.php:400
 msgid "Maximum total size is"
 msgstr "Максимальный общий размер"
 
-#: inc/fields/FileField.php:312
+#: inc/fields/FileField.php:401
 msgid "Label size exceeded"
 msgstr "Размер превышен"
 
 #. translators: The accept attribute takes as its value a comma-separated list of one or more file types.
-#: inc/fields/FileField.php:327
+#: inc/fields/FileField.php:416
 #, php-format
 msgid ""
 "The accept attribute takes as its value a comma-separated list of one or "
@@ -1774,11 +1771,11 @@ msgstr ""
 "уникальные спецификаторы типов файлов</a>, описывающие, какие типы файлов "
 "разрешить."
 
-#: inc/fields/FileField.php:329
+#: inc/fields/FileField.php:418
 msgid "Max count of files user can select"
 msgstr "Максимальное количество файлов, которые может выбрать пользователь"
 
-#: inc/fields/FileField.php:330
+#: inc/fields/FileField.php:419
 msgid "Max size in KB"
 msgstr "Максимальный размер в КБ"
 
@@ -1803,23 +1800,25 @@ msgstr "Прежде чем использовать это поле, добав
 msgid "Add API Key"
 msgstr "Добавить ключ API"
 
-#: inc/fields/GoogleRecaptcha.php:101 inc/fields/hCaptcha.php:119
+#: inc/fields/GoogleRecaptcha.php:99 inc/fields/Turnstile.php:126
+#: inc/fields/hCaptcha.php:113
 msgid "Language"
 msgstr "Язык"
 
-#: inc/fields/GoogleRecaptcha.php:102
+#: inc/fields/GoogleRecaptcha.php:100
 msgid "Site key"
 msgstr "Ключ к сайту"
 
-#: inc/fields/GoogleRecaptcha.php:103
+#: inc/fields/GoogleRecaptcha.php:101
 msgid "Secret key"
 msgstr "Секретный ключ"
 
-#: inc/fields/GoogleRecaptcha.php:104 inc/fields/hCaptcha.php:102
+#: inc/fields/GoogleRecaptcha.php:102 inc/fields/Turnstile.php:107
+#: inc/fields/hCaptcha.php:96
 msgid "Error Message"
 msgstr "Сообщение об ошибке"
 
-#: inc/fields/GoogleRecaptcha.php:116
+#: inc/fields/GoogleRecaptcha.php:114
 msgid ""
 "Check the list of languages <a href=\"https://developers.google.com/"
 "recaptcha/docs/language\" target=\"_blank\">here</a>"
@@ -1827,15 +1826,15 @@ msgstr ""
 "Посмотрите список языков <a href=\"https://developers.google.com/recaptcha/"
 "docs/language\" target=\"_blank\">здесь</a>"
 
-#: inc/fields/HeaderField.php:43
+#: inc/fields/HeaderField.php:37
 msgid "Header Field"
 msgstr "Поле заголовка"
 
-#: inc/fields/HiddenField.php:43
+#: inc/fields/HiddenField.php:37
 msgid "Hidden Field"
 msgstr "Скрытое поле"
 
-#: inc/fields/MdEditor.php:61 inc/fields/TinyMCE.php:205
+#: inc/fields/MdEditor.php:61 inc/fields/TinyMCE.php:199
 msgid "Please add editor field"
 msgstr "Пожалуйста, добавьте поле редактора"
 
@@ -1843,19 +1842,19 @@ msgstr "Пожалуйста, добавьте поле редактора"
 msgid "Post Content Field is missing"
 msgstr "Содержание записи отсутствует"
 
-#: inc/fields/NumberField.php:53
+#: inc/fields/NumberField.php:51
 msgid "Please add number field"
 msgstr "Пожалуйста, выберите число"
 
-#: inc/fields/NumberField.php:61
+#: inc/fields/NumberField.php:59
 msgid "Please add correct number field"
 msgstr "Пожалуйста, добавьте правильное числовое поле"
 
-#: inc/fields/NumberField.php:79
+#: inc/fields/NumberField.php:73
 msgid "Number Field"
 msgstr "Числовое поле"
 
-#: inc/fields/ParagraphField.php:43
+#: inc/fields/ParagraphField.php:37
 msgid "Paragraph Field"
 msgstr "Поле абзаца"
 
@@ -1908,67 +1907,67 @@ msgstr "Скрыть поле, чтобы пользователи его не �
 msgid "Please add radio field"
 msgstr "Пожалуйста, добавьте радиополе"
 
-#: inc/fields/SelectField.php:51 inc/fields/TaxonomiesFields.php:198
+#: inc/fields/SelectField.php:51 inc/fields/TaxonomiesFields.php:197
 #, php-format
 msgid "The %s selection is required"
 msgstr "Необходимо выбрать %s"
 
-#: inc/fields/SelectField.php:94 inc/fields/TaxonomiesFields.php:108
+#: inc/fields/SelectField.php:94 inc/fields/TaxonomiesFields.php:113
 msgid "Show Search Input"
 msgstr "Показать поисковый поле"
 
-#: inc/fields/SelectField.php:99 inc/fields/TaxonomiesFields.php:115
+#: inc/fields/SelectField.php:99 inc/fields/TaxonomiesFields.php:120
 msgid "Search placeholder"
 msgstr "Пример текста поиска"
 
-#: inc/fields/SelectField.php:100 inc/fields/TaxonomiesFields.php:116
+#: inc/fields/SelectField.php:100 inc/fields/TaxonomiesFields.php:121
 msgid "No result text"
 msgstr "Текст без результата"
 
-#: inc/fields/TaxonomiesFields.php:54
+#: inc/fields/TaxonomiesFields.php:59
 msgid "Select"
 msgstr "Выберите"
 
-#: inc/fields/TaxonomiesFields.php:80
+#: inc/fields/TaxonomiesFields.php:85
 msgid "Order"
 msgstr "Заказ"
 
-#: inc/fields/TaxonomiesFields.php:88
+#: inc/fields/TaxonomiesFields.php:93
 msgid "Multiple Selections"
 msgstr "Множественный выбор"
 
-#: inc/fields/TaxonomiesFields.php:93
+#: inc/fields/TaxonomiesFields.php:98
 msgid "Show empty"
 msgstr "Показать пустые термы"
 
-#: inc/fields/TaxonomiesFields.php:98
+#: inc/fields/TaxonomiesFields.php:103
 msgid "Allow Add New"
 msgstr "Разрешить добавление нового"
 
-#: inc/fields/TaxonomiesFields.php:103
+#: inc/fields/TaxonomiesFields.php:108
 msgid "Show Hierarchically"
 msgstr "Показать иерархически"
 
-#: inc/fields/TaxonomiesFields.php:112
+#: inc/fields/TaxonomiesFields.php:117
 msgid "Terms to excluded"
 msgstr "Условия для исключения"
 
-#: inc/fields/TaxonomiesFields.php:113
+#: inc/fields/TaxonomiesFields.php:118
 msgid "Default terms"
 msgstr "Термнины по умолчанию"
 
-#: inc/fields/TaxonomiesFields.php:143
+#: inc/fields/TaxonomiesFields.php:142
 msgid "You can specify a comma-separated terms IDs that need to be excluded."
 msgstr ""
 "Вы можете указать идентификаторы терминов, которые необходимо исключить, "
 "разделив их запятыми."
 
-#: inc/fields/TaxonomiesFields.php:144
+#: inc/fields/TaxonomiesFields.php:143
 msgid "Add new functionality will not work without activating this input."
 msgstr ""
 "Добавление новых элементов не будет работать, пока эта опция не включена."
 
-#: inc/fields/TaxonomiesFields.php:148
+#: inc/fields/TaxonomiesFields.php:147
 #, php-format
 msgid ""
 "You can specify a comma-separated term IDs that need to be included. Check "
@@ -1978,11 +1977,11 @@ msgstr ""
 "должны быть включены. Посмотрите учебник, чтобы найти идентификатор термина "
 "с помощью этого %s"
 
-#: inc/fields/TextField.php:53
+#: inc/fields/TextField.php:51
 msgid "Please add text field"
 msgstr "Пожалуйста, добавьте текстовое поле"
 
-#: inc/fields/TextField.php:80
+#: inc/fields/TextField.php:74
 msgid "Type"
 msgstr "Тип"
 
@@ -1998,27 +1997,70 @@ msgstr "Мин. функций"
 msgid "Drag & Drop"
 msgstr "Перетаскивание"
 
-#: inc/fields/TinyMCE.php:116
+#: inc/fields/TinyMCE.php:110
 msgid "Whether to display media insert/upload buttons"
 msgstr "Отображать ли кнопки вставки/загрузки медиафайлов"
 
-#: inc/fields/TinyMCE.php:117
+#: inc/fields/TinyMCE.php:111
 msgid "Whether to output the minimal editor configuration"
 msgstr "Выводить ли минимальную конфигурацию редактора"
 
-#: inc/fields/TinyMCE.php:118
+#: inc/fields/TinyMCE.php:112
 msgid "Enable Drag & Drop Upload Support"
 msgstr "Включите поддержку загрузки с помощью перетаскивания"
 
-#: inc/fields/hCaptcha.php:100
+#: inc/fields/Turnstile.php:47
+msgid "Please complete the captcha properly."
+msgstr "Пожалуйста, пройдите проверку капчи."
+
+#: inc/fields/Turnstile.php:63
+msgid "Failed to verify captcha"
+msgstr "Не удалось проверить капчу"
+
+#: inc/fields/Turnstile.php:105 inc/fields/hCaptcha.php:94
 msgid "Site Key"
 msgstr "Ключ сайта"
 
-#: inc/fields/hCaptcha.php:101
+#: inc/fields/Turnstile.php:106 inc/fields/hCaptcha.php:95
 msgid "Secret Key"
 msgstr "Секретный ключ"
 
-#: inc/fields/hCaptcha.php:125
+#: inc/fields/Turnstile.php:109
+msgid "Theme"
+msgstr "Тема"
+
+#: inc/fields/Turnstile.php:118
+msgid "Size"
+msgstr "Размер"
+
+#: inc/fields/Turnstile.php:129
+msgid ""
+"Create a widget in the Cloudflare dashboard (Turnstile) to get the keys. "
+"Turnstile is free: <a href=\"https://dash.cloudflare.com/?to=/:account/"
+"turnstile\" target=\"_blank\">Cloudflare Turnstile</a>"
+msgstr ""
+"Создайте виджет в панели Cloudflare (раздел Turnstile), чтобы получить "
+"ключи. Turnstile бесплатный: <a href=\"https://dash.cloudflare.com/?"
+"to=/:account/turnstile\" target=\"_blank\">Cloudflare Turnstile</a>"
+
+#: inc/fields/Turnstile.php:132
+msgid ""
+"Language code like \"de\" or \"auto\" for the visitor language. <a "
+"href=\"https://developers.cloudflare.com/turnstile/reference/supported-"
+"languages/\" target=\"_blank\">Supported languages</a>"
+msgstr ""
+"Код языка, например «de», или «auto» для языка посетителя. <a href=\"https://"
+"developers.cloudflare.com/turnstile/reference/supported-languages/\" "
+"target=\"_blank\">Поддерживаемые языки</a>"
+
+#: inc/fields/Turnstile.php:160
+msgid ""
+"Cloudflare Turnstile: add the site key and the secret key in the field "
+"settings."
+msgstr ""
+"Cloudflare Turnstile: укажите ключ сайта и секретный ключ в настройках поля."
+
+#: inc/fields/hCaptcha.php:119
 msgid ""
 "Check the list of languages <a href=\"https://docs.hcaptcha.com/languages\" "
 "target=\"_blank\">here</a>"
@@ -2151,9 +2193,9 @@ msgstr ""
 msgid "Show login"
 msgstr "Показать вход"
 
-#: templates/admin/settings/form-admin-login-register.php:25
-msgid "Show login instead of restricted message (Pro)"
-msgstr "Показывать логин вместо сообщения о запрете (Pro)"
+#: templates/admin/settings/form-admin-login-register.php:21
+msgid "Show login instead of restricted message"
+msgstr "Показывать форму входа вместо сообщения о запрете"
 
 #: templates/admin/settings/form-admin-notification-settings.php:4
 msgid "New post created - [post_title]"
@@ -2558,11 +2600,11 @@ msgstr ""
 msgid "Custom css for form"
 msgstr "Пользовательский css для формы"
 
-#: templates/admin/settings/form-submission-restriction.php:14
+#: templates/admin/settings/form-submission-restriction.php:13
 msgid "Enable Guest Post"
 msgstr "Включить гостевой постинг"
 
-#: templates/admin/settings/form-submission-restriction.php:21
+#: templates/admin/settings/form-submission-restriction.php:15
 msgid "Unregistered users will be able to submit posts"
 msgstr "Незарегистрированные пользователи смогут добовлять записи"
 
@@ -2585,10 +2627,6 @@ msgstr "Форма записи не выбрана, пожалуйста, вы�
 #: templates/front-editor-form.php:11
 msgid "Create New One"
 msgstr "Создать новый"
-
-#: templates/front-editor-form.php:60
-msgid "Proudly powered by"
-msgstr "Форма создана с помощью плагина WP Front Editor"
 
 #: templates/front-editor/category.php:10
 #: templates/front-editor/category.php:11
@@ -2674,6 +2712,26 @@ msgstr "Далее »"
 #: templates/user-admin.php:120
 msgid "0 posts found"
 msgstr "найдено 0 записей"
+
+#~ msgid "AI form generation is a Pro feature"
+#~ msgstr "Генерация форм с ИИ доступна в Pro"
+
+#~ msgid "Describe the form in your own words and AI will build it for you."
+#~ msgstr "Опишите форму своими словами, и ИИ соберёт её за вас."
+
+#~ msgid ""
+#~ "AI form generation, translation and tone change in the assistant, post "
+#~ "moderation and automatic excerpt, tags and SEO description are available "
+#~ "in the Pro version."
+#~ msgstr ""
+#~ "Генерация форм, перевод и смена тона в помощнике, модерация записей, "
+#~ "автоматические отрывок, метки и SEO-описание доступны в Pro-версии."
+
+#~ msgid "Show login instead of restricted message (Pro)"
+#~ msgstr "Показывать логин вместо сообщения о запрете (Pro)"
+
+#~ msgid "Proudly powered by"
+#~ msgstr "Форма создана с помощью плагина WP Front Editor"
 
 #~ msgid ""
 #~ "Registration successful. Your password will be sent via email shortly."

@@ -191,3 +191,19 @@ function fus_rename_attachment($att_id, $new_filename)
         ], true);
     }
 }
+
+/**
+ * Script printed right after a captcha widget: in a narrow form (phones) it switches the widget
+ * to its compact size before the captcha script renders it.
+ * No "&" in it: WordPress texturizes the post content the form is printed in.
+ *
+ * @param int $min_width width the normal widget needs, in px
+ * @return string
+ */
+function fus_compact_captcha_script($min_width)
+{
+    return sprintf(
+        '<script>(function (script) { var widget = script ? script.previousElementSibling : null; if (!widget || widget.offsetWidth === 0 || widget.offsetWidth >= %d) { return; } widget.setAttribute("data-size", "compact"); })(document.currentScript);</script>',
+        (int) $min_width
+    );
+}
