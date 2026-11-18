@@ -73,6 +73,42 @@ class UploadSecurity
         return $token;
     }
 
+    public static function init()
+    {
+        add_action('template_redirect', [__CLASS__, 'prepare_visitor_for_form_page']);
+    }
+
+    /**
+     * Send the guest browser id with a page that shows a form, before the first upload.
+     * FilePond uploads several files at once; without the cookie each of these requests
+     * would create its own id, and files of the other requests could not be used or reverted.
+     *
+     * @return void
+     */
+    public static function prepare_visitor_for_form_page()
+    {
+        if (is_user_logged_in() || !is_singular()) {
+            return;
+        }
+
+        $post = get_queried_object();
+        if (!$post instanceof \WP_Post) {
+            return;
+        }
+
+        $has_form = has_shortcode($post->post_content, 'fe_form') || has_block('bfe/bfe-block', $post);
+
+        /**
+         * Does the current page show a submission form (guest browser id is sent with the page)
+         *
+         * @param bool     $has_form
+         * @param \WP_Post $post
+         */
+        if (apply_filters('bfe_page_has_form', $has_form, $post)) {
+            self::visitor_token();
+        }
+    }
+
     /**
      * Value stored with a guest upload: a hash of the guest browser id (the id itself stays secret)
      *
@@ -206,3 +242,5 @@ class UploadSecurity
         return (string) $type;
     }
 }
+
+UploadSecurity::init();

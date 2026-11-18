@@ -74,6 +74,10 @@ class FileField {
         if ( $user_id > 0 && ((int) $attachment->post_author === $user_id || current_user_can( 'edit_post', $attachment->ID )) ) {
             return true;
         }
+        // unattached files this guest browser uploaded (parallel uploads may not share a PHP session)
+        if ( $user_id === 0 && SavePost::can_use_attachment( $attachment->ID ) ) {
+            return true;
+        }
         self::start_session_if_needed();
         if ( !empty( $_SESSION['bfe_uploaded_files'] ) && in_array( $attachment->ID, (array) $_SESSION['bfe_uploaded_files'] ) ) {
             return true;
@@ -173,6 +177,11 @@ class FileField {
                 $authorized = true;
             }
         }
+        // unattached files this guest browser uploaded (parallel uploads may not share a PHP session)
+        if ( !$authorized && !is_user_logged_in() && SavePost::can_use_attachment( $attachment_id ) ) {
+            $authorized = true;
+            $is_guest_upload = true;
+        }
         if ( !$authorized && !empty( $_SESSION['bfe_uploaded_files'] ) && in_array( $attachment_id, $_SESSION['bfe_uploaded_files'] ) ) {
             $authorized = true;
             $is_guest_upload = true;
@@ -183,8 +192,8 @@ class FileField {
             ]);
         }
         $deleted = wp_delete_attachment( $attachment_id, true );
-        if ( $deleted && $is_guest_upload ) {
-            $index = array_search( $attachment_id, $_SESSION['bfe_uploaded_files'] );
+        if ( $deleted && $is_guest_upload && !empty( $_SESSION['bfe_uploaded_files'] ) ) {
+            $index = array_search( $attachment_id, (array) $_SESSION['bfe_uploaded_files'] );
             if ( $index !== false ) {
                 unset($_SESSION['bfe_uploaded_files'][$index]);
             }

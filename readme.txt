@@ -4,7 +4,7 @@ Tags: frontend post, guest post, submit post, user submitted posts, ai writing a
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 5.2.3
+Stable tag: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -220,6 +220,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.2.4 =
+* [fix] Pro File field: guests who pick several files at once get all of them saved with the post, and can remove any of them before submitting (in 5.2.3 only some of the files were kept)
 
 = 5.2.3 =
 * [fix] Security: values saved with a post are now escaped when the edit form, the "FUS Form Data" box and notification emails show them
@@ -492,6 +495,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.2.4 =
+Fixes guest file uploads in the Pro File field.
 
 = 5.2.3 =
 Security release, please update.
