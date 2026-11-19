@@ -25,7 +25,7 @@
     "@playwright/test": "^1.58.2",
     "@rodrigoodhin/editorjs-image-gallery": "0.1.0",
     "@vietlongn/editorjs-carousel": "2.3.6",
-    "@wordpress/scripts": "^25.5.1",
+    "@wordpress/scripts": "^37.2.0",
     "bytemd": "1.9.1",
     "editorjs-text-alignment-blocktune": "1.0.3",
     "slim-select": "1.27.1",
@@ -57,5 +57,14 @@
     "filepond-plugin-image-validate-size": "1.2.7",
     "webpack": "5.112.2",
     "webpack-cli": "4.10.0"
+  },
+  "overrides": {
+    "serialize-javascript": "^7.1.4",
+    "smol-toml": "^1.9.1",
+    "katex": "^0.18.11",
+    "markdownlint-cli": {
+      "js-yaml": "^5.5.0",
+      "minimatch": "^11.0.9"
+    }
   }
 }

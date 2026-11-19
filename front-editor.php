@@ -15,7 +15,7 @@
  * Requires PHP: 7.4
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Version: 5.3.0
+ * Version: 5.3.1
  */
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -59,7 +59,7 @@ if ( function_exists( 'fe_fs' ) ) {
                     'has_addons'       => false,
                     'has_paid_plans'   => true,
                     'trial'            => array(
-                        'days'               => 3,
+                        'days'               => 7,
                         'is_require_payment' => true,
                     ),
                     'has_affiliation'  => 'selected',

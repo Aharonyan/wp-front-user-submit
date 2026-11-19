@@ -4,7 +4,7 @@ Tags: frontend post, guest post, submit post, user submitted posts, ai writing a
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 5.3.0
+Stable tag: 5.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,7 +51,7 @@ New in 5.1: a **free ✨ AI writing assistant** right inside your forms. Your us
 * Layout fields: header and paragraph
 * Featured image upload
 * File upload field: images and PDF, up to 2 MB per file and 3 files per field
-* Choose the post status after submission: pending review, draft or published
+* Choose the post status after submission: published right away or pending review. Authors can also save drafts
 * Admin and user email notifications
 * Redirect after submission to any URL or the current page
 * Required and optional fields, custom success and error messages
@@ -237,6 +237,12 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.3.1 =
+* [new] Once 5 posts from your forms are published, administrators see a request to leave a review on WordPress.org, with "Maybe later" and "Don't show again" (filter `bfe_show_review_notice` turns it off)
+* [fix] The trial offer says 7 days, the length of the Pro trial
+* [fix] Russian: the trial offer showed a 0-day trial
+* Updated Russian translation
 
 = 5.3.0 =
 * [new] Guest posting is free: tick "Enable Guest Post" in the form settings (Submission Restriction)
@@ -539,6 +545,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.3.1 =
+Review request for administrators and trial offer fixes.
 
 = 5.3.0 =
 Guest posting, captcha fields (new Cloudflare Turnstile, hCaptcha, reCAPTCHA), simple custom fields, file uploads and the AI form generator are now free.

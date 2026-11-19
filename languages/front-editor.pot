@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Front User Submit | Front Editor 5.3.0\n"
+"Project-Id-Version: Front User Submit | Front Editor 5.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 17:52+0200\n"
+"POT-Creation-Date: 2026-11-19 11:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,16 +16,28 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: FrontUserSubmit.php:128 templates/user-admin.php:91
+#. translators: 1: plugin name, 3: trial length in days (argument 2 is not used)
+#: FrontUserSubmit.php:122
+#, php-format
+msgid "How do you like %1$s so far? Test all premium features with a %3$d-day free trial."
+msgstr ""
+
+#: FrontUserSubmit.php:124
+msgctxt "exclamation"
+msgid "Hey"
+msgstr ""
+
+#: FrontUserSubmit.php:153 templates/user-admin.php:91
 msgid "Are you sure you want to delete this post?"
 msgstr ""
 
-#: FrontUserSubmit.php:145 inc/Blocks.php:53 inc/MenuSettings.php:129
+#: FrontUserSubmit.php:170 inc/Blocks.php:53 inc/MenuSettings.php:129
 msgid "Edit in front editor"
 msgstr ""
 
-#: FrontUserSubmit.php:157 inc/PostFormsListTable.php:414
+#: FrontUserSubmit.php:182 inc/PostFormsListTable.php:414
 msgid "Edit"
 msgstr ""
 
@@ -105,43 +117,43 @@ msgstr ""
 msgid "Edit Current Post"
 msgstr ""
 
-#: inc/Form.php:223
+#: inc/Form.php:224
 msgid "This field value will be saved into post meta using this name."
 msgstr ""
 
-#: inc/Form.php:224
+#: inc/Form.php:225
 msgid "Help text will be shown under this field on the front end form."
 msgstr ""
 
-#: inc/Form.php:225
+#: inc/Form.php:226
 msgid "Enable this option to save the field data directly to the post content.. Important: If multiple editors have this setting enabled, each new editor will overwrite the previous content in this field."
 msgstr ""
 
-#: inc/Form.php:226
+#: inc/Form.php:227
 msgid "Enable this option to save the field data directly to the post content, excerpt or meta.. Important: If multiple editors have selected post content or excerpt, each new editor will overwrite the previous content in this field."
 msgstr ""
 
-#: inc/Form.php:234
+#: inc/Form.php:235
 msgid "Post Fields"
 msgstr ""
 
-#: inc/Form.php:238
+#: inc/Form.php:239
 msgid "Editors"
 msgstr ""
 
-#: inc/Form.php:242
+#: inc/Form.php:243
 msgid "Taxonomies"
 msgstr ""
 
-#: inc/Form.php:246
+#: inc/Form.php:247
 msgid "Custom Fields"
 msgstr ""
 
-#: inc/Form.php:254
+#: inc/Form.php:255
 msgid "You already have this field in the form"
 msgstr ""
 
-#: inc/Form.php:255 templates/admin/settings/form-payment-settings.php:17
+#: inc/Form.php:256 templates/admin/settings/form-payment-settings.php:17
 #: templates/admin/settings/form-payment-settings.php:38
 #: templates/admin/settings/form-payment-settings.php:52
 #: templates/admin/settings/form-payment-settings.php:66
@@ -150,109 +162,109 @@ msgstr ""
 msgid "Available in Pro version"
 msgstr ""
 
-#: inc/Form.php:256
+#: inc/Form.php:257
 msgid "Please upgrade to the Pro version to unlock all these awesome features"
 msgstr ""
 
-#: inc/Form.php:258 inc/ai/AiSettings.php:315
+#: inc/Form.php:259 inc/ai/AiSettings.php:315
 #: templates/admin/settings/form-ai-settings.php:83
 msgid "Get the Pro version"
 msgstr ""
 
-#: inc/Form.php:344
+#: inc/Form.php:345
 #, php-format
 msgid "%s (Copy)"
 msgstr ""
 
-#: inc/Form.php:447 templates/admin/post-form.php:49
+#: inc/Form.php:448 templates/admin/post-form.php:49
 msgid "Sample Form"
 msgstr ""
 
-#: inc/Form.php:455 inc/Form.php:475 inc/ai/AiAssistant.php:131
+#: inc/Form.php:456 inc/Form.php:476 inc/ai/AiAssistant.php:131
 msgid "Form not found"
 msgstr ""
 
-#: inc/Form.php:491 inc/fields/MdEditor.php:122
+#: inc/Form.php:492 inc/fields/MdEditor.php:122
 #: inc/fields/PostTitleField.php:55
 msgid "Oops"
 msgstr ""
 
-#: inc/Form.php:492
+#: inc/Form.php:493
 msgid "Form builder cannot be empty"
 msgstr ""
 
-#: inc/Form.php:518
+#: inc/Form.php:519
 msgid "Form Settings Saved"
 msgstr ""
 
-#: inc/Form.php:543
+#: inc/Form.php:544 inc/ReviewNotice.php:125
 msgid "Sorry, you are not allowed to do that."
 msgstr ""
 
-#: inc/Form.php:554
+#: inc/Form.php:555
 msgid "post_id is empty."
 msgstr ""
 
-#: inc/Form.php:573
+#: inc/Form.php:574
 msgid "Loading"
 msgstr ""
 
-#: inc/Form.php:583 inc/Form.php:595
+#: inc/Form.php:584 inc/Form.php:596
 msgid "This is not a valid record."
 msgstr ""
 
-#: inc/Form.php:610
+#: inc/Form.php:611
 msgid "Form Settings Migrated"
 msgstr ""
 
-#: inc/Form.php:774 inc/fields/FileField.php:467 inc/fields/FileField.php:510
+#: inc/Form.php:775 inc/fields/FileField.php:467 inc/fields/FileField.php:510
 #: inc/fields/TextareaField.php:158
 #, php-format
 msgid "%s is required"
 msgstr ""
 
-#: inc/Form.php:859 inc/Form.php:860
+#: inc/Form.php:860 inc/Form.php:861
 msgid "Post Form"
 msgstr ""
 
-#: inc/Form.php:861 inc/Form.php:862
+#: inc/Form.php:862 inc/Form.php:863
 msgid "Add Post Form"
 msgstr ""
 
-#: inc/Form.php:863
+#: inc/Form.php:864
 msgid "Edit Post Form"
 msgstr ""
 
-#: inc/Form.php:864
+#: inc/Form.php:865
 msgid "New Post Form"
 msgstr ""
 
-#: inc/Form.php:865
+#: inc/Form.php:866
 msgid "Watch Post Form"
 msgstr ""
 
-#: inc/Form.php:866
+#: inc/Form.php:867
 msgid "Search Post Form"
 msgstr ""
 
-#: inc/Form.php:867
+#: inc/Form.php:868
 msgid "Not Found"
 msgstr ""
 
-#: inc/Form.php:868
+#: inc/Form.php:869
 msgid "Not found in trash"
 msgstr ""
 
-#: inc/Form.php:870
+#: inc/Form.php:871
 msgid "All forms"
 msgstr ""
 
-#: inc/Form.php:1066 inc/WooIntegration.php:366 inc/WooIntegration.php:377
+#: inc/Form.php:1067 inc/WooIntegration.php:366 inc/WooIntegration.php:377
 #: inc/fields/PostTitleField.php:196
 msgid "Post Title"
 msgstr ""
 
-#: inc/Form.php:1067 templates/front-editor/post-title.php:3
+#: inc/Form.php:1068 templates/front-editor/post-title.php:3
 msgid "Add Title"
 msgstr ""
 
@@ -840,6 +852,10 @@ msgstr ""
 
 #: inc/PostFormsListTable.php:416
 msgid "Duplicate"
+msgstr ""
+
+#: inc/ReviewNotice.php:130
+msgid "Unknown choice."
 msgstr ""
 
 #: inc/SavePost.php:143
@@ -2009,6 +2025,34 @@ msgstr ""
 
 #: templates/admin/post-forms-list-table-view.php:23
 msgid "Search Forms"
+msgstr ""
+
+#. translators: %s: number of posts
+#: templates/admin/review-notice.php:20
+#, php-format
+msgid "Your Front User Submit forms have brought in %s published post so far."
+msgid_plural "Your Front User Submit forms have brought in %s published posts so far."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/review-notice.php:27
+msgid "If the plugin saves you time, could you leave a short review on WordPress.org? Reviews are how other site owners find it, and I read every one."
+msgstr ""
+
+#: templates/admin/review-notice.php:29
+msgid "Aleksan, developer of Front User Submit"
+msgstr ""
+
+#: templates/admin/review-notice.php:32
+msgid "Leave a review"
+msgstr ""
+
+#: templates/admin/review-notice.php:33
+msgid "Maybe later"
+msgstr ""
+
+#: templates/admin/review-notice.php:34
+msgid "Don't show again"
 msgstr ""
 
 #: templates/admin/settings/form-admin-login-register.php:8

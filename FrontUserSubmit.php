@@ -41,7 +41,8 @@ class FrontUserSubmit
   {
     // Load textdomain first
     self::true_load_plugin_textdomain();
-    
+    self::override_freemius_texts();
+
     // Then load components
     self::add_components_after_init();
   }
@@ -67,6 +68,7 @@ class FrontUserSubmit
     require_once FE_PLUGIN_DIR_PATH . '/inc/EditorWidget.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Form.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/FormDesignPreview.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/ReviewNotice.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Notifications.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/WooIntegration.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/LoginRegisterShortcode.php';
@@ -99,6 +101,28 @@ class FrontUserSubmit
     if (file_exists($bundled)) {
       load_textdomain('front-editor', $bundled);
     }
+  }
+
+  /**
+   * Our own texts for Freemius strings with broken Russian translations.
+   * Freemius translates an override with the plugin's text domain, so the Russian text is in our .po.
+   * Only for Russian: other languages keep the Freemius translations.
+   *
+   * @return void
+   */
+  public static function override_freemius_texts()
+  {
+    if (!function_exists('fe_fs') || strpos(determine_locale(), 'ru_') !== 0) {
+      return;
+    }
+
+    fe_fs()->override_i18n([
+      // Freemius ru_RU drops the second %s of this string, so the number of days showed as 0
+      /* translators: 1: plugin name, 3: trial length in days (argument 2 is not used) */
+      'trial-x-promotion-message' => __('How do you like %1$s so far? Test all premium features with a %3$d-day free trial.', 'front-editor'),
+      // Freemius adds "! " itself, so the ru_RU "Привет!" showed as "Привет!!"
+      'hey' => _x('Hey', 'exclamation', 'front-editor'),
+    ]);
   }
 
   /**

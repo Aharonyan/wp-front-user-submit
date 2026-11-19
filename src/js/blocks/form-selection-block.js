@@ -1,3 +1,11 @@
+/**
+ * Classic JSX through wp.element: the automatic runtime needs the react-jsx-runtime
+ * script, which WordPress has only since 6.6.
+ *
+ * @jsxRuntime classic
+ * @jsx createElement
+ */
+import { createElement } from '@wordpress/element';
 import { withState } from '@wordpress/compose';
 
 (function (blocks, i18n, element, blockEditor, components, compose, editor_block_data, wp) {
