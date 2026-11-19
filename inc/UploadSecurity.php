@@ -46,28 +46,40 @@ class UploadSecurity
     const VISITOR_COOKIE = 'fus_visitor';
 
     /**
+     * Readable by JavaScript (the id cookie is httponly): tells the form that the browser has an id.
+     * Pages from a page cache or a page builder come without the id cookie, see CachedPages.
+     */
+    const VISITOR_READY_COOKIE = 'fus_visitor_ready';
+
+    /**
      * Random id of the current guest browser, created (and sent as cookie) when missing
      *
+     * @param bool $resend send the cookies again although the browser has an id
      * @return string
      */
-    public static function visitor_token()
+    public static function visitor_token($resend = false)
     {
         $token = isset($_COOKIE[self::VISITOR_COOKIE]) ? (string) $_COOKIE[self::VISITOR_COOKIE] : '';
-        if (preg_match('/^[a-f0-9]{32}$/', $token)) {
+        $is_valid = (bool) preg_match('/^[a-f0-9]{32}$/', $token);
+        if ($is_valid && !$resend) {
             return $token;
         }
 
-        $token = bin2hex(random_bytes(16));
-        $_COOKIE[self::VISITOR_COOKIE] = $token;
+        if (!$is_valid) {
+            $token = bin2hex(random_bytes(16));
+            $_COOKIE[self::VISITOR_COOKIE] = $token;
+        }
         if (!headers_sent()) {
-            setcookie(self::VISITOR_COOKIE, $token, [
+            $cookie = [
                 'expires'  => time() + DAY_IN_SECONDS,
                 'path'     => COOKIEPATH ?: '/',
                 'domain'   => COOKIE_DOMAIN ?: '',
                 'secure'   => is_ssl(),
                 'httponly' => true,
                 'samesite' => 'Lax',
-            ]);
+            ];
+            setcookie(self::VISITOR_COOKIE, $token, $cookie);
+            setcookie(self::VISITOR_READY_COOKIE, '1', array_merge($cookie, ['httponly' => false]));
         }
 
         return $token;
@@ -237,7 +249,10 @@ class UploadSecurity
 
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $type  = finfo_file($finfo, $path);
-        finfo_close($finfo);
+        // since PHP 8.1 finfo is an object that is freed by itself, PHP 8.5 deprecates finfo_close()
+        if (PHP_VERSION_ID < 80100) {
+            finfo_close($finfo);
+        }
 
         return (string) $type;
     }

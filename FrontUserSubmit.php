@@ -63,6 +63,7 @@ class FrontUserSubmit
     require_once FE_PLUGIN_DIR_PATH . '/inc/UserAdmin.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/UploadSecurity.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/GuestUploadCleanup.php';
+    require_once FE_PLUGIN_DIR_PATH . '/inc/CachedPages.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/SavePost.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/Editor.php';
     require_once FE_PLUGIN_DIR_PATH . '/inc/EditorWidget.php';
@@ -84,6 +85,21 @@ class FrontUserSubmit
 
     add_action('wp_enqueue_scripts', [__CLASS__, 'add_scripts']);
     add_action('admin_footer', [__CLASS__, 'add_live_chat_to_admin_pages']);
+    add_filter('no_texturize_tags', [__CLASS__, 'no_texturize_textarea']);
+  }
+
+  /**
+   * Block themes run wptexturize() over the whole page, also over the text of a textarea.
+   * In an edit form that is the saved post: "<!-- wp:paragraph -->" became "<!– wp:paragraph –>",
+   * attribute quotes became curly, and the next save stored the damaged text.
+   *
+   * @param string[] $tags
+   * @return string[]
+   */
+  public static function no_texturize_textarea($tags)
+  {
+    $tags[] = 'textarea';
+    return $tags;
   }
 
 

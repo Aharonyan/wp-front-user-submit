@@ -39,6 +39,10 @@
         printf('<label for="fus_post_title">%s %s</label>', esc_html($field['label']), $required);
     }
 
+    // The saved title as is: get_the_title() runs the_title filters, so themes and plugins
+    // could change it (Twenty Twenty-One shows "Untitled" in new forms, "Private: " prefixes)
+    $title = 'new' === $post_id ? '' : (string) get_post_field('post_title', $post_id, 'raw');
+
     if ($html_element === 'input') {
         printf(
             '<%s class="%s" type="%s" id="fus_post_title" name="post_title" placeholder="%s" rows="2" value="%s">',
@@ -46,7 +50,7 @@
             $text_type,
             $class,
             esc_attr($placeholder),
-            esc_html(get_the_title($post_id))
+            esc_attr($title)
         );
     } else {
         printf(
@@ -55,7 +59,7 @@
             $text_type,
             $class,
             esc_attr($placeholder),
-            esc_html(get_the_title($post_id)),
+            esc_html($title),
             $html_element
         );
     }

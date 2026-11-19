@@ -147,7 +147,8 @@ class UserAdmin
     public static function get_body_class()
     {
         $options = get_option('bfe_general_user_admin_settings_group_options');
-        $design = !empty($options['fe_admin_design']) ? $options['fe_admin_design'] : 'no_style';
+        // the same default the settings page shows when the option was never saved
+        $design = !empty($options['fe_admin_design']) ? $options['fe_admin_design'] : 'modern-minimal';
         return 'fe-admin-design-' . esc_attr($design);
     }
 

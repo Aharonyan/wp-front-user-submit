@@ -18,13 +18,11 @@ import './functions';
 import './fields/post-thumb-field';
 
 import EditorJS from './inc/editor-js-logic';
-EditorJS(jQuery)
 import SlimSelect from 'slim-select';
 import front_post_form from './inc/front-form';
 import Swal from 'sweetalert2'
 
 import taxonomy from './fields/taxonomy.js';
-taxonomy(jQuery, SlimSelect)
 
 import * as FilePond from 'filepond';
 // Import the plugin code
@@ -35,14 +33,47 @@ import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orien
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import fileField from './fields/file-field';
-fileField(FilePond, jQuery,FilePondPluginImageEdit,FilePondPluginImagePreview,FilePondPluginImageValidateSize,FilePondPluginImageExifOrientation,FilePondPluginFileValidateType,FilePondPluginFileValidateSize)
+import freshNonces, { hasCookie, isStalePage, useRestNonce } from './inc/fresh-nonces';
 
-/**
- * Keep in the end to give ability register all hooks
- */
-jQuery('.fus-form').each((i, val) => {
-    front_post_form(val, jQuery, SlimSelect, Swal)
-})
+function initForms() {
+    EditorJS(jQuery)
+    taxonomy(jQuery, SlimSelect)
+    fileField(FilePond, jQuery,FilePondPluginImageEdit,FilePondPluginImagePreview,FilePondPluginImageValidateSize,FilePondPluginImageExifOrientation,FilePondPluginFileValidateType,FilePondPluginFileValidateSize)
+
+    /**
+     * Keep in the end to give ability register all hooks
+     */
+    jQuery('.fus-form').each((i, val) => {
+        front_post_form(val, jQuery, SlimSelect, Swal)
+    })
+}
+
+// A page from a page cache may carry expired nonces, and cached or page builder pages come
+// without the guest browser cookie. EditorJS and FilePond keep the upload URLs and headers
+// they start with, so they start after the nonce and the cookie are there
+const formData = window.editor_data || {};
+const isGuest = !formData.is_user_logged_in;
+const hasUploads = Boolean(document.querySelector('.fus-form .file-field, .fus-form #img_inp, .fus-form .EditorJS-editor'));
+const needsFreshNonces = isStalePage(isGuest, formData.page_time, formData.nonce_life)
+    || (isGuest && hasUploads && formData.visitor_cookie && !hasCookie(formData.visitor_cookie));
+
+if (needsFreshNonces && formData.fresh_nonces_url) {
+    // the buttons submit the form natively until the form script takes over
+    const holdSubmit = (event) => event.preventDefault();
+    document.querySelectorAll('.fus-form').forEach((form) => form.addEventListener('submit', holdSubmit));
+    freshNonces(formData.fresh_nonces_url)
+        .then((nonces) => {
+            if (nonces) {
+                useRestNonce(formData, nonces.rest)
+            }
+        })
+        .finally(() => {
+            document.querySelectorAll('.fus-form').forEach((form) => form.removeEventListener('submit', holdSubmit));
+            initForms()
+        })
+} else {
+    initForms()
+}
 
 import aiAssistant from './inc/ai-assistant';
 jQuery(() => {

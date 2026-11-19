@@ -4,7 +4,7 @@ Tags: frontend post, guest post, submit post, user submitted posts, ai writing a
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 5.3.2
+Stable tag: 5.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,7 +60,7 @@ New in 5.1: a **free ✨ AI writing assistant** right inside your forms. Your us
 * Clean form design that looks right with any theme, or add your own CSS
 * Preview every design, including Pro ones, on your own form before you choose
 * Responsive, translation ready, developer hooks
-* Works with ACF and User Role Editor
+* Tested with popular themes and plugins: Astra, Kadence, GeneratePress, Elementor, Yoast SEO, WooCommerce, ACF, Wordfence, LiteSpeed Cache and more
 
 = ✨ AI writing assistant (free) =
 
@@ -207,6 +207,10 @@ The free version has text, email, phone, number, hidden, header, paragraph and f
 
 Yes. Use the Front Editor block or the shortcode, with or without the block editor.
 
+= Does it work with my theme, page builder and cache plugin? =
+
+Yes. A form is a shortcode or a block, so it works in any theme and page builder that shows page content: in Elementor use the Shortcode widget, in Beaver Builder the HTML module. Version 5.3.3 is tested with 11 popular themes (Twenty Twenty-Five, Astra, Hello Elementor, Kadence, GeneratePress, OceanWP, Blocksy, Neve, Storefront and others) and more than 30 popular plugins, including Elementor, Beaver Builder, SiteOrigin Page Builder, GenerateBlocks, Yoast SEO, Rank Math, WooCommerce, Contact Form 7, Wordfence, LiteSpeed Cache, W3 Total Cache, Autoptimize and Polylang. Forms work on cached pages, you do not need to exclude them from the cache. See the [compatibility list](https://wpuserpublish.com/docs/getting-started/compatibility/) for versions and for the setting some security plugins need.
+
 = How do I use shortcode settings? =
 
 See [how to use the shortcode](https://wpuserpublish.com/docs/getting-started/shortcodes/).
@@ -237,6 +241,17 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.3.3 =
+* [fix] Block themes (Twenty Twenty-Five, Twenty Twenty-Four): editing a post in a form with a TinyMCE, Textarea or Markdown field no longer changes quotes and block markup in the saved text
+* [fix] TinyMCE field: when the mouse pointer was over the form while the page loaded, the editor could open empty and saving deleted the post content
+* [fix] Forms on cached pages: guests could not send the form or log in once the cached page was older than 12 to 24 hours ("Cookie check failed"). Form pages no longer need to be excluded from page caches
+* [fix] Guests who uploaded several files at once on a cached page or a page builder page (Elementor) could lose some of the files
+* [fix] The title field shows the saved title. Twenty Twenty-One showed "Untitled" in new forms
+* [fix] Autoptimize "Aggregate JS-files" no longer stops the TinyMCE editor
+* [fix] The user dashboard on new sites uses the Modern Minimal design instead of no styles with very large icons
+* [fix] PHP 8.5: no deprecation notice in the log on uploads
+* [new] Compatibility list: themes, plugins and page builders tested with this version, see the docs
 
 = 5.3.2 =
 * [fix] Form pages load Google Maps only when the form has a Google Map field. Before, every form page sent about 8 requests to Google
@@ -549,6 +564,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.3.3 =
+Guest forms work on cached pages; fixes for block themes, the TinyMCE field, page builders and Autoptimize.
 
 = 5.3.2 =
 Form pages no longer load Google Maps without a map field; fix for a critical error with removed taxonomies.

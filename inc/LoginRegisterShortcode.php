@@ -64,6 +64,9 @@ class LoginRegisterShortcodes
         wp_localize_script('fus-login-register', 'fusAjaxConfig', [ // Changed from 'fus-ajax' to 'fus-login-register'
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('fus_ajax_nonce'),
+            'pageTime' => time(),
+            'nonceLife' => (int) apply_filters('nonce_life', DAY_IN_SECONDS, 'fus_ajax_nonce'),
+            'freshNoncesUrl' => get_rest_url(null, 'bfe/v1/fresh_nonces'),
             'messages' => [
                 'processing' => __('Processing...', 'front-editor'),
                 'error' => __('An error occurred. Please try again.', 'front-editor'),

@@ -85,6 +85,9 @@ class Editor
 			],
 		];
 
+		// page_time and fresh_nonces_url: see CachedPages
+		$data = array_merge($data, CachedPages::page_data());
+
 		$wp_localize_data = apply_filters('bfe_front_editor_localize_data', $data, $attributes, $post_id);
 
 		/**

@@ -1,3 +1,5 @@
+import { syncTinyMceFields } from '../fields/tinymce';
+
 export default (form, $, SlimSelect, Swal) => {
     let post_form = $(form),
         post_form_id = post_form.attr('id'),
@@ -33,7 +35,11 @@ export default (form, $, SlimSelect, Swal) => {
     /**
      * EditorJS writes its data into the hidden input asynchronously, wait for it
      */
-    const save_editors = () => (typeof window.fe_editorjs_save_all === 'function' ? window.fe_editorjs_save_all() : Promise.resolve());
+    const save_editors = () => {
+        // the TinyMCE textarea may be behind what the user just typed
+        syncTinyMceFields(currentForm)
+        return typeof window.fe_editorjs_save_all === 'function' ? window.fe_editorjs_save_all() : Promise.resolve()
+    };
 
     saveButton.forEach((element) => {
         element.addEventListener('click', async (ev) => {

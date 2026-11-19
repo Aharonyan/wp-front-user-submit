@@ -3,10 +3,26 @@
  * Independent module with webpack build
  */
 
+import freshNonces, { isStalePage } from './fresh-nonces';
+
 class FusLoginRegisterAjax {
     constructor() {
         this.config = window.fusAjaxConfig || {};
         this.init();
+    }
+
+    /**
+     * A login page from a page cache may carry an expired nonce, get a fresh one first
+     */
+    freshNonce() {
+        if (!isStalePage(true, this.config.pageTime, this.config.nonceLife) || !this.config.freshNoncesUrl) {
+            return Promise.resolve();
+        }
+        return freshNonces(this.config.freshNoncesUrl).then((nonces) => {
+            if (nonces) {
+                this.config.nonce = nonces.login;
+            }
+        });
     }
 
     init() {
@@ -70,9 +86,8 @@ class FusLoginRegisterAjax {
         const formData = new FormData(form);
         const ajaxData = new URLSearchParams();
 
-        // Add AJAX action and nonce
+        // Add AJAX action (the nonce is added right before sending)
         ajaxData.append('action', 'fus_' + action);
-        ajaxData.append('nonce', this.config.nonce);
 
         // Add form data
         for (const [key, value] of formData.entries()) {
@@ -80,13 +95,17 @@ class FusLoginRegisterAjax {
         }
 
         // Make AJAX request
-        fetch(this.config.ajaxUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: ajaxData
-        })
+        this.freshNonce()
+            .then(() => {
+                ajaxData.set('nonce', this.config.nonce);
+                return fetch(this.config.ajaxUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: ajaxData
+                });
+            })
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -229,6 +248,7 @@ class FusLoginRegisterAjax {
             throw new Error('AJAX not available');
         }
 
+        await this.freshNonce();
         const ajaxData = new URLSearchParams();
         ajaxData.append('action', 'fus_' + action);
         ajaxData.append('nonce', this.config.nonce);

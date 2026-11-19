@@ -27,6 +27,31 @@ class TinyMCE
 
         // Validate field on front form submit
         add_action('bfe_ajax_before_post_update_or_creation', [__CLASS__, 'validate_field_on_front_form_submit'], 10, 3);
+
+        add_filter('autoptimize_filter_js_exclude', [__CLASS__, 'autoptimize_keep_editor_scripts'], 11, 2);
+    }
+
+    /**
+     * Autoptimize "Aggregate JS-files" moves TinyMCE and editor.js into its bundle at the end
+     * of the page, while the inline scripts that start the editor stay in place and fail
+     * ("tinymce is not defined"). Keep the two scripts out of the bundle on pages with the field.
+     *
+     * @param string|array $exclude comma separated script paths, or an array with the paths as keys
+     * @param string $html page HTML
+     * @return string|array
+     */
+    public static function autoptimize_keep_editor_scripts($exclude = '', $html = '')
+    {
+        if (!is_string($html) || strpos($html, 'fus-form') === false || strpos($html, 'textarea-field') === false || strpos($html, 'tinymce') === false) {
+            return $exclude;
+        }
+
+        $scripts = ['wp-includes/js/tinymce/', 'wp-admin/js/editor'];
+        if (is_array($exclude)) {
+            return array_merge($exclude, array_fill_keys($scripts, ''));
+        }
+
+        return implode(', ', array_filter(array_merge(array_map('trim', explode(',', (string) $exclude)), $scripts)));
     }
 
 

@@ -19,6 +19,7 @@
         .active-tab {
             button {
                 background: black;
+                color: #fff;
             }
         }
     }
@@ -40,6 +41,11 @@
         .fe_fs_icon_container,
         .fe_fs_img {
             width: 50px;
+        }
+        // the edit and delete icons are 512px images, keep them small in every design
+        .fe_fs_icon {
+            width: 20px;
+            height: 20px;
         }
         tr:nth-child(even) {
             background-color: #dddddd;
