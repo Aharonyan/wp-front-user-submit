@@ -4,7 +4,7 @@ Tags: frontend post, guest post, submit post, user submitted posts, ai writing a
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 5.3.1
+Stable tag: 5.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -237,6 +237,10 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 18. User admin shortcode settings
 
 == Changelog ==
+
+= 5.3.2 =
+* [fix] Form pages load Google Maps only when the form has a Google Map field. Before, every form page sent about 8 requests to Google
+* [fix] A taxonomy field no longer breaks the page with a critical error after the plugin that registered the taxonomy is turned off
 
 = 5.3.1 =
 * [new] Once 5 posts from your forms are published, administrators see a request to leave a review on WordPress.org, with "Maybe later" and "Don't show again" (filter `bfe_show_review_notice` turns it off)
@@ -545,6 +549,9 @@ Yes, the plugin is translation ready. Translate it on translate.wordpress.org or
 * added loader on front form
 
 == Upgrade Notice ==
+
+= 5.3.2 =
+Form pages no longer load Google Maps without a map field; fix for a critical error with removed taxonomies.
 
 = 5.3.1 =
 Review request for administrators and trial offer fixes.

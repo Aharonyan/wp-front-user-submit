@@ -15,7 +15,7 @@
  * Requires PHP: 7.4
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Version: 5.3.1
+ * Version: 5.3.2
  */
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;

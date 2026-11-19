@@ -162,6 +162,11 @@ class TaxonomiesFields
 
         $tax_name = str_replace("tax_", "", $field['type']);
 
+        // The plugin that registered the taxonomy can be turned off: skip the field, get_terms() would return a WP_Error
+        if (!taxonomy_exists($tax_name)) {
+            return;
+        }
+
         require fe_template_path('front-editor/taxonomy.php');
     }
 

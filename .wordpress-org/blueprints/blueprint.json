@@ -1,0 +1,43 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "Front User Submit demo",
+    "description": "Live Preview on WordPress.org: the free plugin with its demo form. The Freemius opt-in is skipped, otherwise it covers the plugin menu. The demo terms go on the Hello world post because the demo form hides empty terms.",
+    "author": "Aharonyan"
+  },
+  "landingPage": "/front-user-submit-form/",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": false
+  },
+  "steps": [
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "front-editor"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Front User Submit Demo"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require_once '/wordpress/wp-load.php'; if (function_exists('fe_fs')) { fe_fs()->skip_connection(); } $category_ids = []; foreach (['News', 'Events', 'Reviews'] as $name) { $term = wp_insert_term($name, 'category'); if (!is_wp_error($term)) { $category_ids[] = $term['term_id']; } } wp_set_post_categories(1, $category_ids); wp_set_post_tags(1, ['community', 'photos', 'tips']);"
+    }
+  ]
+}
